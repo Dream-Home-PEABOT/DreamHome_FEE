@@ -1,11 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+
+//components
+import Home from '../Home/Home';
+import Error from '../Error/Error';
+import Journey from '../Journey/Journey';
+import Sourvey from '../Sourvey/Sourvey';
+import GenerateReport from '../GenerateReport/GenerateReport';
+
 import './App.css';
 
+// const Context = React.createContext()
+
 function App() {
+
   return (
-    <div className="App">
-      Hello
+    <div>
+      <Home />
+      <Error />
+      <Journey />
+      <Sourvey />
+      <GenerateReport />
     </div>
   );
 }
