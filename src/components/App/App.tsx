@@ -9,18 +9,21 @@ import GenerateReport from '../GenerateReport/GenerateReport';
 
 import './App.css';
 
-// const Context = React.createContext()
+const Context = React.createContext()
+//create interface for context
 
 function App() {
 
   return (
-    <div>
-      <Home />
-      <Error />
-      <Journey />
-      <Sourvey />
-      <GenerateReport />
-    </div>
+    <Context.Provider data={data}>
+      <div>
+        <Home />
+        <Error />
+        <Journey />
+        <Sourvey />
+        <GenerateReport />
+      </div>
+    </Context.Provider>
   );
 }
 
