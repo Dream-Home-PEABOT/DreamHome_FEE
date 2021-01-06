@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {Context, QuestionNode} from '../../types'
+import {QuestionContext, QuestionFormat} from '../../types'
 import {getUserSkins} from '../../apiCalls'
 
 //components
@@ -13,22 +13,17 @@ import {Home} from '../Home/Home';
 //create interface for context
 
 const App:React.FC = () =>{
-  let initial = {
-    profile: [],
-    comments: [],
-    posts: []
-  }
-  const [questions, updateQuestions] = useState<QuestionNode>(initial);
+  const [questions, updateQuestions] = useState<QuestionFormat | null>(null);
   useEffect(() => {
     getUserSkins().then((data) => updateQuestions(data))
   }, []);
 
   return (
-    <Context.Provider value={questions}>
+    <QuestionContext.Provider value={questions}>
       <div>
         <Home />
       </div>
-     </Context.Provider>
+     </QuestionContext.Provider>
   );
 }
 
