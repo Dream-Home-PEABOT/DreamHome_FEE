@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {QuestionContext, QuestionFormat} from '../../types'
+import {QuestionContext, AllQuestionFormat} from '../../types'
 import {getUserSkins} from '../../apiCalls'
 
 //components
@@ -13,7 +13,7 @@ import {Sourvey} from '../Sourvey/Sourvey';
 //create interface for context
 
 const App:React.FC = () =>{
-  const [questions, updateQuestions] = useState<QuestionFormat | null>(null);
+  const [questions, updateQuestions] = useState<AllQuestionFormat | null>(null);
   useEffect(() => {
     getUserSkins().then((data) => updateQuestions(data))
   }, []);
