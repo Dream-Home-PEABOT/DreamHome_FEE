@@ -6,7 +6,7 @@ import {getUserSkins} from '../../apiCalls'
 import {Home} from '../Home/Home';
 //import Error from '../Error/Error';
 //import Journey from '../Journey/Journey';
-//import Sourvey from '../Sourvey/Sourvey';
+import {Sourvey} from '../Sourvey/Sourvey';
 //import GenerateReport from '../GenerateReport/GenerateReport';
 //import './App.css';
 
@@ -22,6 +22,7 @@ const App:React.FC = () =>{
     <QuestionContext.Provider value={questions}>
       <div>
         <Home />
+        <Sourvey />
       </div>
      </QuestionContext.Provider>
   );
