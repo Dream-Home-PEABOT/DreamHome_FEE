@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
-import {Context} from '../../types';
+import {QuestionContext} from '../../types';
 
 export const Home: React.FC = () => {
-  let thisContext = useContext(Context)
+  let thisContext = useContext(QuestionContext)
   console.log(thisContext)
   return (
     <div>
-      {thisContext?.posts?.[0]?.id}
+      {"hi"}
     </div>
   );
 };
