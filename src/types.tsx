@@ -4,18 +4,15 @@ export interface QuestionNode{
   comments: any[],
   posts: any[]
 }
-export interface AnswerNode{
-  profile: any[],
-  comments: any[],
-  posts: any[]
-}
+
+
 export interface QuestionFormat{
-    "type": string;
-    "question": string;
-    "description": string;
-    "information": string;
-    "note": string;
-    "source": string;
+  type: string;
+  question: string;
+  description: string;
+  information: string;
+  note: string;
+  source: string;
 }
 export const QuestionContext = React.createContext<Partial<QuestionFormat | null>>({})
-export const AnswerContext = React.createContext<Partial<AnswerNode>>({})
+export const AnswerContext = React.createContext<Partial<[]>>([])
