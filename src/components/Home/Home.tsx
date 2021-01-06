@@ -6,7 +6,7 @@ export const Home: React.FC = () => {
   console.log(thisContext)
   return (
     <div>
-      {"hi"}
+      {thisContext?.posts?.[0]?.id}
     </div>
   );
 };
