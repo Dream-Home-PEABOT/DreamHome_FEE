@@ -27,6 +27,6 @@
 //  isMained: boolean;
 //}
 export const getUserSkins = () => {
-  const url:string = "https://my-json-server.typicode.com/typicode/demo/db"
+  const url:string = "http://localhost:3000/data"
   return fetch(url).then(data => data.json())
 }
