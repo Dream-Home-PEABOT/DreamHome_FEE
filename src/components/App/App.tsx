@@ -1,29 +1,34 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import {Context, QuestionNode} from '../../types'
+import {getUserSkins} from '../../apiCalls'
 
 //components
-import Home from '../Home/Home';
-import Error from '../Error/Error';
-import Journey from '../Journey/Journey';
-import Sourvey from '../Sourvey/Sourvey';
-import GenerateReport from '../GenerateReport/GenerateReport';
+import {Home} from '../Home/Home';
+//import Error from '../Error/Error';
+//import Journey from '../Journey/Journey';
+//import Sourvey from '../Sourvey/Sourvey';
+//import GenerateReport from '../GenerateReport/GenerateReport';
+//import './App.css';
 
-import './App.css';
-
-const Context = React.createContext()
 //create interface for context
 
-function App() {
+const App:React.FC = () =>{
+  let initial = {
+    profile: [],
+    comments: [],
+    posts: []
+  }
+  const [questions, updateQuestions] = useState<QuestionNode>(initial);
+  useEffect(() => {
+    getUserSkins().then((data) => updateQuestions(data))
+  }, []);
 
   return (
-    <Context.Provider data={data}>
+    <Context.Provider value={questions}>
       <div>
         <Home />
-        <Error />
-        <Journey />
-        <Sourvey />
-        <GenerateReport />
       </div>
-    </Context.Provider>
+     </Context.Provider>
   );
 }
 
