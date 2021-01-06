@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
+//types
+import { data } from '../types';
 //components
 import Home from '../Home/Home';
 import Error from '../Error/Error';
@@ -10,19 +12,25 @@ import GenerateReport from '../GenerateReport/GenerateReport';
 import './App.css';
 
 const Context = React.createContext()
-//create interface for context
+
 
 function App() {
 
+  const [data, setData] = useState<data>({});
+
+  const getQuestionsData = () => {
+
+    setData();
+  }
+
   return (
+    //create interface for data
     <Context.Provider data={data}>
-      <div>
-        <Home />
-        <Error />
-        <Journey />
-        <Sourvey />
-        <GenerateReport />
-      </div>
+      <Home />
+      <Error />
+      <Journey />
+      <Sourvey />
+      <GenerateReport />
     </Context.Provider>
   );
 }
