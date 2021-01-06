@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 //types
-import { data } from '../types';
+import { data } from '../../types';
 //components
 import Home from '../Home/Home';
 import Error from '../Error/Error';
@@ -14,7 +14,7 @@ import './App.css';
 const Context = React.createContext()
 
 
-function App() {
+const App: React.FC = () => {
 
   const [data, setData] = useState<data>({});
 
