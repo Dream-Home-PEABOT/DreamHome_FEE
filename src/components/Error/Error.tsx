@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 const Error: React.FC = () => {
 
   return (
@@ -14,3 +13,6 @@ const Error: React.FC = () => {
 }
 
 export default Error;
+
+//<Route component={Error} />
+//wrap routes in a <Switch>
