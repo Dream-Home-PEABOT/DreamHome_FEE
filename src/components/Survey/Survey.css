@@ -14,9 +14,10 @@
 .info-container{
   grid-area: 1/ 1/ 3 / 4;
   display: inline-flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   z-index: 1;
+  margin: 5%;
 }
 
 .info-box{
