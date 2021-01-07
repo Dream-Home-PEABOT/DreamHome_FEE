@@ -6,9 +6,10 @@ import {getQuestions} from '../../apiCalls'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
 import Journey from '../Journey/Journey';
+import Survey from '../Survey/Survey';
+import Question from '../Question/Question';
+import GenerateReport from '../GenerateReport/GenerateReport';
 // import Error from '../Error/Error';
-// import Sourvey from '../Sourvey/Sourvey';
-// import GenerateReport from '../GenerateReport/GenerateReport';
 
 //create interface for context
 
@@ -24,6 +25,9 @@ const App:React.FC = () =>{
         <NavBar />
         <Home />
         <Journey />
+        <Survey />
+        <Question/>
+        <GenerateReport/>
       
      </QuestionContext.Provider>
   );

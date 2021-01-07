@@ -4,7 +4,7 @@
   border-top: 5px solid #8B1E3F;
 }
 
-.journey-container{
+.container{
   height: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -16,13 +16,13 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
+  z-index: 1;
 }
 
 .info-box{
   background-color: #ffffff;
-  height: 25vh;
-  width: 30vw;
+  height: 30vh;
+  width: 35vw;
 }
 
 .info{
@@ -64,7 +64,7 @@ justify-content: center;
   color: #ffffff;
   font-size: 1.5em;
   height: 5vh;
-    width: 12vw;
+  width: 12vw;
 
 }
 
@@ -80,3 +80,9 @@ justify-content: center;
 .journey-img{
   height: 67vh;
 }
+
+.buttons-box {
+  justify-content: center;
+}
+
+
