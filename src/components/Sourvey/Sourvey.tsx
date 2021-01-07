@@ -19,7 +19,7 @@ export const Sourvey: React.FC = () => {
   return (
     <AnswerContext.Provider value={answerKey}>
       <div>
-        <Question handleClick={updateAnswers}/> 
+        <Question updateAnswers={updateAnswers}/> 
       </div>
      </AnswerContext.Provider>
   );
