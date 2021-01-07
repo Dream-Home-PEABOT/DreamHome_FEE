@@ -3,7 +3,7 @@ import {QuestionContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
 
 //components
-import {Home} from '../Home/Home';
+import Home from '../Home/Home';
 //import Error from '../Error/Error';
 //import Journey from '../Journey/Journey';
 import {Sourvey} from '../Sourvey/Sourvey';
@@ -26,6 +26,5 @@ const App:React.FC = () =>{
       </div>
      </QuestionContext.Provider>
   );
-}
 
 export default App;

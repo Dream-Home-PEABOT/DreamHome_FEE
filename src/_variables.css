@@ -1,0 +1,20 @@
+
+/* declaring font and colors */
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Quicksand:wght@300;400;500;600&family=Rozha+One&family=Xanh+Mono:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gravitas+One&display=swap');
+
+:root{
+  --background_color: ##F0C808;
+  --black_text: ##1A1A1A;
+  --white_text: #FFFFFF;
+  --numbers_color: #DB4C40;
+  --report_green: #89BD9E;
+  --dark_purple: #3C153B;
+  --claret: #8B1E3F;
+  --title: 'Gravitas One', cursive;
+  --description: 'Xanh Mono', monospace;
+  --banner: 'East Sea Dokdo', cursive;
+  --note: 'Quicksand', sans-serif;
+  --error: 'Gravitas One', cursive;
+}
+
