@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 
 const Journey:React.FC = () => {
@@ -17,3 +18,4 @@ const Journey:React.FC = () => {
     </div>
   )
 }
+
