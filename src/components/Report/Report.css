@@ -8,7 +8,7 @@
 }
 
 .header{
-  font-size: 5em;
+  font-size: 6em;
 }
 
 .report-numbers-box{
@@ -68,8 +68,6 @@
   color: #ffffff
 }
 
-
-
 .number-title-box{
   width: 70%;
   text-align: right;
@@ -105,4 +103,142 @@
 
 .report_img{
   height: 90vh;
+}
+
+.analysis-section{
+  height: 50vh;
+  background-color: #f0c808;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-gap: 1px;
+}
+
+.pipe-up{
+  grid-area: 1/ 7/ 3 /5;
+  background-color: #89BD9E;
+  width: 5%;
+  height: 101%;
+  justify-self: center; 
+}
+
+.pipe-down{
+  grid-area: 7/ 7/ 9 /5;
+  background-color: #89BD9E;
+  width: 5%;
+  height: 100%;
+  justify-self: center; 
+}
+
+.main-circ-box{
+  grid-area: 3/ 7/ 7 /5;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.inner-circle{
+  width: 85%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 25em;
+  border: 15px solid #89BD9E
+}
+
+.report-img-box{
+  grid-area: 3/ 7/ 7 /5;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.report-img{
+  height: 100%;
+  z-index: 4;
+}
+
+.category-box{
+  grid-area: 1/ 9/ 3 /11;
+  display: inline-flex;
+  align-items: center;
+}
+
+.category-title{
+  background-color: #3C153B;
+  width: 100%;
+  height: 50%;
+  color: #ffffff;
+  font-size: 3em;
+  font-family:'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+.report-info-1{
+  background-color: #1A1A1A;
+  grid-area: 2/ 2/ 5 /4;
+  margin: 1%;
+}
+
+.report-info-2{
+  grid-area: 4/ 8/ 7 / 10;
+  background-color: #1A1A1A;
+}
+
+.repo-title{
+  color: #ffffff;
+  font-size: 3em;
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+  margin: 3%;
+}
+
+.report-insight{
+  background-color: transparent;
+  grid-area: 2/ 6/ 4 / 8;
+  margin: 3%;
+  width: 100%;
+  color: grey;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 1.5em;
+  text-align:center;
+}
+
+.category-image{
+  grid-area:5/ 3/ 9 / 5;
+}
+.category-image-2 {
+  grid-area: 5/ 7/ 9 / 9;
+}
+
+.plant-1{
+  height: 100%;
+}
+
+.solo_number{
+  grid-area: 1/ 1/ 4/ 2;
+  background-color: #FFFFFF;
+  margin: 10%;
+  text-align: center;
+  color: #3C153B;
+  font-size: 10em;
+  font-family: 'East Sea Dokdo', cursive;
+}
+
+.zip-title{
+  grid-area: 4/ 2/ 6/ 4;
+  font-family: 'Xanh Mono', monospace;
+  color: #ffffff;
+  font-style: italic;
+  font-size: 6em;
+  align-self: end;
+}
+
+.report-zip{
+  grid-area: 6/ 1/ 8/ 4;
+  text-align: center;
+  color: #3C153B;
+  font-size: 10em;
+  font-family: 'Xanh Mono', monospace;
+  font-style: italic;
+  
 }
