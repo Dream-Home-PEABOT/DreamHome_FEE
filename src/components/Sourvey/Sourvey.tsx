@@ -5,13 +5,12 @@ import {Question} from '../Question/Question';
 
 export const Sourvey: React.FC = () => {
   const thisContext = useContext(QuestionContext)
-  const [answerKey, updateAnswers] = useState<AllQuestionFormat | null>(null);
+  const [answerKey, updateAnswers] = useState<any>(null);
   let questionKeys: null;
   useEffect(() => {
     if(thisContext){
     questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
         acc[cur] = ''
-        console.log(acc)
         return acc
       },{})
     updateAnswers(questionKeys)
@@ -20,7 +19,7 @@ export const Sourvey: React.FC = () => {
   return (
     <AnswerContext.Provider value={answerKey}>
       <div>
-        <Question />
+        <Question handleClick={updateAnswers}/> 
       </div>
      </AnswerContext.Provider>
   );
