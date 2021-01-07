@@ -26,5 +26,6 @@ const App:React.FC = () =>{
       </div>
      </QuestionContext.Provider>
   );
-
+}
 export default App;
+

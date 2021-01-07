@@ -9,9 +9,9 @@ const Home: React.FC = () => {
       <div>
         <h2>Menu</h2>
         <ul>
-          <li href='#'>About</li>
-          <li href='#'>Journey</li>
-          <li href='#'>Log In</li>
+          {/*<li href='#'>About</li>*/}
+          {/*<li href='#'>Journey</li>*/}
+          {/*<li href='#'>Log In</li>*/}
         </ul>
       </div>
     </div>
