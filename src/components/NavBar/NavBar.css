@@ -1,7 +1,7 @@
 @import '../../_variables.css';
 
 .nav-container{
-  height: 20vh;
+  height: 15vh;
   background-color: #F0C808;
   align-items: baseline;
   display: inline-flex;
