@@ -1,0 +1,33 @@
+@import '../../_variables.css';
+
+.nav-container{
+  height: 20vh;
+  background-color: #F0C808;
+  align-items: baseline;
+  display: inline-flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2em;
+}
+
+
+
+.inner-menu{
+  display: inline-flex;
+  font-family: 'Gravitas One', cursive;
+  padding: 4%;
+}
+
+.icon{
+  
+  font-size: 2em;
+  padding: 2%;
+}
+
+.menu-title{
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  font-size: 1.7em;
+}
