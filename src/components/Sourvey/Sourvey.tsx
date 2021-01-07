@@ -6,10 +6,9 @@ import {Question} from '../Question/Question';
 export const Sourvey: React.FC = () => {
   const thisContext = useContext(QuestionContext)
   const [answerKey, updateAllAnswers] = useState<any>(null);
-  let questionKeys: null;
   useEffect(() => {
     if(thisContext){
-    questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
+    let questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
         acc[cur] = ''
         return acc
       },{})
