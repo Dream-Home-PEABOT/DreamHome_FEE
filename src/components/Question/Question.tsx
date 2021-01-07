@@ -5,10 +5,10 @@ import React, { useState}  from 'react';
   }
 
   export const Question: React.FC<Props> = ({updateAllAnswers}) => {
-  const [answerInput, updateAnswer] = useState<any>(null);
+    const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
   return (
     <div>
-      <input onChange={(e)=>updateAnswer(e.target.value)}/>
+      <input onChange={(e)=>updateAnswer({...answerInput, answer: e.target.value})}/>
       <button onClick={()=>updateAllAnswers(answerInput)}></button>
     </div>
   );
