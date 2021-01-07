@@ -7,5 +7,24 @@ import { BrowserRouter } from 'react-router-dom';
 import NavBar from './NavBar';
 
 describe('NavBar', () => {
+  it('should render displaying an icon', () => {
+
+  });
+
+  it('should render displaying a title', () => {
+
+  });
+
+  it('should a clickable icon', () => {
+
+  });
+
+  it('should display links when icon is clicked', () => {
+
+  });
+
+  it('should have clickable links', () => {
+
+  });
 
 })
