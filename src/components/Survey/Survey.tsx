@@ -1,17 +1,13 @@
-import React, {useEffect, useContext, useState} from 'react';
-import {AllQuestionFormat, AnswerContext, QuestionContext} from '../../types';
-import {Question} from '../Question/Question';
+import React from 'react';
 import './Survey.css'
 import bkg_img_2 from '../../images/survey/Big Shoes - Sitting on Rock Blue.png'
 import bkg_img_1 from '../../images/survey/Big Shoes - Sitting on Rock Yellow.png'
 export const Survey: React.FC = () => {
-  
   return (
       <section className='survey-container'>
-        {/*<Question currentQuestion={currentQuestion} updateAllAnswers={updateAllAnswers}/> */}
+
         <div className='inner-container'>
 
-          {/*<AnswerContext.Provider value={answerKey}>*/}
           <div className='info-container'>
             <div className="info-box">
               <h2 className='info'>One of the main questions to answers is how much can I afford?. Affordability is defined as the cost of something.</h2>
@@ -44,7 +40,6 @@ export const Survey: React.FC = () => {
               </div>
           </div>
         </div>
-        {/*</AnswerContext.Provider>*/}
       </section>
   );
 };
