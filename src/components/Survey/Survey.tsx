@@ -22,7 +22,7 @@ export const Survey: React.FC = () => {
   return (
     <AnswerContext.Provider value={answerKey}>
       <section className='survey-container'>
-
+        {/*<Question currentQuestion={currentQuestion} updateAllAnswers={updateAllAnswers}/> */}
         <div className='inner-container'>
 
           <div className='info-container'>
