@@ -34,7 +34,7 @@
 }
 
 .img-container{
-  grid-area: 1/ 4/ 6/ 5;
+  grid-area: 1/ 4/ 5/ 5;
   /* background-color: rgb(5, 12, 12); */
   height: 75vh;
   display: inline-flex;
