@@ -3,12 +3,12 @@ import {QuestionContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
 
 //components
+import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
-//import Error from '../Error/Error';
-//import Journey from '../Journey/Journey';
-import {Sourvey} from '../Sourvey/Sourvey';
-//import GenerateReport from '../GenerateReport/GenerateReport';
-//import './App.css';
+import Journey from '../Journey/Journey';
+// import Error from '../Error/Error';
+// import Sourvey from '../Sourvey/Sourvey';
+// import GenerateReport from '../GenerateReport/GenerateReport';
 
 //create interface for context
 
@@ -20,10 +20,11 @@ const App:React.FC = () =>{
 
   return (
     <QuestionContext.Provider value={questions}>
-      <div>
+     
+        <NavBar />
         <Home />
-        <Sourvey />
-      </div>
+        <Journey />
+      
      </QuestionContext.Provider>
   );
 }

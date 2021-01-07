@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gravitas+One&display=swap');
 
 :root{
-  --background_color: ##F0C808;
-  --black_text: ##1A1A1A;
+  --background_color: #F0C808;
+  --black_text: #1A1A1A;
   --white_text: #FFFFFF;
   --numbers_color: #DB4C40;
   --report_green: #89BD9E;
