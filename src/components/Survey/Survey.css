@@ -13,15 +13,16 @@
 }
 
 .info-container{
-  grid-area: 1/ 1/ 3 / 4;
+  grid-area: 1/ 1/ 3 / 3;
   display: inline-flex;
-  /* justify-content: center; */
   align-items: center;
   z-index: 1;
-  margin: 5%;
+  justify-content: center;
+  margin: 2%;
 }
 
 .info-box{
+  text-align: center;
   background-color: #ffffff;
   height: 23vh;
   width: 45vw;
@@ -70,6 +71,7 @@
   grid-area: 3/ 1/ 11 / 3;
   z-index: 2;
 }
+
 .img-box_2{
   grid-area: 3/ 2/ 11 / 3;
   z-index: 1;
@@ -89,7 +91,7 @@
 
 .floor-box{
   background-image: url("../../images/survey/Fancy Plants - Solo Background.png");
-  background-color:#F0C808 ;
+  /* background-color:#F0C808 ; */
   background-repeat: repeat;
   grid-area: 9/ 1/ 13 / 6;
 }
