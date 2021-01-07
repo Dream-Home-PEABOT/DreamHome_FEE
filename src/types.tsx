@@ -1,9 +1,5 @@
 import React from 'react';
-export interface QuestionNode{
-  profile: any[],
-  comments: any[],
-  posts: any[]
-}
+
 export interface QuestionFormat{
   data:{
   type: string;
@@ -27,5 +23,5 @@ export interface AllQuestionFormat{
   survey:QuestionFormat;
 }
 
-export const QuestionContext = React.createContext<Partial<AllQuestionFormat | null>>({})
-export const AnswerContext = React.createContext<Partial<[]>>([])
+export const QuestionContext = React.createContext<AllQuestionFormat | null>(null)
+export const AnswerContext = React.createContext<AllQuestionFormat | null>(null)
