@@ -7,7 +7,7 @@ import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
 import Journey from '../Journey/Journey';
 import {Survey} from '../Survey/Survey';
-import Question from '../Question/Question';
+import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
 //create interface for context
 
