@@ -1,0 +1,78 @@
+.journey-section{
+  background-color: #F0C808;
+  height: 85vh;
+  border-top: 5px solid #8B1E3F;
+}
+
+.journey-container{
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.information-container{
+  grid-area: 1/ 1/ 3 / 3;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.info-box{
+  background-color: #ffffff;
+  height: 25vh;
+  width: 30vw;
+}
+
+.info{
+  font-family: 'Xanh Mono', monospace;
+  font-size: 2em;
+  text-align: center;
+  justify-self: center;
+  margin: 3%;
+}
+
+.box-title{
+grid-area: 1/ 4/ 3 / 6;
+display: flex;
+align-items: flex-end;
+}
+
+.title{
+  font-size: 4em;
+}
+
+.title-2{
+  font-size: 4.2em;
+}
+
+.btn-container{
+  grid-area: 3/ 4/ 4 / 6;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn{
+  background-color: #1A1A1A;
+  border-radius: 2em;
+  color: #ffffff;
+  font-size: 2em;
+  height: 5vh;
+    width: 12vw;
+
+}
+
+.btn:hover{
+  background-color: #3C153B;
+  color:#F0C808;
+}
+
+.img-box{
+  grid-area: 2/ 2/ 5 / 5;
+}
+
+.journey-img{
+  height: 67vh;
+}
