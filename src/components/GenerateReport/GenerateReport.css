@@ -1,0 +1,42 @@
+.generate-section{
+  height: 100vh;
+  border-top: 5px solid #8B1E3F;
+}
+
+.inner-container{
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+}
+
+.buttons-box{
+
+}
+
+
+.submit-btn{
+  background-color: #89BD9E;
+  border: none;
+}
+
+.submit-btn:hover{
+  background-color: #F0C808;
+  color: #1A1A1A;
+}
+
+.box-detail-1{
+  background-color: #F0C808 ;
+  grid-area: 6/ 3/ 7 / 4;
+}
+
+.box-detail-2{
+  background-color: #F0C808 ;
+  grid-area: 3/ 5/ 4 / 6;
+  width: 30%;
+}
+
+.submit-btn{
+  height: 3em;
+  width: 10em;
+}
