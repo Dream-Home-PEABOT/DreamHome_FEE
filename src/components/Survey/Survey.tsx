@@ -5,26 +5,13 @@ import './Survey.css'
 import bkg_img_2 from '../../images/survey/Big Shoes - Sitting on Rock Blue.png'
 import bkg_img_1 from '../../images/survey/Big Shoes - Sitting on Rock Yellow.png'
 export const Survey: React.FC = () => {
-  const thisContext = useContext(QuestionContext)
-  const [answerKey, updateAnswers] = useState<AllQuestionFormat | null>(null);
-  let questionKeys: null;
-  useEffect(() => {
-    if(thisContext){
-    questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
-        acc[cur] = ''
-        console.log(acc)
-        return acc
-      },{})
-    updateAnswers(questionKeys)
-    }
-  }, [thisContext]);
   
   return (
-    <AnswerContext.Provider value={answerKey}>
       <section className='survey-container'>
         {/*<Question currentQuestion={currentQuestion} updateAllAnswers={updateAllAnswers}/> */}
         <div className='inner-container'>
 
+          {/*<AnswerContext.Provider value={answerKey}>*/}
           <div className='info-container'>
             <div className="info-box">
               <h2 className='info'>One of the main questions to answers is how much can I afford?. Affordability is defined as the cost of something.</h2>
@@ -57,8 +44,8 @@ export const Survey: React.FC = () => {
               </div>
           </div>
         </div>
+        {/*</AnswerContext.Provider>*/}
       </section>
-     </AnswerContext.Provider>
   );
 };
 
