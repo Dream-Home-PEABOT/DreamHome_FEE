@@ -71,7 +71,6 @@ justify-content: center;
 .btn:hover{
   background-color: #3C153B;
   color:#F0C808;
-  font-size: 1.7em;
 }
 
 .img-box{
@@ -80,6 +79,10 @@ justify-content: center;
 
 .journey-img{
   height: 67vh;
+}
+
+.buttons-box {
+  justify-content: center;
 }
 
 
