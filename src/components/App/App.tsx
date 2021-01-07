@@ -1,44 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import {QuestionContext, AllQuestionFormat} from '../../types'
+import {getQuestions} from '../../apiCalls'
 
-//types
-import { data } from '../../types';
 //components
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
 // import Error from '../Error/Error';
 // import Journey from '../Journey/Journey';
-import Sourvey from '../Sourvey/Sourvey';
+// import Sourvey from '../Sourvey/Sourvey';
 // import GenerateReport from '../GenerateReport/GenerateReport';
 
-import './App.css';
+//create interface for context
 
-const Context = React.createContext({})
-
-
-const App = () => {
-
-  const [data, setData] = useState<data>();
-
-  const getQuestionsData = () => {
-
-    // setData();
-  }
+const App:React.FC = () =>{
+  const [questions, updateQuestions] = useState<AllQuestionFormat | null>(null);
+  useEffect(() => {
+    getQuestions().then((data) => updateQuestions(data))
+  }, []);
 
   return (
-    <>
-    {/* //create interface for data
-    // <Context.Provider data={data}>
-    //   <Error />
-  //   <Journey /> */}
-    
-    <NavBar />
-    <Home />
-    <Sourvey />
-    {/* //  <GenerateReport />
-    // </Context.Provider> 
-    */}
-    </>
-    );
+    <QuestionContext.Provider value={questions}>
+     
+        <NavBar />
+        <Home />
+        {/* <Sourvey /> */}
+      
+     </QuestionContext.Provider>
+  );
 }
-
 export default App;
+
