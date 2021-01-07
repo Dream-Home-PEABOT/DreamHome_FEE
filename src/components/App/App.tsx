@@ -9,6 +9,7 @@ import Journey from '../Journey/Journey';
 import Survey from '../Survey/Survey';
 import Question from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
+import Report from '../Report/Report'
 // import Error from '../Error/Error';
 
 //create interface for context
@@ -28,6 +29,7 @@ const App:React.FC = () =>{
         <Survey />
         <Question/>
         <GenerateReport/>
+        <Report />
       
      </QuestionContext.Provider>
   );
