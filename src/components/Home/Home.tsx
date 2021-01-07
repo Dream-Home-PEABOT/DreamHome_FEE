@@ -1,9 +1,6 @@
-import React, {useContext} from 'react';
-import {QuestionContext} from '../../types';
+import React, from 'react';
 
 export const Home: React.FC = () => {
-  let thisContext = useContext(QuestionContext)
-  console.log(thisContext)
   return (
     <div>
       {"hi"}

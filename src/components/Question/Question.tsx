@@ -1,5 +1,4 @@
-import React, {useContext} from 'react';
-import {AnswerContext} from '../../types';
+import React  from 'react';
 
 export const Question: React.FC = () => {
   return (
