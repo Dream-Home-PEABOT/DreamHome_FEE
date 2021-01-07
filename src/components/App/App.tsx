@@ -13,7 +13,7 @@ import GenerateReport from '../GenerateReport/GenerateReport';
 
 const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<AllQuestionFormat | {}>({});
-  const [answers, updateAllAnswers] = useState<AllQuestionFormat | {}>({});
+  const [answers, updateAllAnswers] = useState<any>({});
   const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
     const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
         acc[cur] = ''
@@ -25,7 +25,7 @@ const App:React.FC = () =>{
   useEffect(() => {
     getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
-
+  let currentQuestion = Object.keys(questions).find(question => !answers[question])
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
@@ -33,7 +33,7 @@ const App:React.FC = () =>{
         <Home />
         <Journey />
         <Survey />
-        <Question/>
+        <Question currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>
         <GenerateReport/>
       </AnswerContext.Provider>
      </QuestionContext.Provider>
