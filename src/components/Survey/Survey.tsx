@@ -24,7 +24,6 @@ export const Survey: React.FC = () => {
       <section className='survey-container'>
 
         <div className='inner-container'>
-          {/* displays gird */}
 
           <div className='info-container'>
             <div className="info-box">
