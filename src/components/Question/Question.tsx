@@ -1,8 +1,19 @@
-import React  from 'react';
+import React, { useState, useContext}  from 'react';
+import {QuestionContext, AnswerContext} from '../../types';
 import './Question.css'
 import bkg_img from '../../images/questions/Big Shoes - Sitting On Floor.png'
 import location_img from '../../images/questions/Charco - Location Map.png'
+
+  //interface Props{
+  //  updateAllAnswers: any;
+  //  currentQuestion: string;
+  //}
+  //<Props>
+  //{updateAllAnswers, currentQuestion}
 export const Question: React.FC = () => {
+    //const answerContext = useContext(AnswerContext)
+    //const questionContext = useContext(QuestionContext)
+    //const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
   return (
     <section className='question-section'>
       
@@ -27,13 +38,15 @@ export const Question: React.FC = () => {
         <div className="buttons-box">
           <button className='back-btn btn'>back</button>
           <button className='next-btn btn'>next</button>
+            {/*onClick={()=>updateAllAnswers({...answerContext, [currentQuestion]: answerInput.answer})}*/}
         </div>
 
         <div className="question-box">
-          <h1 className="question">What is your net monthly salary?</h1>
+          <h1 className="question">{/*currentQuestion*/}</h1>
         </div>
         <div className="input-box">
           <input type="text" className="input"/>
+            {/*onChange={(e)=>updateAnswer({...answerInput, answer: e.target.value})}*/}
         </div>
         <div className="note-box">
           <h4 className="note">The amount of money you earn plays a smaller role in getting a mortgage than you might think.</h4>
