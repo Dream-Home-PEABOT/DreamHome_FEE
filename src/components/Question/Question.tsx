@@ -1,15 +1,15 @@
-import React, {useState}  from 'react';
+import React, { useState}  from 'react';
 
   interface Props{
-    updateAnswers: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    updateAllAnswers: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   }
 
-  export const Question: React.FC<Props> = ({updateAnswers}) => {
+  export const Question: React.FC<Props> = ({updateAllAnswers}) => {
   const [answerInput, updateAnswer] = useState<any>(null);
   return (
     <div>
-      <input  onChange={(e)=>updateAnswer(e.target.value)}/>
-      <button onClick={()=>updateAnswers(answerInput)}></button>
+      <input onChange={(e)=>updateAnswer(e.target.value)}/>
+      <button onClick={()=>updateAllAnswers(answerInput)}></button>
     </div>
   );
 };

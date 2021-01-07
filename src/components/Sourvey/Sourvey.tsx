@@ -5,7 +5,7 @@ import {Question} from '../Question/Question';
 
 export const Sourvey: React.FC = () => {
   const thisContext = useContext(QuestionContext)
-  const [answerKey, updateAnswers] = useState<any>(null);
+  const [answerKey, updateAllAnswers] = useState<any>(null);
   let questionKeys: null;
   useEffect(() => {
     if(thisContext){
@@ -13,13 +13,13 @@ export const Sourvey: React.FC = () => {
         acc[cur] = ''
         return acc
       },{})
-    updateAnswers(questionKeys)
+    updateAllAnswers(questionKeys)
     }
   }, [thisContext]);
   return (
     <AnswerContext.Provider value={answerKey}>
       <div>
-        <Question updateAnswers={updateAnswers}/> 
+        <Question updateAllAnswers={updateAllAnswers}/> 
       </div>
      </AnswerContext.Provider>
   );
