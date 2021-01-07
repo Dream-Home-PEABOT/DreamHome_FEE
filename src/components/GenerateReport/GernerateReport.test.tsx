@@ -11,8 +11,12 @@ describe('GenerateReport', () => {
 
   });
 
-  It('should render with a button to generate a report', () => {
+  it('should render with a button to generate a report', () => {
 
   });
-  
+
+  it('for a user, should be able to click the button', () => {
+    
+  })
+
 })
