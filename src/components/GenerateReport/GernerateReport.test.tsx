@@ -7,5 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import GenerateReport from './GenerateReport';
 
 describe('GenerateReport', () => {
+  it('should render with a message', () => {
+
+  });
+
+  It('should render with a button to generate a report', () => {
+
+  });
   
 })
