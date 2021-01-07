@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {QuestionContext, AllQuestionFormat} from '../../types'
+import React, {useState , useEffect} from 'react';
+import {AnswerContext, QuestionContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
 
 //components
@@ -13,27 +13,29 @@ import GenerateReport from '../GenerateReport/GenerateReport';
 
 const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<AllQuestionFormat | {}>({});
-  let answerKey: any;
-  const buildAnswers = (questions: AllQuestionFormat | {}): void => {
-    answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
+  const [answers, updateAllAnswers] = useState<AllQuestionFormat | {}>({});
+  const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
+    const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
         acc[cur] = ''
         return acc
       },{})
+      updateAllAnswers(answerKey)
+      return questions
   }
   useEffect(() => {
-    getQuestions().then((data) => updateQuestions(data)).then(() => buildAnswers(questions))
+    getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
 
   return (
     <QuestionContext.Provider value={questions}>
-      {/*<AnswerContext.Provider value={answerKey}>*/}
+      <AnswerContext.Provider value={answers}>
         <NavBar />
         <Home />
         <Journey />
         <Survey />
         <Question/>
         <GenerateReport/>
-      {/*</AnswerContext.Provider>*/}
+      </AnswerContext.Provider>
      </QuestionContext.Provider>
   );
 }
