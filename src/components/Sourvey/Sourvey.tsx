@@ -8,14 +8,15 @@ export const Sourvey: React.FC = () => {
   const [answerKey, updateAnswers] = useState<AllQuestionFormat | null>(null);
   let questionKeys: null;
   useEffect(() => {
-    if (thisContext) {
-      questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
+    if(thisContext){
+    questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
         acc[cur] = ''
+        console.log(acc)
         return acc
       },{})
-    }
     updateAnswers(questionKeys)
-  }, []);
+    }
+  }, [thisContext]);
   return (
     <AnswerContext.Provider value={answerKey}>
       <div>
