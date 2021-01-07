@@ -20,7 +20,6 @@ export const Sourvey: React.FC = () => {
   if (answerKey && questionContext){
     currentQuestion = Object.keys(questionContext).find(question => !answerKey[question])
   }
-  console.log(answerKey)
   return (
     <AnswerContext.Provider value={answerKey}>
       <div>
