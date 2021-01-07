@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
-import Sourvey from './Sourvey';
+import Survey from './Survey';
 
-describe('Sourvey', () => {
+describe('Survey', () => {
 
 })

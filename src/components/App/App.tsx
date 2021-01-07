@@ -6,7 +6,7 @@ import {getQuestions} from '../../apiCalls'
 import Home from '../Home/Home';
 //import Error from '../Error/Error';
 //import Journey from '../Journey/Journey';
-import {Sourvey} from '../Sourvey/Sourvey';
+import {Survey} from '../Survey/Survey';
 //import GenerateReport from '../GenerateReport/GenerateReport';
 //import './App.css';
 
@@ -22,10 +22,9 @@ const App:React.FC = () =>{
     <QuestionContext.Provider value={questions}>
       <div>
         <Home />
-        <Sourvey />
+        <Survey />
       </div>
      </QuestionContext.Provider>
   );
 }
 export default App;
-

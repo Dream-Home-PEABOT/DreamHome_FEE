@@ -3,7 +3,7 @@ import {AllQuestionFormat, AnswerContext, QuestionContext} from '../../types';
 import {Question} from '../Question/Question';
 
 
-export const Sourvey: React.FC = () => {
+export const Survey: React.FC = () => {
   const thisContext = useContext(QuestionContext)
   const [answerKey, updateAnswers] = useState<AllQuestionFormat | null>(null);
   let questionKeys: null;
@@ -25,4 +25,3 @@ export const Sourvey: React.FC = () => {
      </AnswerContext.Provider>
   );
 };
-
