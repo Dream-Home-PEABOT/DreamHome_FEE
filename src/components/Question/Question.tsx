@@ -1,16 +1,15 @@
-import React, {useRef, useState}  from 'react';
+import React, {useState}  from 'react';
 
   interface Props{
-    handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    updateAnswers: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   }
 
-  export const Question: React.FC<Props> = ({handleClick}) => {
+  export const Question: React.FC<Props> = ({updateAnswers}) => {
   const [answerInput, updateAnswer] = useState<any>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <div>
-      <input ref={inputRef} onChange={(e)=>updateAnswer(e.target.value)}/>
-      <button onClick={(e)=>handleClick(answerInput)}></button>
+      <input  onChange={(e)=>updateAnswer(e.target.value)}/>
+      <button onClick={()=>updateAnswers(answerInput)}></button>
     </div>
   );
 };
