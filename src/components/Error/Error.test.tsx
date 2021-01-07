@@ -7,5 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Error from './Error';
 
 describe('Error', () => {
-
+  it('should render displaying an error message', () => {
+    
+  })
 })
