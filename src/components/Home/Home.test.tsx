@@ -7,5 +7,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
 
 describe('Home', () => {
+  it('should render with the app title', () => {
+
+  });
   
 })
