@@ -7,5 +7,20 @@ import { BrowserRouter } from 'react-router-dom';
 import Survey from './Survey';
 
 describe('Survey', () => {
+  it('should render with a message', () => {
+
+  });
+
+  it('should render with a description', () => {
+
+  });
+
+  it('should render with a next button', () => {
+
+  });
+
+  it('for a user, the next button should be clickable', () => {
+
+  });
 
 })
