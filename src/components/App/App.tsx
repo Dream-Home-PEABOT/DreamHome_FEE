@@ -5,8 +5,8 @@ import {getQuestions} from '../../apiCalls'
 //components
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
+import Journey from '../Journey/Journey';
 // import Error from '../Error/Error';
-// import Journey from '../Journey/Journey';
 // import Sourvey from '../Sourvey/Sourvey';
 // import GenerateReport from '../GenerateReport/GenerateReport';
 
@@ -23,7 +23,7 @@ const App:React.FC = () =>{
      
         <NavBar />
         <Home />
-        {/* <Sourvey /> */}
+        <Journey />
       
      </QuestionContext.Provider>
   );
