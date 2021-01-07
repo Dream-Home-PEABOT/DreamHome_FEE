@@ -1,0 +1,132 @@
+.question-section{
+  background-color: #F0C808;
+  height: 100vh;
+  border-top: 5px solid #8B1E3F;
+}
+
+/* gris is inherit from Survey , this can be removed*/
+.inner-container{
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+}
+
+.desc-container{
+  background-color:blueviolet;
+  grid-area: 1/ 1/ 5 / 4;
+  display: inline-flex;
+  /* align-items: center; */
+  /* z-index: 1; */
+  margin: 5%;
+  height: 100%;
+}
+.description-box{
+  text-align: center;
+  background-color: #ffffff;
+  height: 35vh;
+  width: 50vw;
+}
+
+.question-desc{
+  font-size: 2em;
+  font-family: 'Xanh Mono', monospace;
+  margin: 1%;
+  text-decoration-line: underline;
+}
+
+.desc{
+  font-family: 'Xanh Mono', monospace;
+  font-size: 1.6em;
+  text-align: center;
+  justify-self: center;
+  margin: 1%;
+  padding: 3%;
+  color: #1A1A1A;
+}
+
+.question_img-box_1{
+  grid-area: 5/ 1/ 13 / 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.question_img-box_2{
+  grid-area: 5/ 1/ 13 / 4;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.question_img {
+  height: 60vh;
+}
+
+.location_img {
+  height: 45vh;
+}
+
+.buttons-box{
+  grid-area: 6/ 4/ 7 / 8;
+  display: inline-flex;
+  justify-content: space-between;
+  margin: 4%;
+}
+
+.question-box{
+  grid-area: 7/ 4/ 8 / 8;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.question{
+  color: #1A1A1A;
+  font-family:'Quicksand', sans-serif;
+  font-size: 2.3em;
+  margin: 5%;
+}
+
+.input-box{
+  grid-area: 8/ 4/ 9 / 8;
+  justify-self: end;
+  width: 100%;
+  margin: 1% 7% 0% 0%;
+}
+
+.input{
+  background-color: transparent;
+  border: none; 
+  border-width:0px;
+  border-bottom: 7px solid #1A1A1A;
+  width: 100%;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  font-size: 2em ;
+  text-align: right;
+  padding: 1.5%;
+  cursor: text;
+}
+
+.input:focus{
+  outline: none;
+}
+
+
+.note-box{
+  grid-area: 9/ 4/ 10 / 8;
+  height: 100%;
+  background-color: aliceblue;
+  margin: 5%;
+  display: inline-flex;
+  margin: 3%;
+  padding: 3%;
+  align-items: center;
+}
+
+.note{
+  color: #1A1A1A;
+  font-family:'Quicksand', sans-serif;
+  text-align: center;
+}
+
+
