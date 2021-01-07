@@ -24,4 +24,4 @@ export interface AllQuestionFormat{
 }
 
 export const QuestionContext = React.createContext<AllQuestionFormat | {} >({})
-export const AnswerContext = React.createContext<AllQuestionFormat | null>(null)
+export const AnswerContext = React.createContext<AllQuestionFormat | {}>({})
