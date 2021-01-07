@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import img from '../../images/home/Big Shoes - Standing Pose.png'
+import bkg_img from '../../images/home/Big Shoes - Standing Pose.png'
 import './Home.css'
 const Home: React.FC = () => {
-console.log(img)
+
   return (
     <section className='home-section'>
       <div className="main-container">
@@ -14,14 +14,12 @@ console.log(img)
         </div>
 
         <div className="img-container">
-          <img src={img} alt="" className='main-image'/>
+          <img src={bkg_img} alt="" className='main-image'/>
         </div>
 
       </div>
-
     
-      <div>
-      </div>
+
     </section>
   )
 }
