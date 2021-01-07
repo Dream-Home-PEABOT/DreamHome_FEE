@@ -4,21 +4,27 @@ import {Question} from '../Question/Question';
 
 
 export const Sourvey: React.FC = () => {
-  const thisContext = useContext(QuestionContext)
+  const questionContext = useContext(QuestionContext)
   const [answerKey, updateAllAnswers] = useState<any>(null);
+  let currentQuestion: any;
   useEffect(() => {
-    if(thisContext){
-    let questionKeys = Object.keys(thisContext).reduce((acc: any,cur)=>{
+    if(questionContext){
+    let questions = Object.keys(questionContext)
+    let questionKeys = questions.reduce((acc: any,cur)=>{
         acc[cur] = ''
         return acc
       },{})
     updateAllAnswers(questionKeys)
     }
-  }, [thisContext]);
+  }, [questionContext]);
+  if (answerKey && questionContext){
+    currentQuestion = Object.keys(questionContext).find(question => !answerKey[question])
+  }
+  console.log(answerKey)
   return (
     <AnswerContext.Provider value={answerKey}>
       <div>
-        <Question updateAllAnswers={updateAllAnswers}/> 
+        <Question currentQuestion={currentQuestion} updateAllAnswers={updateAllAnswers}/> 
       </div>
      </AnswerContext.Provider>
   );
