@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {QuestionContext, AllQuestionFormat} from '../../types'
-import {getUserSkins} from '../../apiCalls'
+import {getQuestions} from '../../apiCalls'
 
 //components
 import {Home} from '../Home/Home';
@@ -15,7 +15,7 @@ import {Sourvey} from '../Sourvey/Sourvey';
 const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<AllQuestionFormat | null>(null);
   useEffect(() => {
-    getUserSkins().then((data) => updateQuestions(data))
+    getQuestions().then((data) => updateQuestions(data))
   }, []);
 
   return (
