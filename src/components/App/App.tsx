@@ -6,11 +6,10 @@ import {getQuestions} from '../../apiCalls'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
 import Journey from '../Journey/Journey';
-import Survey from '../Survey/Survey';
-import Question from '../Question/Question';
+import {Survey} from '../Survey/Survey';
+import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
 import Report from '../Report/Report'
-// import Error from '../Error/Error';
 
 //create interface for context
 
@@ -35,4 +34,3 @@ const App:React.FC = () =>{
   );
 }
 export default App;
-
