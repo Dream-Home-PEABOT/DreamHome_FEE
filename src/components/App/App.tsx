@@ -14,32 +14,23 @@ import Error from '../Error/Error';
 //create interface for context
 
 const App:React.FC = () =>{
-  const [questions, updateQuestions] = useState<any>();
+  const [questions, updateQuestions] = useState<AllQuestionFormat | {}>({});
   const [answers, updateAllAnswers] = useState<any>({});
 
-  const buildQuestions = (questions: any): void => {
-    const questionKey = Object.keys(questions).filter(data =>{
-      return questions[data].attributes.question
-    })
-
-    const onlyQuestions = questionKey.map(question =>{
-      return questions[question]
-    })
-    updateQuestions(onlyQuestions)
-
-    const answerKey = questionKey.reduce((acc: any,cur)=>{
-      acc[questions[cur].attributes.classification] = ''
-      return acc
-    },{})
-    updateAllAnswers(answerKey)
+  const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
+    const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
+        acc[cur] = ''
+        return acc
+      },{})
+      updateAllAnswers(answerKey)
+      return questions
   }
 
   useEffect(() => {
-    getQuestions().then((data) => buildQuestions(data) )
+    getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
 
-  let currentQuestion = "hi";
-  //let currentQuestion = questions.find(question => !answers[question.attributes.question])
+  let currentQuestion = Object.keys(questions).find(question => !answers[question])
 
   return (
     <QuestionContext.Provider value={questions}>
