@@ -9,8 +9,11 @@ import location_img from '../../images/questions/Charco - Location Map.png'
     currentQuestion: string;
   }
     export const Question: React.FC<Props> = ({updateAllAnswers, currentQuestion}) => {
+
     const answerContext = useContext(AnswerContext)
     const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
+
+    let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
   return (
     <section className='question-section'>
       
@@ -33,7 +36,7 @@ import location_img from '../../images/questions/Charco - Location Map.png'
         </div>
 
         <div className="buttons-box">
-          <button className='back-btn btn'>back</button>
+          {currentAnswer && <button className='back-btn btn'>back</button>}
           <button className='next-btn btn'
             onClick={()=>updateAllAnswers({...answerContext, [currentQuestion]: answerInput.answer})}
           >next</button>
