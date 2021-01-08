@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
-import Journey from './Journey';
+import NavBar from './NavBar';
 
-describe('Journey', () => {
-  it('should render displaying a message', () => {
+describe('NavBar', () => {
+  it('should render displaying an icon', () => {
 
   });
 
@@ -15,11 +15,15 @@ describe('Journey', () => {
 
   });
 
-  it('should render with a start button', () => {
+  it('should a clickable icon', () => {
 
   });
 
-  it('for a user, should be able to click the button', () => {
+  it('should display links when icon is clicked', () => {
+
+  });
+
+  it('should have clickable links', () => {
 
   });
 

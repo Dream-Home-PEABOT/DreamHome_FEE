@@ -4,19 +4,23 @@ import ReactDOM from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
-import GenerateReport from './GenerateReport';
+import Survey from './Survey';
 
-describe('GenerateReport', () => {
+describe('Survey', () => {
   it('should render with a message', () => {
 
   });
 
-  it('should render with a button to generate a report', () => {
+  it('should render with a description', () => {
 
   });
 
-  it('for a user, should be able to click the button', () => {
-    
-  })
+  it('should render with a next button', () => {
+
+  });
+
+  it('for a user, the next button should be clickable', () => {
+
+  });
 
 })
