@@ -1,6 +1,7 @@
 import React, {useState , useEffect} from 'react';
 import {AnswerContext, QuestionContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
+import {Switch, Route, Link} from 'react-router-dom'
 
 //components
 import NavBar from '../NavBar/NavBar';
@@ -9,6 +10,7 @@ import Journey from '../Journey/Journey';
 import {Survey} from '../Survey/Survey';
 import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
+import Error from '../Error/Error';
 //create interface for context
 
 const App:React.FC = () =>{
@@ -30,11 +32,16 @@ const App:React.FC = () =>{
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
         <NavBar />
-        <Home />
-        <Journey />
-        <Survey />
-        <Question currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>
+        <Switch>
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/journey" component={Journey}/>
+        <Route exact path="/survey" component={Survey}/>
+        <Route exact path="/question" component={Question} 
+          currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>
+        <Route exact path="/generate_report" component={GenerateReport}/>
+        <Route component={Error}/>
         <GenerateReport/>
+        </Switch>
       </AnswerContext.Provider>
      </QuestionContext.Provider>
   );
