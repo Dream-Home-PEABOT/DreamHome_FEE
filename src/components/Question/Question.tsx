@@ -47,7 +47,7 @@ interface Props{
         </div>
 
         <div className="question-box">
-          <h1 className="question">{currentQuestion}</h1>
+          <h1 className="question">{theQuestion?.attributes?.question}</h1>
         </div>
         <div className="input-box">
           <input type="text" className="input"
@@ -55,11 +55,12 @@ interface Props{
           />
         </div>
         <div className="note-box">
-          <h4 className="note">The amount of money you earn plays a smaller role in getting a mortgage than you might think.</h4>
+          <h4 className="note">{theQuestion?.attributes?.note}</h4>
         </div>
 
-      
-          <div className='floor-box'></div>
+          <div className='floor-box'>
+          <h4 className="note">{theQuestion?.attributes?.source}</h4>
+          </div>
       </div>
     </section>
   );
