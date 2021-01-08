@@ -36,8 +36,8 @@ const App:React.FC = () =>{
         <Route exact path="/home" component={Home}/>
         <Route exact path="/journey" component={Journey}/>
         <Route exact path="/survey" component={Survey}/>
-        <Route exact path="/question" component={Question} 
-          currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>
+          <Route exact path="/question" component={()=><Question 
+            currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>}/>
         <Route exact path="/generate_report" component={GenerateReport}/>
         <Route component={Error}/>
         <GenerateReport/>
