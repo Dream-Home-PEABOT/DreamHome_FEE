@@ -21,23 +21,24 @@ const App:React.FC = () =>{
     const questionKey = Object.keys(questions).filter(data =>{
       return questions[data].attributes.question
     })
+
     const onlyQuestions = questionKey.map(question =>{
       return questions[question]
     })
     updateQuestions(onlyQuestions)
+
     const answerKey = questionKey.reduce((acc: any,cur)=>{
       acc[questions[cur].attributes.classification] = ''
       return acc
     },{})
     updateAllAnswers(answerKey)
   }
-  
 
   useEffect(() => {
     getQuestions().then((data) => buildQuestions(data) )
   }, []);
-console.log(questions)
-let currentQuestion = "hi";
+
+  let currentQuestion = "hi";
   //let currentQuestion = questions.find(question => !answers[question.attributes.question])
 
   return (
