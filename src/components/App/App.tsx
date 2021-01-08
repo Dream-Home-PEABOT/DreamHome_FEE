@@ -16,6 +16,7 @@ import Error from '../Error/Error';
 const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<AllQuestionFormat | {}>({});
   const [answers, updateAllAnswers] = useState<any>({});
+
   const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
     const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
         acc[cur] = ''
@@ -24,10 +25,23 @@ const App:React.FC = () =>{
       updateAllAnswers(answerKey)
       return questions
   }
+
+  const buildQuestions = (questions: any): void => {
+    const questionKey = Object.keys(questions).filter(data =>{
+      return questions[data].attributes.question
+    })
+    const onlyQuestions = questionKey.map(question =>{
+      return questions[question]
+    })
+      updateQuestions(onlyQuestions)
+  }
+
   useEffect(() => {
-    getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
+    getQuestions().then((data) => buildAnswers(data) ).then((data) => buildQuestions(data))
   }, []);
+
   let currentQuestion = Object.keys(questions).find(question => !answers[question])
+
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
