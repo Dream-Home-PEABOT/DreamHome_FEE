@@ -27,4 +27,4 @@ export interface AllQuestionFormat{
   //survey:QuestionFormat;
 
 export const QuestionContext = React.createContext<AllQuestionFormat | {} >({})
-export const AnswerContext = React.createContext<AllQuestionFormat | {}>({})
+export const AnswerContext = React.createContext<any>({})
