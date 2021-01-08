@@ -14,11 +14,11 @@ const Home: React.FC = () => {
         </div>
 
         <div className="img-container">
-          <img src={bkg_img} alt="" className='main-image'/>
+          <img src={bkg_img} alt="teki-home" className='main-image'/>
         </div>
 
       </div>
-    
+
 
     </section>
   )
