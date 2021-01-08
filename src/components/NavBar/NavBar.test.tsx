@@ -8,15 +8,15 @@ import NavBar from './NavBar';
 
 describe('NavBar', () => {
   it('should render displaying an icon', () => {
-
+    
   });
 
   it('should render displaying a title', () => {
 
   });
 
-  it('should a clickable icon', () => {
-
+  it('should render an icon', () => {
+    //give aria role and get by role
   });
 
   it('should display links when icon is clicked', () => {
