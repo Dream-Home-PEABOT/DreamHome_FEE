@@ -6,8 +6,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
-test('renders learn react link', () => {
+describe('App', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  it('', () => {
+    
+  })
 });
