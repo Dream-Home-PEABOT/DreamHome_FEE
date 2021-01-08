@@ -1,5 +1,5 @@
 import React, { useState, useContext}  from 'react';
-import {QuestionContext, AnswerContext} from '../../types';
+import {AnswerContext} from '../../types';
 import './Question.css'
 import bkg_img from '../../images/questions/Big Shoes - Sitting On Floor.png'
 import location_img from '../../images/questions/Charco - Location Map.png'
@@ -10,7 +10,6 @@ import location_img from '../../images/questions/Charco - Location Map.png'
   }
     export const Question: React.FC<Props> = ({updateAllAnswers, currentQuestion}) => {
     const answerContext = useContext(AnswerContext)
-    const questionContext = useContext(QuestionContext)
     const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
   return (
     <section className='question-section'>
