@@ -1,7 +1,6 @@
 .question-section{
   background-color: #F0C808;
   height: 100vh;
-  border-top: 5px solid #8B1E3F;
 }
 
 /* gris is inherit from Survey , this can be removed*/
