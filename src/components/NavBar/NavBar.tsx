@@ -1,28 +1,56 @@
-import React from 'react'
+import React, { useState }from 'react'
 import './NavBar.css'
-import '../../_variables.css';
-import { ImMenu} from "react-icons/im";
 import {Link} from 'react-router-dom'
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { FiMenu } from "react-icons/fi";
+import { NavItem } from "../NavItem/NavItem";
 
+const NavBar:React.FC = () => {
 
-const NavBar = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
-    <div className='nav-container'>
-      <div className="inner-menu">
-        <ImMenu className='icon'/>
-        <ul>
-          <Link to="/home">
-          <li><a>Home</a></li>        
-          </Link>
-          <Link to="/journey">
-          <li><a>Journey</a></li>        
-          </Link>
-        </ul>
-
+    <nav className='nav-container'>
+      <ul className="nav-bar" >
         <h1 className='menu-title'>menu</h1>
-      </div>
+        <NavItem 
+          open={open } 
+          setOpen={setOpen} 
+          icon={!open ? <FiMenu className='icon'/>: <IoIosCloseCircleOutline className='icon'/>} >
+
+          <DropdownMenu/>
+
+        </NavItem>
+      </ul>
+    </nav>
+  )
+}
+
+const DropdownMenu = () => {
+
+  const DropdownItem = (props: any) => {
+    return(
+      <a href="#" className="menu-item">
+        {props.children}
+      </a>
+    );
+  }
+
+  return (
+    <div className="dropdown">
+      <Link to="/home">
+        <DropdownItem>Home</DropdownItem>
+      </Link>
+      <Link to="/journey">
+        <DropdownItem>Journey</DropdownItem>
+      </Link>
+     <DropdownItem>Login</DropdownItem>
     </div>
   )
 }
+
+
+
+
 
 export default NavBar

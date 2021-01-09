@@ -36,17 +36,17 @@ const App:React.FC = () =>{
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
-        <NavBar />
+        <NavBar/>
         <Switch>
-        <Route exact path="/home" component={Home}/>
-        <Route exact path="/journey" component={Journey}/>
-        <Route exact path="/survey" component={Survey}/>
+          <Route exact path="/home" component={Home}/>
+          <Route exact path="/journey" component={Journey}/>
+          <Route exact path="/survey" component={Survey}/>
           <Route exact path="/question" component={()=><Question 
             currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>}/>
-        <Route exact path="/generate_report" component={GenerateReport}/>
-        <Route component={Error}/>
-        <GenerateReport/>
-        <Report />
+          <Route exact path="/generate_report" component={GenerateReport}/>
+          <Route exact path="/submit" GenerateReport/>
+          <Route exact path="/report" component={Report} />
+          <Route path='/*' component={Error}/>
         </Switch>
       </AnswerContext.Provider>
      </QuestionContext.Provider>
