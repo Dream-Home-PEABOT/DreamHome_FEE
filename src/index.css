@@ -2,6 +2,15 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+:root{
+	--bg: #1A1A1A;
+	--bg-accent: #3C153B;
+	--text-color: #FFFFFF;
+	--nav-size: 60px;
+	--border: 1px solid #F0C808;
+	--border-radious: 8px;
+	--speed: 500ms;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,3 +55,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
