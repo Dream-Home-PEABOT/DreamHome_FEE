@@ -15,7 +15,7 @@ import Error from '../Error/Error';
 //create interface for context
 
 const App:React.FC = () =>{
-  const [questions, updateQuestions] = useState<AllQuestionFormat | {}>({});
+  const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
 
   const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
@@ -32,7 +32,6 @@ const App:React.FC = () =>{
   }, []);
 
   let currentQuestion = Object.keys(questions).find(question => !answers[question])
-
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
