@@ -13,6 +13,16 @@ interface Props{
     const answerContext = useContext(AnswerContext)
     const questionContext = useContext(QuestionContext)
     const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
+    const [question, setQuestion] = useState<any>("");
+    let [index, setIndex] = useState<any>(1);
+
+    const nextQuestion = () => {
+      setIndex(index++);
+    }
+
+    const prevQuestion = () => {
+      setIndex(index-1)
+    }
 
     let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
     let theQuestion = questionContext[currentQuestion]
@@ -20,7 +30,7 @@ interface Props{
     console.log(theQuestion)
     return (
       <section className='question-section'>
-        
+
         <div className="inner-container">
 
           <div className='desc-container'>
@@ -30,7 +40,7 @@ interface Props{
               <h2 className='desc'>{theQuestion?.attributes?.information}</h2>
             </div>
           </div>
-        
+
         <div className='question_img-box_1'>
           <img src={bkg_img} alt="" className='question_img'/>
         </div>
@@ -42,7 +52,7 @@ interface Props{
         <div className="buttons-box">
           {currentAnswer && <button className='back-btn btn'>back</button>}
           <button className='next-btn btn'
-            onClick={()=>updateAllAnswers({...answerContext, [currentQuestion]: answerInput.answer})}
+            onClick={() => {nextQuestion()}}
           >next</button>
         </div>
 
