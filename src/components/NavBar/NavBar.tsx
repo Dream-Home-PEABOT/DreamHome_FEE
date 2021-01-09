@@ -3,7 +3,8 @@ import './NavBar.css'
 import {Link} from 'react-router-dom'
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
-import { NavItem } from "../NavItem/NavItem"
+import { NavItem } from "../NavItem/NavItem";
+
 const NavBar:React.FC = () => {
 
   const [open, setOpen] = useState<boolean>(false);
@@ -15,7 +16,7 @@ const NavBar:React.FC = () => {
         <NavItem 
           open={open } 
           setOpen={setOpen} 
-          icon={!open?<FiMenu className='icon'/>: <IoIosCloseCircleOutline className='icon'/>} >
+          icon={!open ? <FiMenu className='icon'/>: <IoIosCloseCircleOutline className='icon'/>} >
 
           <DropdownMenu/>
 
