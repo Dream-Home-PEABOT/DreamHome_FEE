@@ -10,6 +10,7 @@ import Journey from '../Journey/Journey';
 import {Survey} from '../Survey/Survey';
 import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
+import Report from '../Report/Report'
 import Error from '../Error/Error';
 //create interface for context
 
@@ -45,6 +46,7 @@ const App:React.FC = () =>{
         <Route exact path="/generate_report" component={GenerateReport}/>
         <Route component={Error}/>
         <GenerateReport/>
+        <Report />
         </Switch>
       </AnswerContext.Provider>
      </QuestionContext.Provider>
