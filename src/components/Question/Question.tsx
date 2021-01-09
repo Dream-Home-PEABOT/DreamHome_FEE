@@ -17,17 +17,23 @@ interface Props{
     let [index, setIndex] = useState<any>(1);
 
     const nextQuestion = () => {
-      setIndex(index++);
+      const questionSet = Object.keys(questionContext);
+      if(index <= questionSet.length) {
+        setIndex(index + 1);
+        let initQuestion = questionSet.find(question => questionContext[question].attributes.question_id == index)
+          setQuestion(initQuestion);
+          // console.log(initQuestion);
+      }
     }
 
     const prevQuestion = () => {
-      setIndex(index-1)
+      setIndex(index - 1)
     }
 
     let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
     let theQuestion = questionContext[currentQuestion]
 
-    console.log(theQuestion)
+    // console.log(currentAnswer)
     return (
       <section className='question-section'>
 
