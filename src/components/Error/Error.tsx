@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import './Error.css';
+import error_img from '../../images/errors/Big Shoes - Torso.png'
+import bkg_img from '../../images/errors/Charco - Broken.png'
 
 const Error: React.FC = () => {
 
   return (
 
-    <div>
-      <h1>404error</h1>
+    <section className="error-section">
+      <div className="container">
+        <div className="box-1"></div>
+        <div className="box-2"></div>
+        <div className="box-3"></div>
+        <div className="message--box">
+          <h1 className="error-message">
+            404 Error
+          </h1>
+        </div>
+        <div className="err-box-2">
+          <img src={bkg_img} alt="" className="error-image"/>
+        </div>
+        <div className="err-box">
+          <img src={error_img} alt="" className="error-image"/>
+        </div>
+      </div>
+      
   
-    </div>
+    </section>
 
 
 
