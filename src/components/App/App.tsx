@@ -44,9 +44,9 @@ const App:React.FC = () =>{
           <Route exact path="/question" component={()=><Question 
             currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>}/>
           <Route exact path="/generate_report" component={GenerateReport}/>
-          <Route component={Error}/>
-          <GenerateReport/>
-          <Report />
+          <Route exact path="/submit" GenerateReport/>
+          <Route exact path="/report" component={Report} />
+          <Route path='/*' component={Error}/>
         </Switch>
       </AnswerContext.Provider>
      </QuestionContext.Provider>
