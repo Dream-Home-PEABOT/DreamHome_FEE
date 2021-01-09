@@ -14,13 +14,13 @@ interface Props{
     const questionContext = useContext(QuestionContext)
     const questionSet = Object.keys(questionContext);
     const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
-    let [index, setIndex] = useState<any>(1);
-    const [question, setQuestion] = useState<any>(questionSet[0]);
+    let [index, setIndex] = useState<any>(0);
+    // const [question, setQuestion] = useState<any>(questionSet[0]);
 
     const nextQuestion = () => {
-      if(index <= questionSet.length) {
+      if(index < questionSet.length) {
         setIndex(index + 1);
-        setQuestion(questionSet[index]);
+        console.log(index)
         // let initQuestion = questionSet.find(question => questionContext[question].attributes.question_id == index)
         // setQuestion(initQuestion);
           // console.log(initQuestion);
@@ -29,10 +29,13 @@ interface Props{
 
     const prevQuestion = () => {
       setIndex(index - 1)
+      // setQuestion(questionSet[index]);
+      // console.log(index)
+      // console.log(questionSet)
     }
 
     // let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
-    let theQuestion = questionContext[question]
+    let theQuestion = questionContext[questionSet[index]]
 
     // console.log(currentAnswer)
     return (
@@ -57,7 +60,7 @@ interface Props{
         </div>
 
         <div className="buttons-box">
-          {index !== 1 && <button className='back-btn btn'>back</button>}
+          {index !== 0 && <button className='back-btn btn' onClick={() => {prevQuestion()}}>back</button>}
           <button className='next-btn btn'
             onClick={() => {nextQuestion()}}
           >next</button>
