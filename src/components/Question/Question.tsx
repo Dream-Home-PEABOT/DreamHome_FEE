@@ -12,16 +12,17 @@ interface Props{
 
     const answerContext = useContext(AnswerContext)
     const questionContext = useContext(QuestionContext)
+    const questionSet = Object.keys(questionContext);
     const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
-    const [question, setQuestion] = useState<any>("");
     let [index, setIndex] = useState<any>(1);
+    const [question, setQuestion] = useState<any>(questionSet[0]);
 
     const nextQuestion = () => {
-      const questionSet = Object.keys(questionContext);
       if(index <= questionSet.length) {
         setIndex(index + 1);
-        let initQuestion = questionSet.find(question => questionContext[question].attributes.question_id == index)
-          setQuestion(initQuestion);
+        setQuestion(questionSet[index]);
+        // let initQuestion = questionSet.find(question => questionContext[question].attributes.question_id == index)
+        // setQuestion(initQuestion);
           // console.log(initQuestion);
       }
     }
@@ -30,8 +31,8 @@ interface Props{
       setIndex(index - 1)
     }
 
-    let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
-    let theQuestion = questionContext[currentQuestion]
+    // let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
+    let theQuestion = questionContext[question]
 
     // console.log(currentAnswer)
     return (
@@ -56,7 +57,7 @@ interface Props{
         </div>
 
         <div className="buttons-box">
-          {currentAnswer && <button className='back-btn btn'>back</button>}
+          {index !== 1 && <button className='back-btn btn'>back</button>}
           <button className='next-btn btn'
             onClick={() => {nextQuestion()}}
           >next</button>
