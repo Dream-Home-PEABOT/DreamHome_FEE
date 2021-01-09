@@ -2,7 +2,13 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Quicksand:wght@300;400;500;600&family=Rozha+One&family=Xanh+Mono:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gravitas+One&display=swap');
+
 :root{
+
+	/* navbar */
 	--bg: #1A1A1A;
 	--bg-accent: #3C153B;
 	--text-color: #FFFFFF;
@@ -10,6 +16,20 @@
 	--border: 1px solid #F0C808;
 	--border-radious: 8px;
 	--speed: 500ms;
+
+/* app */
+	--background-color: #F0C808;
+  --black-text: #1A1A1A;
+  --white-text: #FFFFFF;
+  --numbers-color: #DB4C40;
+  --report-green: #89BD9E;
+  --dark-purple: #3C153B;
+  --claret: #8B1E3F;
+  --title: 'Gravitas One', cursive;
+  --description: 'Xanh Mono', monospace;
+  --banner: 'East Sea Dokdo', cursive;
+  --note: 'Quicksand', sans-serif;
+  --error: 'Gravitas One', cursive;
 }
 
 html, body, div, span, applet, object, iframe,
