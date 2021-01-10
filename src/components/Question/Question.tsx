@@ -1,4 +1,4 @@
-import React, { useState, useContext,}  from 'react';
+import React, { useState, useContext, useEffect}  from 'react';
 import { Link } from 'react-router-dom';
 import {QuestionContext, AnswerContext} from '../../types';
 import './Question.css'
@@ -16,26 +16,36 @@ interface Props{
 
     //local state
     const [answerInput, updateAnswer] = useState<any>({});
-    let [index, setIndex] = useState<any>(0);
-    const[error, setError] = useState<any>(false);
+    const [index, setIndex] = useState<number>(0);
+    // const[error, setError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     let currentQuestion = questionContext[questionSet[index]]
 
+    // const nextQuestion = () => {
+    //   console.log(answerInput[questionSet[index]])
+    //   if(!answerInput[questionSet[index]]) {
+    //     setError(true);
+    //     setErrorMessage('Sorry but we need this information')
+    //     setTimeout(()=> setError(false), 2500)
+    //   } else if(index < questionSet.length && answerInput[questionSet[index]]) {
+    //     setIndex(prevIndex => prevIndex + 1);
+    //     setError(false)
+    //   }
+    // }
+
     const nextQuestion = () => {
-      console.log()
-      if(!answerInput[questionSet[index]]) {
-        setError(true);
-        setTimeout(()=> {setError(false)}, 3000)
-      } else if(index < questionSet.length && answerInput[questionSet[index]]) {
-        setIndex(index + 1);
-        setError(false)
-      }
+  
+        console.log('next')
+        setErrorMessage(!answerInput[questionSet[index]] ? 'Sorry but we need this information' : '')
+        setIndex(index < questionSet.length && answerInput[questionSet[index]] ? index + 1 :  index);
+  
+      
     }
 
     const prevQuestion = () => {
       setIndex(index - 1)
     }
-
 
 
     // console.log(currentAnswer)
@@ -60,9 +70,8 @@ interface Props{
           <img src={location_img} alt="" className='location_img'/>
         </div>
 
-        {error === true && <div className='error_message'>
-          <h3>Nope!</h3>
-          <button onClick={() => {setError(false)}}>OK</button>
+        {errorMessage && <div className='error_box'>
+          <h3 className='error-input'>{errorMessage}</h3>
         </div>}
 
         <div className="buttons-box">
@@ -105,3 +114,4 @@ interface Props{
 };
 
 export default Question
+ 
