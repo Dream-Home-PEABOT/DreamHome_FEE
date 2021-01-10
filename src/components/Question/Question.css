@@ -67,10 +67,25 @@
 }
 
 .buttons-box{
-  grid-area: 6/ 4/ 7 / 8;
+  grid-area: 5/ 4/ 7 / 8;
   display: inline-flex;
   justify-content: space-between;
   margin: 4%;
+  position: relative;
+}
+.bx{
+
+  width: 40%;
+  margin: 4%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.hidden{
+  display: none;
 }
 
 .question-box{
