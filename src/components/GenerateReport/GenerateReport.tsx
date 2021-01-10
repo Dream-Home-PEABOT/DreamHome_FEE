@@ -12,7 +12,7 @@ interface Props{
 const GenerateReport: React.FC<Props> = ({updateReport}) => {
 
   const requestReport = () =>{
-    getReport().then((data) => updateReport(data))
+    getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
 
   return (
@@ -37,7 +37,7 @@ const GenerateReport: React.FC<Props> = ({updateReport}) => {
         </div>
 
         <div className="buttons-box">
-          <Link to="/report">
+          <Link to="/loading">
           <button className='submit-btn btn'
             onClick={requestReport}>
           Generate Report</button>
