@@ -14,7 +14,7 @@ interface Props{
     const questionContext = useContext(QuestionContext)
     const questionSet = Object.keys(questionContext);
 
-    //state
+    //local state
     const [answerInput, updateAnswer] = useState<any>({});
     let [index, setIndex] = useState<any>(0);
     const[error, setError] = useState<any>(false);
@@ -22,23 +22,18 @@ interface Props{
     let currentQuestion = questionContext[questionSet[index]]
 
     const nextQuestion = () => {
-      if(answerInput === {}) {
+      console.log()
+      if(!answerInput[questionSet[index]]) {
         setError(true);
-      } else if(index < questionSet.length) {
+        setTimeout(()=> {setError(false)}, 3000)
+      } else if(index < questionSet.length && answerInput[questionSet[index]]) {
         setIndex(index + 1);
-        console.log(index)
-        // let initQuestion = questionSet.find(question => questionContext[question].attributes.question_id == index)
-        // setQuestion(initQuestion);
-          // console.log(initQuestion);
+        setError(false)
       }
-
     }
 
     const prevQuestion = () => {
       setIndex(index - 1)
-      // setQuestion(questionSet[index]);
-      // console.log(index)
-      // console.log(questionSet)
     }
 
 
@@ -71,17 +66,22 @@ interface Props{
         </div>}
 
         <div className="buttons-box">
-          {index !== 0 && <button className='back-btn btn' onClick={() => {prevQuestion()}}>back</button>}
-          {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1 ?
-          <button className='next-btn btn'onClick={() => {nextQuestion()}}>
-            next
-          </button> :
-          <Link to="/generate_report">
-            <button className='next-btn btn'
-            onClick={() => {updateAllAnswers(answerInput)}}>
-              next
-            </button>
-          </Link>}
+          <div className="bx">
+            <button className={index === 0 ? 'hidden' : 'back-btn btn'}
+              onClick={() => {prevQuestion()}}>back</button>
+          </div>
+          <div className="bx">
+            {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1 
+            ? <button className='next-btn btn'
+              onClick={() => {nextQuestion()}}>
+                next</button> 
+            :
+              <Link to="/generate_report">
+                <button className='next-btn btn'
+                  onClick={() => {updateAllAnswers(answerInput)}}>
+                    next</button>
+              </Link>}
+          </div>
         </div>
 
         <div className="question-box">
