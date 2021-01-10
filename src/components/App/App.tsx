@@ -19,7 +19,7 @@ const App:React.FC = () =>{
 
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
-  const [report, updateReport] = useState<any>({});
+  const [report, updateReport] = useState<any>(null);
 
   const { location } = useContext<any>(__RouterContext)
   const transitions = useTransition(location, location => location.pathname, {
@@ -57,12 +57,10 @@ const App:React.FC = () =>{
                updateAllAnswers={updateAllAnswers}/>}/>
             <Route exact path="/generate_report" component={()=><GenerateReport
                updateReport={updateReport}/>}/>
-            <Route exact path="/generate_report" component={GenerateReport}/>
-            <Route exact path="/submit" GenerateReport/>
+            <Route exact path="/loading" component={Cube}/>
             <Route exact path="/report" component={Report} />
             <Route path='/*' component={Error}/>
           </Switch>
-            <Cube/>
           </animated.div>
         ))}
         </ReportContext.Provider>
