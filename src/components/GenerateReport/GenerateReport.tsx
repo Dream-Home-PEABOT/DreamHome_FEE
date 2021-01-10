@@ -4,12 +4,16 @@ import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
 import back_img from '../../images/calculate/Charco - Security.png'
 
-const GenerateReport = () => {
+interface Props{
+  updateReport: any;
+}
 
+const GenerateReport: React.FC<Props> = ({updateReport}) => {
 
   const requestReport = () =>{
-    getReport().then((data) => )
+    getReport().then((data) => updateReport(data) )
   }
+
   return (
     <section className='generate-section'>
       <div className='inner-container'>
