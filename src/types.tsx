@@ -27,5 +27,9 @@ export interface AllQuestionFormat{
   //survey:QuestionFormat;
 
 export const AnswerContext = React.createContext<any>({})
+<<<<<<< HEAD
 export const QuestionContext = React.createContext<any>({})
 export const ReportContext = React.createContext<any>({})
+=======
+
+>>>>>>> origin/om-feature-spring-animations

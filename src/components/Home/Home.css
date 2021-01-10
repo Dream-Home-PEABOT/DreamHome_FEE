@@ -32,6 +32,23 @@
   z-index: 1;
   /* margin: 3%; */
 }
+.banner-bx{
+  background-color: #1a1a1a;
+  font-family: var(--banner);
+  font-size: 7em;
+  color: var(--background-color);
+  grid-area: 3/ 5/ 4/ 7;
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+  transform: rotate(-20deg);
+  text-align: center;
+  height: 90%;
+  width: 100%;
+  justify-self: self-end;
+  align-self: self-end;
+}
 
 .img-container{
   grid-area: 1/ 4/ 5/ 5;
