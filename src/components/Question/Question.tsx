@@ -69,9 +69,11 @@ interface Props{
 
         <div className="buttons-box">
           {index !== 0 && <button className='back-btn btn' onClick={() => {prevQuestion()}}>back</button>}
-          <button className='next-btn btn'
+          {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1 ? <button className='next-btn btn'
             onClick={() => {nextQuestion()}}
-          >next</button>
+          >next</button> : <button className='next-btn btn'
+            onClick={() => {console.log('heyo')}}
+          >next</button>}
         </div>
 
         <div className="question-box">
