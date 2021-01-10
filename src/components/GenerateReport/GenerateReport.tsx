@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import {getReport} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
@@ -11,7 +12,7 @@ interface Props{
 const GenerateReport: React.FC<Props> = ({updateReport}) => {
 
   const requestReport = () =>{
-    getReport().then((data) => updateReport(data) )
+    getReport().then((data) => updateReport(data))
   }
 
   return (
@@ -36,9 +37,11 @@ const GenerateReport: React.FC<Props> = ({updateReport}) => {
         </div>
 
         <div className="buttons-box">
+          <Link to="/report">
           <button className='submit-btn btn'
-            onClick={()=>requestReport}>
+            onClick={requestReport}>
           Generate Report</button>
+          </Link>
         </div>
 
         <div className="box-detail-1"></div>
