@@ -31,7 +31,7 @@ const App:React.FC = () =>{
     getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
 
-  let currentQuestion = Object.keys(questions).find(question => !answers[question])
+  // let currentQuestion = Object.keys(questions).find(question => !answers[question])
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
@@ -40,8 +40,8 @@ const App:React.FC = () =>{
           <Route exact path="/home" component={Home}/>
           <Route exact path="/journey" component={Journey}/>
           <Route exact path="/survey" component={Survey}/>
-          <Route exact path="/question" component={()=><Question 
-            currentQuestion={currentQuestion || "Loading"} updateAllAnswers={updateAllAnswers}/>}/>
+          <Route exact path="/question" component={()=><Question
+             updateAllAnswers={updateAllAnswers}/>}/>
           <Route exact path="/generate_report" component={GenerateReport}/>
           <Route exact path="/submit" GenerateReport/>
           <Route exact path="/report" component={Report} />
