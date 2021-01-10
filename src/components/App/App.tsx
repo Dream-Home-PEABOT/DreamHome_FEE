@@ -17,6 +17,7 @@ import Error from '../Error/Error';
 const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
+  const [report, updateReport] = useState<any>({});
 
   const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
     const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
