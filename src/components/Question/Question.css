@@ -73,15 +73,27 @@
   margin: 4%;
   position: relative;
 }
-.bx{
 
+.bx{
   width: 40%;
   margin: 4%;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+}
 
+.error_box{
+  background-color: purple;
+  grid-area: 3/ 4/ 5 / 8;
+
+}
+
+.error-input{
+  font-family: var(--error);
+  font-size: 3em;
+  width: 100;
 }
 
 .hidden{
