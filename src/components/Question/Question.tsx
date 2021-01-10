@@ -12,7 +12,8 @@ interface Props{
     const answerContext = useContext(AnswerContext)
     const questionContext = useContext(QuestionContext)
     const questionSet = Object.keys(questionContext);
-    const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
+    const [answerInput, updateAnswer] = useState<any>({});
+
     let [index, setIndex] = useState<any>(0);
     // const [question, setQuestion] = useState<any>(questionSet[0]);
 
@@ -26,8 +27,10 @@ interface Props{
         // setQuestion(initQuestion);
           // console.log(initQuestion);
       }
-      updateAllAnswers({...answerContext, [questionSet[index]]: answerInput.answer})
+      // updateAllAnswers({...answerContext, [questionSet[index]]: answerInput.answer})
     }
+
+
 
     const prevQuestion = () => {
       setIndex(index - 1)
@@ -74,7 +77,7 @@ interface Props{
         </div>
         <div className="input-box">
           <input type="text" className="input"
-          onChange={(e)=>updateAnswer({...answerInput, answer: e.target.value})}
+          onChange={(e)=>updateAnswer({...answerInput, [questionSet[index]]: e.target.value})}
           />
         </div>
         <div className="note-box">
