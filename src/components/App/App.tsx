@@ -44,7 +44,8 @@ const App:React.FC = () =>{
             <Route exact path="/survey" component={Survey}/>
             <Route exact path="/question" component={()=><Question
                updateAllAnswers={updateAllAnswers}/>}/>
-            <Route exact path="/generate_report" component={GenerateReport}/>
+            <Route exact path="/generate_report" component={()=><GenerateReport
+               updateReport={updateReport}/>}/>
             <Route exact path="/submit" GenerateReport/>
             <Route exact path="/report" component={Report} />
             <Route path='/*' component={Error}/>
