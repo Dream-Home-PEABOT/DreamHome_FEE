@@ -1,9 +1,15 @@
 import React from 'react'
+import {getReport} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
 import back_img from '../../images/calculate/Charco - Security.png'
 
 const GenerateReport = () => {
+
+
+  const requestReport = () =>{
+    getReport().then((data) => )
+  }
   return (
     <section className='generate-section'>
       <div className='inner-container'>
@@ -26,7 +32,9 @@ const GenerateReport = () => {
         </div>
 
         <div className="buttons-box">
-          <button className='submit-btn btn'>Generate Report</button>
+          <button className='submit-btn btn'
+            onClick={()=>requestReport}>
+          Generate Report</button>
         </div>
 
         <div className="box-detail-1"></div>
