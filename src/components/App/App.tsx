@@ -1,5 +1,5 @@
 import React, {useState , useEffect} from 'react';
-import {AnswerContext, QuestionContext, AllQuestionFormat} from '../../types'
+import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
 import {Switch, Route, Link} from 'react-router-dom'
 
@@ -35,18 +35,20 @@ const App:React.FC = () =>{
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
-        <NavBar/>
-        <Switch>
-          <Route exact path="/home" component={Home}/>
-          <Route exact path="/journey" component={Journey}/>
-          <Route exact path="/survey" component={Survey}/>
-          <Route exact path="/question" component={()=><Question
-             updateAllAnswers={updateAllAnswers}/>}/>
-          <Route exact path="/generate_report" component={GenerateReport}/>
-          <Route exact path="/submit" GenerateReport/>
-          <Route exact path="/report" component={Report} />
-          <Route path='/*' component={Error}/>
-        </Switch>
+        <ReportContext.Provider value={answers}>
+          <NavBar/>
+          <Switch>
+            <Route exact path="/home" component={Home}/>
+            <Route exact path="/journey" component={Journey}/>
+            <Route exact path="/survey" component={Survey}/>
+            <Route exact path="/question" component={()=><Question
+               updateAllAnswers={updateAllAnswers}/>}/>
+            <Route exact path="/generate_report" component={GenerateReport}/>
+            <Route exact path="/submit" GenerateReport/>
+            <Route exact path="/report" component={Report} />
+            <Route path='/*' component={Error}/>
+          </Switch>
+        </ReportContext.Provider>
       </AnswerContext.Provider>
      </QuestionContext.Provider>
   );
