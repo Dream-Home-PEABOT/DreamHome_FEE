@@ -13,25 +13,24 @@ interface Props{
     const answerContext = useContext(AnswerContext)
     const questionContext = useContext(QuestionContext)
     const questionSet = Object.keys(questionContext);
-    const [answerInput, updateAnswer] = useState<any>({});
 
+    //state
+    const [answerInput, updateAnswer] = useState<any>({});
     let [index, setIndex] = useState<any>(0);
-    // const [question, setQuestion] = useState<any>(questionSet[0]);
+    const[error, setError] = useState<any>(false);
 
     let currentQuestion = questionContext[questionSet[index]]
 
     const nextQuestion = () => {
-      if(index < questionSet.length) {
+      if(answerInput === {}) {
+        setError(true);
+      } else if(index < questionSet.length) {
         setIndex(index + 1);
         console.log(index)
         // let initQuestion = questionSet.find(question => questionContext[question].attributes.question_id == index)
         // setQuestion(initQuestion);
           // console.log(initQuestion);
       }
-
-    }
-
-    const clearInput = () => {
 
     }
 
@@ -42,9 +41,6 @@ interface Props{
       // console.log(questionSet)
     }
 
-
-
-    // let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
 
 
     // console.log(currentAnswer)
@@ -68,6 +64,11 @@ interface Props{
         <div className='question_img-box_2'>
           <img src={location_img} alt="" className='location_img'/>
         </div>
+
+        {error === true && <div className='error_message'>
+          <h3>Nope!</h3>
+          <button onClick={() => {setError(false)}}>OK</button>
+        </div>}
 
         <div className="buttons-box">
           {index !== 0 && <button className='back-btn btn' onClick={() => {prevQuestion()}}>back</button>}
