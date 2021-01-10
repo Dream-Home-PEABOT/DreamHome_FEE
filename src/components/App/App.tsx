@@ -36,7 +36,7 @@ const App:React.FC = () =>{
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
-        <ReportContext.Provider value={answers}>
+        <ReportContext.Provider value={report}>
           <NavBar/>
           <Switch>
             <Route exact path="/home" component={Home}/>
