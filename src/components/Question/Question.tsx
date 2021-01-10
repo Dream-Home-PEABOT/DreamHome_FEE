@@ -1,4 +1,5 @@
-import React, { useState, useContext}  from 'react';
+import React, { useState, useContext,}  from 'react';
+import { Link } from 'react-router-dom';
 import {QuestionContext, AnswerContext} from '../../types';
 import './Question.css'
 import bkg_img from '../../images/questions/Big Shoes - Sitting On Floor.png'
@@ -27,7 +28,7 @@ interface Props{
         // setQuestion(initQuestion);
           // console.log(initQuestion);
       }
-      // updateAllAnswers({...answerContext, [questionSet[index]]: answerInput.answer})
+
     }
 
     const clearInput = () => {
@@ -40,6 +41,7 @@ interface Props{
       // console.log(index)
       // console.log(questionSet)
     }
+
 
 
     // let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
@@ -69,11 +71,16 @@ interface Props{
 
         <div className="buttons-box">
           {index !== 0 && <button className='back-btn btn' onClick={() => {prevQuestion()}}>back</button>}
-          {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1 ? <button className='next-btn btn'
-            onClick={() => {nextQuestion()}}
-          >next</button> : <button className='next-btn btn'
-            onClick={() => {console.log('heyo')}}
-          >next</button>}
+          {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1 ?
+          <button className='next-btn btn'onClick={() => {nextQuestion()}}>
+            next
+          </button> :
+          <Link to="/generate_report">
+            <button className='next-btn btn'
+            onClick={() => {updateAllAnswers(answerInput)}}>
+              next
+            </button>
+          </Link>}
         </div>
 
         <div className="question-box">
