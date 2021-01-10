@@ -22,36 +22,22 @@ interface Props{
 
     let currentQuestion = questionContext[questionSet[index]]
 
-    // const nextQuestion = () => {
-    //   console.log(answerInput[questionSet[index]])
-    //   if(!answerInput[questionSet[index]]) {
-    //     setError(true);
-    //     setErrorMessage('Sorry but we need this information')
-    //     setTimeout(()=> setError(false), 2500)
-    //   } else if(index < questionSet.length && answerInput[questionSet[index]]) {
-    //     setIndex(prevIndex => prevIndex + 1);
-    //     setError(false)
-    //   }
-    // }
-
     const nextQuestion = () => {
-  
-        console.log('next')
-        setErrorMessage(!answerInput[questionSet[index]] ? 'Sorry but we need this information' : '')
-        setIndex(index < questionSet.length && answerInput[questionSet[index]] ? index + 1 :  index);
-  
-      
+        setErrorMessage(!answerInput[questionSet[index]] 
+          ? 'Sorry but we need this information' 
+          : '')
+        setIndex(index < questionSet.length && answerInput[questionSet[index]] 
+          ? index + 1 
+          :  index);
     }
 
     const prevQuestion = () => {
       setIndex(index - 1)
     }
 
-
-    // console.log(currentAnswer)
     return (
       <section className='question-section'>
-
+        
         <div className="inner-container">
 
           <div className='desc-container'>
@@ -96,18 +82,22 @@ interface Props{
         <div className="question-box">
           <h1 className="question">{currentQuestion?.attributes?.question}</h1>
         </div>
+
         <div className="input-box">
           <input type="text" className="input" value={answerInput[questionSet[index]] || ''}
-          onChange={(e)=>updateAnswer({...answerInput, [questionSet[index]]: e.target.value})}
+          onChange={(e)=>updateAnswer({...answerInput, 
+            [questionSet[index]]: e.target.value})}
           />
         </div>
+
         <div className="note-box">
           <h4 className="note">{currentQuestion?.attributes?.note}</h4>
         </div>
 
-          <div className='floor-box'>
+        <div className='floor-box'>
           <h4 className="note">{currentQuestion?.attributes?.source}</h4>
-          </div>
+        </div>
+
       </div>
     </section>
   );

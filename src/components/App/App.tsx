@@ -12,6 +12,7 @@ import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
 import Report from '../Report/Report'
 import Error from '../Error/Error';
+import { Cube } from '../Cube/Cube';
 //create interface for context
 
 const App:React.FC = () =>{
@@ -56,6 +57,7 @@ const App:React.FC = () =>{
             <Route exact path="/report" component={Report} />
             <Route path='/*' component={Error}/>
           </Switch>
+            <Cube/>
           </animated.div>
         ))}
 
