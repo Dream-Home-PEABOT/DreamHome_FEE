@@ -6,9 +6,8 @@ import location_img from '../../images/questions/Charco - Location Map.png'
 
 interface Props{
   updateAllAnswers: any;
-  currentQuestion: string;
 }
-    export const Question: React.FC<Props> = ({updateAllAnswers, currentQuestion}) => {
+    export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
     const answerContext = useContext(AnswerContext)
     const questionContext = useContext(QuestionContext)
@@ -16,6 +15,8 @@ interface Props{
     const [answerInput, updateAnswer] = useState<any>({question: '', answer: ''});
     let [index, setIndex] = useState<any>(0);
     // const [question, setQuestion] = useState<any>(questionSet[0]);
+
+    let currentQuestion = questionContext[questionSet[index]]
 
     const nextQuestion = () => {
       if(index < questionSet.length) {
@@ -25,6 +26,7 @@ interface Props{
         // setQuestion(initQuestion);
           // console.log(initQuestion);
       }
+      updateAllAnswers({...answerContext, [questionSet[index]]: answerInput.answer})
     }
 
     const prevQuestion = () => {
@@ -34,8 +36,9 @@ interface Props{
       // console.log(questionSet)
     }
 
+
     // let currentAnswer = Object.keys(answerContext).find(question => answerContext[question])
-    let theQuestion = questionContext[questionSet[index]]
+
 
     // console.log(currentAnswer)
     return (
@@ -45,9 +48,9 @@ interface Props{
 
           <div className='desc-container'>
             <div className="description-box">
-              <h1 className="question-desc">{theQuestion?.attributes?.classification}</h1>
-              <h2 className='desc'>{theQuestion?.attributes?.description}</h2>
-              <h2 className='desc'>{theQuestion?.attributes?.information}</h2>
+              <h1 className="question-desc">{currentQuestion?.attributes?.classification}</h1>
+              <h2 className='desc'>{currentQuestion?.attributes?.description}</h2>
+              <h2 className='desc'>{currentQuestion?.attributes?.information}</h2>
             </div>
           </div>
 
@@ -67,7 +70,7 @@ interface Props{
         </div>
 
         <div className="question-box">
-          <h1 className="question">{theQuestion?.attributes?.question}</h1>
+          <h1 className="question">{currentQuestion?.attributes?.question}</h1>
         </div>
         <div className="input-box">
           <input type="text" className="input"
@@ -75,11 +78,11 @@ interface Props{
           />
         </div>
         <div className="note-box">
-          <h4 className="note">{theQuestion?.attributes?.note}</h4>
+          <h4 className="note">{currentQuestion?.attributes?.note}</h4>
         </div>
 
           <div className='floor-box'>
-          <h4 className="note">{theQuestion?.attributes?.source}</h4>
+          <h4 className="note">{currentQuestion?.attributes?.source}</h4>
           </div>
       </div>
     </section>
