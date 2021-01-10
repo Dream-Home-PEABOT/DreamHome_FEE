@@ -30,7 +30,9 @@ interface Props{
       // updateAllAnswers({...answerContext, [questionSet[index]]: answerInput.answer})
     }
 
+    const clearInput = () => {
 
+    }
 
     const prevQuestion = () => {
       setIndex(index - 1)
@@ -76,7 +78,7 @@ interface Props{
           <h1 className="question">{currentQuestion?.attributes?.question}</h1>
         </div>
         <div className="input-box">
-          <input type="text" className="input"
+          <input type="text" className="input" value={answerInput[questionSet[index]] || ''}
           onChange={(e)=>updateAnswer({...answerInput, [questionSet[index]]: e.target.value})}
           />
         </div>
