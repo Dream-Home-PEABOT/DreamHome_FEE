@@ -5,6 +5,7 @@ import {Spring} from 'react-spring/renderprops';
 
 const Home: React.FC = () => {
 
+
   return (
     <section className='home-section'>
       <div className="main-container">
@@ -16,15 +17,16 @@ const Home: React.FC = () => {
         {props => <div className="title-container">
           <h1 className='title'>My</h1>
           <h1 className='title-2'>Dream Home</h1>
-          {/* <h2>Journey Edition</h2> */}
         </div>}
         </Spring>
-        
+        <div className="banner-bx">
+
+          <h2>Journey Edition</h2>
+        </div>
         <Spring
           from={{ opacity: 0}}
           to={{ opacity: 1}}
           config={{delay: 1000, duration: 1000}}>
-          {/* {props => <div>{props.number}</div>} */}
           {props => <div style={props} className="img-container">
             <img src={bkg_img} alt="" className='main-image'/>
           </div>}
