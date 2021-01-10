@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {ReportContext} from '../../types'
 import './Report.css'
 import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png'
 import location from '../../images/report/Charco - Location Map.png'
@@ -6,6 +7,8 @@ import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png'
 import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png'
 
 const Report = () => {
+  let userReport = useContext(ReportContext)
+  console.log(userReport)
   return (
     <>
     <section className="report-section">
