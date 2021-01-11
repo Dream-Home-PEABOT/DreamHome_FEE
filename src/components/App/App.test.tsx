@@ -46,4 +46,17 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "Start"}));
     expect(screen.getByText(/While every person/)).toBeInTheDocument();
   });
+  it("User should be taken to first question when clicking start on survey", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+    expect(screen.getByRole("button", {name: "next"})).toBeInTheDocument();
+    //userEvent.click(screen.getByRole("button", {name: "next"}));
+  });
 })
