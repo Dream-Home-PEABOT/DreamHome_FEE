@@ -1,8 +1,8 @@
-import React, {useState , useEffect} from 'react';
-import {AnswerContext, QuestionContext, AllQuestionFormat} from '../../types'
+import React, {useState , useEffect, useContext} from 'react';
+import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
-import {Switch, Route, Link} from 'react-router-dom'
-
+import {Switch, Route, __RouterContext, Redirect} from 'react-router'
+import { useTransition, animated} from 'react-spring'
 //components
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
@@ -12,11 +12,22 @@ import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
 import Report from '../Report/Report'
 import Error from '../Error/Error';
+import { Cube } from '../Cube/Cube';
 //create interface for context
 
 const App:React.FC = () =>{
+
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
+  const [report, updateReport] = useState<any>(null);
+
+  const { location } = useContext<any>(__RouterContext)
+  console.log(location)
+  const transitions = useTransition(location, location => location.pathname, {
+    from: {opacity: 0, transform:'translate(100%, 0)'},
+    enter: {opacity: 1, transform:'translate(0%, 0)'},
+    leave: {opacity: 0, transform:'translate(-50%, 0)'},
+  })
 
   const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
     const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
@@ -35,20 +46,27 @@ const App:React.FC = () =>{
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
+        <ReportContext.Provider value={report}>
         <NavBar/>
-        <Switch>
-          <Route exact path="/home" component={Home}/>
-          <Route exact path="/journey" component={Journey}/>
-          <Route exact path="/survey" component={Survey}/>
-          <Route exact path="/question" component={()=><Question
-             updateAllAnswers={updateAllAnswers}/>}/>
-          <Route exact path="/generate_report" component={GenerateReport}/>
-          <Route exact path="/submit" GenerateReport/>
-          <Route exact path="/report" component={Report} />
-          <Route path='/*' component={Error}/>
-        </Switch>
+        {transitions.map(({item, props, key}) => (
+          <animated.div key={key} style={props}>
+          <Switch location={item}>
+            <Redirect exact from="/" to="/home" />
+            <Route exact path="/home" component={Home}/>
+            <Route exact path="/journey" component={Journey}/>
+            <Route exact path="/survey" component={Survey}/>
+            <Route exact path="/question" component={()=><Question
+               updateAllAnswers={updateAllAnswers}/>}/>
+            <Route exact path="/generate_report" component={()=><GenerateReport
+               updateReport={updateReport}/>}/>
+            <Route exact path="/report" component={Report} />
+            <Route path='/*' component={Error}/>
+          </Switch>
+          </animated.div>
+        ))}
+        </ReportContext.Provider>
       </AnswerContext.Provider>
-     </QuestionContext.Provider>
+    </QuestionContext.Provider>
   );
 }
 export default App;
