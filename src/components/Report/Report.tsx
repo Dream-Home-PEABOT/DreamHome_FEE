@@ -73,7 +73,7 @@ const Report = () => {
               <h1 className='title header'>My</h1>
               <h1 className='title-2 header'>Dream Home</h1>
               <div className="number-title-box">
-                <h2 className="number-title">Numbers</h2>
+                <h2 className="number-title">My Numbers</h2>
               </div>
             </div>
           </div>
@@ -92,8 +92,6 @@ const Report = () => {
                 <h1 className="num-ci-data">{props.number.toFixed()}</h1>
               </div>}
               </Spring>
-
-
             </div>
             {/* remove from here */}
             <div className="num ">
@@ -171,6 +169,7 @@ const Report = () => {
         </div>
 
     </section>
+    
     {displayAnalysisSections()}
 
     <div className="sigup">

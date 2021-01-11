@@ -1,5 +1,9 @@
-import React, {useState, useEffect} from 'react'
 
+//imports
+import React, {useState, useEffect} from 'react'
+import { useSpring, animated } from "react-spring";
+import moment from 'moment'
+//assets
 import location from '../../images/report/Charco - Location Map.png';
 import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png';
 import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png';
@@ -9,16 +13,14 @@ import hurry from '../../images/report/Big Shoes - Dynamic Pose.png';
 export const ReportCategory = (props: any ) => {
  
   const [year, setYear] = useState<string>('one');
-  const [currentPlan, setCurrentPlan] = useState(props.plan)
-  // const [currentPlan, setCurrentPlan] = useState(null)
-  // const [isLoading, setIsLoading] = useState(false)
-
+  const [currentPlan, setCurrentPlan] = useState(props.plan);
 
   const displayPlanBtn = () => {
     return Object.keys(props.plan).map((btn, index)=> {
       return (
         <button 
-          onClick={() => setYear(btn)}
+          onClick={() => updateValue(btn)}
+         
           key={index}
           className={
             index % 2 === 0 
@@ -26,21 +28,24 @@ export const ReportCategory = (props: any ) => {
             : index % 3 === 0 
             ? "btn-1 y-btn"
             :"btn-2 y-btn"
-          }>{index +1} yr</button>
+          }>{index +1} 
+            yr
+          </button>
       )
     })
   }
 
   useEffect(() => {
-    if(currentPlan){
-      setCurrentPlan(props.plan)
-    }
-    if(!year){
+    
+    if(props.plan){
       setCurrentPlan(props.plan[year])
     }
-    
-  },[props, year])
+  },[])
 
+  const updateValue = (year: any) => {
+    setYear(year)
+    setCurrentPlan(props.plan[year])
+  }
 
   return (
     <>
@@ -66,7 +71,7 @@ export const ReportCategory = (props: any ) => {
       </div>
       <div className="report-info-1">
         {/* <h1 className="repo-title">Location</h1> */}
-        <h1 className="repo-title">{props.categoryMainTitle || ''}</h1>
+        <h1 className="repo-title">{props.categoryMainTitle}</h1>
       </div>
 
       {!props.plan 
@@ -74,10 +79,16 @@ export const ReportCategory = (props: any ) => {
         <h1 className="repo-title">{props.categorySubtitle || ''}</h1>
         <h1 className="repo-title">{props.categorySecondNumber || 0}</h1>
         </div>
-        : <div className="plan-box">
-        {displayPlanBtn()}
-      <h1 className="repo-title">{}</h1>
-    </div>
+        : 
+        <>
+        <div className="plan-box">
+          {displayPlanBtn()}
+          <h1 className="repo-title">{}</h1>
+        </div>
+        <div className="btns-inst">
+          <h1 className="inst-title">Select a year to see your plan</h1>
+        </div>
+        </>
       }
 
       <div className="report-insight">
@@ -114,9 +125,19 @@ export const ReportCategory = (props: any ) => {
       </div>
 
       <div className="result-info-1">
-        <h1 className="repo-title">Down payment plan</h1>
-        <h1 className="repo-title">{year} yrs</h1>
-        <h1 className="repo-title">{ currentPlan[year].monthly_plan}</h1>
+        <h1 className="repo-title">Save</h1>
+        {/* <h1 className="saving">{currentPlan.monthly_savings ? `$${currentPlan.monthly_savings}.00` : '0'} </h1> */}
+        <h1 className="saving">{currentPlan.monthly_savings} </h1>
+        <h1 className="repo-title">monthly for</h1>
+        <h1 className="saving">{ year } yrs </h1>
+        </div>
+
+      <div className="result-info-2">
+        <h1 className="repo-title">Your DreamHome</h1>
+        <h1 className="repo-title">ready to buy</h1>
+        <h1 className="repo-title">date is</h1>
+        <h1 className="saving">{moment(currentPlan.goal_end_date).format('LL')} </h1>
+        {/* <h1 className="saving">{moment().to(currentPlan.goal_end_date)} </h1> */}
         </div>
 
 

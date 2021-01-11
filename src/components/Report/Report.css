@@ -269,8 +269,35 @@
   height: 100%;
 }
 .result-info-1{
-  background-color: var(--numbers-color);
-  grid-area: 2/ 8/ 7 / 11;
+  /* background-color: var(--numbers-color); */
+  grid-area: 3/ 2/ 8 / 5;
   width: 70%;
   justify-self: center;
+  width: 100%;
 }
+
+.btns-inst{
+  grid-area: 7 / 10;
+}
+
+.inst-title{
+  text-align: center;
+  background-color: pink;
+  font-family: var(--description);
+  font-size: 2em;
+}
+
+.saving{
+  color: black;
+  text-align: center;
+  font-family: var( --banner);
+  font-size: 6em;
+  line-height: 60%;
+}
+
+.result-info-2{
+  grid-area: 3/ 7/ 8 / 10;
+  width: 100%;
+}
+
+
