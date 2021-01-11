@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, {useEffect, useContext} from 'react'
+import { Link, Redirect, useHistory} from 'react-router-dom';
+import {ReportContext} from '../../types'
 import {getReport} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
@@ -9,11 +10,16 @@ interface Props{
   updateReport: any;
 }
 
-const GenerateReport: React.FC<Props> = ({updateReport}) => {
+const GenerateReport: React.FC<Props> = ({ updateReport}) => {
+  const history = useHistory()
+  const report = useContext(ReportContext)
 
   const requestReport = () =>{
     getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
+
+
+  
 
   return (
     <section className='generate-section'>
@@ -37,7 +43,7 @@ const GenerateReport: React.FC<Props> = ({updateReport}) => {
         </div>
 
         <div className="buttons-box">
-          <Link to="/loading">
+          <Link to="/report">
           <button className='submit-btn btn'
             onClick={requestReport}>
           Generate Report</button>
