@@ -1,13 +1,15 @@
-import React, { useState }from 'react'
+import React, { useState, useContext }from 'react'
 import './NavBar.css'
 import {Link} from 'react-router-dom'
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { NavItem } from "../NavItem/NavItem";
+import {ReportContext, AnswerContext} from '../../types'
 
 const NavBar:React.FC = () => {
 
   const [open, setOpen] = useState<boolean>(false);
+  
 
   return (
     <nav className='nav-container'>
@@ -27,24 +29,36 @@ const NavBar:React.FC = () => {
 }
 
 const DropdownMenu = () => {
+  let userReport = useContext(ReportContext)
 
   const DropdownItem = (props: any) => {
+    
     return(
-      <a href="#"  className="menu-item">
+
+      <a href="#" className="menu-item" >
+
         {props.children}
       </a>
     );
   }
 
   return (
-    <div className="dropdown">
-      <Link to="/home">
-        <DropdownItem>Home</DropdownItem>
+    <div className="dropdown" >
+
+      <Link to="/home" >
+        <DropdownItem >Home</DropdownItem>
       </Link>
+
       <Link to="/journey">
         <DropdownItem>Journey</DropdownItem>
       </Link>
-     <DropdownItem>Login</DropdownItem>
+
+      <DropdownItem>Login</DropdownItem>
+
+      {userReport && <Link to="/report">
+      <DropdownItem >Report</DropdownItem>
+      </Link>}
+
     </div>
   )
 }

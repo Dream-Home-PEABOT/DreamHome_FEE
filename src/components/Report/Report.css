@@ -106,7 +106,7 @@
 }
 
 .analysis-section{
-  height: 50vh;
+  height: 60vh;
   background-color: #f0c808;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -242,3 +242,62 @@
   font-style: italic;
   
 }
+
+.sigup{
+  height: 20;
+  background-color: #89BD9E ;
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 5em;
+  color: #ffffff;
+}
+
+.link{
+  color: black;
+}
+
+.plan-section{
+  height: 70vh;
+  background-color: var(  --numbers-color);
+}
+
+.left-img{
+  grid-area: 1/ 1/ 9/ 4;
+}
+
+.hurry-img{
+  height: 100%;
+}
+.result-info-1{
+  /* background-color: var(--numbers-color); */
+  grid-area: 3/ 2/ 8 / 5;
+  width: 70%;
+  justify-self: center;
+  width: 100%;
+}
+
+.btns-inst{
+  grid-area: 7 / 10;
+}
+
+.inst-title{
+  text-align: center;
+  background-color: pink;
+  font-family: var(--description);
+  font-size: 2em;
+}
+
+.saving{
+  color: black;
+  text-align: center;
+  font-family: var( --banner);
+  font-size: 6em;
+  line-height: 60%;
+}
+
+.result-info-2{
+  grid-area: 3/ 7/ 8 / 10;
+  width: 100%;
+}
+
+

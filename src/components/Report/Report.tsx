@@ -1,14 +1,25 @@
+//imports
 import React, {useContext, useState, useEffect} from 'react'
 import {ReportContext, AnswerContext} from '../../types'
 import { Cube } from '../Cube/Cube';
-import './Report.css'
-import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png'
-import location from '../../images/report/Charco - Location Map.png'
-import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png'
-import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png'
+import './Report.css';
+import { ReportCategory } from '../ReportCategory/ReportCategory';
+import {Spring} from 'react-spring/renderprops';
+import { Link } from 'react-router-dom'
+
+//assets
+import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png';
+import location from '../../images/report/Charco - Location Map.png';
+import plan from '../../images/report/Charco - Good Job.png';
+import principal from '../../images/report/Charco - Inbox.png';
+import monthly from '../../images/report/Charco - Mobile Life.png';
+import downpayment from '../../images/report/Charco - Work at Home.png';
+
+
 
 const Report = () => {
-
+  
+  const categoryImages = [location, plan, principal, monthly, downpayment]
   const [report, updateReport] = useState()
   let userReport = useContext(ReportContext)
   let answers = useContext(AnswerContext)
@@ -20,48 +31,34 @@ const Report = () => {
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport)
     
-    return reportData.map(data =>{
-    <section className="analysis-section">
-      <div className="pipe-up"></div>
-      <div className="pipe-down"></div>
-      <div className="main-circ-box">
-        <div className="inner-circle">
-        </div>
-      </div>
-      <div className="report-img-box">
-        <img src={location} alt="" className="report-img"/>
-      </div>
+    return reportData.map((data, key) =>{
+      let subtitle_1 = Object.keys(userReport[data])[0].replaceAll(/_|\-/g, " ")
+      let subtitle_2 = Object.keys(userReport[data])[1].replaceAll(/_|\-/g, " ")
 
-      <div  className="category-box">
-        <h1 className="category-title">Location</h1>
-      </div>
-      <div className="report-info-1">
-        {/* <h1 className="repo-title">Location</h1> */}
-        <h1 className="repo-title">Denver, CO.</h1>
-      </div>
-
-      <div className="report-info-2">
-        <h1 className="repo-title">Property tax</h1>
-        <h1 className="repo-title">2.79%</h1>
-      </div>
-
-      <div className="report-insight">
-        {/* <h1 className="insight-title">insight:</h1> */}
-        <h1 className="insight">Property taxes and interest rates can vary by location.</h1>
-      </div>
-
-      <div className="category-image">
-        <img src={plant_1} alt="" className='plant-1'/>
-      </div>
-      <div className="category-image-2">
-        <img src={plant_2} alt="" className='plant-1'/>
-      </div>
-
-      <h3 className="solo_number">1</h3>
-      <h1 className="zip-title">ZIP</h1>
-      <h1 className="report-zip">80228</h1>
-
-    </section>
+      return (
+        <ReportCategory 
+          
+          position={key + 1}
+          key={key}
+          plan={userReport[data].ten_year_plan}
+          categoryName={[data]}
+          categoryMainNumber={
+            userReport[data].zip_code
+            || userReport[data].based_on_rent
+            || userReport[data].monthly_principal
+            || userReport[data].down_payment_percentage_selected
+          }
+          categoryMainTitle={subtitle_1}
+          categorySubtitle={subtitle_2}
+          categorySecondNumber={
+            userReport[data].location
+            || userReport[data].goal_principal
+            || userReport[data].estimated_true_monthly
+            || userReport[data].down_payment_saved
+          }
+          categoryID={key + 1}
+          />
+      )
     })
   }
 
@@ -76,7 +73,7 @@ const Report = () => {
               <h1 className='title header'>My</h1>
               <h1 className='title-2 header'>Dream Home</h1>
               <div className="number-title-box">
-                <h2 className="number-title">Numbers</h2>
+                <h2 className="number-title">My Numbers</h2>
               </div>
             </div>
           </div>
@@ -84,62 +81,82 @@ const Report = () => {
           <div className="report-numbers-box">
 
             <div className="num ">
-             
               <div className="num-ci-box-up">
                 <h1 className="num-ci-title">Property tax</h1>
               </div>
-
-              <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{userReport.monthly.add_ons.property_tax}</h1>
-              </div>
-
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: userReport.monthly.add_ons.property_tax }}>
+                {props => <div className="num-ci-box-down">
+                <h1 className="num-ci-data">{props.number.toFixed()}</h1>
+              </div>}
+              </Spring>
             </div>
             {/* remove from here */}
             <div className="num ">
-             
               <div className="num-ci-box-up">
                 <h1 className="num-ci-title">Downpayment %</h1>
               </div>
-
-              <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{userReport.downpayment.down_payment_percentage_selected}</h1>
-              </div>
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: userReport.downpayment.down_payment_percentage_selected }}>
+                {props => 
+                <div className="num-ci-box-down">
+                  <h1 className="num-ci-data">{props.number.toFixed()}</h1>
+                </div>}
+              </Spring>
 
             </div>
             <div className="num ">
-             
               <div className="num-ci-box-up">
                 <h1 className="num-ci-title">Mortgage term</h1>
               </div>
 
-              <div className="num-ci-box-down">
-                <h1 className="num-ci-data">30 yrs</h1>
-              </div>
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: 30 }}>
+                {props => 
+                <div className="num-ci-box-down">
+                  <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
+                </div>}
+              </Spring>
 
             </div>
             <div className="num ">
-             
               <div className="num-ci-box-up">
                 <h1 className="num-ci-title">Credit Score</h1>
               </div>
 
-              <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{/*answers.creditScore*/}</h1>
-              </div>
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: 30 }}>
+                {props => 
+                <div className="num-ci-box-down">
+                  <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
+                </div>}
+              </Spring>
 
             </div>
             <div className="num ">
-             
               <div className="num-ci-box-up">
                 <h1 className="num-ci-title">Downpayment #</h1>
               </div>
 
-              <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{userReport.downpayment.down_payment_saved}</h1>
-              </div>
-              
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: userReport.downpayment.down_payment_saved }}>
+                {props => 
+                <div className="num-ci-box-down">
+                  <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
+                </div>}
+              </Spring>
+
             </div>
-            {/* to here */}
             
           </div>
           
@@ -150,9 +167,20 @@ const Report = () => {
             <img src={back_img} alt="" className='report_img'/>
           </div>
         </div>
-    </section>
-    {/* this could be it own component */}
 
+    </section>
+    
+    {displayAnalysisSections()}
+
+    <div className="sigup">
+      <h1 className="fina-mess">Sign-up 
+      <Link to='/home'>
+        <span className='link' >
+          here 
+        </span> 
+      </Link>
+      if you want to know more...</h1>
+    </div>
     </>
     }
     </>

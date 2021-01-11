@@ -1,8 +1,10 @@
+//imports
 import React, {useState , useEffect, useContext} from 'react';
 import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
-import {getQuestions} from '../../apiCalls'
-import {Switch, Route, __RouterContext, Redirect} from 'react-router'
-import { useTransition, animated} from 'react-spring'
+import {getQuestions} from '../../apiCalls';
+import {Switch, Route, __RouterContext, Redirect} from 'react-router';
+import { useTransition,useSpring, animated, interpolate } from "react-spring";
+
 //components
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
@@ -12,7 +14,7 @@ import {Question} from '../Question/Question';
 import GenerateReport from '../GenerateReport/GenerateReport';
 import Report from '../Report/Report'
 import Error from '../Error/Error';
-import { Cube } from '../Cube/Cube';
+
 //create interface for context
 
 const App:React.FC = () =>{
@@ -56,9 +58,9 @@ const App:React.FC = () =>{
             <Route exact path="/journey" component={Journey}/>
             <Route exact path="/survey" component={Survey}/>
             <Route exact path="/question" component={()=><Question
-               updateAllAnswers={updateAllAnswers}/>}/>
+                updateAllAnswers={updateAllAnswers}/>}/>
             <Route exact path="/generate_report" component={()=><GenerateReport
-               updateReport={updateReport}/>}/>
+                updateReport={updateReport}/>}/>
             <Route exact path="/report" component={Report} />
             <Route path='/*' component={Error}/>
           </Switch>
