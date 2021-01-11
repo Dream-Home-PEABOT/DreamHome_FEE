@@ -26,7 +26,7 @@ const Report = () => {
 
   useEffect(()=>{
     updateReport(userReport)
-  },[])
+  },[userReport])
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport)

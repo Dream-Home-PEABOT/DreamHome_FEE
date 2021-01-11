@@ -40,7 +40,7 @@ const App:React.FC = () =>{
   }
 
   useEffect(() => {
-    //getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
+    getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
 
   // let currentQuestion = Object.keys(questions).find(question => !answers[question])

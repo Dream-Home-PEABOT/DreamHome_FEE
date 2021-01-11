@@ -35,12 +35,11 @@ export const ReportCategory = (props: any ) => {
     })
   }
 
-  useEffect(() => {
-    
-    if(props.plan){
-      setCurrentPlan(props.plan[year])
-    }
-  },[])
+  //useEffect(() => {
+  //  if(props.plan){
+  //    setCurrentPlan(props.plan[year])
+  //  }
+  //})
 
   const updateValue = (year: any) => {
     setYear(year)
