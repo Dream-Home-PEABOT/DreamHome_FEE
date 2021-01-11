@@ -7,9 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 describe('App', () => {
-  render(<App />);
+  render(<BrowserRouter><App /></BrowserRouter>);
 
   it('', () => {
-    
+
   })
 });

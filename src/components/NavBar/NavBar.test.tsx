@@ -8,11 +8,13 @@ import NavBar from './NavBar';
 
 describe('NavBar', () => {
   it('should render displaying an icon', () => {
-    
+
   });
 
   it('should render displaying a title', () => {
+    render (<NavBar />);
 
+    expect(screen.getByText('menu')).toBeInTheDocument();
   });
 
   it('should render an icon', () => {
