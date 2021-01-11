@@ -1,7 +1,7 @@
 import React, {useState , useEffect, useContext} from 'react';
 import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls'
-import {Switch, Route, __RouterContext} from 'react-router'
+import {Switch, Route, __RouterContext, Redirect} from 'react-router'
 import { useTransition, animated} from 'react-spring'
 //components
 import NavBar from '../NavBar/NavBar';
@@ -57,7 +57,6 @@ const App:React.FC = () =>{
                updateAllAnswers={updateAllAnswers}/>}/>
             <Route exact path="/generate_report" component={()=><GenerateReport
                updateReport={updateReport}/>}/>
-            <Route exact path="/loading" component={Cube}/>
             <Route exact path="/report" component={Report} />
             <Route path='/*' component={Error}/>
           </Switch>
