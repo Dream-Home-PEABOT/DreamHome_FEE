@@ -1,11 +1,9 @@
-//imports
 import React, {useState , useEffect, useContext} from 'react';
 import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls';
 import {Switch, Route, __RouterContext, Redirect} from 'react-router';
-import { useTransition,useSpring, animated, interpolate } from "react-spring";
+import { useTransition, animated } from "react-spring";
 
-//components
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
 import Journey from '../Journey/Journey';
@@ -15,7 +13,6 @@ import GenerateReport from '../GenerateReport/GenerateReport';
 import Report from '../Report/Report'
 import Error from '../Error/Error';
 
-//create interface for context
 
 const App:React.FC = () =>{
 
@@ -24,7 +21,6 @@ const App:React.FC = () =>{
   const [report, updateReport] = useState<any>(null);
 
   const { location } = useContext<any>(__RouterContext)
-  console.log(location)
   const transitions = useTransition(location, location => location.pathname, {
     from: {opacity: 0, transform:'translate(100%, 0)'},
     enter: {opacity: 1, transform:'translate(0%, 0)'},
@@ -44,7 +40,6 @@ const App:React.FC = () =>{
     getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
 
-  // let currentQuestion = Object.keys(questions).find(question => !answers[question])
   return (
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>

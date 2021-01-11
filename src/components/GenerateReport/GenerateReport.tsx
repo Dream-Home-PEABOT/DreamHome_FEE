@@ -1,6 +1,5 @@
-import React, {useEffect, useContext} from 'react'
-import { Link, Redirect, useHistory} from 'react-router-dom';
-import {ReportContext} from '../../types'
+import React  from 'react'
+import { Link } from 'react-router-dom';
 import {getReport} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
@@ -11,16 +10,10 @@ interface Props{
 }
 
 const GenerateReport: React.FC<Props> = ({ updateReport}) => {
-  const history = useHistory()
-  const report = useContext(ReportContext)
-
   const requestReport = () =>{
     getReport().then((data: any) => updateReport(data))
     // getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
-
-
-  
 
   return (
     <section className='generate-section'>

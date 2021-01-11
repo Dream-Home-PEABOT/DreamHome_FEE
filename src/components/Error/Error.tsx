@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Error.css';
 import error_img from '../../images/errors/Big Shoes - Torso.png'
 import bkg_img from '../../images/errors/Charco - Broken.png'
@@ -24,18 +24,10 @@ const Error: React.FC = () => {
           <img src={error_img} alt="" className="error-image"/>
         </div>
       </div>
-      
-  
     </section>
-
-
-
-   
 
   )
 }
 
 export default Error;
 
-//<Route component={Error} />
-//wrap routes in a <Switch>
