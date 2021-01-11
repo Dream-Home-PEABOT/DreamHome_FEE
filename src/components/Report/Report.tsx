@@ -1,6 +1,6 @@
 //imports
 import React, {useContext, useState, useEffect} from 'react'
-import {ReportContext, AnswerContext} from '../../types'
+import {ReportContext} from '../../types'
 import { Cube } from '../Cube/Cube';
 import './Report.css';
 import { ReportCategory } from '../ReportCategory/ReportCategory';
@@ -22,7 +22,6 @@ const Report = () => {
   const categoryImages = [location, plan, principal, monthly, downpayment]
   const [report, updateReport] = useState()
   let userReport = useContext(ReportContext)
-  let answers = useContext(AnswerContext)
 
   useEffect(()=>{
     updateReport(userReport)

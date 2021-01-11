@@ -3,7 +3,7 @@ import React, {useState , useEffect, useContext} from 'react';
 import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls';
 import {Switch, Route, __RouterContext, Redirect} from 'react-router';
-import { useTransition,useSpring, animated, interpolate } from "react-spring";
+import { useTransition, animated } from "react-spring";
 
 //components
 import NavBar from '../NavBar/NavBar';

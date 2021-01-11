@@ -1,7 +1,6 @@
 
 //imports
-import React, {useState, useEffect} from 'react'
-import { useSpring, animated } from "react-spring";
+import React, {useState } from 'react'
 import moment from 'moment'
 //assets
 import location from '../../images/report/Charco - Location Map.png';

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { NavItem } from "../NavItem/NavItem";
-import {ReportContext, AnswerContext} from '../../types'
+import {ReportContext} from '../../types'
 
 const NavBar:React.FC = () => {
 

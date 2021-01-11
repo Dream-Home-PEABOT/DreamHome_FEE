@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect}  from 'react';
+import React, { useState, useContext }  from 'react';
 import { Link } from 'react-router-dom';
-import {QuestionContext, AnswerContext} from '../../types';
+import {QuestionContext} from '../../types';
 import './Question.css'
 import bkg_img from '../../images/questions/Big Shoes - Sitting On Floor.png'
 import location_img from '../../images/questions/Charco - Location Map.png'
@@ -10,7 +10,6 @@ interface Props{
 }
     export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
-    const answerContext = useContext(AnswerContext)
     const questionContext = useContext(QuestionContext)
     const questionSet = Object.keys(questionContext);
 
