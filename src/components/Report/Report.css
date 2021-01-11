@@ -106,7 +106,7 @@
 }
 
 .analysis-section{
-  height: 50vh;
+  height: 60vh;
   background-color: #f0c808;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
