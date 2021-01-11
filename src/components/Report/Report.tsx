@@ -6,11 +6,7 @@ import './Report.css';
 import { ReportCategory } from '../ReportCategory/ReportCategory';
 import {Spring} from 'react-spring/renderprops';
 import { Link } from 'react-router-dom'
-
-//assets
 import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png';
-
-
 
 const Report = () => {
   
@@ -81,7 +77,6 @@ const Report = () => {
               </div>}
               </Spring>
             </div>
-            {/* remove from here */}
             <div className="num ">
               <div className="num-ci-box-up">
                 <h1 className="num-ci-title">Downpayment %</h1>

@@ -9,7 +9,6 @@ import {ReportContext} from '../../types'
 const NavBar:React.FC = () => {
 
   const [open, setOpen] = useState<boolean>(false);
-  
 
   return (
     <nav className='nav-container'>
@@ -21,7 +20,6 @@ const NavBar:React.FC = () => {
           icon={!open ? <FiMenu data-testid="dropdown" className='icon'/>
           : <IoIosCloseCircleOutline className='icon'/>} >
           <DropdownMenu/>
-
         </NavItem>
       </ul>
     </nav>

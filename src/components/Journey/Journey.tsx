@@ -2,6 +2,7 @@ import React  from 'react';
 import './Journey.css'
 import bkg_img from '../../images/journey/Big Shoes - Hero.png'
 import {Link} from 'react-router-dom'
+
 const Journey:React.FC = () => {
 
   return (

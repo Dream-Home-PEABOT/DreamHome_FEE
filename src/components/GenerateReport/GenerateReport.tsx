@@ -10,14 +10,10 @@ interface Props{
 }
 
 const GenerateReport: React.FC<Props> = ({ updateReport}) => {
-
   const requestReport = () =>{
     getReport().then((data: any) => updateReport(data))
     // getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
-
-
-  
 
   return (
     <section className='generate-section'>

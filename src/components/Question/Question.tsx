@@ -13,10 +13,8 @@ interface Props{
     const questionContext = useContext(QuestionContext)
     const questionSet = Object.keys(questionContext);
 
-    //local state
     const [answerInput, updateAnswer] = useState<any>({});
     const [index, setIndex] = useState<number>(0);
-    // const[error, setError] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
     let currentQuestion = questionContext[questionSet[index]]

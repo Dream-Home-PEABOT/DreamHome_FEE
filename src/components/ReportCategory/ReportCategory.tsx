@@ -1,8 +1,6 @@
-
-//imports
-import React, {useState } from 'react'
+import React, {useState, useEffect } from 'react'
 import moment from 'moment'
-//assets
+
 import location from '../../images/report/Charco - Location Map.png';
 import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png';
 import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png';
@@ -34,11 +32,11 @@ export const ReportCategory = (props: any ) => {
     })
   }
 
-  //useEffect(() => {
-  //  if(props.plan){
-  //    setCurrentPlan(props.plan[year])
-  //  }
-  //})
+  useEffect(() => {
+    if(props.plan){
+      setCurrentPlan(props.plan[year])
+    }
+  })
 
   const updateValue = (year: any) => {
     setYear(year)
