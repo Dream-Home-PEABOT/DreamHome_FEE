@@ -28,7 +28,7 @@ export const Survey: React.FC = () => {
 
           <div className="survey-btn">
           <Link to="/question">
-          <button className="btn">Start</button>
+          <button className="btn">Begin</button>
           </Link>
           </div>
 
