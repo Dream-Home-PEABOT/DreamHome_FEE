@@ -15,7 +15,7 @@ const GenerateReport: React.FC<Props> = ({ updateReport}) => {
   const report = useContext(ReportContext)
 
   const requestReport = () =>{
-    getReport().then((data: any) => updateReport(data))
+    //getReport().then((data: any) => updateReport(data))
     // getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
 

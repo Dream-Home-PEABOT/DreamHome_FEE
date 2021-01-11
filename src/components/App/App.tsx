@@ -24,7 +24,6 @@ const App:React.FC = () =>{
   const [report, updateReport] = useState<any>(null);
 
   const { location } = useContext<any>(__RouterContext)
-  console.log(location)
   const transitions = useTransition(location, location => location.pathname, {
     from: {opacity: 0, transform:'translate(100%, 0)'},
     enter: {opacity: 1, transform:'translate(0%, 0)'},
@@ -41,7 +40,7 @@ const App:React.FC = () =>{
   }
 
   useEffect(() => {
-    getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
+    //getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
   }, []);
 
   // let currentQuestion = Object.keys(questions).find(question => !answers[question])
