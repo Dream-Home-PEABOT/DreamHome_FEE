@@ -35,11 +35,11 @@ const GenerateReport: React.FC<Props> = ({ updateReport}) => {
         </div>
 
         <div className='question_img-box_1'>
-          <img src={calculate_img} alt="" className='question_img'/>
+          <img src={calculate_img} alt="teki-sitting" className='question_img'/>
         </div>
 
         <div className='question_img-box_2'>
-          <img src={back_img} alt="" className='location_img'/>
+          <img src={back_img} alt="background-graphics" className='location_img'/>
         </div>
 
         <div className="buttons-box">

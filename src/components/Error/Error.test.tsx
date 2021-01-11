@@ -8,6 +8,9 @@ import Error from './Error';
 
 describe('Error', () => {
   it('should render displaying an error message', () => {
-    
-  })
+    render(<Error />);
+
+    expect(screen.getByText('404error')).toBeInTheDocument();
+  });
+
 })
