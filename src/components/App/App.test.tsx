@@ -25,4 +25,14 @@ describe("App", () => {
     expect(screen.getByText("Journey")).toBeInTheDocument();
     expect(screen.getByText("Login")).toBeInTheDocument();
   });
+  it("User should be able to click on the nav dropdown", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    expect(screen.getByText(/Hi, my name is Teki/)).toBeInTheDocument();
+  });
 })
