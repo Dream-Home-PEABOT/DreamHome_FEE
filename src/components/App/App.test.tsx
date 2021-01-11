@@ -57,6 +57,18 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "Start"}));
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
     expect(screen.getByRole("button", {name: "next"})).toBeInTheDocument();
-    //userEvent.click(screen.getByRole("button", {name: "next"}));
+  });
+  it("User should be taken to generate report page when done with questions", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+    expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
   });
 })
