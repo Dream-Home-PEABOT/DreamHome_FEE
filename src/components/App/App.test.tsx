@@ -1,13 +1,40 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ReactDOM from 'react-dom';
-import userEvent from '@testing-library/user-event';
-import { BrowserRouter } from 'react-router-dom';
-
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe("App", () => {
+  it("User should see home page by default", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    expect(screen.getByText("Dream Home")).toBeInTheDocument();
+  });
+  it("User should be able to click on the nav dropdown", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByTestId('dropdown'));
+    expect(screen.getByText("Home")).toBeInTheDocument();
+    expect(screen.getByText("Journey")).toBeInTheDocument();
+    expect(screen.getByText("Login")).toBeInTheDocument();
+  });
+  it("User should be able to click on the nav dropdown", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    userEvent.click(screen.getByTestId('dropdown'));
+    expect(screen.getByText("Home")).toBeInTheDocument();
+    expect(screen.getByText("Journey")).toBeInTheDocument();
+    expect(screen.getByText("Login")).toBeInTheDocument();
+  });
+})
