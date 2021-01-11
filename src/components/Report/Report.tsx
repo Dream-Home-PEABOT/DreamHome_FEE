@@ -1,5 +1,5 @@
 //imports
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext } from 'react'
 import {ReportContext} from '../../types'
 import { Cube } from '../Cube/Cube';
 import './Report.css';
@@ -9,23 +9,12 @@ import { Link } from 'react-router-dom'
 
 //assets
 import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png';
-import location from '../../images/report/Charco - Location Map.png';
-import plan from '../../images/report/Charco - Good Job.png';
-import principal from '../../images/report/Charco - Inbox.png';
-import monthly from '../../images/report/Charco - Mobile Life.png';
-import downpayment from '../../images/report/Charco - Work at Home.png';
 
 
 
 const Report = () => {
   
-  const categoryImages = [location, plan, principal, monthly, downpayment]
-  const [report, updateReport] = useState()
   let userReport = useContext(ReportContext)
-
-  useEffect(()=>{
-    updateReport(userReport)
-  },[userReport])
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport)
