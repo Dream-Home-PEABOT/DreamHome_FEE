@@ -1,4 +1,4 @@
-import React,  { useRef, useState, useEffect} from 'react'
+import React,  { useRef, useState} from 'react'
 import './Cube.css'
 import { Canvas, useFrame } from 'react-three-fiber';
 import * as THREE from "three";
@@ -8,7 +8,7 @@ const GeoShape = (props:any) => {
   const mesh = useRef<THREE.Mesh>();
 
   const [hovered, setHover] = useState<boolean>(false);
-  const [active, setActive] = useState<boolean>(false)
+  const [active, setActive]= useState<boolean>(false)
 
   useFrame(() => {
     if (mesh.current !== undefined) {
