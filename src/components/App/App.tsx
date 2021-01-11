@@ -24,6 +24,7 @@ const App:React.FC = () =>{
   const [report, updateReport] = useState<any>(null);
 
   const { location } = useContext<any>(__RouterContext)
+  console.log(location)
   const transitions = useTransition(location, location => location.pathname, {
     from: {opacity: 0, transform:'translate(100%, 0)'},
     enter: {opacity: 1, transform:'translate(0%, 0)'},
@@ -52,6 +53,7 @@ const App:React.FC = () =>{
         {transitions.map(({item, props, key}) => (
           <animated.div key={key} style={props}>
           <Switch location={item}>
+            <Redirect exact from="/" to="/home" />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/journey" component={Journey}/>
             <Route exact path="/survey" component={Survey}/>

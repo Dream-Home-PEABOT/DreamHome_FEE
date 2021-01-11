@@ -18,8 +18,8 @@ const NavBar:React.FC = () => {
         <NavItem 
           open={open } 
           setOpen={setOpen} 
-          icon={!open ? <FiMenu className='icon'/>: <IoIosCloseCircleOutline className='icon'/>} >
-
+          icon={!open ? <FiMenu data-testid="dropdown" className='icon'/>
+          : <IoIosCloseCircleOutline className='icon'/>} >
           <DropdownMenu/>
 
         </NavItem>
@@ -34,7 +34,9 @@ const DropdownMenu = () => {
   const DropdownItem = (props: any) => {
     
     return(
+
       <a href="#" className="menu-item" >
+
         {props.children}
       </a>
     );

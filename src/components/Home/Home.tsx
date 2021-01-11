@@ -20,7 +20,6 @@ const Home: React.FC = () => {
         </div>}
         </Spring>
         <div className="banner-bx">
-
           <h2>Journey Edition</h2>
         </div>
         <Spring
@@ -33,7 +32,7 @@ const Home: React.FC = () => {
         </Spring>
 
       </div>
-    
+
 
     </section>
   )
