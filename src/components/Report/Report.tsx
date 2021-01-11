@@ -5,6 +5,7 @@ import { Cube } from '../Cube/Cube';
 import './Report.css';
 import { ReportCategory } from '../ReportCategory/ReportCategory';
 import {Spring} from 'react-spring/renderprops';
+import { Link } from 'react-router-dom'
 
 //assets
 import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png';
@@ -171,6 +172,16 @@ const Report = () => {
 
     </section>
     {displayAnalysisSections()}
+
+    <div className="sigup">
+      <h1 className="fina-mess">Sign-up 
+      <Link to='/home'>
+        <span className='link' >
+          here 
+        </span> 
+      </Link>
+      if you want to know more...</h1>
+    </div>
     </>
     }
     </>

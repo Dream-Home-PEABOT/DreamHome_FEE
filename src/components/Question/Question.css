@@ -197,4 +197,12 @@
   font-size: 3em;
 }
 
+.btn-2:hover{
+  background-color: var(--background-color);
+}
+
+.btn-1:hover{
+  background-color: hotpink;
+}
+
 

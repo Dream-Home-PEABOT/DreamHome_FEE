@@ -3,18 +3,22 @@ import React, {useState, useEffect} from 'react'
 import location from '../../images/report/Charco - Location Map.png';
 import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png';
 import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png';
+import downpayment from '../../images/report/Charco - Work at Home.png';
+import hurry from '../../images/report/Big Shoes - Dynamic Pose.png';
 
 export const ReportCategory = (props: any ) => {
  
-  const [year, setYear] = useState<any>('');
-  const [currentPlan, setCurrentPlan] = useState({})
-  // const plan = Object.keys(props.plan);
+  const [year, setYear] = useState<string>('one');
+  const [currentPlan, setCurrentPlan] = useState(props.plan)
+  // const [currentPlan, setCurrentPlan] = useState(null)
+  // const [isLoading, setIsLoading] = useState(false)
+
 
   const displayPlanBtn = () => {
     return Object.keys(props.plan).map((btn, index)=> {
       return (
         <button 
-          onClick={(e) => setYear(btn)}
+          onClick={() => setYear(btn)}
           key={index}
           className={
             index % 2 === 0 
@@ -28,20 +32,30 @@ export const ReportCategory = (props: any ) => {
   }
 
   useEffect(() => {
-    if(year){
-    setCurrentPlan(props.plan[year])
+    if(currentPlan){
+      setCurrentPlan(props.plan)
     }
-  },[year])
+    if(!year){
+      setCurrentPlan(props.plan[year])
+    }
+    
+  },[props, year])
 
 
   return (
+    <>
     <section 
       style={props.position% 2 === 0 ? {backgroundColor: 'white'}: {}}
       className="analysis-section">
-      <div className="pipe-up"></div>
-      <div className="pipe-down"></div>
-      <div className="main-circ-box">
-        <div className="inner-circle"></div>
+      <div 
+        style={props.position% 2 === 0 ? {backgroundColor:'#89BD9E'}: {backgroundColor: 'white'}}
+        className="pipe-up"></div>
+      <div
+        style={props.position% 2 === 0 ? {backgroundColor:'#89BD9E'}: {backgroundColor: 'white'}} 
+        className="pipe-down"></div>
+      <div className="main-circ-box"><div 
+        style={props.position% 2 === 0 ? {border:'15px solid #89BD9E'}: {border: '15px solid #ffffff'}} 
+        className="inner-circle"></div>
       </div>
       <div className="report-img-box">
         <img src={location} alt="" className="report-img"/>
@@ -62,7 +76,7 @@ export const ReportCategory = (props: any ) => {
         </div>
         : <div className="plan-box">
         {displayPlanBtn()}
-      {/* <h1 className="repo-title">{props.categorySecondNumber || 0}</h1> */}
+      <h1 className="repo-title">{}</h1>
     </div>
       }
 
@@ -76,13 +90,40 @@ export const ReportCategory = (props: any ) => {
       </div>
       {!props.plan && <div className="category-image-2">
         <img src={plant_2} alt="" className='plant-1'/>
-        <h1 className="insight-title">{}</h1>
+        {/* <h1 className="insight-title">{''}</h1> */}
       </div>}
 
       <h3 className="solo_number">{props.categoryID || ''}</h3>
       <h1 className="zip-title"></h1>
-      <h1 className="report-zip">{props.categoryMainNumber }</h1>
-
+      <h1 className="report-zip">{props.categoryMainNumber|| '' }</h1>
     </section>
+
+    {props.plan 
+      ?<section className='analysis-section'>
+        <div style={ {backgroundColor: 'white'}} className="pipe-up"></div>
+        <div style={ {backgroundColor: 'white'}} className="pipe-down"></div>
+      <div className="main-circ-box">
+        <div style={{border: '15px solid #ffffff'}} 
+        className="inner-circle"></div>
+      </div>
+      <div className="report-img-box">
+        <img src={downpayment} alt="" className="report-img"/>
+      </div>
+      <div className="left-img">
+        <img src={hurry} alt="" className="hurry-img"/>
+      </div>
+
+      <div className="result-info-1">
+        <h1 className="repo-title">Down payment plan</h1>
+        <h1 className="repo-title">{year} yrs</h1>
+        <h1 className="repo-title">{ currentPlan[year].monthly_plan}</h1>
+        </div>
+
+
+      </section>
+      : ''
+    }
+
+    </>
   )
 }
