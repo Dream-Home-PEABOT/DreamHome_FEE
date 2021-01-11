@@ -1,5 +1,6 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {ReportContext} from '../../types'
+import { Cube } from '../Cube/Cube';
 import './Report.css'
 import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png'
 import location from '../../images/report/Charco - Location Map.png'
@@ -7,11 +8,15 @@ import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png'
 import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png'
 
 const Report = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
   let userReport = useContext(ReportContext)
-  console.log(userReport)
+
   return (
     <>
-    <section className="report-section">
+    {isLoading ? <Cube/> : 
+    <>
+     <section className="report-section">
         <div className='inner-container'>
           <div className="app-title">
             <div className="title-container">
@@ -93,7 +98,7 @@ const Report = () => {
           </div>
         </div>
     </section>
-{/* this could be it own component */}
+    {/* this could be it own component */}
     <section className="analysis-section">
       <div className="pipe-up"></div>
       <div className="pipe-down"></div>
@@ -135,6 +140,8 @@ const Report = () => {
       <h1 className="report-zip">80228</h1>
 
     </section>
+    </>
+    }
     </>
   )
 }
