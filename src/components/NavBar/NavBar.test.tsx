@@ -15,8 +15,8 @@ describe('NavBar', () => {
 
   });
 
-  it('should a clickable icon', () => {
-
+  it('should render an icon', () => {
+    //give aria role and get by role
   });
 
   it('should display links when icon is clicked', () => {
