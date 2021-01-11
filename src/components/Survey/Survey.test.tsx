@@ -17,12 +17,7 @@ describe('Survey', () => {
     expect(screen.getByText('One of the main questions to answers is how much can I afford?. Affordability is defined as the cost of something.')).toBeInTheDocument();
   });
 
-  it('should render with a description', () => {
-
-    expect(screen.getByText(desc)).toBeInTheDocument();
-  });
-
-  it('should render with a next button', () => {
+  it('should render with a start button', () => {
 
     expect(screen.getByText('Start')).toBeInTheDocument();
   });
