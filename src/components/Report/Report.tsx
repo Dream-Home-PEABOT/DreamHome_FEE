@@ -8,13 +8,12 @@ import plant_1 from '../../images/extras/Fancy Plants - Solo Plant.png'
 import plant_2 from '../../images/extras/Fancy Plants - Solo Plant copy.png'
 
 const Report = () => {
-  const [isLoading, setIsLoading] = useState(false)
 
   let userReport = useContext(ReportContext)
 
   return (
     <>
-    {isLoading ? <Cube/> : 
+    {!userReport ? <Cube/> : 
     <>
      <section className="report-section">
         <div className='inner-container'>
