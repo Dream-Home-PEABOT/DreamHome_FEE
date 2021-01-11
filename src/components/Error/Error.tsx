@@ -24,18 +24,10 @@ const Error: React.FC = () => {
           <img src={error_img} alt="" className="error-image"/>
         </div>
       </div>
-      
-  
     </section>
-
-
-
-   
 
   )
 }
 
 export default Error;
 
-//<Route component={Error} />
-//wrap routes in a <Switch>
