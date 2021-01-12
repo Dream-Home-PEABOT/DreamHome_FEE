@@ -1,11 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import {getQuestions, getReport} from '../../apiCalls';
 import "@testing-library/jest-dom";
 import App from './App';
 jest.mock("../../apiCalls.tsx");
+
   let questionResults = getQuestions.mockResolvedValue([{
       "annual_salary": {
         "attributes": {
@@ -32,13 +33,17 @@ jest.mock("../../apiCalls.tsx");
       "type": "Education object"
   }}]);
 
+
+
 describe("App", () => {
-  it("User should see home page by default", () => {
+
+  it("User should see home page by default", async () => {
     render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
     );
+    await waitFor(async () =>  await questionResults())
     expect(screen.getByText("Dream Home")).toBeInTheDocument();
   });
   it("User should be able to click on the nav dropdown", () => {
@@ -110,7 +115,7 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "Start"}));
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
     userEvent.click(screen.getByRole("button", {name: "next"}));
-    userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
-    screen.debug()
+    //userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
+    //screen.debug()
   });
 })
