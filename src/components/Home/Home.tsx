@@ -28,7 +28,7 @@ const Home: React.FC = () => {
           to={{ opacity: 1}}
           config={{delay: 1000, duration: 1000}}>
           {props => <div style={props} className="img-container">
-            <img src={bkg_img} alt="" className='main-image'/>
+            <img src={bkg_img} alt="Big Shoes - Standing Pose" className='main-image'/>
           </div>}
         </Spring>
 

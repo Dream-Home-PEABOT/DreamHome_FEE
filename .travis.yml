@@ -1,8 +1,13 @@
 language: node_js
 node_js:
-  - "node"
+- node
+notifications:
+  email: false
 deploy:
   provider: heroku
+  api_key:
+    secure: esj0YexHcJ+befXjcAKxW+U93BAA1zlzoWHUqc9PWAc6cPa8oXQdN2cq9BrSDwQqje8JHzfk8XR+KNGcCyT6/OwvENGmHcr4AJNu2iulrdEB3qPm2i66wfw/bJRix9Fg8n00CWUsn7f2dKPunPCVBKaaQ36FtQgq+CD8hqsxTU4TbElFJr+kFHMO7CS2QBNDryrMtOaba9yx4aaDt+BZYFKEHsKsMtZ9P/+DMjBHpmiO0QDuaxNarWGy/ARRs3V7d8QxCMp3+06lSZCaSvXsRlqJTREG07GKMdGYUB6J/C23b299JIHSWQ7JR3bE1oh8mWX1UdvgW8dSYZqcasw9g6wSSajuF6xGW1nS1S3WfiqyNh0U1d+qFEN8uk9rDGH1L4246rGm2fnNNLrDpzo6vP0hQMosa/gUUZAhpi4jdBn/X8h9hBBCxCMIC4Mz+VuQaQDiiMx5u9hggmZVYZaDunu3ij4rDtQIhFA3EG6I0sx8O7fQEkMGrXaYd+IRTJBR11WeCDkxBJPKxCbrHN4cqF+vuyHTqZp7sxmzgk7gOptxZI7pemExr/tom0U/b/ssZVztNWuiOLCRf8Rn52MHz8e2RaFQDnaqyTB+IFmQ6MGnKabnP2s4QLEO1N6gvUzTJNRduDcZxBXwZtp0myyY0ttXPSAoHmLMIxRg6Uoebto=
   app: dream-home-cap
-on:
-  all_branches: true
+  on:
+    all_branches: true
+    skip_cleanup: true

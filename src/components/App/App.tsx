@@ -1,4 +1,4 @@
-import React, {useState , useEffect, useContext} from 'react';
+import React, {useState , useEffect, useContext, useRef} from 'react';
 import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls';
 import {Switch, Route, __RouterContext, Redirect} from 'react-router';
@@ -33,23 +33,26 @@ const App:React.FC = () =>{
     leave: {opacity: 0, transform:'translate(-50%, 0)'},
   })
 
-  const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
+  const buildAnswers = (questions: AllQuestionFormat | {}): void => {
     const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
         acc[cur] = ''
         return acc
       },{})
       updateAllAnswers(answerKey)
-      return questions
   }
-
+  const unmounted = useRef(false)
   const populateQuestions = async () =>{
+    if (!unmounted.current){
     const data = await getQuestions()
+    await data
     buildAnswers(data)
     updateQuestions(data)
+    }
   }
 
   useEffect(() => {
     populateQuestions()
+    return () => { unmounted.current = true }
   },[]);
 
   return (
