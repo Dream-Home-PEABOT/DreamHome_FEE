@@ -121,7 +121,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it.only("User should see error message if question is unanswered and next is pressed", async () => {
+  it("User should see error message if question is unanswered and next is pressed", async () => {
 
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
@@ -145,7 +145,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it.only("User should be able to fill out full questionare", async () => {
+  it("User should be able to fill out full questionare", async () => {
 
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
@@ -175,9 +175,52 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it("User should be taken to generate report page when done with questions", async () => {
+  it.skip("User should be able to fill out full questionare", async () => {
+    let mockedReport = getReport.mockResolvedValue({
+      "location": {
+        "zip_code": 11111,
+        "location": "Anywhere, CO"
+      },
+      "principal": {
+        "based_on_rent": 350000,
+        "goal_principal": 0
+      },
+      "monthly": {
+        "monthly_principal": 1400,
+        "estimated_true_monthly": 1940,
+        "add_ons": {
+          "home_insurance": 110,
+          "property_tax": 105,
+          "hoa": 75,
+          "pmi": 250
+        }
+      },
+      "downpayment": {
+        "down_payment_percentage_selected": 10,
+        "down_payment_saved": 10000,
+        "down_payment_percent_saved": 2.9,
+        "ten_year_plan": {
+          "one": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "two": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "three": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          }
+        }
+      }
+    })
+
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
+
+    await waitFor(async () =>  await mockedReport())
+    await waitFor(async () =>  await questionResults())
 
     render(<MemoryRouter><App /></MemoryRouter>);
 
@@ -185,28 +228,22 @@ describe("App", () => {
     userEvent.click(screen.getByText('Journey'));
     userEvent.click(screen.getByRole("button", {name: "Start"}));
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
+
+    await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
+
+    userEvent.type(screen.getByRole("textbox"), "50000");
     userEvent.click(screen.getByRole("button", {name: "next"}));
 
-    expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
+    await waitFor(()=> expect(screen.getByText(/Credit/)).toBeInTheDocument());
 
+    expect(screen.getByText(/What is your current credit score?/)).toBeInTheDocument();
+
+    userEvent.type(screen.getByRole("textbox"), "770");
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+
+    await waitFor(()=>expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument());
+    userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
     await act(() => promise)
   });
 
-  it("User should be taken to generate report page when done with questions", async () => {
-    const promise = Promise.resolve()
-    const updateAllAnswers = jest.fn(() => promise)
-
-    render(<MemoryRouter><App /></MemoryRouter>);
-
-    userEvent.click(screen.getByTestId('dropdown'));
-    userEvent.click(screen.getByText('Journey'));
-    userEvent.click(screen.getByRole("button", {name: "Start"}));
-    userEvent.click(screen.getByRole("button", {name: "Begin"}));
-    userEvent.click(screen.getByRole("button", {name: "next"}));
-    //userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
-  
-    //screen.debug()
-   
-    await act(() => promise)
-  });
 })
