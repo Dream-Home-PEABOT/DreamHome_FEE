@@ -146,7 +146,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it("User should be able to fill out full questionare", async () => {
+  it("User should be able to fill out full questionare by clicking next", async () => {
 
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
@@ -176,7 +176,36 @@ describe("App", () => {
     await act(() => promise)
   });
 
+  it("User should be able to move back to previous question and see their response", async () => {
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    await waitFor(async () =>  await questionResults())
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+
+    await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
+
+    userEvent.type(screen.getByRole("textbox"), "50000");
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+
+    await waitFor(()=> expect(screen.getByText(/Credit/)).toBeInTheDocument());
+
+    userEvent.type(screen.getByRole("textbox"), "770");
+    userEvent.click(screen.getByRole("button", {name: "back"}));
+
+    expect(screen.getByText(/Annual Salary/)).toBeInTheDocument();
+    await act(() => promise)
+  });
+
   it("User should move on to loading screen on generate report click", async () => {
+
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
 
@@ -210,7 +239,9 @@ describe("App", () => {
     //userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
     await act(() => promise)
   });
+
   it("User should see their report after loading screen", async () => {
+
     let mockedReport = getReport.mockResolvedValue({
       "location": {
         "zip_code": 11111,
@@ -282,18 +313,19 @@ describe("App", () => {
     const updateAllAnswers = jest.fn(() => promise)
     let testContext
 
-  await waitFor(async () =>  testContext = await mockedReport())
+    await waitFor(async () =>  testContext = await mockedReport())
 
-  render(
-  <MemoryRouter>
-      <ReportContext.Provider value={testContext}>
-        <Report />
-      </ReportContext.Provider>
-  </MemoryRouter>)
+    render(
+    <MemoryRouter>
+        <ReportContext.Provider value={testContext}>
+          <Report />
+        </ReportContext.Provider>
+    </MemoryRouter>)
 
-  expect(screen.getByText(/My Numbers/)).toBeInTheDocument();
+    expect(screen.getByText(/My Numbers/)).toBeInTheDocument();
 
-  await act(() => promise)
+    await act(() => promise)
   });
+
 });
 
