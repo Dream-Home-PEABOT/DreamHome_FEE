@@ -11,14 +11,14 @@ import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.pn
 const Report = () => {
 
   let userReport = useContext(ReportContext)
-  console.log(userReport)
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport)
 
     return reportData.map((data, key) =>{
-      let subtitle_1 = Object.keys(userReport[data])[0].replaceAll(/_|\-/g, " ")
-      let subtitle_2 = Object.keys(userReport[data])[1].replaceAll(/_|\-/g, " ")
+      console.log(userReport[data], key)
+      let subtitle_1 = Object.keys(userReport[data])[0].replace(/_|\-/g, " ")
+      let subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
 
       return (
         <ReportCategory
