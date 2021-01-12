@@ -7,19 +7,21 @@ const Home: React.FC = () => {
 
   return (
     <section className='home-section'>
-      <div className="main-container">
+
+      <div className="main-container" data-testid='main container'>
+
         <Spring
         from={{ opacity: 0, margin: -1000}}
         to={{ opacity: 1, margin: 0}}
         config={{delay: 1000, duration: 1000}}
         >
         {props => <div className="title-container">
-          <h1 className='title'>My</h1>
-          <h1 className='title-2'>Dream Home</h1>
+          <h1 className='title' data-testid='My' >My</h1>
+          <h1 className='title-2' data-testid='Dream Home'>Dream Home</h1>
         </div>}
         </Spring>
         <div className="banner-bx">
-          <h2>Journey Edition</h2>
+          <h2 data-testid='journey edition'>Journey Edition</h2>
         </div>
         <Spring
           from={{ opacity: 0}}
