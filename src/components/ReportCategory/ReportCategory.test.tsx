@@ -107,4 +107,40 @@ describe('ReportCategory', () => {
       expect(screen.getByAltText("location-illustration-1")).toBeInTheDocument();
   });
 
+  it('should render with titles', () => {
+    const fakeUserReport = {
+      zip_code: 11111,
+      location: "Anywhere, CO"
+    }
+
+    const fakeReportData = Object.keys(fakeData);
+    const fakeSubtitle_2 = fakeData.location;
+    const fakeKey = 0;
+
+    render (
+      <ReportCategory
+      position={fakeKey + 1}
+      key={fakeKey}
+      plan={fakeData.downpayment.ten_year_plan}
+      categoryName={fakeReportData[0]}
+      categoryMainNumber={fakeUserReport.zip_code || fakeData.principal.based_on_rent
+      || fakeData.monthly.monthly_principal
+      || fakeData.downpayment.down_payment_percentage_selected}
+      categoryMainTitle={'location'}
+      categorySubtitle={fakeSubtitle_2}
+      categorySecondNumber={fakeUserReport.location || fakeData.principal.goal_principal
+      || fakeData.monthly.estimated_true_monthly
+      || fakeData.downpayment.down_payment_saved}
+      categoryID={fakeKey + 1}
+      /> );
+
+      expect(screen.getByText("Save")).toBeInTheDocument();
+      expect(screen.getByText("monthly for")).toBeInTheDocument();
+      expect(screen.getByText("Your DreamHome")).toBeInTheDocument();
+      expect(screen.getByText("ready to buy")).toBeInTheDocument();
+      expect(screen.getByText("date is")).toBeInTheDocument();
+  });
+
+  
+
 })
