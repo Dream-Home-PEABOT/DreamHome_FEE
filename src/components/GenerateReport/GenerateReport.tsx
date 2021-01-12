@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { AnswerContext } from '../../types';
+import { AnswerContext, Answers } from '../../types';
 import {getReport, postAnswers} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
@@ -11,12 +11,23 @@ interface Props{
 }
 
 const GenerateReport: React.FC<Props> = ({ updateReport }) => {
+
   const requestReport = async () =>{
     const answers = useContext(AnswerContext)
-    const id = await postAnswers(answers)
+    const formattedAnswers: Answers = {
+      salary: answers.annual_salary,
+      zipcode: answers.zip_code,
+      credit: answers.credit_score,
+      monthly_debt: answers.monthly_debt,
+      downpayment_savings: answers.downpayment_savings,
+      downpayment_percentage:answers.downpayment_percentage,
+      rent: answers.rent,
+      goal_principal: answers.goal_home_price
+    };
+    //will need to add default values in or statements
+    const id = await postAnswers(formattedAnswers)
     const data = getReport(id)
-    await updateReport(data)
-    // getReport().then((data) => setTimeout(() => updateReport(data), 10000))
+    updateReport(data)
   }
 
   return (
