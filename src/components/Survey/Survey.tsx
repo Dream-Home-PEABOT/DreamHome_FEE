@@ -18,17 +18,18 @@ export const Survey: React.FC = () => {
           <div className="shadow-box"></div>
 
           <div className='img-box_1'>
-            <img src={bkg_img_1} alt="" className='img'/>
+            <img src={bkg_img_1} alt="tekki-sitting-1" className='img'/>
           </div>
 
           <div className='img-box_2'>
-            <img src={bkg_img_2} alt="" className='img'/>
+            <img src={bkg_img_2} alt="tekki-sitting-2" className='img'/>
           </div>
+
           <div className='floor-box'></div>
 
           <div className="survey-btn">
           <Link to="/question">
-          <button className="btn">Begin</button>
+            <button className="btn">Begin</button>
           </Link>
           </div>
 

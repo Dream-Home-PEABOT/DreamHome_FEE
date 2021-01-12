@@ -8,24 +8,24 @@ import downpayment from '../../images/report/Charco - Work at Home.png';
 import hurry from '../../images/report/Big Shoes - Dynamic Pose.png';
 
 export const ReportCategory = (props: any ) => {
- 
+  //interface for props
   const [year, setYear] = useState<string>('one');
   const [currentPlan, setCurrentPlan] = useState(props.plan);
 
   const displayPlanBtn = () => {
     return Object.keys(props.plan).map((btn, index)=> {
       return (
-        <button 
+        <button
           onClick={() => updateValue(btn)}
-         
+
           key={index}
           className={
-            index % 2 === 0 
+            index % 2 === 0
             ? " plan-btn btn y-btn"
-            : index % 3 === 0 
+            : index % 3 === 0
             ? "btn-1 y-btn"
             :"btn-2 y-btn"
-          }>{index +1} 
+          }>{index +1}
             yr
           </button>
       )
@@ -45,21 +45,21 @@ export const ReportCategory = (props: any ) => {
 
   return (
     <>
-    <section 
+    <section
       style={props.position% 2 === 0 ? {backgroundColor: 'white'}: {}}
       className="analysis-section">
-      <div 
+      <div
         style={props.position% 2 === 0 ? {backgroundColor:'#89BD9E'}: {backgroundColor: 'white'}}
         className="pipe-up"></div>
       <div
-        style={props.position% 2 === 0 ? {backgroundColor:'#89BD9E'}: {backgroundColor: 'white'}} 
+        style={props.position% 2 === 0 ? {backgroundColor:'#89BD9E'}: {backgroundColor: 'white'}}
         className="pipe-down"></div>
-      <div className="main-circ-box"><div 
-        style={props.position% 2 === 0 ? {border:'15px solid #89BD9E'}: {border: '15px solid #ffffff'}} 
+      <div className="main-circ-box"><div
+        style={props.position% 2 === 0 ? {border:'15px solid #89BD9E'}: {border: '15px solid #ffffff'}}
         className="inner-circle"></div>
       </div>
       <div className="report-img-box">
-        <img src={location} alt="" className="report-img"/>
+        <img src={location} alt="location-illustration-1" className="report-img"/>
       </div>
 
       <div  className="category-box">
@@ -70,12 +70,12 @@ export const ReportCategory = (props: any ) => {
         <h1 className="repo-title">{props.categoryMainTitle}</h1>
       </div>
 
-      {!props.plan 
+      {!props.plan
         ? <div className="report-info-2">
         <h1 className="repo-title">{props.categorySubtitle || ''}</h1>
         <h1 className="repo-title">{props.categorySecondNumber || 0}</h1>
         </div>
-        : 
+        :
         <>
         <div className="plan-box">
           {displayPlanBtn()}
@@ -93,10 +93,10 @@ export const ReportCategory = (props: any ) => {
       </div>
 
       <div className="category-image">
-        {props.position % 2 === 0 && <img src={plant_1} alt="" className='plant-1'/>}
+        {props.position % 2 === 0 && <img src={plant_1} alt="blue-plant" className='plant-1'/>}
       </div>
       {!props.plan && <div className="category-image-2">
-        <img src={plant_2} alt="" className='plant-1'/>
+        <img src={plant_2} alt="blue-plant" className='plant-1'/>
         {/* <h1 className="insight-title">{''}</h1> */}
       </div>}
 
@@ -105,19 +105,19 @@ export const ReportCategory = (props: any ) => {
       <h1 className="report-zip">{props.categoryMainNumber|| '' }</h1>
     </section>
 
-    {props.plan 
+    {props.plan
       ?<section className='analysis-section'>
         <div style={ {backgroundColor: 'white'}} className="pipe-up"></div>
         <div style={ {backgroundColor: 'white'}} className="pipe-down"></div>
       <div className="main-circ-box">
-        <div style={{border: '15px solid #ffffff'}} 
+        <div style={{border: '15px solid #ffffff'}}
         className="inner-circle"></div>
       </div>
       <div className="report-img-box">
-        <img src={downpayment} alt="" className="report-img"/>
+        <img src={downpayment} alt="location-illustration" className="report-img"/>
       </div>
       <div className="left-img">
-        <img src={hurry} alt="" className="hurry-img"/>
+        <img src={hurry} alt="tall-man" className="hurry-img"/>
       </div>
 
       <div className="result-info-1">
