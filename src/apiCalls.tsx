@@ -6,7 +6,12 @@ export const getQuestions = async () => {
     return response
   }
 }
-export const getReport = () => {
-  const url:string = "http://localhost:3000/report"
-  return fetch(url).then(data => data.json())
+export const getReport = async () => {
+  const response = await fetch('http://localhost:3000/report')
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response
+  }
 }
+
