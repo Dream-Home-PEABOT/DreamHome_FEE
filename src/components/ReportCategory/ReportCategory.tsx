@@ -8,7 +8,7 @@ import downpayment from '../../images/report/Charco - Work at Home.png';
 import hurry from '../../images/report/Big Shoes - Dynamic Pose.png';
 
 export const ReportCategory = (props: any ) => {
-
+  //interface for props
   const [year, setYear] = useState<string>('one');
   const [currentPlan, setCurrentPlan] = useState(props.plan);
 
@@ -59,7 +59,7 @@ export const ReportCategory = (props: any ) => {
         className="inner-circle"></div>
       </div>
       <div className="report-img-box">
-        <img src={location} alt="location-illustration" className="report-img"/>
+        <img src={location} alt="location-illustration-1" className="report-img"/>
       </div>
 
       <div  className="category-box">
@@ -93,10 +93,10 @@ export const ReportCategory = (props: any ) => {
       </div>
 
       <div className="category-image">
-        {props.position % 2 === 0 && <img src={plant_1} alt="" className='plant-1'/>}
+        {props.position % 2 === 0 && <img src={plant_1} alt="blue-plant" className='plant-1'/>}
       </div>
       {!props.plan && <div className="category-image-2">
-        <img src={plant_2} alt="" className='plant-1'/>
+        <img src={plant_2} alt="blue-plant" className='plant-1'/>
         {/* <h1 className="insight-title">{''}</h1> */}
       </div>}
 
@@ -114,10 +114,10 @@ export const ReportCategory = (props: any ) => {
         className="inner-circle"></div>
       </div>
       <div className="report-img-box">
-        <img src={downpayment} alt="" className="report-img"/>
+        <img src={downpayment} alt="location-illustration" className="report-img"/>
       </div>
       <div className="left-img">
-        <img src={hurry} alt="" className="hurry-img"/>
+        <img src={hurry} alt="tall-man" className="hurry-img"/>
       </div>
 
       <div className="result-info-1">
