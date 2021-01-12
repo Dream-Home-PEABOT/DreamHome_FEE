@@ -9,19 +9,20 @@ import { Link } from 'react-router-dom'
 import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png';
 
 const Report = () => {
-  
+
   let userReport = useContext(ReportContext)
+  console.log(userReport)
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport)
-    
+
     return reportData.map((data, key) =>{
       let subtitle_1 = Object.keys(userReport[data])[0].replaceAll(/_|\-/g, " ")
       let subtitle_2 = Object.keys(userReport[data])[1].replaceAll(/_|\-/g, " ")
 
       return (
-        <ReportCategory 
-          
+        <ReportCategory
+
           position={key + 1}
           key={key}
           plan={userReport[data].ten_year_plan}
@@ -48,7 +49,7 @@ const Report = () => {
 
   return (
     <>
-    {!userReport ? <Cube/> : 
+    {!userReport ? <Cube/> :
     <>
      <section className="report-section">
         <div className='inner-container'>
@@ -61,7 +62,7 @@ const Report = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="report-numbers-box">
 
             <div className="num ">
@@ -85,7 +86,7 @@ const Report = () => {
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
                 to={{ number: userReport.downpayment.down_payment_percentage_selected }}>
-                {props => 
+                {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{props.number.toFixed()}</h1>
                 </div>}
@@ -101,7 +102,7 @@ const Report = () => {
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
                 to={{ number: 30 }}>
-                {props => 
+                {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
                 </div>}
@@ -117,7 +118,7 @@ const Report = () => {
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
                 to={{ number: 30 }}>
-                {props => 
+                {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
                 </div>}
@@ -133,16 +134,16 @@ const Report = () => {
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
                 to={{ number: userReport.downpayment.down_payment_saved }}>
-                {props => 
+                {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
                 </div>}
               </Spring>
 
             </div>
-            
+
           </div>
-          
+
           <div className="report-title">
             <h1 className="big-report">Report</h1>
           </div>
@@ -152,15 +153,15 @@ const Report = () => {
         </div>
 
     </section>
-    
+
     {displayAnalysisSections()}
 
     <div className="sigup">
-      <h1 className="fina-mess">Sign-up 
+      <h1 className="fina-mess">Sign-up
       <Link to='/home'>
         <span className='link' >
-          here 
-        </span> 
+          here
+        </span>
       </Link>
       if you want to know more...</h1>
     </div>
