@@ -2,8 +2,36 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
+import {getQuestions, getReport} from '../../apiCalls';
 import "@testing-library/jest-dom";
 import App from './App';
+  let questionResults = getQuestions.mockResolvedValue([{
+    {
+      "annual_salary": {
+        "attributes": {
+        "classification": "Annual Salary",
+        "description": "Gross income is the total amount you earn (typically over the course of a year) before expenses. Net income is the profit your business earns after expenses ",
+        "information": "Depending on the home price you're aiming for, you may want to wait a year or two before you apply for a mortgage if you've just moved into a higher-paying role. The longer you stay in your higher-paying position, the more your lender may be willing to loan you.",
+        "note": "The amount of money you earn plays a smaller role in getting a mortgage than you might think. ",
+        "question": "What is your net monthly salary?",
+        "source": "https://www.rocketmortgage.com"
+      },
+      "id": "5ff7a737be8682d9e5b0e0c2",
+      "type": "Education object"
+      },
+      "credit_score": {
+        "attributes": {
+        "classification": "Credit Score",
+        "dscription": " A high score will give you access to lower interest rates and more lender choices. If you have a low score, you may have trouble getting a loan.",
+        "information": "Your credit score plays a big role in the interest rate you'll get for your loan.",
+        "note": "Your credit score is a numerical rating that ranges from 300 – 850 and tells lenders how responsible you are when you borrow money. ",
+        "question": "What is your current credit score?",
+        "source": "https://www.rocketmortgage.com"
+      },
+      "id": "5ff7a752be8682d9e5b0e0c6",
+      "type": "Education object"
+      },
+  }]);
 
 describe("App", () => {
   it("User should see home page by default", () => {
@@ -70,5 +98,20 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
     userEvent.click(screen.getByRole("button", {name: "next"}));
     expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
+  });
+  it("User should be taken to generate report page when done with questions", () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+    userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
+    screen.debug()
   });
 })
