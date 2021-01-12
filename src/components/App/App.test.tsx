@@ -206,6 +206,32 @@ describe("App", () => {
     await act(() => promise)
   });
 
+  it("User should be able to move directly to the home page if desired", async () => {
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    await waitFor(async () =>  await questionResults())
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+
+    await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
+
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Home'));
+
+    console.log(window.location.pathname)
+    expect(window.location.pathname).toBe("/")
+
+
+    await act(() => promise)
+  });
+
   it("User should move on to loading screen on generate report click", async () => {
 
     const promise = Promise.resolve()
