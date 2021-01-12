@@ -49,7 +49,16 @@ const Report = () => {
 
   return (
     <>
-    {!userReport ? <Cube/> :
+    {!userReport ? 
+    <>
+      <div className="loading-box">
+        <h1 className='loading-message-1'>we are building you a report...</h1>
+      </div>
+      <div className="loading-box">
+        <h1 className='loading-message-2'>just a second...</h1>
+      </div>
+      <Cube/> 
+    </>:
     <>
      <section className="report-section">
         <div className='inner-container'>
