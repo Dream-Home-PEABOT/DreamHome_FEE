@@ -38,12 +38,12 @@ jest.mock("../../apiCalls.tsx");
 describe("App", () => {
 
   it("User should see home page by default", async () => {
+    await waitFor(async () =>  await questionResults())
     render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
     );
-    await waitFor(async () =>  await questionResults())
     expect(screen.getByText("Dream Home")).toBeInTheDocument();
   });
   it("User should be able to click on the nav dropdown", () => {
