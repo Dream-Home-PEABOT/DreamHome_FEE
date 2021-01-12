@@ -8,6 +8,7 @@ import "@testing-library/jest-dom";
 import App from './App';
 import NavBar from '../NavBar/NavBar';
 import Report from '../Report/Report';
+import Home from '../Home/Home';
 jest.mock("../../apiCalls");
 
 let questionResults
@@ -446,5 +447,4 @@ describe("App", () => {
     await act(() => promise)
   });
 
-});
-
+  });
