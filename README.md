@@ -1,9 +1,5 @@
-## Contributors
-  - [Blake Donnelly](https://github.com/BlakeDonn)
-  - [Orlando MMurcio](https://github.com/BlakeDonn)
-  - [Tim Keresey](https://github.com/BlakeDonn)
 
-## Overview
+#### Overview
 
 `Dream Home` Is an educational / planning application meant to help new home buyers ease into the process of budgeting for their dream home.
 
@@ -23,7 +19,7 @@
   * Git
   * GitHub
 
-## Challenges
+### Challenges
 
   * Implementing typescript and react hooks as brand new technologies to the FE team
   * Implementing context as a means to pseudo-global state
@@ -31,14 +27,14 @@
   * Mocking out API data while the backend was in development
   * Utilizing animations for better flow
 
-## Wins
+### Wins
 
   * Creating a fully-functional application that meets MVP
   * Integrating CI and deployment to seamlessly update the application
   * Utilize agile workflow to maximize productivity
   * Continuous communication between FE / BE through standups and code review
 
-## Future Goals
+### Future Goals
 
   * Add logged-in functionality to the application
   * Allow for a more personalized experience through the storing of user data
@@ -119,6 +115,11 @@
 - `git push` your changes
 - Create a new pull request!
 
+### Contributors
+  - [Blake Donnelly](https://github.com/BlakeDonn)
+  - [Orlando MMurcio](https://github.com/BlakeDonn)
+  - [Tim Keresey](https://github.com/BlakeDonn)
+
 ### Project Managers
-- [Robbie](https://github.com/robbiejaeger)
+- [Robbie Jaeger](https://github.com/robbiejaeger)
 - [Kathleen Scriver](https://github.com/KathleenScriver)
