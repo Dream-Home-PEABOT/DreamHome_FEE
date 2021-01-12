@@ -12,6 +12,7 @@ let questionResults
 describe("App", () => {
 
   beforeEach(()=>{
+
   questionResults  = getQuestions.mockResolvedValue({
       "annual_salary": {
         "attributes": {
@@ -98,6 +99,7 @@ describe("App", () => {
 
     await act(() => promise)
   });
+
   it("User should be taken to first question when clicking start on survey", async () => {
 
     const promise = Promise.resolve()
@@ -118,25 +120,28 @@ describe("App", () => {
 
     await act(() => promise)
   });
-  it("User should be taken to generate report page when done with questions", () => {
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
+
+  it("User should be taken to generate report page when done with questions", async () => {
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Journey'));
     userEvent.click(screen.getByRole("button", {name: "Start"}));
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
     userEvent.click(screen.getByRole("button", {name: "next"}));
+
     expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
+
+    await act(() => promise)
   });
-  it("User should be taken to generate report page when done with questions", () => {
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
+  it("User should be taken to generate report page when done with questions", async () => {
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    render(<MemoryRouter><App /></MemoryRouter>);
 
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Journey'));
@@ -144,6 +149,9 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
     userEvent.click(screen.getByRole("button", {name: "next"}));
     //userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
+  
     //screen.debug()
+   
+    await act(() => promise)
   });
 })
