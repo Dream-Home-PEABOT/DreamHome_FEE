@@ -10,8 +10,9 @@ interface Props{
 }
 
 const GenerateReport: React.FC<Props> = ({ updateReport}) => {
-  const requestReport = () =>{
-    getReport().then((data: any) => updateReport(data))
+  const requestReport = async () =>{
+    const data = await getReport()
+    updateReport(data)
     // getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
 

@@ -43,18 +43,18 @@ const DropdownMenu = () => {
   return (
     <div className="dropdown" >
 
-      <Link to="/home" >
+      <Link to="/home" data-testid='to-home' >
         <DropdownItem >Home</DropdownItem>
       </Link>
 
-      <Link to="/journey">
-        <DropdownItem>Journey</DropdownItem>
+      <Link to="/journey" data-testid='to-journey'>
+        <DropdownItem >Journey</DropdownItem>
       </Link>
 
-      <DropdownItem>Login</DropdownItem>
+      <DropdownItem data-testid='to-login'>Login</DropdownItem>
 
-      {userReport && <Link to="/report">
-      <DropdownItem >Report</DropdownItem>
+      {userReport && <Link to="/report"  data-testid='to-login'>
+      <DropdownItem>Report</DropdownItem>
       </Link>}
 
     </div>

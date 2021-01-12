@@ -1,30 +1,50 @@
+//imports
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ReactDOM from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
 import Question from './Question';
 
 describe('Question', () => {
-  it('should render displaying a message', () => {
+  let updateAllAnswers;
+  beforeEach(()=> {
 
+    updateAllAnswers= jest.fn()
+
+    render(
+      <BrowserRouter>
+        <Question updateAllAnswers={(updateAllAnswers)}/>
+      </BrowserRouter>
+      );
+    
+  })
+  it('should render all components', () => {
+    const descriptionContainer = screen.getByTestId('description-container')
+    const descriptionTile = screen.getByTestId('description-title')
+    const descriptionBody = screen.getByTestId('description-body')
+    const imageOne = screen.getByTestId('back-image-1')
+    const imageTwo = screen.getByTestId('back-image-2')
+
+    expect(descriptionContainer).toBeInTheDocument()
+    expect(descriptionTile).toBeInTheDocument()
+    expect(descriptionBody).toBeInTheDocument();
+    expect(imageOne).toBeInTheDocument();
+    expect(imageTwo).toBeInTheDocument();
+
+    const question = screen.getByTestId('the-question');
+    expect(question).toBeInTheDocument();
+
+    const input= screen.getByPlaceholderText('your answer here')
+    expect(input).toBeInTheDocument();
   });
 
-  it('should render with a back button', () => {
+  it('should be able to type on the input  field', () => {
+    const input= screen.getByPlaceholderText('your answer here')
+    expect(input).toBeInTheDocument()
 
-  });
-
-  it('should render with a next button', () => {
-
-  });
-
-  it('should render with a question', () => {
-
-  });
-
-  it('should render with an entry form', () => {
-
+    userEvent.type(input, 'This is my question');
+    expect(input).toHaveValue('This is my question')
   });
 
   it('should render with a secondary message', () => {
