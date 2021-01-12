@@ -200,7 +200,9 @@ describe("App", () => {
     userEvent.type(screen.getByRole("textbox"), "770");
     userEvent.click(screen.getByRole("button", {name: "back"}));
 
-    expect(screen.getByText(/Annual Salary/)).toBeInTheDocument();
+    expect(screen.getByDisplayValue("50000")).toBeInTheDocument()
+
+
     await act(() => promise)
   });
 
