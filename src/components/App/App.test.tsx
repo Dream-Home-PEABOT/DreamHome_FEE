@@ -184,9 +184,7 @@ describe("App", () => {
 
     render(
     <MemoryRouter>
-        <ReportContext.Provider value={testContext}>
           <App />
-        </ReportContext.Provider>
     </MemoryRouter>)
 
     userEvent.click(screen.getByTestId('dropdown'));
