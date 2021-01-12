@@ -23,7 +23,7 @@ export const postAnswers = async (answers) => {
 }
 
 export const getReport = async (id: string) => {
-  const response = await fetch("http://localhost:3000/report")
+  const response = await fetch(`https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`)
   if (response.ok) {
     return await response.json()
   } else {
