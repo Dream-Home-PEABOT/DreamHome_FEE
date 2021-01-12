@@ -1,6 +1,7 @@
-import React  from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import {getReport} from '../../apiCalls'
+import { AnswerContext } from '../../types';
+import {getReport, postAnswers} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
 import back_img from '../../images/calculate/Charco - Security.png'
@@ -9,10 +10,12 @@ interface Props{
   updateReport: any;
 }
 
-const GenerateReport: React.FC<Props> = ({ updateReport}) => {
+const GenerateReport: React.FC<Props> = ({ updateReport }) => {
   const requestReport = async () =>{
-    const data = await getReport()
-    updateReport(data)
+    const answers = useContext(AnswerContext)
+    const id = await postAnswers(answers)
+    const data = getReport(id)
+    await updateReport(data)
     // getReport().then((data) => setTimeout(() => updateReport(data), 10000))
   }
 
