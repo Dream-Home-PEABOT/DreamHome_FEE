@@ -104,7 +104,7 @@ describe('ReportCategory', () => {
       />
     );
 
-      expect(screen.getByAltText("location-illustration")).toBeInTheDocument();
+      expect(screen.getByAltText("location-illustration-1")).toBeInTheDocument();
   });
 
 })
