@@ -7,11 +7,11 @@ const Journey:React.FC = () => {
 
   return (
 
-    <section className='journey-section'>
+    <section data-testid='journey-section' className='journey-section'>
 
       <div className="container">
 
-        <div className='information-container'>
+        <div data-testid='information-container' className='information-container'>
           <div className="info-box">
             <h2 className='info'>Hi, my name is Teki and I will be here to accompany you throughout this journey. One thing you should know is that I am a vocabulary specialist.</h2>
           </div>
@@ -26,7 +26,7 @@ const Journey:React.FC = () => {
         </div>
         
         <div className='img-box'>
-          <img src={bkg_img} alt="" className='journey-img'/>
+          <img  data-testid='journey-img' src={bkg_img} alt="journey image" className='journey-img'/>
         </div>
 
         <div className="btn-container">
