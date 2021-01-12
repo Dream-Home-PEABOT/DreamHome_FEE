@@ -38,23 +38,23 @@ interface Props{
         <div className="inner-container">
 
           <div className='desc-container'>
-            <div className="description-box">
-              <h1 className="question-desc">{currentQuestion?.attributes?.classification}</h1>
-              <h2 className='desc'>{currentQuestion?.attributes?.description}</h2>
-              <h2 className='desc'>{currentQuestion?.attributes?.information}</h2>
+            <div className="description-box" data-testid='description-container'>
+              <h1  data-testid='description-title' className="question-desc">{currentQuestion?.attributes?.classification}</h1>
+              <h2  data-testid='description-body' className='desc'>{currentQuestion?.attributes?.description}</h2>
+              {/* <h2 className='desc'>{currentQuestion?.attributes?.information}</h2> */}
             </div>
           </div>
 
         <div className='question_img-box_1'>
-          <img src={bkg_img} alt="" className='question_img'/>
+          <img   data-testid='back-image-1' src={bkg_img} alt="Background images, avatar is stading on the leftsideof the window smiling at you" className='question_img'/>
         </div>
 
         <div className='question_img-box_2'>
-          <img src={location_img} alt="" className='location_img'/>
+          <img  data-testid='back-image-2' src={location_img} alt="" className='location_img'/>
         </div>
 
         {errorMessage && <div className='error_box'>
-          <h3 className='error-input'>{errorMessage}</h3>
+          <h3 data-testid='error-message' className='error-input'>{errorMessage}</h3>
         </div>}
 
         <div className="buttons-box">
@@ -69,19 +69,26 @@ interface Props{
                 next</button> 
             :
               <Link to="/generate_report">
-                <button className='next-btn btn'
+                <button 
+                  data-testid='update-answers-btn'
+                  className='next-btn btn'
                   onClick={() => {updateAllAnswers(answerInput)}}>
                     next</button>
               </Link>}
           </div>
         </div>
 
-        <div className="question-box">
-          <h1 className="question">{currentQuestion?.attributes?.question}</h1>
+        <div className="question-box" data-testid='the-question'>
+          <p className="question">{currentQuestion?.attributes?.question}</p>
         </div>
 
         <div className="input-box">
-          <input type="text" className="input" value={answerInput[questionSet[index]] || ''}
+          <input 
+            placeholder='your answer here'
+            type="text" 
+            className="input" 
+            value={answerInput[questionSet[index]] || ''
+          }
           onChange={(e)=>updateAnswer({...answerInput, 
             [questionSet[index]]: e.target.value})}
           />
