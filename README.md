@@ -7,8 +7,6 @@
 
 `Dream Home` Is an educational / planning application meant to help new home buyers ease into the process of budgeting for their dream home.
 
-## Context
-
 `Dream Home` is a capstone project built by 3 frontend and 3 backend students in mod 4 at the Turing School of Software and Design, it is meant to be be a showcase of the students expertise in agile collaborative development in a completely unguided application.
 
 #### Technologies used:
@@ -48,10 +46,10 @@
 ## In Action
 
 <div align ="center">
-<h3>Home</h3>
-<p align="center">
- <img  src="https://media3.giphy.com/media/2QCSlC1SH0Je4rKPzb/giphy.gif" alt="" height=100% width=80%/>
-</p>
+  <h3>Home</h3>
+    <p align="center">
+      <img  src="https://media1.giphy.com/media/YxFgsAeJqyGycOE0cB/giphy.gif" alt="" height=100% width=80%/>
+    </p>
 </div>
 
 - When a user navigates to the "Dream Home" webpage, they are presented with an inviting animation and simplistic design
@@ -60,33 +58,46 @@
 - If the user has filled out our questionnaire, they will also have a `Report` link which directs them to their report 
 - Clicking `Journey` will launch the user experience
 
-#### Results Page
+---
 
-- Based on the categories the user selected, a filtering process will begin on component mounting that has a few steps
-- The first step is to query the Guild Wars 2 API for `allSkins` and `userSkins` determined by a provided API key (these will each return an array of thousands of IDS)
-- The second step is to run an algorithm to cross reference these Ids to find only the ones the user does not need
-- The third step is to again query the Guild Wars 2 API, this time in 200 id increments (the API limit), to get objects that have the detailed skins information
-- The fourth step is to make each of these objects into a `PreviewSkin` component for the user to interact with (represented as the skins icon)
+<div align ="center">
+  <h3>Journey / Survey</h3>
+</div>
 
-  <img src="https://i.imgur.com/g8sfvVA.png" height=auto width=75%/>
+- After the user clicks the `Journey` link, they will be brought to an introduction page
+- Upon clicking the `Statrt` button they will be brough to the survey page with some more information
 
-#### SkinDetails Page
+---
 
-- As User has the option to click on a `PreviewSkin` component to be brought to a screen with more details about that skin
-- There is brief information about the skin type and other unique values, a link to the WIKI for more info, and a button to add to the users todo list
-- If a user chooses to add the skin to their todo list, it will do so, and persist through route changes.
-- If a user chooses to go to the Wiki page they will be redirected as such
+<div align ="center">
+  <h3>Questionnaire</h3>
+    <p align="center">
+      <img src="https://media1.giphy.com/media/7TGVPEEoTnzUh6tx3b/giphy.gif" height=auto width=75%/>
+    </p>
+</div>
 
-  <img src="https://media.giphy.com/media/SMf3EVgF9iWiLQqcoM/giphy.gif" height=auto width=75%/>
+- Once a user has decided to begin the survey they will be presented with a set of questions
+- These questions will be the foundation for our backend calculations
+- The user will be presented with a tip and educational blurb to help understand why this info is needed
+- If the question is required, the user will be presented with an error
+- If at any time the user wants to change an answer, they may go `back` and see what they previously answered
 
-#### Todo Page
+---
+
+<div align ="center">
+  <h3>Report</h3>
+    <p align="center">
+      <img src="https://media3.giphy.com/media/rcVbuCrOUPQRjqo4Kx/giphy.gif" height=auto width=75%/>
+    </p>
+</div>
 
 
-- The users selected to-do items will exist on this page, which can be found through a button on the `Results` page
-- Currently the todo list does not persist refresh, though it does persist through many other route changes
+- Once the user has completed the questionnaire they will be taken to the generate report page
+- When they are ready to generate their Dream Home report, they will click the `generate report` button
+- The user will be presented with a loading animation, and finally their generated Dream Home report
+- The user may interact the downpayment year to see how long it will take to save for their dream home
 
-
-<img src="https://media.giphy.com/media/KOr3BibCgx8rAS3Isu/giphy.gif" height=auto width=75%/>
+---
 
 ### Set up
 
@@ -96,7 +107,6 @@
   replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
 - `cd` into the repository with the following command `cd <repo-name>`
 - Run `npm install`
-- Set up .env file with API key REACT_APP_API_KEY=your gw2 api key here
 - Run `npm start`
 - Open browser to LocalHost:3000
 
@@ -109,7 +119,7 @@
 - Create a new pull request!
 
 ### Project Managers
-- [Leta](https://github.com/letakeane)
-- [Khalid](https://github.com/khalidwilliams)
+- [Robbie](https://github.com/robbiejaeger)
+- [Kathleen Scriver](https://github.com/KathleenScriver)
 
 
