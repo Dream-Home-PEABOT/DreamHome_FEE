@@ -121,7 +121,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it.only("User should see error message if questions is unanswered and next is pressed", async () => {
+  it.only("User should see error message if question is unanswered and next is pressed", async () => {
 
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
@@ -142,6 +142,36 @@ describe("App", () => {
     await waitFor(()=> expect(screen.getByText(/Sorry/)).toBeInTheDocument());
     expect(screen.getByText(/Sorry but we need this information/)).toBeInTheDocument();
 
+    await act(() => promise)
+  });
+
+  it.only("User should be able to fill out full questionare", async () => {
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    await waitFor(async () =>  await questionResults())
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+
+    await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
+
+    userEvent.type(screen.getByRole("textbox"), "50000");
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+
+    await waitFor(()=> expect(screen.getByText(/Credit/)).toBeInTheDocument());
+
+    expect(screen.getByText(/What is your current credit score?/)).toBeInTheDocument();
+
+    userEvent.type(screen.getByRole("textbox"), "770");
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+
+    expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
     await act(() => promise)
   });
 
