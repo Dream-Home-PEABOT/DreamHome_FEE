@@ -176,12 +176,10 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it("User should move on to loading screen on generate report clik", async () => {
+  it("User should move on to loading screen on generate report click", async () => {
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
-    let testContext;
 
-    await waitFor(async () =>  testContext = await mockedReport())
     await waitFor(async () =>  await questionResults())
 
     render(
@@ -208,82 +206,83 @@ describe("App", () => {
     userEvent.type(screen.getByRole("textbox"), "770");
     userEvent.click(screen.getByRole("button", {name: "next"}));
 
-    //Animations currently break this button click, simulate click and move on to next test
-    //expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
+    expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
     
+    //Animations currently break this button click, simulate click and move on to next test
+    //userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
     await act(() => promise)
   });
-  it.only("User should see their report after loading screen", async () => {
-  let mockedReport = getReport.mockResolvedValue({
-    "location": {
-      "zip_code": 11111,
-      "location": "Anywhere, CO"
-    },
-    "principal": {
-      "based_on_rent": 350000,
-      "goal_principal": 0
-    },
-    "monthly": {
-      "monthly_principal": 1400,
-      "estimated_true_monthly": 1940,
-      "add_ons": {
-        "home_insurance": 110,
-        "property_tax": 105,
-        "hoa": 75,
-        "pmi": 250
-      }
-    },
-    "downpayment": {
-      "down_payment_percentage_selected": 10,
-      "down_payment_saved": 10000,
-      "down_payment_percent_saved": 2.9,
-      "ten_year_plan": {
-        "one": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "two": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "three": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "four": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "five": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "six": {
-          "monthly_savins": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "seven": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "eight": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "nine": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
-        },
-        "ten": {
-          "monthly_savings": 100,
-          "goal_end_date": "12/03/2025"
+  it("User should see their report after loading screen", async () => {
+    let mockedReport = getReport.mockResolvedValue({
+      "location": {
+        "zip_code": 11111,
+        "location": "Anywhere, CO"
+      },
+      "principal": {
+        "based_on_rent": 350000,
+        "goal_principal": 0
+      },
+      "monthly": {
+        "monthly_principal": 1400,
+        "estimated_true_monthly": 1940,
+        "add_ons": {
+          "home_insurance": 110,
+          "property_tax": 105,
+          "hoa": 75,
+          "pmi": 250
+        }
+      },
+      "downpayment": {
+        "down_payment_percentage_selected": 10,
+        "down_payment_saved": 10000,
+        "down_payment_percent_saved": 2.9,
+        "ten_year_plan": {
+          "one": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "two": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "three": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "four": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "five": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "six": {
+            "monthly_savins": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "seven": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "eight": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "nine": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          },
+          "ten": {
+            "monthly_savings": 100,
+            "goal_end_date": "12/03/2025"
+          }
         }
       }
-    }
-  })
-  const promise = Promise.resolve()
-  const updateAllAnswers = jest.fn(() => promise)
-  let testContext
+    })
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+    let testContext
 
   await waitFor(async () =>  testContext = await mockedReport())
 
