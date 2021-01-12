@@ -226,7 +226,7 @@ describe("App", () => {
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Home'));
 
-    expect(window.location.pathname).toBe("/")
+    expect(screen.getAllByText(/Home/)).toHaveLength(3);
 
 
     await act(() => promise)
@@ -355,7 +355,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it("User should see their report after loading screen", async () => {
+  it("User should be able to go back to home page from report", async () => {
 
     let mockedReport = getReport.mockResolvedValue({
       "location": {
@@ -441,7 +441,7 @@ describe("App", () => {
 
     expect(screen.getByText(/My Numbers/)).toBeInTheDocument();
     userEvent.click(screen.getByTestId('dropdown'));
-    expect(screen.getByText(/Home/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Home/)).toHaveLength(3);
 
     await act(() => promise)
   });
