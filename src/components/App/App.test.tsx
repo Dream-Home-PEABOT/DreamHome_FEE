@@ -121,6 +121,30 @@ describe("App", () => {
     await act(() => promise)
   });
 
+  it.only("User should see error message if questions is unanswered and next is pressed", async () => {
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    await waitFor(async () =>  await questionResults())
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
+    userEvent.click(screen.getByTestId('dropdown'));
+    userEvent.click(screen.getByText('Journey'));
+    userEvent.click(screen.getByRole("button", {name: "Start"}));
+    userEvent.click(screen.getByRole("button", {name: "Begin"}));
+
+    await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
+
+    userEvent.click(screen.getByRole("button", {name: "next"}));
+
+    await waitFor(()=> expect(screen.getByText(/Sorry/)).toBeInTheDocument());
+    expect(screen.getByText(/Sorry but we need this information/)).toBeInTheDocument();
+
+    await act(() => promise)
+  });
+
   it("User should be taken to generate report page when done with questions", async () => {
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
@@ -137,6 +161,7 @@ describe("App", () => {
 
     await act(() => promise)
   });
+
   it("User should be taken to generate report page when done with questions", async () => {
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
