@@ -32,6 +32,7 @@ export const postAnswers = async (answers: Answers) => {
   })
 =======
 
+<<<<<<< HEAD
 export const getReport = async (id: string) => {
   const response = await fetch(`https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`)
 >>>>>>> 0a8f4f9... add backend endpoint to education api call
@@ -43,6 +44,8 @@ export const getReport = async (id: string) => {
 }
 <<<<<<< HEAD
 
+=======
+>>>>>>> 13d7067... comment out unnedded api call for deployment test
 // export const getReport = async (id: string) => {
 //   const response = await fetch(`https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`)
 //   if (response.ok) {
@@ -51,6 +54,9 @@ export const getReport = async (id: string) => {
 //     return response
 //   }
 // }
+<<<<<<< HEAD
 // GET report: https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}
 =======
 >>>>>>> 0a8f4f9... add backend endpoint to education api call
+=======
+>>>>>>> 13d7067... comment out unnedded api call for deployment test
