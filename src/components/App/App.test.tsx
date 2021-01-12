@@ -5,8 +5,8 @@ import { MemoryRouter } from "react-router-dom";
 import {getQuestions, getReport} from '../../apiCalls';
 import "@testing-library/jest-dom";
 import App from './App';
+jest.mock("../../apiCalls.tsx");
   let questionResults = getQuestions.mockResolvedValue([{
-    {
       "annual_salary": {
         "attributes": {
         "classification": "Annual Salary",
@@ -30,8 +30,7 @@ import App from './App';
       },
       "id": "5ff7a752be8682d9e5b0e0c6",
       "type": "Education object"
-      },
-  }]);
+  }}]);
 
 describe("App", () => {
   it("User should see home page by default", () => {
