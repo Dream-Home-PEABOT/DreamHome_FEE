@@ -3,7 +3,11 @@ import './Error.css';
 import error_img from '../../images/errors/Big Shoes - Torso.png'
 import bkg_img from '../../images/errors/Charco - Broken.png'
 
-const Error: React.FC = () => {
+interface props{
+  errorMessage: string;
+  errorNum: number;
+}
+const Error: React.FC<props> = ({errorNum, errorMessage}) => {
 
   return (
 
@@ -14,7 +18,10 @@ const Error: React.FC = () => {
         <div className="box-3"></div>
         <div className="message--box">
           <h1 className="error-message">
-            404 Error
+            {errorNum}Error
+          </h1>
+          <h1 style={{fontSize: '2em'}} className="error-message">
+            {errorMessage}
           </h1>
         </div>
         <div className="err-box-2">
