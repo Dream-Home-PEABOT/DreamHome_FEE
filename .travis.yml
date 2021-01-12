@@ -6,4 +6,3 @@ notifications:
 deploy:
   provider: heroku
   app: dream-home-cap
-    main: deploy
