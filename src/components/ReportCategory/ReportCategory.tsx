@@ -36,7 +36,7 @@ export const ReportCategory = (props: any ) => {
     if(props.plan){
       setCurrentPlan(props.plan[year])
     }
-  })
+  }, [props.plan, year])
 
   const updateValue = (year: any) => {
     setYear(year)
