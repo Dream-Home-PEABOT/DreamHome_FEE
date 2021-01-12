@@ -10,6 +10,7 @@ jest.mock("../../apiCalls");
 
 let questionResults
 describe("App", () => {
+
   beforeEach(()=>{
   questionResults  = getQuestions.mockResolvedValue({
       "annual_salary": {
@@ -36,57 +37,68 @@ describe("App", () => {
       "id": "5ff7a752be8682d9e5b0e0c6",
       "type": "Education object"
   }});
-
   })
 
   it("User should see home page by default", async () => {
-    await act(async()=>{
-      await waitFor(async () =>  await questionResults())
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
-    })
-    expect(screen.getByText("Dream Home")).toBeInTheDocument();
-  });
-  it.only("User should be able to click on the nav dropdown", async () => {
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
+    const updateQuestions = jest.fn(() => promise)
+
+    await waitFor(async () =>  await questionResults())
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
+    expect(screen.getByText("Dream Home")).toBeInTheDocument();
+
+    await act(() => promise)
+  });
+
+  it("User should be able to click on the nav dropdown", async () => {
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
     userEvent.click(screen.getByTestId('dropdown'));
+
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Journey")).toBeInTheDocument();
     expect(screen.getByText("Login")).toBeInTheDocument();
+
     await act(() => promise)
   });
-  it("User should be able to click the journey link and be taken to the journey route", () => {
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
+
+  it("User should be able to click the journey link and be taken to the journey route", async () => {
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Journey'));
+
     expect(screen.getByText(/Hi, my name is Teki/)).toBeInTheDocument();
+
+    await act(() => promise)
   });
-  it("User should be taken to survery page when clicking start", () => {
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
+
+  it.only("User should be taken to survery page when clicking start", async () => {
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Journey'));
     userEvent.click(screen.getByRole("button", {name: "Start"}));
+
     expect(screen.getByText(/While every person/)).toBeInTheDocument();
+
+    await act(() => promise)
   });
   it("User should be taken to first question when clicking start on survey", async () => {
-    await act(async()=>{
       await waitFor(async () =>  await questionResults())
     render(
       <MemoryRouter>
@@ -97,8 +109,9 @@ describe("App", () => {
     userEvent.click(screen.getByText('Journey'));
     userEvent.click(screen.getByRole("button", {name: "Start"}));
     userEvent.click(screen.getByRole("button", {name: "Begin"}));
-    })
+
     await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
+
     expect(screen.getByRole("button", {name: "next"})).toBeInTheDocument();
   });
   it("User should be taken to generate report page when done with questions", () => {
