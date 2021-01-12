@@ -36,9 +36,15 @@ const App:React.FC = () =>{
       return questions
   }
 
+  const populateQuestions = async () =>{
+    const data = await getQuestions()
+    buildAnswers(data)
+    updateQuestions(data)
+  }
+
   useEffect(() => {
-    getQuestions().then((data) => buildAnswers(data) ).then((data) => updateQuestions(data))
-  }, []);
+    populateQuestions()
+  },[]);
 
   return (
     <QuestionContext.Provider value={questions}>
