@@ -38,6 +38,7 @@ const App:React.FC = () =>{
 
   const populateQuestions = async () =>{
     const data = await getQuestions()
+    await data
     buildAnswers(data)
     updateQuestions(data)
   }
