@@ -19,6 +19,12 @@ const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
   const [report, updateReport] = useState<any>(null);
+  //This errro will change depending on the request error
+  const [errorMessage, setError] = useState<any>('Oops an error has occurred')
+  //This one will be the error number ex 404, 500  etc.... 
+  //the idea is to pass  the information down to the error page
+  const [errorNum, setErrorNum] = useState<any>(404)
+
 
   const { location } = useContext<any>(__RouterContext)
   const transitions = useTransition(location, location => location.pathname, {
@@ -59,11 +65,15 @@ const App:React.FC = () =>{
             <Route exact path="/journey" component={Journey}/>
             <Route exact path="/survey" component={Survey}/>
             <Route exact path="/question" component={()=><Question
-                updateAllAnswers={updateAllAnswers}/>}/>
+                updateAllAnswers={updateAllAnswers}/>
+                }/>
             <Route exact path="/generate_report" component={()=><GenerateReport
-                updateReport={updateReport}/>}/>
+                updateReport={updateReport}/>
+                }/>
             <Route exact path="/report" component={Report} />
-            <Route path='/*' component={Error}/>
+            <Route path='/*' component={() => <Error
+              errorMessage={errorMessage} errorNum={errorNum}/>
+              }/>
           </Switch>
           </animated.div>
         ))}
