@@ -28,7 +28,7 @@ describe('ReportCategory', () => {
         }
       },
       downpayment: {
-        down_payment_percentage_selected: 10,
+        down_payment_percentage_selected: '10%',
         down_payment_saved: 10000,
         down_payment_percent_saved: 2.9,
         ten_year_plan: {
@@ -83,7 +83,7 @@ describe('ReportCategory', () => {
     }
 
     const fakeReportData = Object.keys(fakeData);
-    const fakeSubtitle_2 = fakeData._location;
+    const fakeSubtitle_2 = '_location';
     const fakeKey = 0;
 
     render (
@@ -114,7 +114,7 @@ describe('ReportCategory', () => {
     }
 
     const fakeReportData = Object.keys(fakeData);
-    const fakeSubtitle_2 = fakeData._location;
+    const fakeSubtitle_2 = '_location';
     const fakeKey = 0;
 
     render (
@@ -148,14 +148,14 @@ describe('ReportCategory', () => {
     }
 
     const fakeReportData = Object.keys(fakeData);
-    const fakeSubtitle_2 = fakeData._location;
+    const fakeSubtitle_2 = 'Denver';
     const fakeKey = 0;
 
     render (
       <ReportCategory
       position={fakeKey + 1}
       key={fakeKey}
-      plan={fakeData.downpayment.ten_year_plan}
+      plan={null}
       categoryName={fakeReportData[0]}
       categoryMainNumber={fakeUserReport.zip_code || fakeData.principal.based_on_rent
       || fakeData.monthly.monthly_principal
@@ -172,6 +172,7 @@ describe('ReportCategory', () => {
       expect(screen.getByText("11111")).toBeInTheDocument();
       expect(screen.getByText("_location")).toBeInTheDocument();
       expect(screen.getByText("location")).toBeInTheDocument();
+      expect(screen.getByText("Anywhere, CO")).toBeInTheDocument();
   });
 
   it('should render information about principal depending on the props passed in', () => {
@@ -181,14 +182,14 @@ describe('ReportCategory', () => {
     }
 
     const fakeReportData = Object.keys(fakeData);
-    const fakeSubtitle_2 = fakeData._location;
+    const fakeSubtitle_2 = "_location";
     const fakeKey = 0;
 
     render (
       <ReportCategory
       position={fakeKey + 1}
       key={fakeKey}
-      plan={fakeData.downpayment.ten_year_plan}
+      plan={null}
       categoryName={fakeReportData[0]}
       categoryMainNumber={fakeUserReport.zip_code || fakeData.principal.based_on_rent
       || fakeData.monthly.monthly_principal
@@ -202,6 +203,7 @@ describe('ReportCategory', () => {
       /> );
 
       expect(screen.getByText("350000")).toBeInTheDocument();
+      expect(screen.getByText("5")).toBeInTheDocument();
   });
 
   it('should render information about monthly costs depending on the props passed in', () => {
@@ -216,14 +218,14 @@ describe('ReportCategory', () => {
     }
 
     const fakeReportData = Object.keys(fakeData);
-    const fakeSubtitle_2 = fakeData._location;
+    const fakeSubtitle_2 = 'location';
     const fakeKey = 0;
 
     render (
       <ReportCategory
       position={fakeKey + 1}
       key={fakeKey}
-      plan={fakeData.downpayment.ten_year_plan}
+      plan={null}
       categoryName={fakeReportData[0]}
       categoryMainNumber={fakeUserReport.zip_code || fakeUserReport2.based_on_rent
       || fakeData.monthly.monthly_principal
@@ -237,6 +239,49 @@ describe('ReportCategory', () => {
       /> );
 
       expect(screen.getByText("1400")).toBeInTheDocument();
+      expect(screen.getByText("1940")).toBeInTheDocument();
   });
+
+  it('should render information about down payment depending on the props passed in', () => {
+    const fakeUserReport = {
+      zip_code: null,
+      location: null
+    };
+
+    const fakeUserReport2 = {
+      based_on_rent: null,
+      goal_principal: null
+    };
+
+    const fakeUserReport3 = {
+      monthly_principal: null,
+      estimated_true_monthly: null,
+      add_ons: null
+    };
+
+    const fakeReportData = Object.keys(fakeData);
+    const fakeSubtitle_2 = '_location';
+    const fakeKey = 0;
+
+    render (
+      <ReportCategory
+      position={fakeKey + 1}
+      key={fakeKey}
+      plan={fakeData.downpayment.ten_year_plan}
+      categoryName={fakeReportData[0]}
+      categoryMainNumber={fakeUserReport.zip_code || fakeUserReport2.based_on_rent
+      || fakeUserReport3.monthly_principal
+      || fakeData.downpayment.down_payment_percentage_selected}
+      categoryMainTitle={'location'}
+      categorySubtitle={fakeSubtitle_2}
+      categorySecondNumber={fakeUserReport.location || fakeUserReport2.goal_principal
+      || fakeUserReport3.estimated_true_monthly
+      || fakeData.downpayment.down_payment_saved}
+      categoryID={fakeKey + 1}
+      /> );
+
+      expect(screen.getByText("10%")).toBeInTheDocument();
+  });
+
 
 })
