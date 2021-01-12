@@ -84,7 +84,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it.only("User should be taken to survery page when clicking start", async () => {
+  it("User should be taken to survery page when clicking start", async () => {
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)
 
@@ -99,12 +99,14 @@ describe("App", () => {
     await act(() => promise)
   });
   it("User should be taken to first question when clicking start on survey", async () => {
-      await waitFor(async () =>  await questionResults())
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
+
+    const promise = Promise.resolve()
+    const updateAllAnswers = jest.fn(() => promise)
+
+    await waitFor(async () =>  await questionResults())
+
+    render(<MemoryRouter><App /></MemoryRouter>);
+
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Journey'));
     userEvent.click(screen.getByRole("button", {name: "Start"}));
@@ -113,6 +115,8 @@ describe("App", () => {
     await waitFor(()=> expect(screen.getByText(/Annual Salary/)).toBeInTheDocument());
 
     expect(screen.getByRole("button", {name: "next"})).toBeInTheDocument();
+
+    await act(() => promise)
   });
   it("User should be taken to generate report page when done with questions", () => {
     render(
