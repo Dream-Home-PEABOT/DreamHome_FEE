@@ -10,3 +10,4 @@ deploy:
   app: dream-home-cap
   on:
     all_branches: true
+    skip_cleanup: true
