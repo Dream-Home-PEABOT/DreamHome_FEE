@@ -1,5 +1,5 @@
 export const getQuestions = async () => {
-  const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/education')
+  const response = await fetch('http://localhost:3000/data')
   if (response.ok) {
     return await response.json()
   } else {
@@ -9,7 +9,7 @@ export const getQuestions = async () => {
 
 //POST endpoint: 'https://dreamhome-mvp.herokuapp.com/api/v1/report'
 
-export const getReport = async (id: string) => {
+export const getReport = async () => {
   const response = await fetch("http://localhost:3000/report")
   if (response.ok) {
     return await response.json()
