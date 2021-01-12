@@ -3,3 +3,7 @@ node_js:
   - "node"
 notifications:
   email: false
+deploy:
+  provider: heroku
+  app: dream-home-cap
+    main: deploy
