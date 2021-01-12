@@ -16,7 +16,6 @@ const Report = () => {
     const reportData = Object.keys(userReport)
 
     return reportData.map((data, key) =>{
-      console.log(userReport[data], key)
       let subtitle_1 = Object.keys(userReport[data])[0].replace(/_|\-/g, " ")
       let subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
 
