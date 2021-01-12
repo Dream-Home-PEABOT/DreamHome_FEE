@@ -1,23 +1,31 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ReactDOM from 'react-dom';
-import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
-
 import Home from './Home';
 
 describe('Home', () => {
-  it('should render with the app title', () => {
-//    render(<Home />);
-//
-//    expect(screen.getByText('My')).toBeInTheDocument();
-//    expect(screen.getByText('Dream Home')).toBeInTheDocument();
-//  });
-//
-//  it('should render with an image', () => {
-//    render(<Home />);
-//
-//    expect(screen.getByAltText('teki-home')).toBeInTheDocument();
-  })
 
-})
+  describe('Home', () => {
+    beforeEach(() => {
+  
+      render(
+        <BrowserRouter>
+          <Home/>
+        </BrowserRouter>
+        );
+    })
+    
+  it('should render all home components', () => {
+    const mainContainer = screen.getByTestId('main container') 
+    const titleTop = screen.getByTestId('My')
+    const titleDow = screen.getByTestId('Dream Home')
+    const banner = screen.getByTestId('journey edition')
+
+    expect(mainContainer).toBeInTheDocument()
+    expect(titleTop ).toBeInTheDocument()
+    expect(titleDow ).toBeInTheDocument()
+    expect(banner).toBeInTheDocument()
+
+    });
+  });
+});
