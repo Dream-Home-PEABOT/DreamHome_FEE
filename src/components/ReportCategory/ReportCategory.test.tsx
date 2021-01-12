@@ -15,7 +15,7 @@ describe('ReportCategory', () => {
       },
       principal: {
         based_on_rent: 350000,
-        goal_principal: 0
+        goal_principal: 5
       },
       monthly: {
         monthly_principal: 1400,
@@ -141,7 +141,7 @@ describe('ReportCategory', () => {
       expect(screen.getByText("date is")).toBeInTheDocument();
   });
 
-  it('should render information depending on the props passed in', () => {
+  it('should render information about location depending on the props passed in', () => {
     const fakeUserReport = {
       zip_code: 11111,
       location: "Anywhere, CO"
@@ -172,6 +172,38 @@ describe('ReportCategory', () => {
       expect(screen.getByText("11111")).toBeInTheDocument();
       expect(screen.getByText("_location")).toBeInTheDocument();
       expect(screen.getByText("location")).toBeInTheDocument();
-  })
+  });
+
+  it('should render information about principal depending on the props passed in', () => {
+    const fakeUserReport = {
+      zip_code: null,
+      location: null
+    }
+
+    const fakeReportData = Object.keys(fakeData);
+    const fakeSubtitle_2 = fakeData._location;
+    const fakeKey = 0;
+
+    render (
+      <ReportCategory
+      position={fakeKey + 1}
+      key={fakeKey}
+      plan={fakeData.downpayment.ten_year_plan}
+      categoryName={fakeReportData[0]}
+      categoryMainNumber={fakeUserReport.zip_code || fakeData.principal.based_on_rent
+      || fakeData.monthly.monthly_principal
+      || fakeData.downpayment.down_payment_percentage_selected}
+      categoryMainTitle={'location'}
+      categorySubtitle={fakeSubtitle_2}
+      categorySecondNumber={fakeUserReport.location || fakeData.principal.goal_principal
+      || fakeData.monthly.estimated_true_monthly
+      || fakeData.downpayment.down_payment_saved}
+      categoryID={fakeKey + 1}
+      /> );
+
+      expect(screen.getByText("350000")).toBeInTheDocument();
+  });
+
+  
 
 })
