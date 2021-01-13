@@ -21,7 +21,7 @@ export interface AllQuestionFormat{
 export interface Answers{
   salary: string,
   zipcode: string,
-  credit: string,
+  credit_score: string,
   monthly_debt: string,
   downpayment_savings: string,
   downpayment_percentage: string,
