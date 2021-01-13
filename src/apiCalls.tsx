@@ -1,7 +1,11 @@
 import { Answers } from './types';
 
 export const getQuestions = async () => {
-  const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/education')
+  const response = await fetch('https://fe-cors-proxy.herokuapp.com', {
+    headers: {
+      "Target-URL": `https://dreamhome-mvp.herokuapp.com/api/v1/education`
+    }
+  })
   if (response.ok) {
     return await response.json()
   } else {
@@ -24,7 +28,9 @@ export const getQuestions = async () => {
 export const postAnswers = async (answers: Answers) => {
   const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/report', {
     method: 'POST',
-    headers: {"Content-Type": "application/json"},
+    headers: {
+    "Content-Type": "application/json",
+    },
     body: JSON.stringify(answers)
   })
   if (response.ok) {
