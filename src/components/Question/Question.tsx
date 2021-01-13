@@ -20,11 +20,11 @@ interface Props{
     let currentQuestion = questionContext[questionSet[index]]
 
     const nextQuestion = () => {
-        setErrorMessage(!answerInput[questionSet[index]] 
-          ? 'Sorry but we need this information' 
+        setErrorMessage(!answerInput[questionSet[index]]
+          ? 'Sorry but we need this information'
           : '')
-        setIndex(index < questionSet.length && answerInput[questionSet[index]] 
-          ? index + 1 
+        setIndex(index < questionSet.length && answerInput[questionSet[index]]
+          ? index + 1
           :  index);
     }
 
@@ -34,7 +34,7 @@ interface Props{
 
     return (
       <section className='question-section'>
-        
+
         <div className="inner-container">
 
           <div className='desc-container'>
@@ -46,7 +46,7 @@ interface Props{
           </div>
 
         <div className='question_img-box_1'>
-          <img   data-testid='back-image-1' src={bkg_img} alt="Background images, avatar is stading on the leftsideof the window smiling at you" className='question_img'/>
+          <img   data-testid='back-image-1' src={bkg_img} alt="Background images, avatar is stading on the left side of the window smiling at you" className='question_img'/>
         </div>
 
         <div className='question_img-box_2'>
@@ -63,13 +63,13 @@ interface Props{
               onClick={() => {prevQuestion()}}>back</button>
           </div>
           <div className="bx">
-            {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1 
+            {questionSet.indexOf(questionSet[index]) !== questionSet.length - 1
             ? <button className='next-btn btn'
               onClick={() => {nextQuestion()}}>
-                next</button> 
+                next</button>
             :
               <Link to="/generate_report">
-                <button 
+                <button
                   data-testid='update-answers-btn'
                   className='next-btn btn'
                   onClick={() => {updateAllAnswers(answerInput)}}>
@@ -83,13 +83,13 @@ interface Props{
         </div>
 
         <div className="input-box">
-          <input 
+          <input
             placeholder='your answer here'
-            type="text" 
-            className="input" 
+            type="text"
+            className="input"
             value={answerInput[questionSet[index]] || ''
           }
-          onChange={(e)=>updateAnswer({...answerInput, 
+          onChange={(e)=>updateAnswer({...answerInput,
             [questionSet[index]]: e.target.value})}
           />
         </div>
@@ -108,4 +108,3 @@ interface Props{
 };
 
 export default Question
- 

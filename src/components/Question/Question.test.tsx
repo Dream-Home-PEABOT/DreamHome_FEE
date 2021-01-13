@@ -17,7 +17,7 @@ describe('Question', () => {
         <Question updateAllAnswers={(updateAllAnswers)}/>
       </BrowserRouter>
       );
-    
+
   })
   it('should render all components', () => {
     const descriptionContainer = screen.getByTestId('description-container')
@@ -39,28 +39,12 @@ describe('Question', () => {
     expect(input).toBeInTheDocument();
   });
 
-  it('should be able to type on the input  field', () => {
+  it('should be able to type on the input field', () => {
     const input= screen.getByPlaceholderText('your answer here')
     expect(input).toBeInTheDocument()
 
-    userEvent.type(input, 'This is my question');
-    expect(input).toHaveValue('This is my question')
-  });
-
-  it('should render with a secondary message', () => {
-
-  });
-
-  it('for a user, should be able to click the back button', () => {
-
-  });
-
-  it('for a user, should be able to click the next button', () => {
-
-  });
-
-  it('for a user, the input form value should change as they fill it in', () => {
-
+    userEvent.type(input, 'This is my answer');
+    expect(input).toHaveValue('This is my answer')
   });
 
 })
