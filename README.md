@@ -8,14 +8,11 @@
 #### Technologies used:
 
   * Typescript
-  * React
   * React Hooks
   * React Router
   * CSS
   * TravisCI
   * Heroku
-  * Git
-  * GitHub
 
 ### Challenges
 
