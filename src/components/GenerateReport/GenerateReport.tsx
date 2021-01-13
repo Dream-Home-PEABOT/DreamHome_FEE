@@ -17,7 +17,7 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
     const formattedAnswers: Answers = {
       salary: answers.annual_salary,
       zipcode: answers.zip_code,
-      credit: answers.credit_score,
+      credit_score: answers.credit_score,
       monthly_debt: answers.monthly_debt,
       downpayment_savings: answers.downpayment_savings,
       downpayment_percentage:answers.downpayment_percentage,
