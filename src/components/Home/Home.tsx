@@ -33,8 +33,8 @@ const Home: React.FC = () => {
 
         </Spring>
           <div className="report-plan">
-            <h1 className='plan-title' data-testid='Dream Home'>Start your journey with us</h1>
-            <h1 className='plan-title' data-testid='Dream Home'>to start building your path to your dream home...</h1>
+            <h1 className='plan-title' data-testid='Dream Home-2'>Start your journey with us</h1>
+            <h1 className='plan-title' data-testid='Dream Home-3'>to start building your path to your dream home...</h1>
           </div>
 
       </div>
