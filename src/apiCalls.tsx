@@ -44,6 +44,7 @@ export const getReport = async (id: string) => {
 }
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 >>>>>>> 13d7067... comment out unnedded api call for deployment test
 // export const getReport = async (id: string) => {
@@ -60,3 +61,14 @@ export const getReport = async (id: string) => {
 >>>>>>> 0a8f4f9... add backend endpoint to education api call
 =======
 >>>>>>> 13d7067... comment out unnedded api call for deployment test
+=======
+export const getReport = async (id: string) => {
+  const response = await fetch("http://localhost:3000/report")
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return response
+  }
+}
+// GET report: https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}
+>>>>>>> d2389c2... add back mocked api to resolve build error
