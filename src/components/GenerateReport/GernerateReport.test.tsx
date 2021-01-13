@@ -42,7 +42,8 @@ describe('GenerateReport', () => {
  it('should render with images', () => {
 
 
-
+   expect(screen.getByAltText('teki-sitting')).toBeInTheDocument();
+   expect(screen.getByAltText('background-graphics')).toBeInTheDocument();
  });
 
  it('should render with a button to generate a report', () => {
