@@ -1,23 +1,18 @@
-
-#### Overview
+### Overview
 
 `Dream Home` Is an educational / planning application meant to help new home buyers ease into the process of budgeting for their dream home.
 
-## Context
-
 `Dream Home` is a capstone project built by 3 frontend and 3 backend students in mod 4 at the Turing School of Software and Design, it is meant to be be a showcase of the students expertise in agile collaborative development in a completely unguided application.
 
-#### Technologies used:
+### Technologies used:
 
   * Typescript
-  * React
   * React Hooks
   * React Router
   * CSS
   * TravisCI
   * Heroku
-  * Git
-  * GitHub
+  * Jest
 
 ### Challenges
 
@@ -95,6 +90,7 @@
 - The user will be presented with a loading animation, and finally their generated Dream Home report
 - The user may interact the downpayment year to see how long it will take to save for their dream home
 
+---
 
 ### Set up
 
