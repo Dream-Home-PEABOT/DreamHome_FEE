@@ -40,9 +40,9 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       <div className='desc-container'>
 
           <div className="description-box">
-            <h1 className="question-desc">Yearly Salary After Taxes</h1>
-            <h2 className='desc'>"There’s no single answer to the question “Should I rent or buy?” Your solution depends on where you live, whether renting or buying an equivalent home is cheaper, and on additional assumptions you can include in your analysis</h2>
-            <h2 className='desc'>Don't worry we will calculate everything for you</h2>
+            <h1 className="question-desc">Let's See Your Report!</h1>
+            <h2 className='desc'>This report will give you information that will help you understand what steps you need to take to be on the right path to your Dream Home, or give you an idea of what your goals could look like on your current path. Click the button and let's do some calculations!</h2>
+            <h2 className='desc'>Click the link at the bottom of your report to register and track your progress over time.</h2>
           </div>
         </div>
 

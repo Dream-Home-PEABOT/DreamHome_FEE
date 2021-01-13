@@ -10,7 +10,7 @@ describe('GenerateReport', () => {
   it('should render with a description', () => {
 //    render(<GenerateReport />);
 //
-//    expect(screen.getByText('Yearly Salary After Taxes')).toBeInTheDocument();
+//    expect(screen.getByText('Let's See Your Report!')).toBeInTheDocument();
 //  });
 //
 //  it('should render with images', () => {

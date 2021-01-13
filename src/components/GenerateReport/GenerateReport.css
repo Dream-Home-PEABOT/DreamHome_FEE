@@ -15,12 +15,12 @@
 
 
 .submit-btn{
-  background-color: #89BD9E;
+  background-color: #3e9a64;
   border: none;
 }
 
 .submit-btn:hover{
-  background-color: #F0C808;
+  background-color: #89BD9E;
   color: #1A1A1A;
 }
 
