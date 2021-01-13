@@ -11,7 +11,7 @@ const NavBar:React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   
   const closeBar = () => {
-    window.scrollTo(0, 1000)
+    // window.scrollTo(0, 1000)
     setOpen(false)
   }
 

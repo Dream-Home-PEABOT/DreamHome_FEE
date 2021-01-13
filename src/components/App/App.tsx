@@ -39,20 +39,17 @@ const App:React.FC = () =>{
   }
 
   const populateQuestions = async () =>{
-    // if (!unmounted.current){
+    if (!unmounted.current){
       const data = await getQuestions()
-      console.log('getting data')
-
-    // await data
+    await data
     buildAnswers(data)
     updateQuestions(data)
-    // }
+    }
   }
 
   useEffect(() => {
-    console.log('yeet')
     populateQuestions()
-    // return () => { unmounted.current = true }
+    return ()=> { unmounted.current = true }
   },[]);
 
   return (

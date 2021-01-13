@@ -40,7 +40,7 @@ const Journey:React.FC = () => {
 
         <div className="btn-container">
           <Link to="/survey">
-          <button onClick={() => window.scrollTo(0, 1000)} className="btn">Start</button>
+          <button className="btn">Start</button>
           </Link>
         </div>
 
