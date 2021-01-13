@@ -1,7 +1,7 @@
 import React  from 'react';
 import bkg_img from '../../images/home/Big Shoes - Standing Pose.png';
 import './Home.css';
-import {Spring} from 'react-spring/renderprops';
+import { Spring } from 'react-spring/renderprops';
 
 const Home: React.FC = () => {
 
@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       <div className="main-container" data-testid='main container'>
 
         <Spring
-        from={{ opacity: 0, margin: -1000}}
+        from={{ opacity: 0, margin: 1000}}
         to={{ opacity: 1, margin: 0}}
         config={{delay: 1000, duration: 1000}}
         >
@@ -30,7 +30,12 @@ const Home: React.FC = () => {
           {props => <div style={props} className="img-container">
             <img src={bkg_img} alt="Big Shoes - Standing Pose" className='main-image'/>
           </div>}
+
         </Spring>
+          <div className="report-plan">
+            <h1 className='plan-title' data-testid='Dream Home'>Start your journey with us</h1>
+            <h1 className='plan-title' data-testid='Dream Home'>and start by building your home report...</h1>
+          </div>
 
       </div>
 

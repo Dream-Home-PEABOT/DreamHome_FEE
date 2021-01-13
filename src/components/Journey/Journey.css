@@ -1,10 +1,10 @@
 .journey-section{
   background-color: #F0C808;
-  height: 100vh;
+  /* height: 85vh; */
 }
 
 .container{
-  height: 100%;
+  height: 85vh;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -77,11 +77,31 @@ justify-content: center;
 }
 
 .journey-img{
-  height: 82vh;
+  height: 72vh;;
 }
 
 .buttons-box {
   justify-content: center;
 }
 
+.action-box{
+  grid-area: 4/ 3/ 4 / 5;
+  
+}
 
+.action-container{
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:#1A1A1A;
+}
+
+.action{
+  font-size: 1.5em;
+  text-align-last: right;
+  font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: white;
+}

@@ -13,7 +13,12 @@ const Journey:React.FC = () => {
 
         <div data-testid='information-container' className='information-container'>
           <div className="info-box">
-            <h2 className='info'>Hi, my name is Teki and I will be here to accompany you throughout this journey. One thing you should know is that I am a vocabulary specialist.</h2>
+            <h2 className='info'>
+              Hi, my name is Teki and want to help you find
+              your dream home. My approach is a bit different
+              because I will be focusing on your journey.<br/> We need a
+              plan and with your information I will help you to build one.
+              </h2>
           </div>
         
         </div>
@@ -24,6 +29,12 @@ const Journey:React.FC = () => {
             <h1 className='title-2'>Dream Home</h1>
           </div>
         </div>
+
+        <div className="action-box">
+          <div className="action-container">
+            <h4 className='title-2 action'>First, I need sto ask you some quesions...</h4>
+          </div>
+        </div>
         
         <div className='img-box'>
           <img  data-testid='journey-img' src={bkg_img} alt="journey image" className='journey-img'/>
@@ -31,7 +42,7 @@ const Journey:React.FC = () => {
 
         <div className="btn-container">
           <Link to="/survey">
-          <button className="btn">Start</button>
+          <button onClick={() => window.scrollTo(0, 1000)} className="btn">Start</button>
           </Link>
         </div>
 

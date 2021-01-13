@@ -8,16 +8,17 @@ import location_img from '../../images/questions/Charco - Location Map.png'
 interface Props{
   updateAllAnswers: any;
 }
-    export const Question: React.FC<Props> = ({updateAllAnswers}) => {
-
-    const questionContext = useContext(QuestionContext)
-    const questionSet = Object.keys(questionContext);
-
-    const [answerInput, updateAnswer] = useState<any>({});
-    const [index, setIndex] = useState<number>(0);
-    const [errorMessage, setErrorMessage] = useState<string>('');
-
-    let currentQuestion = questionContext[questionSet[index]]
+export const Question: React.FC<Props> = ({updateAllAnswers}) => {
+  
+  const questionContext = useContext(QuestionContext)
+  const questionSet = Object.keys(questionContext);
+  
+  const [answerInput, updateAnswer] = useState<any>({});
+  const [index, setIndex] = useState<number>(0);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [hover, setHover] = useState(false);
+  
+  let currentQuestion = questionContext[questionSet[index]]
 
     const nextQuestion = () => {
         setErrorMessage(!answerInput[questionSet[index]] 
@@ -39,9 +40,9 @@ interface Props{
 
           <div className='desc-container'>
             <div className="description-box" data-testid='description-container'>
+              <h2 style={{ backgroundColor: 'black',  width: '5px'}}className='desc'>💡</h2>
               <h1  data-testid='description-title' className="question-desc">{currentQuestion?.attributes?.classification}</h1>
               <h2  data-testid='description-body' className='desc'>{currentQuestion?.attributes?.description}</h2>
-              {/* <h2 className='desc'>{currentQuestion?.attributes?.information}</h2> */}
             </div>
           </div>
 

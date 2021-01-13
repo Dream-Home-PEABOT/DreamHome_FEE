@@ -1,3 +1,4 @@
+//import
 import React from 'react';
 import './Survey.css'
 import bkg_img_2 from '../../images/survey/Big Shoes - Sitting on Rock Blue.png'
@@ -15,6 +16,12 @@ export const Survey: React.FC = () => {
             </div>
           </div>
 
+          <div className="action-survey">
+          <div className="action-container">
+            <h4 className='title-2 action'>Pick your numbers and will do the math...</h4>
+          </div>
+        </div>
+
           <div className="shadow-box"></div>
 
           <div className='img-box_1'>
@@ -29,18 +36,19 @@ export const Survey: React.FC = () => {
 
           <div className="survey-btn">
           <Link to="/question">
-            <button className="btn">Begin</button>
+            <button  onClick={() => window.scroll(0, 1000)} className="btn">Begin</button>
           </Link>
           </div>
 
           <div className="survey-box">
             <div className="survey">
-              <p className="content">While every person’s situation is different (and some loans may have different guidelines), here are the generally recommended guidelines based on your gross monthly income (that’s before taxes):
-                Your mortgage payment should be 28% or less.
-                Your debt-to-income ratio (DTI) should be 36% or less.
-                Your housing expenses should be 29% or less. This is for things like insurance, taxes, maintenance, and repairs.
-                You should have three months of housing payments and expenses saved up.
-                </p>
+              <h1 className="reco-title">My recommendations for you</h1>
+                <ul>
+                  <li className='item' > - Your mortgage payment should be 28% or less.</li>
+                  <li className='item' > - Your debt-to-income ratio (DTI) should be 36% or less.</li>
+                  <li className='item' > - Your housing expenses should be 29% or less. This is for things like insurance, taxes, maintenance, and repairs.</li>
+                  <li className='item' > - You should have three months of housing payments and expenses saved up.</li>
+                </ul> 
               </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
+//imports
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AnswerContext, Answers } from '../../types';
-import {getReport, postAnswers} from '../../apiCalls'
+import { getReport, postAnswers} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
 import back_img from '../../images/calculate/Charco - Security.png'
@@ -12,8 +13,9 @@ interface Props{
 
 const GenerateReport: React.FC<Props> = ({ updateReport }) => {
 
+  const answers = useContext(AnswerContext);
+
   const requestReport = async () =>{
-    const answers = useContext(AnswerContext)
     const formattedAnswers: Answers = {
       salary: answers.annual_salary,
       zipcode: answers.zip_code,
@@ -25,9 +27,10 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       goal_principal: answers.goal_home_price
     };
     //will need to add default values in or statements
-    const id = await postAnswers(formattedAnswers)
-    const data = getReport(id)
-    updateReport(data)
+    // const id = await postAnswers(formattedAnswers)
+    // const data = await getReport()
+    // updateReport(data)
+    getReport().then((data) => setTimeout(() => updateReport(data), 3000))
   }
 
   return (
@@ -38,8 +41,8 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
 
           <div className="description-box">
             <h1 className="question-desc">Yearly Salary After Taxes</h1>
-            <h2 className='desc'>"Gross income is the total amount you earn (typically over the course of a year) before expenses. Net income is the profit your business earns after expenses .</h2>
-            <h2 className='desc'>"Gross income is the total amount you earn (typically over the course of a year) before expenses. Net income is the profit your business earns after expenses .</h2>
+            <h2 className='desc'>"There’s no single answer to the question “Should I rent or buy?” Your solution depends on where you live, whether renting or buying an equivalent home is cheaper, and on additional assumptions you can include in your analysis</h2>
+            <h2 className='desc'>Don't worry we will calculate everything for you</h2>
           </div>
         </div>
 

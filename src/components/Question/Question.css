@@ -15,8 +15,6 @@
   background-color:blueviolet;
   grid-area: 1/ 1/ 5 / 4;
   display: inline-flex;
-  /* align-items: center; */
-  /* z-index: 1; */
   margin: 5%;
   height: 100%;
 }
@@ -121,7 +119,8 @@
 }
 
 .input{
-  background-color: transparent;
+  font-family:'Quicksand', sans-serif;
+  font-weight: 100;
   border: none; 
   border-width:0px;
   border-bottom: 7px solid #1A1A1A;
