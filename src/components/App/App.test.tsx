@@ -17,6 +17,7 @@ describe("App", () => {
   beforeEach(()=>{
 
   questionResults  = getQuestions.mockResolvedValue({
+    "data":{
       "annual_salary": {
         "attributes": {
         "classification": "Annual Salary",
@@ -40,7 +41,8 @@ describe("App", () => {
       },
       "id": "5ff7a752be8682d9e5b0e0c6",
       "type": "Education object"
-  }});
+      
+  }}});
   })
 
   it("User should see home page by default", async () => {
@@ -103,7 +105,7 @@ describe("App", () => {
     await act(() => promise)
   });
 
-  it("User should be taken to first question when clicking start on survey", async () => {
+  it.only("User should be taken to first question when clicking start on survey", async () => {
 
     const promise = Promise.resolve()
     const updateAllAnswers = jest.fn(() => promise)

@@ -11,13 +11,13 @@ interface Props{
     export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
     const questionContext = useContext(QuestionContext)
-    const questionSet = Object.keys(questionContext.data);
+    const questionSet = Object.keys(questionContext);
 
     const [answerInput, updateAnswer] = useState<any>({});
     const [index, setIndex] = useState<number>(0);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
-    let currentQuestion = questionContext.data[questionSet[index]]
+    let currentQuestion = questionContext[questionSet[index]]
 
     
     const nextQuestion = () => {

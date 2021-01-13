@@ -1,13 +1,10 @@
 import { Answers } from './types';
 
 export const getQuestions = async () => {
-  const response = await fetch('https://fe-cors-proxy.herokuapp.com', {
-    headers: {
-      "Target-URL": `https://dreamhome-mvp.herokuapp.com/api/v1/education`
-    }
-  })
+  const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/education')
   if (response.ok) {
-    return await response.json()
+    const result =  await response.json()
+    return result.data
   } else {
     return response
   }
