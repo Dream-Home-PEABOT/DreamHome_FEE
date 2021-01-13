@@ -32,17 +32,17 @@ describe('GenerateReport', () => {
     </MemoryRouter>)
   })
 
-  it('should render with a question category', () => {
+  it('should render with a header', () => {
 
 
-
+   expect(screen.getByText('Yearly Salary After Taxes')).toBeInTheDocument();
  });
 
 
  it('should render with images', () => {
 
 
-   
+
  });
 
  it('should render with a button to generate a report', () => {
