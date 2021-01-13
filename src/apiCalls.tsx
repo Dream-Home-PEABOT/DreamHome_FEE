@@ -1,7 +1,7 @@
 import { Answers } from './types';
 
 export const getQuestions = async () => {
-  const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/education')
+  const response = await fetch('http://localhost:3000/data')
   if (response.ok) {
     return await response.json()
   } else {
@@ -24,6 +24,7 @@ export const getReport = async () => {
 
 //POST endpoint: 'https://dreamhome-mvp.herokuapp.com/api/v1/report'
 
+<<<<<<< HEAD
 export const postAnswers = async (answers: Answers) => {
   const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/report', {
     method: 'POST',
@@ -63,6 +64,9 @@ export const getReport = async (id: string) => {
 >>>>>>> 13d7067... comment out unnedded api call for deployment test
 =======
 export const getReport = async (id: string) => {
+=======
+export const getReport = async () => {
+>>>>>>> 7e00953... Use new readme
   const response = await fetch("http://localhost:3000/report")
   if (response.ok) {
     return await response.json()
