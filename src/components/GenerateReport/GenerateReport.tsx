@@ -1,7 +1,8 @@
+//imports
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { AnswerContext, Answers } from '../../types';
-import {getReport, postAnswers} from '../../apiCalls'
+// import { getReport, postAnswers} from '../../apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
 import back_img from '../../images/calculate/Charco - Security.png'
@@ -12,22 +13,24 @@ interface Props{
 
 const GenerateReport: React.FC<Props> = ({ updateReport }) => {
 
+  const answers = useContext(AnswerContext);
+
   const requestReport = async () =>{
-    const answers = useContext(AnswerContext)
-    const formattedAnswers: Answers = {
-      salary: answers.annual_salary,
-      zipcode: answers.zip_code,
-      credit: answers.credit_score,
-      monthly_debt: answers.monthly_debt,
-      downpayment_savings: answers.downpayment_savings,
-      downpayment_percentage:answers.downpayment_percentage,
-      rent: answers.rent,
-      goal_principal: answers.goal_home_price
-    };
-    //will need to add default values in or statements
-    const id = await postAnswers(formattedAnswers)
-    const data = getReport(id)
-    updateReport(data)
+    // const formattedAnswers: Answers = {
+    //   salary: answers.annual_salary,
+    //   zipcode: answers.zip_code,
+    //   credit: answers.credit_score,
+    //   monthly_debt: answers.monthly_debt,
+    //   downpayment_savings: answers.downpayment_savings,
+    //   downpayment_percentage:answers.downpayment_percentage,
+    //   rent: answers.rent,
+    //   goal_principal: answers.goal_home_price
+    // };
+    // //will need to add default values in or statements
+    // // const id = await postAnswers(formattedAnswers)
+    // // const data = await getReport()
+    // // updateReport(data)
+    // getReport().then((data) => setTimeout(() => updateReport(data), 3000))
   }
 
   return (
@@ -37,9 +40,9 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       <div className='desc-container'>
 
           <div className="description-box">
-            <h1 className="question-desc">Yearly Salary After Taxes</h1>
-            <h2 className='desc'>"Gross income is the total amount you earn (typically over the course of a year) before expenses. Net income is the profit your business earns after expenses .</h2>
-            <h2 className='desc'>"Gross income is the total amount you earn (typically over the course of a year) before expenses. Net income is the profit your business earns after expenses .</h2>
+            <h1 className="question-desc">Let's See Your Report!</h1>
+            <h2 className='desc'>This report will give you information that will help you understand what steps you need to take to be on the right path to your Dream Home, or give you an idea of what your goals could look like on your current path. Click the button and let's do some calculations!</h2>
+            <h2 className='desc'>Click the link at the bottom of your report to register and track your progress over time.</h2>
           </div>
         </div>
 

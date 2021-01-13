@@ -68,7 +68,7 @@ describe("App", () => {
 
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Journey")).toBeInTheDocument();
-    expect(screen.getByText("Login")).toBeInTheDocument();
+    // expect(screen.getByText("Login")).toBeInTheDocument();
 
     await act(() => promise)
   });
@@ -98,7 +98,7 @@ describe("App", () => {
     userEvent.click(screen.getByText('Journey'));
     userEvent.click(screen.getByRole("button", {name: "Start"}));
 
-    expect(screen.getByText(/While every person/)).toBeInTheDocument();
+    expect(screen.getByText(/Enter your numbers and I'll do the math.../)).toBeInTheDocument();
 
     await act(() => promise)
   });
@@ -227,7 +227,7 @@ describe("App", () => {
     userEvent.click(screen.getByTestId('dropdown'));
     userEvent.click(screen.getByText('Home'));
 
-    expect(screen.getAllByText(/Home/)).toHaveLength(3);
+    expect(screen.getAllByText(/Home/)).toHaveLength(4);
 
 
     await act(() => promise)
@@ -263,7 +263,7 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", {name: "next"}));
 
     expect(screen.getByRole("button", {name: "Generate Report"})).toBeInTheDocument();
-    
+
     //Animations currently break this button click, simulate click and move on to next test
     //userEvent.click(screen.getByRole("button", {name: "Generate Report"}));
     await act(() => promise)

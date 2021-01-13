@@ -1,4 +1,3 @@
-
 ### Overview
 
 `Dream Home` Is an educational / planning application meant to help new home buyers ease into the process of budgeting for their dream home.
@@ -13,6 +12,7 @@
   * CSS
   * TravisCI
   * Heroku
+  * Jest
 
 ### Challenges
 
@@ -48,7 +48,7 @@
 - When a user navigates to the "Dream Home" webpage, they are presented with an inviting animation and simplistic design
 - When the user is ready, they may click on the menu icon, which will present a dropdown menu
 - Currently the `Home` and `Journey` links on this dropdown are functional, with plans for Login functionality soon
-- If the user has filled out our questionnaire, they will also have a `Report` link which directs them to their report 
+- If the user has filled out our questionnaire, they will also have a `Report` link which directs them to their report
 - Clicking `Journey` will launch the user experience
 
 ---
@@ -119,5 +119,3 @@
 ### Project Managers
 - [Robbie Jaeger](https://github.com/robbiejaeger)
 - [Kathleen Scriver](https://github.com/KathleenScriver)
-
-

@@ -1,12 +1,13 @@
+//imports
 import React from 'react';
 import './Error.css';
 import error_img from '../../images/errors/Big Shoes - Torso.png'
 import bkg_img from '../../images/errors/Charco - Broken.png'
-
 interface props{
   errorMessage: string;
   errorNum: number;
 }
+
 const Error: React.FC<props> = ({errorNum, errorMessage}) => {
 
   return (

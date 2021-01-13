@@ -11,6 +11,7 @@ const NavBar:React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   
   const closeBar = () => {
+    window.scrollTo(0, 1000)
     setOpen(false)
   }
 
@@ -56,9 +57,9 @@ const DropdownMenu = (props:any) => {
         >Journey</DropdownItem>
       </Link>
 
-      <DropdownItem data-testid='to-login'>Login</DropdownItem>
+      {/* <DropdownItem data-testid='to-login'>Login</DropdownItem> */}
 
-      {userReport && <Link to="/report"  data-testid='to-login' onClick={props.setOpen}>
+      {userReport && <Link to="/report"  data-testid='to-login' onClick={()=>props.setOpen(false)}>
         <DropdownItem 
       >Report</DropdownItem>
       </Link>}

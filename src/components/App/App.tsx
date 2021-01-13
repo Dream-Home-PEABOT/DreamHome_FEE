@@ -19,14 +19,11 @@ const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
   const [report, updateReport] = useState<any>(null);
-  //This errro will change depending on the request error
   const [errorMessage, setError] = useState<any>('Oops an error has occurred')
-  //This one will be the error number ex 404, 500  etc.... 
-  //the idea is to pass  the information down to the error page
   const [errorNum, setErrorNum] = useState<any>(404)
-
-
   const { location } = useContext<any>(__RouterContext)
+  const unmounted = useRef(false)
+  
   const transitions = useTransition(location, location => location.pathname, {
     from: {opacity: 0, transform:'translate(100%, 0)'},
     enter: {opacity: 1, transform:'translate(0%, 0)'},
@@ -40,19 +37,22 @@ const App:React.FC = () =>{
       },{})
       updateAllAnswers(answerKey)
   }
-  const unmounted = useRef(false)
+
   const populateQuestions = async () =>{
-    if (!unmounted.current){
-    const data = await getQuestions()
-    await data
+    // if (!unmounted.current){
+      const data = await getQuestions()
+      console.log('getting data')
+
+    // await data
     buildAnswers(data)
     updateQuestions(data)
-    }
+    // }
   }
 
   useEffect(() => {
+    console.log('yeet')
     populateQuestions()
-    return () => { unmounted.current = true }
+    // return () => { unmounted.current = true }
   },[]);
 
   return (
@@ -73,7 +73,7 @@ const App:React.FC = () =>{
             <Route exact path="/generate_report" component={()=><GenerateReport
                 updateReport={updateReport}/>
                 }/>
-            <Route exact path="/report" component={Report} />
+            <Route exact path="/report" component={()=> <Report/>}/>
             <Route path='/*' component={() => <Error
               errorMessage={errorMessage} errorNum={errorNum}/>
               }/>
