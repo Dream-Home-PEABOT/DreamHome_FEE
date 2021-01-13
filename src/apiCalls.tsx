@@ -10,6 +10,7 @@ export const getQuestions = async () => {
 };
 
 //POST endpoint: 'https://dreamhome-mvp.herokuapp.com/api/v1/report'
+<<<<<<< HEAD
 // https://dreamhome-mvp.herokuapp.com/api/v1/education
 
 export const getReport = async () => {
@@ -29,12 +30,18 @@ export const postAnswers = async (answers: Answers) => {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(answers)
   })
+=======
+
+export const getReport = async (id: string) => {
+  const response = await fetch(`https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`)
+>>>>>>> 0a8f4f9... add backend endpoint to education api call
   if (response.ok) {
     return await response.json()
   } else {
     return response
   }
 }
+<<<<<<< HEAD
 
 // export const getReport = async (id: string) => {
 //   const response = await fetch(`https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`)
@@ -45,3 +52,5 @@ export const postAnswers = async (answers: Answers) => {
 //   }
 // }
 // GET report: https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}
+=======
+>>>>>>> 0a8f4f9... add backend endpoint to education api call
