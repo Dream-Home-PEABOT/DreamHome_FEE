@@ -114,6 +114,4 @@ describe('Report', () => {
     expect(screen.getByText('date is')).toBeInTheDocument();
   });
 
-
-
 })
