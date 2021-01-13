@@ -15,12 +15,10 @@ const Journey:React.FC = () => {
           <div className="info-box">
             <h2 className='info'>
               Hi, my name is Teki and want to help you find
-              your dream home. My approach is a bit different
-              because I will be focusing on your journey.<br/> We need a
-              plan and with your information I will help you to build one.
+              your Dream Home! We will focus on either building a plan for you that will help you reach your goals, or see what your possible plans for you based on your current situation. <br/> With the information you give me, I can set you on a path to your Dream Home!
               </h2>
           </div>
-        
+
         </div>
 
         <div className="box-title">
@@ -32,10 +30,10 @@ const Journey:React.FC = () => {
 
         <div className="action-box">
           <div className="action-container">
-            <h4 className='title-2 action'>First, I need sto ask you some quesions...</h4>
+            <h4 className='title-2 action'>First, I need to ask you some quesions...</h4>
           </div>
         </div>
-        
+
         <div className='img-box'>
           <img  data-testid='journey-img' src={bkg_img} alt="journey image" className='journey-img'/>
         </div>
