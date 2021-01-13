@@ -52,10 +52,4 @@ describe('GenerateReport', () => {
    expect(screen.getByText('Generate Report')).toBeInTheDocument();
  });
 
- it('for a user, should be able to click the button', () => {
-
-   // mock onclick when added
-//
-  })
-
 })
