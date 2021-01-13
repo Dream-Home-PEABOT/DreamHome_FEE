@@ -13,6 +13,8 @@ interface Props{
 const GenerateReport: React.FC<Props> = ({ updateReport }) => {
 
   const requestReport = async () =>{
+    const data = await getReport()
+    updateReport(data)
     //const answers = useContext(AnswerContext)
     //const formattedAnswers: Answers = {
     //  salary: answers.annual_salary,
