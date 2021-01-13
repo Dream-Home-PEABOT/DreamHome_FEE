@@ -11,14 +11,13 @@ import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.pn
 const Report = () => {
 
   let userReport = useContext(ReportContext)
-  console.log(userReport)
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport)
 
     return reportData.map((data, key) =>{
-      let subtitle_1 = Object.keys(userReport[data])[0].replaceAll(/_|\-/g, " ")
-      let subtitle_2 = Object.keys(userReport[data])[1].replaceAll(/_|\-/g, " ")
+      let subtitle_1 = Object.keys(userReport[data])[0].replace(/_|\-/g, " ")
+      let subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
 
       return (
         <ReportCategory
@@ -49,7 +48,16 @@ const Report = () => {
 
   return (
     <>
-    {!userReport ? <Cube/> :
+    {!userReport ? 
+    <>
+      <div className="loading-box">
+        <h1 className='loading-message-1'>we are building you a report...</h1>
+      </div>
+      <div className="loading-box">
+        <h1 className='loading-message-2'>just a second...</h1>
+      </div>
+      <Cube/> 
+    </>:
     <>
      <section className="report-section">
         <div className='inner-container'>

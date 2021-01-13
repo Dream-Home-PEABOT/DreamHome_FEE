@@ -1,4 +1,4 @@
-import React, {useState , useEffect, useContext} from 'react';
+import React, {useState , useEffect, useContext, useRef} from 'react';
 import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../types'
 import {getQuestions} from '../../apiCalls';
 import {Switch, Route, __RouterContext, Redirect} from 'react-router';
@@ -19,6 +19,12 @@ const App:React.FC = () =>{
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
   const [report, updateReport] = useState<any>(null);
+  //This errro will change depending on the request error
+  const [errorMessage, setError] = useState<any>('Oops an error has occurred')
+  //This one will be the error number ex 404, 500  etc.... 
+  //the idea is to pass  the information down to the error page
+  const [errorNum, setErrorNum] = useState<any>(404)
+
 
   const { location } = useContext<any>(__RouterContext)
   const transitions = useTransition(location, location => location.pathname, {
@@ -27,23 +33,26 @@ const App:React.FC = () =>{
     leave: {opacity: 0, transform:'translate(-50%, 0)'},
   })
 
-  const buildAnswers = (questions: AllQuestionFormat | {}): {} => {
+  const buildAnswers = (questions: AllQuestionFormat | {}): void => {
     const answerKey = Object.keys(questions).reduce((acc: any,cur)=>{
         acc[cur] = ''
         return acc
       },{})
       updateAllAnswers(answerKey)
-      return questions
   }
-
+  const unmounted = useRef(false)
   const populateQuestions = async () =>{
+    if (!unmounted.current){
     const data = await getQuestions()
+    await data
     buildAnswers(data)
     updateQuestions(data)
+    }
   }
 
   useEffect(() => {
     populateQuestions()
+    return () => { unmounted.current = true }
   },[]);
 
   return (
@@ -59,11 +68,15 @@ const App:React.FC = () =>{
             <Route exact path="/journey" component={Journey}/>
             <Route exact path="/survey" component={Survey}/>
             <Route exact path="/question" component={()=><Question
-                updateAllAnswers={updateAllAnswers}/>}/>
+                updateAllAnswers={updateAllAnswers}/>
+                }/>
             <Route exact path="/generate_report" component={()=><GenerateReport
-                updateReport={updateReport}/>}/>
+                updateReport={updateReport}/>
+                }/>
             <Route exact path="/report" component={Report} />
-            <Route path='/*' component={Error}/>
+            <Route path='/*' component={() => <Error
+              errorMessage={errorMessage} errorNum={errorNum}/>
+              }/>
           </Switch>
           </animated.div>
         ))}
