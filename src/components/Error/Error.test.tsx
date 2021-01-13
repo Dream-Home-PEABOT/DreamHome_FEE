@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import Error from './Error';
 
 describe('Error', () => {
-
   it('all element containers should render accordingly', () => {
 
     render(
