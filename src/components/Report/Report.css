@@ -300,4 +300,33 @@
   width: 100%;
 }
 
+.loading-box{
+  position: relative;
+}
 
+.loading-message-1 {
+  width: 10em;
+  height: 2em;
+  background-color: pink;
+  position: absolute;
+  top: 151%;
+  left: 60%;
+  margin: 330px 0 0 0px;
+  font-size: 3em;
+  font-family: var(--loading);
+  color: black;
+  padding: 5% 5% 5% 5%;
+}
+.loading-message-2 {
+  width: 11em;
+  height: 1em;
+  background-color: pink;
+  position: absolute;
+  top: 125%;
+  left: 15%;
+  margin: 160px 0 0 -80px;
+  font-size: 3em;
+  font-family: var(--loading);
+  color: black;
+  padding: 5%;
+}

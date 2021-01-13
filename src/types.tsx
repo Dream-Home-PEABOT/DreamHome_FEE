@@ -18,6 +18,17 @@ export interface AllQuestionFormat{
   monthly_debt:QuestionFormat;
 }
 
+export interface Answers{
+  salary: string,
+  zipcode: string,
+  credit: string,
+  monthly_debt: string,
+  downpayment_savings: string,
+  downpayment_percentage: string,
+  rent: string,
+  goal_principal: string
+}
+
   //downpayment_savings:QuestionFormat;
   //credit_score_range:QuestionFormat;
   //downpayment_percentage:QuestionFormat;
@@ -29,4 +40,3 @@ export interface AllQuestionFormat{
 export const AnswerContext = React.createContext<any>({})
 export const QuestionContext = React.createContext<any>({})
 export const ReportContext = React.createContext<any>({})
-
