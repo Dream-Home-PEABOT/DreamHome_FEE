@@ -16,7 +16,6 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
   const [answerInput, updateAnswer] = useState<any>({});
   const [index, setIndex] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [hover, setHover] = useState(false);
   
   let currentQuestion = questionContext[questionSet[index]]
 
@@ -31,6 +30,18 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
     const prevQuestion = () => {
       setIndex(index - 1)
+    }
+
+    const validateString = (e: any)=> {
+      updateAnswer({...answerInput,[questionSet[index]]: e.target.value})
+      let snum = /^\d+$/.test(e.target.value);
+      if(!snum){
+        setErrorMessage('only numbers')
+        setTimeout(() => setErrorMessage(''), 3000)
+      } else{
+        setErrorMessage('')
+      }
+
     }
 
     return (
@@ -73,7 +84,7 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
                 <button
                   data-testid='update-answers-btn'
                   className='next-btn btn'
-                  onClick={() => {updateAllAnswers(answerInput)}}>
+                  onClick={(e) => {updateAllAnswers(answerInput)}}>
                     next</button>
               </Link>}
           </div>
@@ -85,13 +96,12 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
         <div className="input-box">
           <input
-            placeholder='your answer here'
+            placeholder='amount'
             type="text"
             className="input"
             value={answerInput[questionSet[index]] || ''
           }
-          onChange={(e)=>updateAnswer({...answerInput,
-            [questionSet[index]]: e.target.value})}
+          onChange={(e)=>validateString(e)}
           />
         </div>
 
@@ -99,10 +109,8 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
           <h4 className="note">{currentQuestion?.attributes?.note}</h4>
         </div>
 
-        <div className='floor-box'>
-          <h4 className="note">{currentQuestion?.attributes?.source}</h4>
-        </div>
-
+        <div className='floor-box'></div>
+        <h4 className="note">{currentQuestion?.attributes?.source}</h4>
       </div>
     </section>
   );
