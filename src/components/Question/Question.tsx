@@ -20,12 +20,14 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
   let currentQuestion = questionContext[questionSet[index]]
 
     const nextQuestion = () => {
-        setErrorMessage(!answerInput[questionSet[index]]
-          ? 'Sorry but we need this information'
-          : '')
-        setIndex(index < questionSet.length && answerInput[questionSet[index]]
-          ? index + 1
-          :  index);
+      let userAmount = answerInput[questionSet[index]]
+      let isnum = /^\d+$/.test(userAmount)
+      if (!userAmount || !isnum) {
+        setErrorMessage('Sorry but we need this information')
+        return false
+      } else if (index < questionSet.length && answerInput[questionSet[index]]){
+        setIndex(index + 1)
+      }
     }
 
     const prevQuestion = () => {
@@ -33,15 +35,14 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
     }
 
     const validateString = (e: any)=> {
-      updateAnswer({...answerInput,[questionSet[index]]: e.target.value})
-      let snum = /^\d+$/.test(e.target.value);
-      if(!snum){
+      updateAnswer({...answerInput,[questionSet[index]]: e.target.value});
+      let isnum = /^\d+$/.test(e.target.value);
+      if(!isnum){
         setErrorMessage('only numbers')
-        setTimeout(() => setErrorMessage(''), 3000)
+        setTimeout(() => setErrorMessage(''), 4000)
       } else{
         setErrorMessage('')
       }
-
     }
 
     return (
@@ -96,12 +97,11 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
         <div className="input-box">
           <input
-            placeholder='amount'
+            placeholder='answer here'
             type="text"
             className="input"
-            value={answerInput[questionSet[index]] || ''
-          }
-          onChange={(e)=>validateString(e)}
+            value={answerInput[questionSet[index]] || ''}
+           onChange={(e)=>validateString(e)}
           />
         </div>
 
