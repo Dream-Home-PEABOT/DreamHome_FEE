@@ -6,13 +6,13 @@
 
 ### Technologies used:
 
-  * Typescript
-  * React Hooks
-  * React Router
-  * CSS
-  * TravisCI
-  * Heroku
-  * Jest
+
+| Typescript | React 
+| React-router | React-hooks 
+| Spring | Three-fiber 
+| TravisCI | Heroku 
+| Jest | CSS |
+
 
 ### Challenges
 
@@ -80,7 +80,7 @@
 <div align ="center">
   <h3>Report</h3>
     <p align="center">
-      <img src="https://media3.giphy.com/media/rcVbuCrOUPQRjqo4Kx/giphy.gif" height=auto width=75%/>
+      <img src="https://media2.giphy.com/media/gJcGNoPmiAgMYSNW0o/giphy.gif" height=auto width=75%/>
     </p>
 </div>
 
