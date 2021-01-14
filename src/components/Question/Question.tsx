@@ -101,7 +101,7 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
             type="text"
             className="input"
             value={answerInput[questionSet[index]] || ''}
-           onChange={(e)=>validateString(e)}
+            onChange={(e)=>validateString(e)}
           />
         </div>
 
