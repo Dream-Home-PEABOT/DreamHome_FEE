@@ -93,7 +93,7 @@ export const ReportCategory = (props: any ) => {
       </div>
 
       <div className="category-image">
-        {props.position % 2 === 0 && <img src={plant_1} alt="blue-plant" className='plant-1'/>}
+        {!props.plan && <img src={plant_1} alt="blue-plant" className='plant-1'/>}
       </div>
       {!props.plan && <div className="category-image-2">
         <img src={plant_2} alt="blue-plant" className='plant-1'/>
