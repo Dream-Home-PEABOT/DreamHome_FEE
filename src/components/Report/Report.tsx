@@ -1,6 +1,5 @@
-//imports
 import React, {useContext } from 'react'
-import {ReportContext} from '../../types'
+import {ReportContext, AnswerContext} from '../../types'
 import { Cube } from '../Cube/Cube';
 import './Report.css';
 import { ReportCategory } from '../ReportCategory/ReportCategory';
@@ -11,6 +10,8 @@ import back_img from '../../images/report/Big Shoes - Jumping On One leg Pose.pn
 const Report = () => {
 
   let userReport = useContext(ReportContext)
+  let userAnswers = useContext(AnswerContext)
+
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport).reverse()
@@ -45,7 +46,7 @@ const Report = () => {
           categoryMainNumber={
             userReport[data].monthly_principal && `$${userReport[data].monthly_principal}`
             || userReport[data].zipcode
-            || userReport[data].downpayment_percent_saved
+            || userReport[data].downpayment_percent_saved && `%${userReport[data].downpayment_percent_saved}`
             || userReport[data].mortgage_rate && `%${userReport[data].mortgage_rate}`
           }
           categoryMainTitle={subtitle_1}
@@ -53,7 +54,7 @@ const Report = () => {
           categorySecondNumber={
              userReport[data].estimated_true_monthly && `$${userReport[data].estimated_true_monthly}`
             || userReport[data].city_state
-            || userReport[data].downpayment_percentage_saved && `%${userReport[data].downpayment_percentage_saved}`
+            || userReport[data].downpayment_percent_saved && `%${userReport[data].downpayment_percent_saved}`
             || userReport[data].goal_principal &&`$${userReport[data].goal_principal}`
           }
           categoryID={key + 1}
@@ -91,14 +92,14 @@ const Report = () => {
 
             <div className="num ">
               <div className="num-ci-box-up">
-                <h1 className="num-ci-title">Property tax</h1>
+                <h1 className="num-ci-title">Ten year goal </h1>
               </div>
               <Spring
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
-                to={{ number: userReport.monthly.add_ons.property_tax }}>
+                to={{ number: userReport.downpayment.ten_year_plan[10].monthly_savings }}>
                 {props => <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{props.number.toFixed()}</h1>
+                <h1 className="num-ci-data">{`$${props.number.toFixed()}/ mo`}</h1>
               </div>}
               </Spring>
             </div>
@@ -115,49 +116,48 @@ const Report = () => {
                   <h1 className="num-ci-data">{props.number.toFixed()}</h1>
                 </div>}
               </Spring>
-
-            </div>
-            <div className="num ">
+            </div>   <div className="num ">
               <div className="num-ci-box-up">
-                <h1 className="num-ci-title">Mortgage term</h1>
-              </div>
-
-              <Spring
-                config={{delay: 100, duration: 1000}}
-                from={{ number: 0 }}
-                to={{ number: 30 }}>
-                {props =>
-                <div className="num-ci-box-down">
-                  <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
-                </div>}
-              </Spring>
-
-            </div>
-            <div className="num ">
-              <div className="num-ci-box-up">
-                <h1 className="num-ci-title">Credit Score</h1>
-              </div>
-
-              <Spring
-                config={{delay: 100, duration: 1000}}
-                from={{ number: 0 }}
-                to={{ number: 30 }}>
-                {props =>
-                <div className="num-ci-box-down">
-                  <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
-                </div>}
-              </Spring>
-
-            </div>
-            <div className="num ">
-              <div className="num-ci-box-up">
-                <h1 className="num-ci-title">Downpayment #</h1>
+                <h1 className="num-ci-title">Downpayment saved</h1>
               </div>
 
               <Spring
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
                 to={{ number: userReport.downpayment.downpayment_saved }}>
+                {props =>
+                <div className="num-ci-box-down">
+                  <h1 className="num-ci-data">{`${props.number.toFixed()}`}</h1>
+                </div>}
+              </Spring>
+
+            </div>
+            <div className="num ">
+              <div className="num-ci-box-up">
+                <h1 className="num-ci-title">Mortgage Term</h1>
+              </div>
+
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: userAnswers.mortgage_term }}>
+                {props =>
+                <div className="num-ci-box-down">
+                  <h1 className="num-ci-data">
+                  {`${props.number.toFixed()}yrs`}</h1>
+                </div>}
+              </Spring>
+
+            </div>
+            <div className="num ">
+              <div className="num-ci-box-up">
+                <h1 className="num-ci-title">Monthly income </h1>
+              </div>
+
+              <Spring
+                config={{delay: 100, duration: 1000}}
+                from={{ number: 0 }}
+                to={{ number: userAnswers.annual_salary }}>
                 {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
@@ -167,7 +167,6 @@ const Report = () => {
             </div>
 
           </div>
-
           <div className="report-title">
             <h1 className="big-report">Report</h1>
           </div>
