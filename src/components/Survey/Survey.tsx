@@ -36,7 +36,7 @@ export const Survey: React.FC = () => {
 
           <div className="survey-btn">
           <Link to="/question">
-            <button  onClick={() => window.scroll(0, 1000)} className="btn">Begin</button>
+            <button className="btn">Begin</button>
           </Link>
           </div>
 

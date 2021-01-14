@@ -16,7 +16,9 @@ describe('Journey', () => {
   })
 
   it('should render withou crashing', () => {
-    expect(screen.getByText('Hi, my name is Teki and want to help you find your Dream Home! We will focus on either building a plan for you that will help you reach your goals, or see what your possible plans for you based on your current situation.')).toBeInTheDocument();
+    expect(screen.getByRole('heading', {
+      name: /hi, my name is teki and want to help you find your dream home! we will focus on either building a plan for you that will help you reach your goals, or see what your possible plans for you based on your current situation\. with the information you give me, i can set you on a path to your dream home!/i
+    })).toBeInTheDocument();
   });
 
   it('should render displaying an info message', () => {
