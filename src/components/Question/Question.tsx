@@ -37,6 +37,7 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
       let snum = /^\d+$/.test(e.target.value);
       if(!snum){
         setErrorMessage('only numbers')
+        setTimeout(() => setErrorMessage(''), 3000)
       } else{
         setErrorMessage('')
       }
@@ -95,7 +96,7 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
         <div className="input-box">
           <input
-            placeholder='your answer here'
+            placeholder='amount'
             type="text"
             className="input"
             value={answerInput[questionSet[index]] || ''
@@ -108,10 +109,8 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
           <h4 className="note">{currentQuestion?.attributes?.note}</h4>
         </div>
 
-        <div className='floor-box'>
-          <h4 className="note">{currentQuestion?.attributes?.source}</h4>
-        </div>
-
+        <div className='floor-box'></div>
+        <h4 className="note">{currentQuestion?.attributes?.source}</h4>
       </div>
     </section>
   );
