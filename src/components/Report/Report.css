@@ -158,7 +158,7 @@
 }
 
 .category-box{
-  grid-area: 1/ 9/ 3 /11;
+  grid-area: 1/ 8/ 3 /11;
   display: inline-flex;
   align-items: center;
 }
@@ -175,13 +175,14 @@
 
 .report-info-1{
   background-color: #1A1A1A;
-  grid-area: 2/ 2/ 5 /4;
+  grid-area: 5/ 2/ 6 /5;
   margin: 1%;
 }
 
 .report-info-2{
-  grid-area: 4/ 8/ 7 / 10;
+  grid-area: 4/ 8/ 5 / 11;
   background-color: #1A1A1A;
+  font-size: .7em;
 }
 
 .repo-title{
@@ -194,7 +195,7 @@
 
 .report-insight{
   background-color: transparent;
-  grid-area: 2/ 6/ 4 / 8;
+  grid-area: 3/ 2/ 5 / 5;
   margin: 3%;
   width: 100%;
   color: grey;
@@ -204,10 +205,10 @@
 }
 
 .category-image{
-  grid-area:5/ 3/ 9 / 5;
+  grid-area: 7/ 9/ 9 / 11;
 }
 .category-image-2 {
-  grid-area: 5/ 7/ 9 / 9;
+  grid-area: 6/ 7/ 9 / 9;
 }
 
 .plant-1{
@@ -277,7 +278,7 @@
 }
 
 .btns-inst{
-  grid-area: 7 / 10;
+  grid-area: 5 / 10;
 }
 
 .inst-title{
