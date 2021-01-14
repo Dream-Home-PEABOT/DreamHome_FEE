@@ -72,7 +72,7 @@ export const ReportCategory = (props: any ) => {
 
       {!props.plan
         ? <div className="report-info-2">
-        <h1 className="repo-title">{props.categorySubtitle || ''}</h1>
+        <h1 className="repo-title">your {props.categorySubtitle || ''}</h1>
         <h1 className="repo-title">{props.categorySecondNumber || 0}</h1>
         </div>
         :
@@ -89,7 +89,7 @@ export const ReportCategory = (props: any ) => {
 
       <div className="report-insight">
         {/* <h1 className="insight-title">insight:</h1> */}
-        <h1 className="insight">Property taxes and interest rates can vary by location.</h1>
+        <h1 className="insight">{props.information}</h1>
       </div>
 
       <div className="category-image">
