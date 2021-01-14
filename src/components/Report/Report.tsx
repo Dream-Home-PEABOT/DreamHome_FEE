@@ -20,12 +20,21 @@ const Report = () => {
       let subtitle_1 = Object.keys(userReport[data])[0].replace(/_|\-/g, " ")
       let subtitle_2 = Object.keys(userReport[data])[2].replace(/_|\-/g, " ")
       if (key === 0 || key === 1){
+        subtitle_1 = Object.keys(userReport[data])[3].replace(/_|\-/g, " ")
         subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
       }
-      if(data === "principal"){
-        userReport[data].goal_principal= userReport[data].goal_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-        userReport[data].based_on_rent = userReport[data].based_on_rent.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      if (key === 0){
+        subtitle_1 = Object.keys(userReport[data])[3].replace(/_|\-/g, " ")
       }
+      if(data === "principal"){
+        userReport.principal.goal_principal= userReport[data].goal_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        userReport.principal.based_on_rent = userReport[data].based_on_rent.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
+      if(data === "monthly"){
+        userReport.monthly.estimated_true_monthly= userReport[data].estimated_true_monthly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        userReport.monthly.monthly_principal = userReport[data].monthly_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
+
       return (
         <ReportCategory
 
@@ -33,19 +42,20 @@ const Report = () => {
           key={key}
           plan={userReport[data].ten_year_plan}
           categoryName={[data]}
+          information={userReport[data].information}
           categoryMainNumber={
-            userReport[data].monthly_principal
-            || `$${userReport[data].based_on_rent}`
+            userReport[data].monthly_principal && `$${userReport[data].monthly_principal}`
             || userReport[data].zipcode
             || userReport[data].downpayment_percent_saved
+            || userReport[data].mortgage_rate && `%${userReport[data].mortgage_rate}`
           }
           categoryMainTitle={subtitle_1}
           categorySubtitle={subtitle_2}
           categorySecondNumber={
-             userReport[data].estimated_true_monthly
-            ||`$${userReport[data].goal_principal}`
+             userReport[data].estimated_true_monthly && `$${userReport[data].estimated_true_monthly}`
             || userReport[data].city_state
-            || userReport[data].downpayment_percentage_saved
+            || userReport[data].downpayment_percentage_saved && `%${userReport[data].downpayment_percentage_saved}`
+            || userReport[data].goal_principal &&`$${userReport[data].goal_principal}`
           }
           categoryID={key + 1}
           />
