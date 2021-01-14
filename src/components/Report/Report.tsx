@@ -23,7 +23,8 @@ const Report = () => {
         subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
       }
       if(data === "principal"){
-        subtitle_2 = `$${userReport[data].goal_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+        userReport[data].goal_principal= userReport[data].goal_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        userReport[data].based_on_rent = userReport[data].based_on_rent.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       }
       return (
         <ReportCategory
@@ -34,15 +35,15 @@ const Report = () => {
           categoryName={[data]}
           categoryMainNumber={
             userReport[data].monthly_principal
-            || userReport[data].based_on_rent
+            || `$${userReport[data].based_on_rent}`
             || userReport[data].zipcode
             || userReport[data].downpayment_percent_saved
           }
           categoryMainTitle={subtitle_1}
           categorySubtitle={subtitle_2}
           categorySecondNumber={
-            userReport[data].goal_principal
-            || userReport[data].estimated_true_monthly
+             userReport[data].estimated_true_monthly
+            ||`$${userReport[data].goal_principal}`
             || userReport[data].city_state
             || userReport[data].downpayment_percentage_saved
           }
