@@ -3,7 +3,8 @@ import { Answers } from './types';
 export const getQuestions = async () => {
   const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/education')
   if (response.ok) {
-    return await response.json()
+    let final =  await response.json()
+    return final.data
   } else {
     return response
   }
@@ -27,7 +28,8 @@ export const postAnswers = async (answers: Answers) => {
 export const getReport = async (id: string) => {
   const response = await fetch(`https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`)
   if (response.ok) {
-    return await response.json()
+    let final =  await response.json()
+    return final.data.attributes.output
   } else {
     return response
   }
