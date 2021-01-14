@@ -99,10 +99,10 @@ describe('Report', () => {
 
     expect(screen.getByText('Dream Home')).toBeInTheDocument();
     expect(screen.getByText('My Numbers')).toBeInTheDocument();
-    expect(screen.getByText('Property tax')).toBeInTheDocument();
+    expect(screen.getByText('Ten year goal')).toBeInTheDocument();
     expect(screen.getByText('Downpayment %')).toBeInTheDocument();
-    expect(screen.getByText('Mortgage term')).toBeInTheDocument();
-    expect(screen.getByText('Credit Score')).toBeInTheDocument();
+    expect(screen.getByText('Downpayment saved')).toBeInTheDocument();
+    expect(screen.getByText('Mortgage Term')).toBeInTheDocument();
     expect(screen.getByText('Report')).toBeInTheDocument();
     expect(screen.getByText('principal')).toBeInTheDocument();
     expect(screen.getByText('based on rent')).toBeInTheDocument();
