@@ -13,11 +13,26 @@ const Report = () => {
   let userReport = useContext(ReportContext)
 
   const displayAnalysisSections = () =>{
-    const reportData = Object.keys(userReport)
+    const reportData = Object.keys(userReport).reverse()
 
     return reportData.map((data, key) =>{
       let subtitle_1 = Object.keys(userReport[data])[0].replace(/_|\-/g, " ")
-      let subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
+      let subtitle_2 = Object.keys(userReport[data])[2].replace(/_|\-/g, " ")
+      if (key === 0 || key === 1){
+        subtitle_1 = Object.keys(userReport[data])[3].replace(/_|\-/g, " ")
+        subtitle_2 = Object.keys(userReport[data])[1].replace(/_|\-/g, " ")
+      }
+      if (key === 0){
+        subtitle_1 = Object.keys(userReport[data])[3].replace(/_|\-/g, " ")
+      }
+      if(data === "principal"){
+        userReport.principal.goal_principal= userReport[data].goal_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        userReport.principal.based_on_rent = userReport[data].based_on_rent.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
+      if(data === "monthly"){
+        userReport.monthly.estimated_true_monthly= userReport[data].estimated_true_monthly.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        userReport.monthly.monthly_principal = userReport[data].monthly_principal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      }
 
       return (
         <ReportCategory
@@ -26,19 +41,20 @@ const Report = () => {
           key={key}
           plan={userReport[data].ten_year_plan}
           categoryName={[data]}
+          information={userReport[data].information}
           categoryMainNumber={
-            userReport[data].zip_code
-            || userReport[data].based_on_rent
-            || userReport[data].monthly_principal
-            || userReport[data].down_payment_percentage_selected
+            userReport[data].monthly_principal && `$${userReport[data].monthly_principal}`
+            || userReport[data].zipcode
+            || userReport[data].downpayment_percent_saved
+            || userReport[data].mortgage_rate && `%${userReport[data].mortgage_rate}`
           }
           categoryMainTitle={subtitle_1}
           categorySubtitle={subtitle_2}
           categorySecondNumber={
-            userReport[data].location
-            || userReport[data].goal_principal
-            || userReport[data].estimated_true_monthly
-            || userReport[data].down_payment_saved
+             userReport[data].estimated_true_monthly && `$${userReport[data].estimated_true_monthly}`
+            || userReport[data].city_state
+            || userReport[data].downpayment_percentage_saved && `%${userReport[data].downpayment_percentage_saved}`
+            || userReport[data].goal_principal &&`$${userReport[data].goal_principal}`
           }
           categoryID={key + 1}
           />
@@ -93,7 +109,7 @@ const Report = () => {
               <Spring
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
-                to={{ number: userReport.downpayment.down_payment_percentage_selected }}>
+                to={{ number: userReport.downpayment.downpayment_percentage_selected }}>
                 {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{props.number.toFixed()}</h1>
@@ -141,7 +157,7 @@ const Report = () => {
               <Spring
                 config={{delay: 100, duration: 1000}}
                 from={{ number: 0 }}
-                to={{ number: userReport.downpayment.down_payment_saved }}>
+                to={{ number: userReport.downpayment.downpayment_saved }}>
                 {props =>
                 <div className="num-ci-box-down">
                   <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>

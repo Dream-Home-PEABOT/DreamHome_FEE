@@ -9,7 +9,7 @@ import hurry from '../../images/report/Big Shoes - Dynamic Pose.png';
 
 export const ReportCategory = (props: any ) => {
   //interface for props
-  const [year, setYear] = useState<string>('one');
+  const [year, setYear] = useState<number>(1);
   const [currentPlan, setCurrentPlan] = useState(props.plan);
 
   const displayPlanBtn = () => {
@@ -72,7 +72,7 @@ export const ReportCategory = (props: any ) => {
 
       {!props.plan
         ? <div className="report-info-2">
-        <h1 className="repo-title">{props.categorySubtitle || ''}</h1>
+        <h1 className="repo-title">your {props.categorySubtitle || ''}</h1>
         <h1 className="repo-title">{props.categorySecondNumber || 0}</h1>
         </div>
         :
@@ -89,7 +89,7 @@ export const ReportCategory = (props: any ) => {
 
       <div className="report-insight">
         {/* <h1 className="insight-title">insight:</h1> */}
-        <h1 className="insight">Property taxes and interest rates can vary by location.</h1>
+        <h1 className="insight">{props.information}</h1>
       </div>
 
       <div className="category-image">
@@ -123,7 +123,8 @@ export const ReportCategory = (props: any ) => {
       <div className="result-info-1">
         <h1 className="repo-title">Save</h1>
         {/* <h1 className="saving">{currentPlan.monthly_savings ? `$${currentPlan.monthly_savings}.00` : '0'} </h1> */}
-        <h1 className="saving">{currentPlan.monthly_savings} </h1>
+        <h1 className="saving">${currentPlan.monthly_savings}.00</h1>
+        i
         <h1 className="repo-title">monthly for</h1>
         <h1 className="saving">{ year } yrs </h1>
         </div>
