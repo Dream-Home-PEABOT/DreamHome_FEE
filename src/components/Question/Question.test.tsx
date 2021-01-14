@@ -35,12 +35,12 @@ describe('Question', () => {
     const question = screen.getByTestId('the-question');
     expect(question).toBeInTheDocument();
 
-    const input= screen.getByPlaceholderText('amount')
+    const input= screen.getByPlaceholderText('your answer')
     expect(input).toBeInTheDocument();
   });
 
   it('should be able to type on the input field', () => {
-    const input= screen.getByPlaceholderText('amount')
+    const input= screen.getByPlaceholderText('your answer')
     expect(input).toBeInTheDocument()
 
     userEvent.type(input, 'This is my answer');

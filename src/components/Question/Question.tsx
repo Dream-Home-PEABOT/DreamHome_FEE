@@ -97,7 +97,7 @@ export const Question: React.FC<Props> = ({updateAllAnswers}) => {
 
         <div className="input-box">
           <input
-            placeholder='answer here'
+            placeholder='your answer'
             type="text"
             className="input"
             value={answerInput[questionSet[index]] || ''}
