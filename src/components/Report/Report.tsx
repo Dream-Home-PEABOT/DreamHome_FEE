@@ -14,7 +14,7 @@ const Report = () => {
 
   const displayAnalysisSections = () =>{
     const reportData = Object.keys(userReport).reverse()
-    
+    console.log(reportData)
 
     return reportData.map((data, key) =>{
       let subtitle_1 = Object.keys(userReport[data])[0].replace(/_|\-/g, " ")
