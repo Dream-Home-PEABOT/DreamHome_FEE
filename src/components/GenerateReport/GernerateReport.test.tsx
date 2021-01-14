@@ -35,7 +35,7 @@ describe('GenerateReport', () => {
   it('should render with a header', () => {
 
 
-   expect(screen.getByText('Yearly Salary After Taxes')).toBeInTheDocument();
+   expect(screen.getByRole('heading', {name: /let's see your report!/i})).toBeInTheDocument();
  });
 
 
