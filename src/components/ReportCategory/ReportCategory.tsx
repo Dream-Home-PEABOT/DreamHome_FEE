@@ -9,7 +9,7 @@ import hurry from '../../images/report/Big Shoes - Dynamic Pose.png';
 
 export const ReportCategory = (props: any ) => {
   //interface for props
-  const [year, setYear] = useState<string>('one');
+  const [year, setYear] = useState<number>(1);
   const [currentPlan, setCurrentPlan] = useState(props.plan);
 
   const displayPlanBtn = () => {
@@ -123,7 +123,8 @@ export const ReportCategory = (props: any ) => {
       <div className="result-info-1">
         <h1 className="repo-title">Save</h1>
         {/* <h1 className="saving">{currentPlan.monthly_savings ? `$${currentPlan.monthly_savings}.00` : '0'} </h1> */}
-        <h1 className="saving">{currentPlan.monthly_savings} </h1>
+        <h1 className="saving">${currentPlan.monthly_savings}.00</h1>
+        i
         <h1 className="repo-title">monthly for</h1>
         <h1 className="saving">{ year } yrs </h1>
         </div>
