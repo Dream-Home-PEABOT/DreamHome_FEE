@@ -32,11 +32,11 @@ describe('ReportCategory', () => {
         down_payment_saved: 10000,
         down_payment_percent_saved: 2.9,
         ten_year_plan: {
-          one: {
+          1: {
             monthly_savings: 100,
             goal_end_date: "12/03/2025"
           },
-          two: {
+          2: {
             monthly_savings: 200,
             goal_end_date: "12/03/2026"
           }
@@ -279,7 +279,7 @@ describe('ReportCategory', () => {
       categoryID={fakeKey + 1}
       /> );
 
-      expect(screen.getByText('one yrs')).toBeInTheDocument();
+      expect(screen.getByText('1 yrs')).toBeInTheDocument();
   });
 
 
