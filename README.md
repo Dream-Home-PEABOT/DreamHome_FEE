@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Dream-Home-PEABOT/FEE_DreamHome.svg?branch=main)](https://travis-ci.com/Dream-Home-PEABOT/FEE_DreamHome)
+
 ### Overview
 
 `Dream Home` Is an educational / planning application meant to help new home buyers ease into the process of budgeting for their dream home.
