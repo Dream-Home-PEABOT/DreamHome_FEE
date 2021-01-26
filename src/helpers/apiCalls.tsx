@@ -10,8 +10,6 @@ export const getQuestions = async () => {
   }
 };
 
-//POST endpoint: 'https://dreamhome-mvp.herokuapp.com/api/v1/report'
-
 export const postAnswers = async (answers: Answers) => {
   const response = await fetch('https://dreamhome-mvp.herokuapp.com/api/v1/report', {
     method: 'POST',
