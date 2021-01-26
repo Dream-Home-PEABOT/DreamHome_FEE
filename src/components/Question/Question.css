@@ -121,7 +121,7 @@
 .input{
   font-family:'Quicksand', sans-serif;
   font-weight: 100;
-  border: none; 
+  border: none;
   border-width:0px;
   border-bottom: 7px solid #1A1A1A;
   width: 100%;
@@ -146,13 +146,22 @@
   margin: 3%;
   padding: 3%;
   align-items: center;
+  z-index: 1;
 }
 
 .note{
   color: #1A1A1A;
   font-family:'Quicksand', sans-serif;
   text-align: center;
+<<<<<<< HEAD
   grid-area: 11/ 1/ 12 / 2;
+=======
+  z-index: 2;
+}
+
+.floor-box {
+  z-index: 0;
+>>>>>>> bef297f... move dot graphic behind text in Questions component
 }
 
 
@@ -204,5 +213,3 @@
 .btn-1:hover{
   background-color: hotpink;
 }
-
-
