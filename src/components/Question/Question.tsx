@@ -8,7 +8,7 @@ import location_img from "../../images/questions/Charco - Location Map.png";
 interface Props {
   updateAllAnswers: any;
 }
-export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
+const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const questionContext = useContext(QuestionContext);
   const questionSet = Object.keys(questionContext);
 
@@ -41,7 +41,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       setTimeout(() => setErrorMessage(""), 4000);
     } else {
       setErrorMessage("");
-    }
+    }};
 
     return (
       <section className='question-section'>
@@ -145,9 +145,10 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
           <h4 className="note">{currentQuestion?.attributes?.note}</h4>
         </div>
 
-        <div className="floor-box"></div>
-        <h4 className="note">{currentQuestion?.attributes?.source}</h4>
-      </div>
+        <div className="floor-box">
+          <h4 className="note">{currentQuestion?.attributes?.source}</h4>
+        </div>
+
     </section>
   );
 };

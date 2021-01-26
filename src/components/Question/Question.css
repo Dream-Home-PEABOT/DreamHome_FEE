@@ -83,7 +83,7 @@
 }
 
 .error_box{
-  background-color: var(--background-color);
+  background-color: purple;
   grid-area: 3/ 4/ 5 / 8;
 
 }
@@ -114,14 +114,8 @@
 .input-box{
   grid-area: 8/ 4/ 9 / 8;
   justify-self: end;
-  width: 60%;
+  width: 100%;
   margin: 1% 7% 0% 0%;
-}
-
-.symbol {
-  color: #1A1A1A;
-  font-family:'Quicksand', sans-serif;
-  font-size: 2.6em;
 }
 
 .input{
@@ -130,9 +124,9 @@
   border: none;
   border-width:0px;
   border-bottom: 7px solid #1A1A1A;
-  width: 80%;
+  width: 100%;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  font-size: 2em;
+  font-size: 2em ;
   text-align: right;
   padding: 1.5%;
   cursor: text;
@@ -159,16 +153,11 @@
   color: #1A1A1A;
   font-family:'Quicksand', sans-serif;
   text-align: center;
-<<<<<<< HEAD
-  grid-area: 11/ 1/ 12 / 2;
-=======
   z-index: 2;
-  font-size: 1.5em;
 }
 
 .floor-box {
   z-index: 0;
->>>>>>> bef297f... move dot graphic behind text in Questions component
 }
 
 
