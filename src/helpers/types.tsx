@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface QuestionFormat{
   attributes:{
   classification: string;
@@ -12,6 +10,7 @@ export interface QuestionFormat{
   id:string;
   type:string;
 }
+
 export interface AllQuestionFormat{
   annual_salary:QuestionFormat;
   zipcode:QuestionFormat;
@@ -37,6 +36,3 @@ export interface Answers{
   //external_services:QuestionFormat;
   //survey:QuestionFormat;
 
-export const AnswerContext = React.createContext<any>({})
-export const QuestionContext = React.createContext<any>({})
-export const ReportContext = React.createContext<any>({})

@@ -8,6 +8,4 @@ deploy:
   api_key:
     secure: nBOLUUBfpr41nt0EZlkIyWdh3VeGkKas9msuxf1iLP/yGsdPskih2kChonuA0ZxzciDVwJgn0q4hxd8VwBIr7Gq93VnWBJrENcdQZxB8GsnLO0S1OP1VVOFPd5/xYEfoZIF23CLYCv7hq9DZOP7qcjNReKu/2BucU+BqN60Z0q2NPw7z5pMcQIHElUDBsoGbq2/XyUYhllShWXpZvPHMsBv1TPu/oz0fLbeKTKsVJlX5ogY+Xjjj+y0gH0b/3HJ2GFldx/9vEKscEOShWwKV7mGExrTeh/zmal9yfFzvpwmxCHPNe95hykjsdRaDYqyIU4Fl8C6Qz7iFTvJB0aMLZGbAGcIiduKYpyL0INIyYhkXy9vq13y9Y9d2+1GIvdP7GTWbuZ6GT4VF92TpPgywxwb0RTjsUNY28axNE/+a66bcytL51FHNwn3/PnFKidhHonq3IFg1/d2krBC39n9FRmDjnAjx/spa8lMqm3LrEI8Pu9VYJhTyi99lGrQDpZ3xv5vXmqXXyMEXFFY+Y4GfA5wZzGF3fh2NpPbz2OYkbcmN6ejUJ2UicDoP63cUsmDfjDZqpM1rCJDDsIVuS9ywhBuAV0omhKmX1F1ZG1y1W2v6C5jqUhKX0EvvuR5Tg3LI8aPfBp9mto9W4T9rXucKyCfpSiioAv0oE+L9+5MGIfU=
   app: dream-home-cap
-  on:
-    all_branches: true
-    skip_cleanup: true
+  on: main
