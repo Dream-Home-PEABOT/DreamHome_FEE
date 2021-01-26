@@ -1,5 +1,5 @@
 import React, {useContext } from 'react'
-import {ReportContext, AnswerContext} from '../../types'
+import {ReportContext, AnswerContext} from '../../helpers/context'
 import { Cube } from '../Cube/Cube';
 import './Report.css';
 import { ReportCategory } from '../ReportCategory/ReportCategory';
