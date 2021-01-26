@@ -42,25 +42,18 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     } else {
       setErrorMessage("");
     }
-  };
 
-  return (
-    <section className="question-section">
-      <div className="inner-container">
-        <div className="desc-container">
-          <div className="description-box" data-testid="description-container">
-            <h2
-              style={{ backgroundColor: "black", width: "5px" }}
-              className="desc"
-            >
-              💡
-            </h2>
-            <h1 data-testid="description-title" className="question-desc">
-              {currentQuestion?.attributes?.classification}
-            </h1>
-            <h2 data-testid="description-body" className="desc">
-              {currentQuestion?.attributes?.description}
-            </h2>
+    return (
+      <section className='question-section'>
+
+        <div className="inner-container">
+
+          <div className='desc-container'>
+            <div className="description-box" data-testid='description-container'>
+              {/*<h2 style={{ backgroundColor: 'black',  width: '5px'}}className='desc'>💡</h2>*/}
+              <h1  data-testid='description-title' className="question-desc">{currentQuestion?.attributes?.classification}</h1>
+              <h2  data-testid='description-body' className='desc'>{currentQuestion?.attributes?.description}</h2>
+            </div>
           </div>
         </div>
 
