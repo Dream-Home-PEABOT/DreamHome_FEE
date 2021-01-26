@@ -126,6 +126,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="input-box">
+          {currentQuestion.attributes.symbol === "$" && <h3 className="symbol">
+            {currentQuestion?.attributes?.symbol}
+          </h3>}
           <input
             placeholder="your answer"
             type="text"
@@ -133,6 +136,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             value={answerInput[questionSet[index]] || ""}
             onChange={(e) => validateString(e)}
           />
+          {currentQuestion.attributes.symbol === "%" && <h3 className="symbol">
+            {currentQuestion?.attributes?.symbol}
+          </h3>}
         </div>
 
         <div className="note-box">
