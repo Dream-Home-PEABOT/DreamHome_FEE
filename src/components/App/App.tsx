@@ -1,5 +1,6 @@
 import React, {useState , useEffect, useContext, useRef} from 'react';
-import {AnswerContext, QuestionContext, ReportContext, AllQuestionFormat} from '../../helpers/context'
+import {AnswerContext, QuestionContext, ReportContext, } from '../../helpers/context'
+import {AllQuestionFormat} from '../../helpers/types'
 import {getQuestions} from '../../helpers/apiCalls';
 import {Switch, Route, __RouterContext, Redirect} from 'react-router';
 import { useTransition, animated } from "react-spring";
