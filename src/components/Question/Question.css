@@ -118,6 +118,12 @@
   margin: 1% 7% 0% 0%;
 }
 
+.symbol {
+  color: #1A1A1A;
+  font-family:'Quicksand', sans-serif;
+  font-size: 2.6em;
+}
+
 .input{
   font-family:'Quicksand', sans-serif;
   font-weight: 100;
