@@ -83,7 +83,7 @@
 }
 
 .error_box{
-  background-color: purple;
+  background-color: var(--background-color);
   grid-area: 3/ 4/ 5 / 8;
 
 }
