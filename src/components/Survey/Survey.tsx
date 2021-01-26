@@ -1,9 +1,9 @@
-//import
 import React from 'react';
 import './Survey.css'
 import bkg_img_2 from '../../images/survey/Big Shoes - Sitting on Rock Blue.png'
 import bkg_img_1 from '../../images/survey/Big Shoes - Sitting on Rock Yellow.png'
 import {Link} from 'react-router-dom'
+
 export const Survey: React.FC = () => {
   return (
       <section className='survey-container'>

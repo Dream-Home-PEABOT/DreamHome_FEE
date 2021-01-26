@@ -1,8 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import "@testing-library/jest-dom";
-import ReactDOM from 'react-dom';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { AnswerContext,  } from '../../helpers/context';
 
