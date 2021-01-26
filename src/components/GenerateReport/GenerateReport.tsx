@@ -1,8 +1,9 @@
 //imports
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { AnswerContext, Answers } from '../../types';
- import { getReport, postAnswers} from '../../apiCalls'
+import { AnswerContext,  } from '../../helpers/context';
+import { Answers  } from '../../helpers/types';
+ import { getReport, postAnswers} from '../../helpers/apiCalls'
 import './GenerateReport.css'
 import calculate_img from '../../images/calculate/Big Shoes - Sitting On Floor.png'
 import back_img from '../../images/calculate/Charco - Security.png'

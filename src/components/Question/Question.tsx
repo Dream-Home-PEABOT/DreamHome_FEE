@@ -1,6 +1,6 @@
 import React, { useState, useContext }  from 'react';
 import { Link } from 'react-router-dom';
-import {QuestionContext} from '../../types';
+import {QuestionContext} from '../../helpers/context';
 import './Question.css'
 import bkg_img from '../../images/questions/Big Shoes - Sitting On Floor.png'
 import location_img from '../../images/questions/Charco - Location Map.png'

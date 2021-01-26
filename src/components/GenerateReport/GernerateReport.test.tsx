@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import "@testing-library/jest-dom";
 import ReactDOM from 'react-dom';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { AnswerContext, Answers } from '../../types';
+import { AnswerContext,  } from '../../helpers/context';
 
 import GenerateReport from './GenerateReport';
 

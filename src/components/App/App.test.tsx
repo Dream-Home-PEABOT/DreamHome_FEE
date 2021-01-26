@@ -1,16 +1,16 @@
 import React from 'react';
+import "@testing-library/jest-dom";
 import { render, screen, waitFor, act } from '@testing-library/react';
 import {ReportContext} from '../../helpers/context'
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import {getQuestions, getReport} from '../../helpers/apiCalls';
-import "@testing-library/jest-dom";
 import App from './App';
 import NavBar from '../NavBar/NavBar';
 import Report from '../Report/Report';
-jest.mock("../../apiCalls");
+jest.mock("../../helpers/apiCalls");
 
-let questionResults
+let questionResults;
 describe("App", () => {
 
   beforeEach(()=>{
