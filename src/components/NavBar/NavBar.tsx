@@ -71,7 +71,7 @@ const DropdownMenu = (props: any) => {
       <Link
         to={firebase.auth().currentUser ? "/logout" : "/login"}
         data-testid="to-login"
-        onClick={() => {props.setOpen(false); logOut();}}
+        onClick={() => {props.setOpen(false); firebase.auth().currentUser && logOut();}}
       >
         <DropdownItem onClick={props.setOpen}>{firebase.auth().currentUser ? "Logout": "Login"}</DropdownItem>
 
