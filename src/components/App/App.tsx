@@ -9,6 +9,7 @@ import { getQuestions } from "../../helpers/apiCalls";
 import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
 
+
 import NavBar from "../NavBar/NavBar";
 import Home from "../Home/Home";
 import Journey from "../Journey/Journey";
