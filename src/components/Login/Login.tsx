@@ -5,35 +5,36 @@ import "./Login.css"
 import { googleProvider, googleSignInPopup } from "../../helpers/googleAuth";
 import React, { useEffect } from "react";
 
-//const makeGoogleCredential = (googleUser:any) =>{
-//  let credential = firebase.auth.GoogleAuthProvider.credential(
-//    googleUser.getAuthResponse().id_token);
-//}
 
 export const Login: React.FC<any> = () => {
-  const getUser = async () => {
-    let provider = googleProvider();
-    let result = await googleSignInPopup(provider);
-    console.log(result);
-  };
+  const uiSettings = {
+    callbacks: {
+    signInSuccessWithAuthResult: function(authResult:any, redirectUrl:any) {
+      console.log(authResult, redirectUrl)
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return false;
+    },
+  },
+  signInSuccessUrl: '/home',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  ],
+};
   const configureUI = () => {
+    googleProvider();
     let ui = new firebaseui.auth.AuthUI(firebase.auth());
-    ui.start("#firebaseui-auth-container", {
-      signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      ],
-      // Other config options...
-    });
+    ui.start("#firebaseui-auth-container", uiSettings);
   };
   useEffect(() => {
-    getUser();
     configureUI();
   }, []);
   return (
     <div>
       <div id="firebaseui-auth-container"></div>
-      <div id="loader">Loading...</div>
     </div>
   );
 };
