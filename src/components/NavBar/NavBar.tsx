@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -70,7 +72,7 @@ const DropdownMenu = (props: any) => {
         data-testid="to-login"
         onClick={() => props.setOpen(false)}
       >
-        <DropdownItem onClick={props.setOpen}>Login</DropdownItem>
+        <DropdownItem onClick={props.setOpen}>{firebase.auth().currentUser ? "Logout": "Login"}</DropdownItem>
       </Link>
 
       {userReport && (
