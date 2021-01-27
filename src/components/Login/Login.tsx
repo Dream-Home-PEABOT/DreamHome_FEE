@@ -1,24 +1,22 @@
 import firebase from "firebase/app";
-import * as firebaseui from "firebaseui";
 import "firebase/auth";
+import * as firebaseui from "firebaseui";
 import "./Login.css"
 import React, { useEffect } from "react";
 
 
-export const Login: React.FC<any> = () => {
+export const Login: React.FC<any> = ({ history }) => {
   const uiSettings = {
     callbacks: {
     signInSuccessWithAuthResult: function(authResult:any, redirectUrl:any) {
-      console.log(authResult.user)
       localStorage.userUID = authResult.user.uid
       localStorage.displayName = authResult.user.displayName
       localStorage.email = authResult.user.email
-      return true;
+      history.push("/")
+      return false
     },
   },
-  signInSuccessUrl: '/home',
   signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.TwitterAuthProvider.PROVIDER_ID
@@ -29,7 +27,6 @@ export const Login: React.FC<any> = () => {
     ui.start("#firebaseui-auth-container", uiSettings);
   };
   useEffect(() => {
-
     configureUI();
   }, []);
   return (
