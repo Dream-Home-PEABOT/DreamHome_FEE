@@ -14,6 +14,7 @@ import Home from "../Home/Home";
 import Journey from "../Journey/Journey";
 import { Survey } from "../Survey/Survey";
 import { Question } from "../Question/Question";
+import { Login } from "../Login/Login";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
@@ -68,6 +69,7 @@ const App: React.FC = () => {
                 <Redirect exact from="/" to="/home" />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/journey" component={Journey} />
+                <Route exact path="/login" component={Login} />
                 <Route exact path="/survey" component={Survey} />
                 <Route
                   exact
