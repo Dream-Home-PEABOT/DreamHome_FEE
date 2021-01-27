@@ -17,3 +17,7 @@ export const firebaseInit = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
+export const logOut = async ()=>{
+  await firebase.auth().signOut()
+}
+
