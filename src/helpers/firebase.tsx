@@ -17,7 +17,10 @@ export const firebaseInit = () => {
   firebase.initializeApp(firebaseConfig);
 };
 
-export const logOut = async ()=>{
-  await firebase.auth().signOut()
+export const logOut = ()=>{
+   firebase.auth().signOut()
+   localStorage.removeItem("displayName")
+   localStorage.removeItem("email")
+   localStorage.removeItem("userUID")
 }
 
