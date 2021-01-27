@@ -6,6 +6,8 @@
 @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Quicksand:wght@300;400;500;600&family=Rozha+One&family=Xanh+Mono:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Gravitas+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
 :root{
 
 	/* navbar */
@@ -31,6 +33,8 @@
   --note: 'Quicksand', sans-serif;
 	--error: 'Bungee Shade', cursive;
 	--loading: 'Abril Fatface', cursive;
+	--card: 'Fredericka the Great', cursive;
+	--mono: 'Courier New', Courier, monospace;
 }
 
 html, body, div, span, applet, object, iframe,

@@ -1,51 +1,110 @@
-import React from "react";
-import "./Journey.css";
-import bkg_img from "../../images/journey/Big Shoes - Hero.png";
-import { Link } from "react-router-dom";
+import './Journey.css'
 
-const Journey: React.FC = () => {
+import {Link} from 'react-router-dom'
+import React, { useState} from 'react'
+import { useSpring, animated } from 'react-spring'
+import read_img from '../../images/questions/Big Shoes - Sitting On Floor.png'
+import answer_img from '../../images/home/Big Shoes - Standing Pose.png';
+import report_img from '../../images/report/Big Shoes - Jumping On One leg Pose.png';
+
+const Journey:React.FC = () => {
+  const [flip, setFlip] = useState(false);
+  
+  const { transform, opacity } = useSpring({
+    opacity: flip  ? 1 : 0,
+    transform: `perspective(600px) rotateY(${flip ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 200 }
+  })
+
   return (
-    <section data-testid="journey-section" className="journey-section">
+    <section data-testid='journey-section' className='journey-section'>
+      
+      <div className="instructions-box">
+        <div className="instructions">Instructions</div>
+      </div>
       <div className="container">
-        <div
-          data-testid="information-container"
-          className="information-container"
-        >
-          <div className="info-box">
-            <h2 className="info">
-              Hi, my name is Teki and want to help you find your Dream Home! We
-              will focus on either building a plan for you that will help you
-              reach your goals, or see what your possible plans for you based on
-              your current situation. <br /> With the information you give me, I
-              can set you on a path to your Dream Home!
-            </h2>
+
+        {/* card one */}
+        <div className="box">
+          <div className="in-one"  onClick={() => setFlip(flip => !flip)}>
+
+            <animated.div 
+              className="in-two front" 
+              style={{ opacity: opacity.interpolate((o: any)=> 1 - o), transform }}>
+                <h1 className="card-number">01</h1>
+                <h1 className="card-action">Read</h1>
+                <img src={read_img} alt="" className="card-img"/>
+                <div className='deco-one'></div>
+                <div className='deco-two'></div>
+                <div className='deco-three'></div>
+                {/* <button className="card-button">find out more</button> */}
+            </animated.div>
+            <animated.div 
+              className="in-two back" 
+              style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
+                <div className="back-data-container">
+                  <h1 className="back-title">Why the questions?</h1>
+                  <h2 className='back-info'>
+                    We will focus on either building a plan for you that will help you reach your goals, or see what your possible plans for you based on your current situation. </h2>
+                  <h2 className='back-info'>
+                    With the information you give me, I can set you on a path to your Dream Home!
+                  </h2>
+                </div>
+            </animated.div>
           </div>
         </div>
 
-        <div className="box-title">
-          <div className="title-container">
-            <h1 className="title">My</h1>
-            <h1 className="title-2">Dream Home</h1>
+        {/* card two */}
+        <div className="box">
+          <div className="in-one" onClick={() => setFlip(flip=> !flip)}>
+            <animated.div 
+              className="in-two front" 
+              style={{ opacity: opacity.interpolate((o: any)=> 1 - o), transform }}>
+                <h1 className="card-number">02</h1>
+                <h1 className="card-action">Answer</h1>
+                <img src={answer_img} alt="" className="card-img"/>
+                <div className='deco-one'></div>
+                <div className='deco-two'></div>
+                <div className='deco-three'></div>
+                {/* <button className="card-button">find out more</button> */}
+            </animated.div>
+            <animated.div 
+              className="in-two back" 
+              style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
+                <div className="back-data-container">
+                  <h1 className="back-title">Don't worry</h1>
+                  <h2 className='back-info'>We will guide you through each question and give you our advice.</h2>
+                  <h2 className='back-info'>Every question is designed to understand where you are in your journey and my job is to present you with the most accurate information you need.</h2>
+                </div>
+            </animated.div>
           </div>
         </div>
 
-        <div className="action-box">
-          <div className="action-container">
-            <h4 className="title-2 action">
-              First, I need to ask you some quesions...
-            </h4>
+        {/* card three */}
+        <div className="box">
+          <div className="in-one" onClick={() => setFlip(flip=> !flip)}>
+            <animated.div 
+              className="in-two front" 
+              style={{ opacity: opacity.interpolate((o: any)=> 1 - o), transform }}>
+                <h1 className="card-number">03</h1>
+                <h1 className="card-action">Create</h1>
+                <img src={report_img} alt="" className="card-img"/>
+                <div className='deco-one'></div>
+                <div className='deco-two'></div>
+                <div className='deco-three'></div>
+                {/* <button className="card-button">find out more</button> */}
+            </animated.div>
+            <animated.div 
+              className="in-two back" 
+              style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
+                <div className="back-data-container">
+                  <h1 className="back-title">Enjoy your report!</h1>
+                  <h2 className="back-info">Once you have answered all the questions</h2>
+                  <h2 className='back-info'>We will generate a report that will give you the information you need to make an informed decision and take an action. </h2>
+                </div>
+            </animated.div>
           </div>
         </div>
-
-        <div className="img-box">
-          <img
-            data-testid="journey-img"
-            src={bkg_img}
-            alt="journey image"
-            className="journey-img"
-          />
-        </div>
-
         <div className="btn-container">
           <Link to="/survey">
             <button className="btn">Start</button>
