@@ -65,7 +65,13 @@ const DropdownMenu = (props: any) => {
         <DropdownItem onClick={props.setOpen}>Journey</DropdownItem>
       </Link>
 
-      {/* <DropdownItem data-testid='to-login'>Login</DropdownItem> */}
+      <Link
+        to="/login"
+        data-testid="to-login"
+        onClick={() => props.setOpen(false)}
+      >
+        <DropdownItem onClick={props.setOpen}>Login</DropdownItem>
+      </Link>
 
       {userReport && (
         <Link
