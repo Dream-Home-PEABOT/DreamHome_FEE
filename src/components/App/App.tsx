@@ -69,9 +69,15 @@ const App: React.FC = () => {
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
-                <Redirect exact from="/" to="/Profile" />
+                <Redirect exact from="/" to="/home" />
                 <Route exact path="/profile" component={Profile} />
-                <Route exact path="/home" component={Home} />
+                <Route
+                  exact
+                  path="/home"
+                  component={() => (
+                    <Home loggedInUser={firebase.auth().currentUser} />
+                  )}
+                />
                 <Route exact path="/journey" component={Journey} />
                 <Route exact path="/login" component={Login} />
                 <Redirect from="/logout" to="/home" />
