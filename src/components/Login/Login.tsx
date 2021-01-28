@@ -2,11 +2,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import * as firebaseui from "firebaseui";
 import "./Login.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import bkg_img from "../../images/report/Charco - Mobile Life.png";
 
 export const Login: React.FC<any> = ({ history }) => {
-  const [loading, updateLoading] = useState(false)
   const uiSettings = {
     callbacks: {
       signInSuccessWithAuthResult: function (
@@ -47,7 +46,7 @@ export const Login: React.FC<any> = ({ history }) => {
         <h3 className="title-3" data-testid="Dream Home">
           Save Your Dream!
         </h3>
-        <div onClick={()=>updateLoading(true)} id="firebaseui-auth-container"></div>
+        <div id="firebaseui-auth-container"></div>
         <h3 className="desc" data-testid="Dream Home">
           No Account? No worries! Click on the preferred method above to get one!
         </h3>
