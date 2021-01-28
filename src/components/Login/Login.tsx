@@ -2,10 +2,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import * as firebaseui from "firebaseui";
 import "./Login.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import bkg_img from "../../images/report/Charco - Mobile Life.png";
 
 export const Login: React.FC<any> = ({ history }) => {
+  const [loading, updateLoading] = useState(false)
   const uiSettings = {
     callbacks: {
       signInSuccessWithAuthResult: function (
@@ -15,43 +16,41 @@ export const Login: React.FC<any> = ({ history }) => {
         localStorage.userUID = authResult.user.uid;
         localStorage.displayName = authResult.user.displayName;
         localStorage.email = authResult.user.email;
-        history.push("/");
-        return false;
+        return true;
       },
     },
+    signInSuccessUrl: '/',
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     ],
   };
+
   const configureUI = () => {
     let ui =
       firebaseui.auth.AuthUI.getInstance() ||
       new firebaseui.auth.AuthUI(firebase.auth());
     ui.start("#firebaseui-auth-container", uiSettings);
   };
+
   useEffect(() => {
     configureUI();
   }, []);
+
   return (
-    <div >
-      <img
-        src={bkg_img}
-        alt="Big Shoes - Standing Pose"
-        className="main-image"
-      />
-      <div className="title-container">
-        <h3 className="title-2" data-testid="My">
-          Save
+    <div className="login-container">
+      <div className="login-img-container">
+        <img src={bkg_img} alt="Mobile phone" className="left-image" />
+      </div>
+      <div className="login-icons-container">
+        <h3 className="title-3" data-testid="Dream Home">
+          Save Your Dream!
         </h3>
-        <h3 className="title-2" data-testid="Dream Home">
-          Your
+        <div onClick={()=>updateLoading(true)} id="firebaseui-auth-container"></div>
+        <h3 className="desc" data-testid="Dream Home">
+          No Account? No worries! Click on the preferred method above to get one!
         </h3>
-        <h3 className="title-2" data-testid="Dream Home">
-          Dream!
-        </h3>
-        <div id="firebaseui-auth-container"></div>
       </div>
     </div>
   );
