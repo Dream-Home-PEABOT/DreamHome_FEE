@@ -35,7 +35,7 @@ export const getReport = async () => {
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data['03_attributes'].output;
+    return final.data['03_attributes'];
   } else {
     return response;
   }

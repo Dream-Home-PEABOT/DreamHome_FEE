@@ -20,7 +20,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   
   const organizeData = () => {
-    const result = questionKeys.sort((a:any, b:any) => questionContext[a]['03_attributes'].A_order > questionContext[b]['03_attributes'].A_order ? 1 : -1)
+    questionKeys.sort((a:any, b:any) => questionContext[a]['03_attributes']
+    .A_order > questionContext[b]['03_attributes']
+    .A_order ? 1 : -1)
   }
 
   organizeData()
