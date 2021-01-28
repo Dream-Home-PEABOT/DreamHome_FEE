@@ -18,7 +18,7 @@ export const Login: React.FC = () => {
         return true;
       },
     },
-    signInSuccessUrl: '/',
+    signInSuccessUrl: "/",
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -48,8 +48,16 @@ export const Login: React.FC = () => {
         </h3>
         <div id="firebaseui-auth-container"></div>
         <h3 className="desc" data-testid="Dream Home">
-          No Account? No worries! Click on the preferred method above to get one!
+          No Account? No worries! Click on the preferred method above to get
+          one!
         </h3>
+        <a
+          className="twitter-share-button"
+          href="https://twitter.com/intent/tweet?original_referer=yoururl.com&source=tweetbutton&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
+          data-size="large"
+        >
+          Tweet
+        </a>
       </div>
     </div>
   );
