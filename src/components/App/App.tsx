@@ -17,6 +17,7 @@ import { Question } from "../Question/Question";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
+import { createImportSpecifier } from "typescript";
 
 const App: React.FC = () => {
   const [questions, updateQuestions] = useState<any>({});
@@ -33,9 +34,10 @@ const App: React.FC = () => {
     leave: { opacity: 0, transform: "translate(-50%, 0)" },
   });
 
-  const buildAnswers = (questions: AllQuestionFormat | {}): void => {
-    const answerKey = Object.keys(questions).reduce((acc: any, cur) => {
-      acc[cur] = "";
+  const buildAnswers = (questions: any): void => {
+    const answerKey = questions.reduce((acc: any, curr: any) => {
+      const category = Object.keys(curr)
+      acc[category[0]] = "";
       return acc;
     }, {});
     updateAllAnswers(answerKey);
@@ -45,9 +47,22 @@ const App: React.FC = () => {
     if (!unmounted.current) {
       const data = await getQuestions();
       await data;
-      buildAnswers(data);
-      updateQuestions(data);
+      const organizedData = organizeQuestionSet(data);
+      buildAnswers(organizedData);
+      updateQuestions(organizedData);
     }
+  };
+
+  const organizeQuestionSet =(questionsObj: any) => {
+    const keys = Object.keys(questionsObj)
+    const questions = keys.map((question) => ({[question] : questionsObj[question]}));
+    questions.forEach(category => {
+      let target = Object.keys(category)[0]
+      if(target === 'goal_home_price' || target === 'rent'){
+        questions.push(...questions.splice(questions.indexOf(category),1))
+      }
+    });
+    return questions;
   };
 
   useEffect(() => {

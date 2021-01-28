@@ -2,15 +2,26 @@ import { Answers } from "./types";
 
 export const getQuestions = async () => {
   const response = await fetch(
-    "https://dreamhome-mvp.herokuapp.com/api/v1/education"
+    "http://localhost:3000/education"
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data;
+    return final;
   } else {
     return response;
   }
 };
+// export const getQuestions = async () => {
+//   const response = await fetch(
+//     "https://dreamhome-mvp.herokuapp.com/api/v1/education"
+//   );
+//   if (response.ok) {
+//     let final = await response.json();
+//     return final.data;
+//   } else {
+//     return response;
+//   }
+// };
 
 export const postAnswers = async (answers: Answers) => {
   const response = await fetch(

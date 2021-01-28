@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { QuestionContext } from "../../helpers/context";
+import { QuestionContext, AnswerContext } from "../../helpers/context";
 import "./Question.css";
 import bkg_img from "../../images/questions/Big Shoes - Sitting On Floor.png";
 import location_img from "../../images/questions/Charco - Location Map.png";
@@ -8,23 +8,40 @@ import location_img from "../../images/questions/Charco - Location Map.png";
 interface Props {
   updateAllAnswers: any;
 }
-export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
-  const questionContext = useContext(QuestionContext);
-  const questionSet = Object.keys(questionContext);
 
+export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
+
+  const questionContext = useContext(QuestionContext);
+  const answersSet = useContext(AnswerContext);
   const [answerInput, updateAnswer] = useState<any>({});
   const [index, setIndex] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const category = Object.keys(answersSet);
+  const [question, setQuestion] = useState(category[index][0]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  let currentQuestion = questionContext[questionSet[index]];
+  let currentQuestion = questionContext[index][question];
 
+  useEffect(() => {
+    inputRef?.current?.focus();
+    setQuestion(category[index])
+  },[index])
+  
+  
+  useEffect(() => {
+    setQuestion(category[index])
+    inputRef?.current?.focus();
+  },[])
+  
   const nextQuestion = () => {
-    let userAmount = answerInput[questionSet[index]];
-    let isnum = /^\d+$/.test(userAmount);
-    if (!userAmount || !isnum) {
+    console.log(currentQuestion)
+    let userAmount = answerInput[category[index]];
+    console.log(userAmount)
+    let isNum = /^\d+$/.test(userAmount);
+    if (!userAmount || !isNum) {
       setErrorMessage("Sorry but we need this information");
       return false;
-    } else if (index < questionSet.length && answerInput[questionSet[index]]) {
+    } else if (index < category.length ) {
       setIndex(index + 1);
     }
   };
@@ -34,7 +51,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   };
 
   const validateString = (e: any) => {
-    updateAnswer({ ...answerInput, [questionSet[index]]: e.target.value });
+    updateAnswer({ ...answerInput, [question]: e.target.value });
     let isnum = /^\d+$/.test(e.target.value);
     if (!isnum) {
       setErrorMessage("only numbers");
@@ -56,10 +73,10 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               💡
             </h2>
             <h1 data-testid="description-title" className="question-desc">
-              {currentQuestion?.attributes?.classification}
+              {/* {currentQuestion['03_attributes']?.B_classification} */}
             </h1>
             <h2 data-testid="description-body" className="desc">
-              {currentQuestion?.attributes?.description}
+              {/* {currentQuestion['03_attributes']?.E_information} */}
             </h2>
           </div>
         </div>
@@ -102,8 +119,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             </button>
           </div>
           <div className="bx">
-            {questionSet.indexOf(questionSet[index]) !==
-            questionSet.length - 1 ? (
+            {index < category.length ? (
               <button
                 className="next-btn btn"
                 onClick={() => {
@@ -129,25 +145,26 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="question-box" data-testid="the-question">
-          <p className="question">{currentQuestion?.attributes?.question}</p>
+          {/* <p className="question">{currentQuestion['03_attributes']?.C_question}</p> */}
         </div>
 
         <div className="input-box">
           <input
-            placeholder="your answer"
+            ref={inputRef}
+            // placeholder={`your answer ${currentQuestion['03_attributes'].H_symbol}`}
             type="text"
             className="input"
-            value={answerInput[questionSet[index]] || ""}
+            value={answerInput[question] || ""}
             onChange={(e) => validateString(e)}
           />
         </div>
 
         <div className="note-box">
-          <h4 className="note">{currentQuestion?.attributes?.note}</h4>
+          {/* <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4> */}
         </div>
 
         <div className="floor-box"></div>
-        <h4 className="note">{currentQuestion?.attributes?.source}</h4>
+        {/* <h4 className="note">{currentQuestion['03_attributes'].G_source}</h4> */}
       </div>
     </section>
   );
