@@ -27,7 +27,16 @@ export const ReportSecOne = () => {
       </section>
 
       <section className='location-info'>
-        
+        <div className='city-name'>
+          {reportContext.output.A_location.city_state}
+        </div>
+        <div className='zip-code'>
+          {reportContext.output.A_location.zipcode}
+        </div>
+        <div className='city-name'>
+          <h2>Average Home Price in this Area</h2>
+          {reportContext.output.A_location.average_home_price}
+        </div>
       </section>
 
     </>
