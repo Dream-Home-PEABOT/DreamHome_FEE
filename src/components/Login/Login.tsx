@@ -5,7 +5,7 @@ import "./Login.css";
 import React, { useEffect } from "react";
 import bkg_img from "../../images/report/Charco - Mobile Life.png";
 
-export const Login: React.FC<any> = ({ history }) => {
+export const Login: React.FC = () => {
   const uiSettings = {
     callbacks: {
       signInSuccessWithAuthResult: function (
