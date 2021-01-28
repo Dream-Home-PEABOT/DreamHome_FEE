@@ -29,7 +29,7 @@ export const ReportSecTwo = () => {
           }
           <div className='mortgage-rate'>
             <h2>The Current Mortgage Rate</h2>
-            {reportContext.output.B_principal.mortgage_rate}
+            {reportContext.output.B_principal.mortgage_rate * 100}%
           </div>
         </section>
         <section className='expenses-section'>

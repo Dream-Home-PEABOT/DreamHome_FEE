@@ -14,15 +14,15 @@ export const ReportSecOne = () => {
         </div>
         <div className='top-circle-1'>
           <h2>Your Monthly Income</h2>
-          {reportContext.input.C_salary}
+          ${reportContext.input.C_salary}
         </div>
         <div className='top-circle-1'>
           <h2>Your Monthly Debt</h2>
-          {reportContext.input.D_monthly_debt}
+          ${reportContext.input.D_monthly_debt}
         </div>
         <div className='top-circle-1'>
           <h2>Your Mortgage Term</h2>
-          {reportContext.input.F_mortgage_term}
+          {reportContext.input.F_mortgage_term} year
         </div>
       </section>
 
