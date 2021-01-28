@@ -52,8 +52,8 @@ export const Login: React.FC = () => {
           one!
         </h3>
         <a
-          className="twitter-share-button"
-          href="https://twitter.com/intent/tweet?original_referer=yoururl.com&source=tweetbutton&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
+          className="twitter-hashtag-button"
+          href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
           data-size="large"
         >
           Tweet
