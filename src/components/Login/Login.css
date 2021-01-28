@@ -16,6 +16,32 @@
  * CSS for FirebaseUI Javascript widget.
  * All selectors should begin with a "firebaseui-" prefix to avoid conflicts.
  */
+
+.login-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items:center;
+}
+
+.left-image {
+  width: 25em;
+  height: 35em;
+}
+
+.login-img-container{
+  justify-self:center;
+}
+
+.login-icons-container{
+  text-align:center;
+}
+.title-3{
+  font-family: 'Gravitas One', cursive;
+  font-size: 2.5em;
+  z-index: 1;
+  margin: 5%; 
+}
+
 .firebaseui-container {
   background-color: #fff;
   box-sizing: border-box;
