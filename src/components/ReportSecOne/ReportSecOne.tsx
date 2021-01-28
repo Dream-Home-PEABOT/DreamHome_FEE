@@ -35,7 +35,7 @@ export const ReportSecOne = () => {
         </div>
         <div className='city-name'>
           <h2>Average Home Price in this Area</h2>
-          {reportContext.output.A_location.average_home_price}
+          ${reportContext.output.A_location.average_home_price}
         </div>
       </section>
 
