@@ -64,7 +64,7 @@ const App: React.FC = () => {
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
         <ReportContext.Provider value={report}>
-          <NavBar loggedIn={firebase.auth().currentUser}/>
+          <NavBar loggedIn={firebase.auth().currentUser} />
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
@@ -72,7 +72,7 @@ const App: React.FC = () => {
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/journey" component={Journey} />
                 <Route exact path="/login" component={Login} />
-                <Redirect from="/logout" to="/home"/>
+                <Redirect from="/logout" to="/home" />
                 <Route exact path="/survey" component={Survey} />
                 <Route
                   exact
