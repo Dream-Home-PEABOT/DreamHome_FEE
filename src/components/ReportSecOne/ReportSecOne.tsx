@@ -8,7 +8,9 @@ import goodJob from '../../images/report/Charco - Inbox.png'
 import downpayment from "../../images/report/Charco - Work at Home.png";
 import location from "../../images/report/Charco - Location Map.png";
 import mobile from "../../images/report/Charco - Mobile Life.png"
-// import location from "../../images/report/Charco - Location Map.png";
+import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
+import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
+
 
 export const ReportSecOne = () => {
 
@@ -134,7 +136,7 @@ export const ReportSecOne = () => {
         valueLeft={reportContext.output.A_location.zipcode}
         valueRightTitle={'Average Home Price in this Area'}
         valueRight={reportContext.output.A_location.average_home_price}
-        plant={}
+        plant={plant_1}
         />
 
       <ReportCategory 
@@ -142,6 +144,7 @@ export const ReportSecOne = () => {
         insight={insight[0]}
         position={keys.indexOf(keys[1])+1}
         centerImg={goodJob}
+        plant={plant_2}
         />
 
       <ReportCategory 
@@ -149,6 +152,7 @@ export const ReportSecOne = () => {
         position={keys.indexOf(keys[2])+1}
         insight={insight[0]}
         centerImg={mobile}
+        plant={plant_1}
         />
 
       <ReportCategory 
@@ -157,6 +161,7 @@ export const ReportSecOne = () => {
         position={keys.indexOf(keys[3])+1}
         centerImg={downpayment}
         plan={reportContext.output.D_downpayment.plan_style}
+        plant={plant_2}
         />
 
       {/* <section className='location-info'>

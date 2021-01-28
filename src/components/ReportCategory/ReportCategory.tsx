@@ -1,5 +1,3 @@
-import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
-import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
 import downpayment from "../../images/report/Charco - Work at Home.png";
 import hurry from "../../images/report/Big Shoes - Dynamic Pose.png";
 
@@ -43,7 +41,6 @@ export const ReportCategory = (props: any) => {
             <div className="report-info-3">
               <h1 className="repo-title">{props.valueRightTitle}</h1>
             </div>
-
           </>
         ) : (
           <>
@@ -64,15 +61,10 @@ export const ReportCategory = (props: any) => {
 
         <div className="category-image">
           {!props.plan && (
-            <img src={plant_1} alt="blue-plant" className="plant-1" />
+            <img src={props.plant} alt="blue-plant" className="plant-1" />
           )}
         </div>
-        {!props.plan && (
-          <div className="category-image-2">
-            <img src={plant_2} alt="blue-plant" className="plant-1" />
-          </div>
-        )}
-
+  
         <h3 className="solo_number">{props.position}</h3>
         {/* reorganize this */}
         <h1 className="zip-title"></h1>
