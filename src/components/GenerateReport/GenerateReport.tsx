@@ -16,7 +16,7 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
 
   const requestReport = async () => {
     const formattedAnswers: Answers = {
-      salary: answers.annual_salary,
+      salary: answers.monthly_salary,
       zipcode: answers.zip_code,
       credit_score: answers.credit_score,
       monthly_debt: answers.monthly_debt,
@@ -25,9 +25,11 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       rent: answers.rent,
       goal_principal: answers.goal_home_price,
     };
+
+    console.log(formattedAnswers)
     //will need to add default values in or statements
     const id = await postAnswers(formattedAnswers);
-    const data = await getReport(id.data.id);
+    const data = await getReport(id.data.confirmation.url);
     updateReport(data);
     //getReport().then((data) => setTimeout(() => updateReport(data), 3000))
   };

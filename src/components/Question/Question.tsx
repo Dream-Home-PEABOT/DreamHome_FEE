@@ -21,7 +21,6 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   
   const organizeData = () => {
     const result = questionKeys.sort((a:any, b:any) => questionContext[a]['03_attributes'].A_order > questionContext[b]['03_attributes'].A_order ? 1 : -1)
-    console.log(result)
   }
 
   organizeData()
@@ -35,7 +34,6 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   
   useEffect(() => {
     inputRef?.current?.focus();
-    console.log(currentQuestion)
   },[])
   
   const nextQuestion = () => {

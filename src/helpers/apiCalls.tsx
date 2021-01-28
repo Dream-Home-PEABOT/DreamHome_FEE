@@ -1,27 +1,17 @@
+//import 
 import { Answers } from "./types";
 
 export const getQuestions = async () => {
   const response = await fetch(
-    "http://localhost:3000/education"
+    "https://dreamhome-mvp.herokuapp.com/api/v1/education"
   );
   if (response.ok) {
     let final = await response.json();
-    return final;
+    return final.data;
   } else {
     return response;
   }
 };
-// export const getQuestions = async () => {
-//   const response = await fetch(
-//     "https://dreamhome-mvp.herokuapp.com/api/v1/education"
-//   );
-//   if (response.ok) {
-//     let final = await response.json();
-//     return final.data;
-//   } else {
-//     return response;
-//   }
-// };
 
 export const postAnswers = async (answers: Answers) => {
   const response = await fetch(
@@ -39,13 +29,13 @@ export const postAnswers = async (answers: Answers) => {
   }
 };
 
-export const getReport = async (id: string) => {
+export const getReport = async (reportUrl: string) => {
   const response = await fetch(
-    `https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`
+    `https://dreamhome-mvp.herokuapp.com${reportUrl}`
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data.attributes.output;
+    return final.data['03_attributes'].output;
   } else {
     return response;
   }

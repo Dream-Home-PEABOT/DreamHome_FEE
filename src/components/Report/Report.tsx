@@ -12,6 +12,7 @@ const Report = () => {
   let userAnswers = useContext(AnswerContext);
 
   const displayAnalysisSections = () => {
+    
     const reportData = Object.keys(userReport).reverse();
 
     return reportData.map((data, key) => {
