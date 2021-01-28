@@ -3,7 +3,7 @@ import bkg_img from "../../images/home/Big Shoes - Standing Pose.png";
 import "./Home.css";
 import { Spring } from "react-spring/renderprops";
 
-const Home: React.FC<any> = (props) => {
+const Home: React.FC = () => {
   return (
     <section className="home-section">
       <div className="main-container" data-testid="main container">
@@ -41,9 +41,6 @@ const Home: React.FC<any> = (props) => {
             </div>
           )}
         </Spring>
-        <div className="user-greeting">
-          <h2 data-testid="journey edition">Hey Blake</h2>
-        </div>
         <div className="report-plan">
           <h1 className="plan-title" data-testid="Dream Home-2">
             Start your journey with us
