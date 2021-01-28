@@ -17,6 +17,7 @@ import Journey from "../Journey/Journey";
 import { Survey } from "../Survey/Survey";
 import { Question } from "../Question/Question";
 import { Login } from "../Login/Login";
+import { Profile } from "../Profile/Profile";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
@@ -68,7 +69,8 @@ const App: React.FC = () => {
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
-                <Redirect exact from="/" to="/home" />
+                <Redirect exact from="/" to="/Profile" />
+                <Route exact path="/profile" component={Profile} />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/journey" component={Journey} />
                 <Route exact path="/login" component={Login} />
