@@ -19,6 +19,43 @@ export const ReportSecOne = () => {
   const categories = keys.map(category => category.split('_')[1]);
   const insight = keys.map(category => reportContext.output[category]?.information);
 
+  const injectNumbers = () => {
+
+    const numbersToDisplay = [
+      'B_credit_score', 
+      'C_salary', 
+      'D_monthly_debt', 
+      'F_mortgage_term', 
+      'I_rent'
+    ]
+    let numbers = numbersToDisplay.reduce((acc: any, curr) => {
+      acc[curr] = reportContext.input[curr]
+      return acc
+    },{})
+
+    return Object.entries(numbers).map(( entries: any) => {
+      const numTitle = entries[0].split('_').splice(1).join(' ');
+      console.log(numTitle)
+      return (
+        <div className="num ">
+          <div className="num-ci-box-up">
+            <h1 className="num-ci-title">Your {numTitle}</h1>
+          </div>
+          <Spring
+            config={{ delay: 100, duration: 1000 }}
+            from={{ number: 0 }}
+            to={{number : entries[1]}}
+          >
+            {(props) => (
+              <div className="num-ci-box-down">
+                <h1 className="num-ci-data">{`${props.number.toFixed()}`}</h1>
+              </div>
+            )}
+          </Spring>
+        </div>
+      )
+    })
+  }
   return (
     <>
       <section className='report-section'>
@@ -32,90 +69,8 @@ export const ReportSecOne = () => {
                   </div>
                 </div>
               </div>
-    {/* //clean up this more */}
               <div className="report-numbers-box">
-                <div className="num ">
-                  <div className="num-ci-box-up">
-                    <h1 className="num-ci-title">Your Credit Score</h1>
-                  </div>
-                  <Spring
-                    config={{ delay: 100, duration: 1000 }}
-                    from={{ number: 0 }}
-                    to={{number:reportContext.input.B_credit_score}}
-                  >
-                    {(props) => (
-                      <div className="num-ci-box-down">
-                        <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
-                      </div>
-                    )}
-                  </Spring>
-                </div>
-                <div className="num ">
-                  <div className="num-ci-box-up">
-                    <h1 className="num-ci-title">Your Monthly Income</h1>
-                  </div>
-                  <Spring
-                    config={{ delay: 100, duration: 1000 }}
-                    from={{ number: 0 }}
-                    to={{number:reportContext.input.C_salary}}>
-                    {(props) => (
-                      <div className="num-ci-box-down">
-                        <h1 className="num-ci-data">${props.number.toFixed()}</h1>
-                      </div>
-                    )}
-                  </Spring>
-                </div>{" "}
-                <div className="num ">
-                  <div className="num-ci-box-up">
-                    <h1 className="num-ci-title">Your Monthly Debt</h1>
-                  </div>
-
-                  <Spring
-                    config={{ delay: 100, duration: 1000 }}
-                    from={{ number: 0 }}
-                    to={{ number:reportContext.input.D_monthly_debt}}
-                  >
-                    {(props) => (
-                      <div className="num-ci-box-down">
-                        <h1 className="num-ci-data">${`${props.number.toFixed()}`}</h1>
-                      </div>
-                    )}
-                  </Spring>
-                </div>
-                <div className="num ">
-                  <div className="num-ci-box-up">
-                    <h1 className="num-ci-title">Mortgage Term</h1>
-                  </div>
-
-                  <Spring
-                    config={{ delay: 100, duration: 1000 }}
-                    from={{ number: 0 }}
-                    to={{ number: reportContext.input.F_mortgage_term}}
-                  >
-                    {(props) => (
-                      <div className="num-ci-box-down">
-                        <h1 className="num-ci-data">{`${props.number.toFixed()}yrs`}</h1>
-                      </div>
-                    )}
-                  </Spring>
-                </div>
-                <div className="num ">
-                  <div className="num-ci-box-up">
-                    <h1 className="num-ci-title">Monthly rent</h1>
-                  </div>
-
-                  <Spring
-                    config={{ delay: 100, duration: 1000 }}
-                    from={{ number: 0 }}
-                    to={{ number: reportContext.input.I_rent}}
-                  >
-                    {(props) => (
-                      <div className="num-ci-box-down">
-                        <h1 className="num-ci-data">${`${props.number.toFixed()}`}</h1>
-                      </div>
-                    )}
-                  </Spring>
-                </div>
+                {injectNumbers ()}
               </div>
               <div className="report-title">
                 <h1 className="big-report">Report</h1>
