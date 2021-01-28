@@ -1,12 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { ReportContext } from "../../helpers/context";
 import { Spring } from "react-spring/renderprops";
 import { Link } from "react-router-dom";
 import back_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
+import {  ReportCategory } from '../ReportCategory/ReportCategory'
+import goodJob from '../../images/report/Charco - Inbox.png'
+import downpayment from "../../images/report/Charco - Work at Home.png";
+import location from "../../images/report/Charco - Location Map.png";
+import mobile from "../../images/report/Charco - Mobile Life.png"
+// import location from "../../images/report/Charco - Location Map.png";
 
 export const ReportSecOne = () => {
 
   const reportContext: any = useContext(ReportContext);
+  const keys = Object.keys(reportContext.output);
+  const categories = keys.map(category => category.split('_')[1]);
+  const insight = keys.map(category => reportContext.output[category]?.information);
 
   return (
     <>
@@ -21,7 +30,7 @@ export const ReportSecOne = () => {
                   </div>
                 </div>
               </div>
-
+    {/* //clean up this more */}
               <div className="report-numbers-box">
                 <div className="num ">
                   <div className="num-ci-box-up">
@@ -114,23 +123,41 @@ export const ReportSecOne = () => {
               </div>
             </div>
 
-        {/* <div className='top-circle-1'>
-          <h2>Your Credit Score</h2>
-          {reportContext.input.B_credit_score}
-        </div>
-        <div className='top-circle-1'>
-          <h2>Your Monthly Income</h2>
-          ${reportContext.input.C_salary}
-        </div>
-        <div className='top-circle-1'>
-          <h2>Your Monthly Debt</h2>
-          ${reportContext.input.D_monthly_debt}
-        </div>
-        <div className='top-circle-1'>
-          <h2>Your Mortgage Term</h2>
-          {reportContext.input.F_mortgage_term} year
-        </div> */}
-      </section>
+      </section>    
+
+      <ReportCategory 
+        title={categories[0]}
+        insight={insight[0]}
+        position={keys.indexOf(keys[0])+1}
+        centerImg={location}
+        valueOne={reportContext.output.A_location.city_state}
+        valueLeft={reportContext.output.A_location.zipcode}
+        valueRightTitle={'Average Home Price in this Area'}
+        valueRight={reportContext.output.A_location.average_home_price}
+        plant={}
+        />
+
+      <ReportCategory 
+        title={categories[1]}
+        insight={insight[0]}
+        position={keys.indexOf(keys[1])+1}
+        centerImg={goodJob}
+        />
+
+      <ReportCategory 
+        title={categories[2]}
+        position={keys.indexOf(keys[2])+1}
+        insight={insight[0]}
+        centerImg={mobile}
+        />
+
+      <ReportCategory 
+        title={categories[3]}
+        insight={insight[0]}
+        position={keys.indexOf(keys[3])+1}
+        centerImg={downpayment}
+        plan={reportContext.output.D_downpayment.plan_style}
+        />
 
       {/* <section className='location-info'>
         <div className='city-name'>
@@ -144,6 +171,16 @@ export const ReportSecOne = () => {
           ${reportContext.output.A_location.average_home_price}
         </div>
       </section> */}
+       
+      <div className="sigup">
+        <h1 className="fina-mess">
+          Sign-up
+          <Link to="/login">
+            <span className="link">here</span>
+          </Link>
+          Want to save your report?
+        </h1>
+      </div>
 
     </>
   )
