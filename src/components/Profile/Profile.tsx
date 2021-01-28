@@ -1,8 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import {updateReport} from "../../helpers/apiCalls"
 import "./Profile.css";
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 
 export const Profile: React.FC = () => {
+  const [profileInfo, updateProfileInfo] = useState<any>({})
+  const handleChange = (e:any)=>{
+    updateProfileInfo({...profileInfo, [e.target.name]: e.target.value})
+  }
   return (
     <div className="profile-body">
       <h3 className="profile-header title-3" data-testid="Dream Home">
@@ -15,38 +20,39 @@ export const Profile: React.FC = () => {
         <div className="user-details">
           <div className="user-details-fields">
             <div>Salary</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"salary"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Zipcode</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"zipcode"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Credit Score</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"credit_score"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Monthly Debt</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"motnhly_debt"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Downpayment Savings</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"downpayment_savings"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Downpayment Percentage</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"downpayment_percentage"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Rent</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"rent"}type="text" placeholder="your answer"/>
           </div>
           <div className="user-details-fields">
             <div>Goal Principal</div>
-            <input type="text" placeholder="your answer"/>
+            <input onChange={handleChange} name={"goal_principal"}type="text" placeholder="your answer"/>
           </div>
         </div>
       </div>
+      <button onClick={()=>updateReport(profileInfo)}className="updateProfile">Update Info</button>
       <div className="profile-footer"></div>
     </div>
   );
