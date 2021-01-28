@@ -42,6 +42,16 @@
   margin: 5%; 
 }
 
+.desc{
+  font-family: 'Xanh Mono', monospace;
+  font-size: 1.6em;
+  text-align: center;
+  justify-self: center;
+  margin: 1%;
+  padding: 3%;
+  color: #1A1A1A;
+}
+
 .firebaseui-container {
   background-color: #fff;
   box-sizing: border-box;
@@ -51,7 +61,7 @@
   direction: ltr;
   font: 16px Roboto, arial, sans-serif;
   margin: 0 auto;
-  max-width: 360px;
+  max-width: 400px;
   /** This is neededfor the invisible reCAPTCHA badge to show. */
   overflow: visible;
   position: relative;
@@ -289,8 +299,8 @@ input.firebaseui-input-invalid{
   font-weight: 500;
   height: auto;
   line-height: normal;
-  max-width: 220px;
-  min-height: 40px;
+  max-width: 300px;
+  min-height: 50px;
   padding: 8px 16px;
   text-align: left;
   width: 100%;
@@ -516,23 +526,24 @@ input.firebaseui-input-invalid{
   margin-left: 114px;
 }
 
-.mdl-progress.firebaseui-busy-indicator {
-  height: 2px;
-  left: 0;
-  position: absolute;
-  top: 55px;
-  width: 100%;
+.mdl-shadow--2dp {
+    box-shadow: none;
 }
 
-.mdl-spinner.firebaseui-busy-indicator {
-  direction: initial;
-  height: 56px;
-  left: 0px;
-  margin: auto;
-  position: absolute;
-  right: 0px;
-  top: 30%;
-  width: 56px;
+.firebaseui-info-bar {
+    margin-top: 20px;
+}
+
+div.mdl-progress::after {
+    display: block;
+    color: black;
+    content: "Authenticating";
+    margin: 20px auto;
+    text-align: center;
+}
+
+.mdl-progress {
+    height: 5px;
 }
 
 .firebaseui-callback-indicator-container .firebaseui-busy-indicator {
