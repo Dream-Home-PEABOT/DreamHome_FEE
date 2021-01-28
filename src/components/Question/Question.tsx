@@ -17,24 +17,23 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const [index, setIndex] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const category = Object.keys(answersSet);
-  const [question, setQuestion] = useState(category[index][0]);
+  const [question, setQuestion] = useState(category[index]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   let currentQuestion = questionContext[index][question];
-
+  
   useEffect(() => {
     inputRef?.current?.focus();
-    setQuestion(category[index])
+    console.log(currentQuestion)
   },[index])
   
   
   useEffect(() => {
-    setQuestion(category[index])
     inputRef?.current?.focus();
   },[])
   
-  const nextQuestion = () => {
-    console.log(currentQuestion)
+  const nextQuestion = async () => {
+   
     let userAmount = answerInput[category[index]];
     console.log(userAmount)
     let isNum = /^\d+$/.test(userAmount);
@@ -42,7 +41,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       setErrorMessage("Sorry but we need this information");
       return false;
     } else if (index < category.length ) {
-      setIndex(index + 1);
+      await setIndex(index + 1);
+      await setQuestion(category[index]);
     }
   };
 
