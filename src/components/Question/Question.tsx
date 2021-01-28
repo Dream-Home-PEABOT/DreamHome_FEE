@@ -8,7 +8,7 @@ import location_img from "../../images/questions/Charco - Location Map.png";
 interface Props {
   updateAllAnswers: any;
 }
-export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
+const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const questionContext = useContext(QuestionContext);
   const questionSet = Object.keys(questionContext);
 
@@ -41,26 +41,19 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       setTimeout(() => setErrorMessage(""), 4000);
     } else {
       setErrorMessage("");
-    }
-  };
+    }};
 
-  return (
-    <section className="question-section">
-      <div className="inner-container">
-        <div className="desc-container">
-          <div className="description-box" data-testid="description-container">
-            <h2
-              style={{ backgroundColor: "black", width: "5px" }}
-              className="desc"
-            >
-              💡
-            </h2>
-            <h1 data-testid="description-title" className="question-desc">
-              {currentQuestion?.attributes?.classification}
-            </h1>
-            <h2 data-testid="description-body" className="desc">
-              {currentQuestion?.attributes?.description}
-            </h2>
+    return (
+      <section className='question-section'>
+
+        <div className="inner-container">
+
+          <div className='desc-container'>
+            <div className="description-box" data-testid='description-container'>
+              {/*<h2 style={{ backgroundColor: 'black',  width: '5px'}}className='desc'>💡</h2>*/}
+              <h1  data-testid='description-title' className="question-desc">{currentQuestion?.attributes?.classification}</h1>
+              <h2  data-testid='description-body' className='desc'>{currentQuestion?.attributes?.description}</h2>
+            </div>
           </div>
         </div>
 
@@ -133,6 +126,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="input-box">
+          {currentQuestion.attributes.symbol === "$" && <h3 className="symbol">
+            {currentQuestion?.attributes?.symbol}
+          </h3>}
           <input
             placeholder="your answer"
             type="text"
@@ -140,15 +136,19 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             value={answerInput[questionSet[index]] || ""}
             onChange={(e) => validateString(e)}
           />
+          {currentQuestion.attributes.symbol === "%" && <h3 className="symbol">
+            {currentQuestion?.attributes?.symbol}
+          </h3>}
         </div>
 
         <div className="note-box">
           <h4 className="note">{currentQuestion?.attributes?.note}</h4>
         </div>
 
-        <div className="floor-box"></div>
-        <h4 className="note">{currentQuestion?.attributes?.source}</h4>
-      </div>
+        <div className="floor-box">
+          <h4 className="note">{currentQuestion?.attributes?.source}</h4>
+        </div>
+
     </section>
   );
 };
