@@ -35,9 +35,8 @@ const App: React.FC = () => {
   });
 
   const buildAnswers = (questions: any): void => {
-    const answerKey = questions.reduce((acc: any, curr: any) => {
-      const category = Object.keys(curr)
-      acc[category[0]] = "";
+    const answerKey = Object.keys(questions).reduce((acc: any, curr: any) => {
+      acc[curr] = "";
       return acc;
     }, {});
     updateAllAnswers(answerKey);
@@ -47,22 +46,9 @@ const App: React.FC = () => {
     if (!unmounted.current) {
       const data = await getQuestions();
       await data;
-      const organizedData = organizeQuestionSet(data);
-      buildAnswers(organizedData);
-      updateQuestions(organizedData);
+      buildAnswers(data);
+      updateQuestions(data);
     }
-  };
-
-  const organizeQuestionSet =(questionsObj: any) => {
-    const keys = Object.keys(questionsObj)
-    const questions = keys.map((question) => ({[question] : questionsObj[question]}));
-    questions.forEach(category => {
-      let target = Object.keys(category)[0]
-      if(target === 'goal_home_price' || target === 'rent'){
-        questions.push(...questions.splice(questions.indexOf(category),1))
-      }
-    });
-    return questions;
   };
 
   useEffect(() => {

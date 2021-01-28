@@ -1,3 +1,4 @@
+//
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { QuestionContext, AnswerContext } from "../../helpers/context";
@@ -12,46 +13,50 @@ interface Props {
 export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
 
   const questionContext = useContext(QuestionContext);
-  const answersSet = useContext(AnswerContext);
+  const questionKeys = Object.keys(questionContext )
   const [answerInput, updateAnswer] = useState<any>({});
   const [index, setIndex] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const category = Object.keys(answersSet);
-  const [question, setQuestion] = useState(category[index]);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  let currentQuestion = questionContext[index][question];
   
+  const organizeData = () => {
+    const result = questionKeys.sort((a:any, b:any) => questionContext[a]['03_attributes'].A_order > questionContext[b]['03_attributes'].A_order ? 1 : -1)
+    console.log(result)
+  }
+
+  organizeData()
+  
+  let currentQuestion = questionContext[questionKeys[index]];
+
   useEffect(() => {
     inputRef?.current?.focus();
-    console.log(currentQuestion)
   },[index])
   
   
   useEffect(() => {
     inputRef?.current?.focus();
+    console.log(currentQuestion)
   },[])
   
-  const nextQuestion = async () => {
+  const nextQuestion = () => {
    
-    let userAmount = answerInput[category[index]];
+    let userAmount = answerInput[questionKeys[index]];
     console.log(userAmount)
     let isNum = /^\d+$/.test(userAmount);
     if (!userAmount || !isNum) {
       setErrorMessage("Sorry but we need this information");
       return false;
-    } else if (index < category.length ) {
-      await setIndex(index + 1);
-      await setQuestion(category[index]);
-    }
+    } else if (index < questionKeys.length -1 ) {
+      setIndex(index + 1);
   };
+}
 
   const prevQuestion = () => {
     setIndex(index - 1);
   };
 
   const validateString = (e: any) => {
-    updateAnswer({ ...answerInput, [question]: e.target.value });
+    updateAnswer({ ...answerInput, [questionKeys[index]]: e.target.value });
     let isnum = /^\d+$/.test(e.target.value);
     if (!isnum) {
       setErrorMessage("only numbers");
@@ -73,10 +78,10 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               💡
             </h2>
             <h1 data-testid="description-title" className="question-desc">
-              {/* {currentQuestion['03_attributes']?.B_classification} */}
+              {currentQuestion['03_attributes']?.B_classification}
             </h1>
             <h2 data-testid="description-body" className="desc">
-              {/* {currentQuestion['03_attributes']?.E_information} */}
+              {currentQuestion['03_attributes']?.E_information}
             </h2>
           </div>
         </div>
@@ -119,7 +124,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             </button>
           </div>
           <div className="bx">
-            {index < category.length ? (
+            {index < questionKeys.length -1  ? (
               <button
                 className="next-btn btn"
                 onClick={() => {
@@ -145,26 +150,26 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="question-box" data-testid="the-question">
-          {/* <p className="question">{currentQuestion['03_attributes']?.C_question}</p> */}
+          <p className="question">{currentQuestion['03_attributes']?.C_question}</p>
         </div>
 
         <div className="input-box">
           <input
             ref={inputRef}
-            // placeholder={`your answer ${currentQuestion['03_attributes'].H_symbol}`}
+            placeholder={`your answer ${currentQuestion['03_attributes'].H_symbol}`}
             type="text"
             className="input"
-            value={answerInput[question] || ""}
+            value={answerInput[questionKeys[index]] || ""}
             onChange={(e) => validateString(e)}
           />
         </div>
 
         <div className="note-box">
-          {/* <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4> */}
+          <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
         </div>
 
         <div className="floor-box"></div>
-        {/* <h4 className="note">{currentQuestion['03_attributes'].G_source}</h4> */}
+        <h4 className="note">{currentQuestion['03_attributes'].G_source}</h4>
       </div>
     </section>
   );
