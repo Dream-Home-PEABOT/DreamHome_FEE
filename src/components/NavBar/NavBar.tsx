@@ -1,12 +1,15 @@
 import React, { useState, useContext } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { NavItem } from "../NavItem/NavItem";
 import { ReportContext } from "../../helpers/context";
+import { logOut } from "../../helpers/firebase";
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<any> = (props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const closeBar = () => {
@@ -65,7 +68,25 @@ const DropdownMenu = (props: any) => {
         <DropdownItem onClick={props.setOpen}>Journey</DropdownItem>
       </Link>
 
-      {/* <DropdownItem data-testid='to-login'>Login</DropdownItem> */}
+      {firebase.auth().currentUser && 
+      <Link
+        to="/profile"
+        data-testid="to-profile"
+        onClick={() => props.setOpen(false)}
+      >
+        <DropdownItem onClick={props.setOpen}>Profile</DropdownItem>
+      </Link>
+      }
+
+      <Link
+        to={firebase.auth().currentUser ? "/logout" : "/login"}
+        data-testid="to-login"
+        onClick={() => {props.setOpen(false); firebase.auth().currentUser && logOut();}}
+      >
+        <DropdownItem onClick={props.setOpen}>{firebase.auth().currentUser ? "Logout": "Login"}</DropdownItem>
+
+      </Link>
+
 
       {userReport && (
         <Link

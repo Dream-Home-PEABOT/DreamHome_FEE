@@ -6,6 +6,8 @@ import { ReportCategory } from "../ReportCategory/ReportCategory";
 import { Spring } from "react-spring/renderprops";
 import { Link } from "react-router-dom";
 import back_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 const Report = () => {
   let userReport = useContext(ReportContext);
@@ -45,6 +47,15 @@ const Report = () => {
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
+
+      const savePDF = async (input: any) => {
+        const canvas = await html2canvas(input)
+        const imgData = canvas.toDataURL('image/png')
+        const pdf = new jsPDF
+        console.log(imgData)
+        pdf.addImage(imgData, 'PNG', 0, 0, 0, 0)
+        pdf.save("download.pdf")
+      };
 
       return (
         <ReportCategory
@@ -217,10 +228,10 @@ const Report = () => {
           <div className="sigup">
             <h1 className="fina-mess">
               Sign-up
-              <Link to="/home">
+              <Link to="/login">
                 <span className="link">here</span>
               </Link>
-              if you want to know more...
+              Want to save your report?
             </h1>
           </div>
         </>
