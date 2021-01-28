@@ -50,9 +50,9 @@ export const Profile: React.FC = () => {
             <div>Goal Principal</div>
             <input onChange={handleChange} name={"goal_principal"}type="text" placeholder="your answer"/>
           </div>
+            <button onClick={()=>updateReport(profileInfo)}className="update-profile">Update Info</button>
         </div>
       </div>
-      <button onClick={()=>updateReport(profileInfo)}className="updateProfile">Update Info</button>
       <div className="profile-footer"></div>
     </div>
   );
