@@ -178,25 +178,28 @@
   grid-area: 5/ 2/ 6 /5;
   margin: 1%;
   font-size: 3em;
+  color: #fff;
 }
 
 .report-info-2{
   grid-area: 4/ 8/ 5 / 11;
   background-color: #1A1A1A;
   font-size: 3em;
+  color: #fff;
 }
 
 .report-info-3{
   grid-area: 5/ 11/ 8 / 7;;
   background-color: transparent;
   font-size: 3em;
-  color: grey;
+  color: #1A1A1A;
   font-family: 'Courier New', Courier, monospace;
-  text-shadow: 2px 2px black;
+  text-shadow: 2px 2px #fff;
+  font-weight: 100;
 }
 
 .repo-title{
-  color: #ffffff;
+  color: inherit;
   font-size: inherit;
   font-family:'Quicksand', sans-serif;
   text-align: center;
@@ -340,4 +343,26 @@
   font-family: var(--loading);
   color: black;
   padding: 5%;
+}
+
+.monthly-cat{
+  grid-area: 6/ 7/ 9 / 11;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.month-info{
+  height: 150px;
+  width: 150px;
+  background-color: #1A1A1A;
+  border-radius: 25em;
+  display: inline-flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.title{
+  color: #fff;
+  text-decoration: underline;
 }

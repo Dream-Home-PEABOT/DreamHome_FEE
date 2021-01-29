@@ -59,14 +59,29 @@ export const ReportCategory = (props: any) => {
           <h1 className="insight">{props.insight}</h1>
         </div>
 
-        <div className="category-image">
-          {!props.plan && (
-            <img src={props.plant} alt="blue-plant" className="plant-1" />
-          )}
-        </div>
+        {/* {!props.plan || props.title === 'monthly'? <div className="category-image">
+          <img src={props.plant} alt="blue-plant" className="plant-1" />
+        </div>: ''
+        } */}
+
+        {props.title === 'monthly' && <div className="monthly-cat">
+
+            <div className="month-one">
+              <h1 className=" title">${props.pmi}</h1>
+              <h1 className="title">PMI</h1>
+            </div>
+            <div className="month-one">
+              <h1 className=" title">${props.taxes}</h1>
+              <h1 className="title">TAXES</h1>
+            </div>
+
+          
+        </div> 
+
+        }
   
         <h3 className="solo_number">{props.position}</h3>
-        {/* reorganize this */}
+        {/* reorganize this zip title is not displaying and it is overlapping woht report-zip*/}
         <h1 className="zip-title"></h1>
         <h1 className="report-zip">{props.valueLeft}</h1>
       </section>
@@ -76,10 +91,7 @@ export const ReportCategory = (props: any) => {
           <div style={{ backgroundColor: "white" }} className="pipe-up"></div>
           <div style={{ backgroundColor: "white" }} className="pipe-down"></div>
           <div className="main-circ-box">
-            <div
-              style={{ border: "15px solid #ffffff" }}
-              className="inner-circle"
-            ></div>
+            <div style={{ border: "15px solid #ffffff" }}className="inner-circle"></div>
           </div>
           <div className="report-img-box">
             <img
@@ -89,7 +101,10 @@ export const ReportCategory = (props: any) => {
             />
           </div>
           <div className="left-img">
-            <img src={hurry} alt="tall-man" className="hurry-img" />
+            <img 
+              src={hurry} 
+              alt="tall-man" 
+              className="hurry-img" />
           </div>
 
           <div className="result-info-1">

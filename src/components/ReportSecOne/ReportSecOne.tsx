@@ -10,6 +10,7 @@ import location from "../../images/report/Charco - Location Map.png";
 import mobile from "../../images/report/Charco - Mobile Life.png"
 import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
 import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
+import { report } from "process";
 
 
 export const ReportSecOne = () => {
@@ -81,33 +82,57 @@ export const ReportSecOne = () => {
             </div>
 
       </section>    
-
+    {/* Location */}
       <ReportCategory 
         title={categories[0]}
         insight={insight[0]}
         position={keys.indexOf(keys[0])+1}
         centerImg={location}
+        plant={plant_1}
         valueOne={reportContext.output.A_location.city_state}
         valueLeft={reportContext.output.A_location.zipcode}
         valueRightTitle={'Average Home Price in this Area'}
-        valueRight={reportContext.output.A_location.average_home_price}
-        plant={plant_1}
+        valueRight={`$${reportContext.output.A_location.average_home_price}`}
         />
-
+  {/* Principle */}
       <ReportCategory 
         title={categories[1]}
-        insight={insight[0]}
+        insight={insight[1]}
         position={keys.indexOf(keys[1])+1}
         centerImg={goodJob}
         plant={plant_2}
+        valueOne={'Mortgage Rate'}
+        valueLeft={`${reportContext.output.B_principal.mortgage_rate}%`}
+        valueRightTitle={'Your Selected Goal Principle'}
+        valueRight={`$${reportContext.output.B_principal.goal_principal}`}
         />
-
+{/* Principle based on rent */}
+{/* here we will need to add the conditional rendering  */}
+{/* reportContext.output.B_principal.goal_principal > 0 && */}
+<ReportCategory 
+        title={'Principal Based on Rent'}
+        insight={insight[1]}
+        position={keys.indexOf(keys[1])+1}
+        centerImg={goodJob}
+        plant={plant_2}
+        valueOne={'Potential Goal Principle'}
+        valueLeft={`$${reportContext.input.I_rent}`}
+        valueRightTitle={'This number is calculated as a possible goal principle based off of what you are currently paying in rent.'}
+        valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
+        />
+        {/* end of conditional rendering */}
+    {/* monthly category */}
       <ReportCategory 
         title={categories[2]}
         position={keys.indexOf(keys[2])+1}
-        insight={insight[0]}
+        insight={insight[2]}
         centerImg={mobile}
-        plant={plant_1}
+        valueOne={'Estimated True Monthly'}
+        valueLeft={`$${reportContext.output.C_monthly.estimated_true_monthly}`}
+        valueRightTitle={'Home Insurance by Location'}
+        valueRight={`$${reportContext.output.C_monthly.home_insurance_by_location}`}
+        pmi={reportContext.output.C_monthly.pmi_by_location}
+        taxes={reportContext.output.C_monthly.property_tax_by_location}
         />
 
       <ReportCategory 
@@ -117,20 +142,12 @@ export const ReportSecOne = () => {
         centerImg={downpayment}
         plan={reportContext.output.D_downpayment.plan_style}
         plant={plant_2}
+        valueOne={reportContext.output.A_location.city_state}
+        valueLeft={reportContext.output.A_location.zipcode}
+        valueRightTitle={'Average Home Price in this Area'}
+        valueRight={reportContext.output.A_location.average_home_price}
+        
         />
-
-      {/* <section className='location-info'>
-        <div className='city-name'>
-          {reportContext.output.A_location.city_state}
-        </div>
-        <div className='zip-code'>
-          {reportContext.output.A_location.zipcode}
-        </div>
-        <div className='city-name'>
-          <h2>Average Home Price in this Area</h2>
-          ${reportContext.output.A_location.average_home_price}
-        </div>
-      </section> */}
        
       <div className="sigup">
         <h1 className="fina-mess">

@@ -8,7 +8,6 @@ export const ReportSecTwo = () => {
 
     return (
       <>
-
         <section className='principle-section'>
           {
             reportContext.output.B_principal.goal_principal > 0 &&
