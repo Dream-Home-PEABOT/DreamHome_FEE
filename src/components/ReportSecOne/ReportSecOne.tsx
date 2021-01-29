@@ -10,7 +10,7 @@ import location from "../../images/report/Charco - Location Map.png";
 import mobile from "../../images/report/Charco - Mobile Life.png"
 import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
 import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
-import { report } from "process";
+
 
 
 export const ReportSecOne = () => {
@@ -19,9 +19,11 @@ export const ReportSecOne = () => {
   const keys = Object.keys(reportContext.output);
   const categories = keys.map(category => category.split('_')[1]);
   const insight = keys.map(category => reportContext.output[category]?.information);
+  const planStyles =  reportContext.output.D_downpayment.plan_style
+  const planList = Object.entries(planStyles).map(plan => ({ [plan[0]] :[plan[1]]}))
+
 
   const injectNumbers = () => {
-
     const numbersToDisplay = [
       'B_credit_score', 
       'C_salary', 
@@ -36,7 +38,6 @@ export const ReportSecOne = () => {
 
     return Object.entries(numbers).map(( entries: any) => {
       const numTitle = entries[0].split('_').splice(1).join(' ');
-      console.log(numTitle)
       return (
         <div className="num ">
           <div className="num-ci-box-up">
@@ -121,6 +122,7 @@ export const ReportSecOne = () => {
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
         />
         {/* end of conditional rendering */}
+
     {/* monthly category */}
       <ReportCategory 
         title={categories[2]}
@@ -129,33 +131,35 @@ export const ReportSecOne = () => {
         centerImg={mobile}
         valueOne={'Estimated True Monthly'}
         valueLeft={`$${reportContext.output.C_monthly.estimated_true_monthly}`}
-        valueRightTitle={'Home Insurance by Location'}
-        valueRight={`$${reportContext.output.C_monthly.home_insurance_by_location}`}
+        valueRightTitle={'Monthly Principal'}
+        valueRight={`$${reportContext.output.C_monthly.monthly_principal}`}
         pmi={reportContext.output.C_monthly.pmi_by_location}
         taxes={reportContext.output.C_monthly.property_tax_by_location}
+        insurance={reportContext.output.C_monthly.home_insurance_by_location}
         />
-
+{/* downpayment */}
       <ReportCategory 
         title={categories[3]}
-        insight={insight[0]}
+        insight={insight[3]}
         position={keys.indexOf(keys[3])+1}
         centerImg={downpayment}
-        plan={reportContext.output.D_downpayment.plan_style}
+        plan={planList}
         plant={plant_2}
-        valueOne={reportContext.output.A_location.city_state}
-        valueLeft={reportContext.output.A_location.zipcode}
+        valueOne={'Downpayment saved'}
+        valueLeft={reportContext.output.D_downpayment.downpayment_saved}
         valueRightTitle={'Average Home Price in this Area'}
         valueRight={reportContext.output.A_location.average_home_price}
+        keysPlan={Object.keys(planStyles)}
         
         />
        
       <div className="sigup">
         <h1 className="fina-mess">
+          Want to save your report?<br/>
           Sign-up
           <Link to="/login">
             <span className="link">here</span>
           </Link>
-          Want to save your report?
         </h1>
       </div>
 

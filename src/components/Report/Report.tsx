@@ -1,16 +1,10 @@
 import React, { useContext } from "react";
-import { ReportContext, AnswerContext } from "../../helpers/context";
+import { ReportContext } from "../../helpers/context";
 import { Cube } from "../Cube/Cube";
-import "./Report.css";
-import { ReportCategory } from "../ReportCategory/ReportCategory";
 import { ReportSecOne } from "../ReportSecOne/ReportSecOne";
-import { ReportSecTwo } from "../ReportSecTwo/ReportSecTwo";
-import { ReportSecThree } from "../ReportSecThree/ReportSecThree";
-import { Spring } from "react-spring/renderprops";
-import { Link } from "react-router-dom";
-import back_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import "./Report.css";
 
 const Report = () => {
   let userReport = useContext(ReportContext);
@@ -41,8 +35,6 @@ const Report = () => {
       ) : (
         <>
           <ReportSecOne />
-          <ReportSecTwo />
-          <ReportSecThree />
         </>
       )}
     </>

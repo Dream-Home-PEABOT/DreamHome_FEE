@@ -1,9 +1,33 @@
+import React, {useState, useEffect} from 'react';
 import downpayment from "../../images/report/Charco - Work at Home.png";
 import hurry from "../../images/report/Big Shoes - Dynamic Pose.png";
 
 export const ReportCategory = (props: any) => {
-  //interface for props
- 
+  const [currentPlan, setCurrentPlan] = useState(null)
+
+  const injectPlan = ()=> {
+    if (props.plan && props.keysPlan){
+      console.log(props.keysPlan)
+      console.log(props.plan)
+      const result = props.keysPlan.map((planName: string, i: number) => {
+        return (
+          <div key={i} 
+            className="repo-title" 
+            id={planName}>
+                <div className="down-ci"></div>
+                <h1 className="down-title">{planName.split('_')[0]+ ' ' + planName.split('_')[2] }</h1>
+              </div>
+        )
+      })
+      return result
+    }
+  }
+
+  const displayCurrentPlan =() => {
+
+  }
+  
+
   return (
     <>
       <section
@@ -44,9 +68,16 @@ export const ReportCategory = (props: any) => {
           </>
         ) : (
           <>
+          <div className="down-num">
+            {injectPlan()}
+          </div>
+
+            {/* <div className="report-info-3">
+              <h1 className="repo-title">fsdfsdfsdf</h1>
+            </div> */}
+
             <div className="plan-box">
-              buttons
-              <h1 className="repo-title">data</h1>
+              <h1 className="inst-title">Now you can select and see the different plan we got for you</h1>
             </div>
             <div className="btns-inst">
               <h1 className="inst-title">Select a year to see your plan</h1>
@@ -64,15 +95,23 @@ export const ReportCategory = (props: any) => {
         </div>: ''
         } */}
 
-        {props.title === 'monthly' && <div className="monthly-cat">
-
+        {props.title === 'monthly' && 
+          <div className="monthly-cat">
+            
             <div className="month-one">
               <h1 className=" title">${props.pmi}</h1>
-              <h1 className="title">PMI</h1>
+              <h1 className="title buttom">pmi</h1>
             </div>
+
             <div className="month-one">
               <h1 className=" title">${props.taxes}</h1>
-              <h1 className="title">TAXES</h1>
+              <h1 className="title buttom">taxes</h1>
+            </div>
+
+            <div className="month-one">
+              <h1 className=" title">${props.insurance}</h1>
+              <h1 className="title buttom">insurance</h1>
+
             </div>
 
           
@@ -109,7 +148,7 @@ export const ReportCategory = (props: any) => {
 
           <div className="result-info-1">
             <h1 className="repo-title">Save</h1>
-            {/* <h1 className="saving">{currentPlan.monthly_savings ? `$${currentPlan.monthly_savings}.00` : '0'} </h1> */}
+            <h1 className="saving">information</h1>
             <h1 className="saving">$numeber.00</h1>i
             <h1 className="repo-title">monthly for</h1>
             <h1 className="saving"> yrs </h1>

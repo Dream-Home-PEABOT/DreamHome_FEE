@@ -196,6 +196,8 @@
   font-family: 'Courier New', Courier, monospace;
   text-shadow: 2px 2px #fff;
   font-weight: 100;
+  /* z-index: 1; */
+  margin: 3%;
 }
 
 .repo-title{
@@ -291,7 +293,8 @@
 }
 
 .btns-inst{
-  grid-area: 5 / 10;
+  grid-area: 8/ 7/ 10/ 11;
+  margin: 6em;
 }
 
 .inst-title{
@@ -346,17 +349,15 @@
 }
 
 .monthly-cat{
-  grid-area: 6/ 7/ 9 / 11;
+  grid-area: 5/ 7/ 9 / 11;
   display: inline-flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-top: 7%;
 }
 
 .month-info{
-  height: 150px;
-  width: 150px;
   background-color: #1A1A1A;
-  border-radius: 25em;
   display: inline-flex;
   justify-content:center;
   align-items: center;
@@ -365,4 +366,38 @@
 .title{
   color: #fff;
   text-decoration: underline;
+  font-size: 3em;
+}
+.buttom{
+  font-size: 2em;
+}
+
+.down-num{
+  grid-area: 6/ 7/ 9 / 11;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.repo-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.down-ci{
+  border-radius: 25em;
+  height: 150px;
+  width: 150px;
+  background-color: #1A1A1A;
+  margin: 10%;
+}
+
+.down-title{
+  font-size: 2em;
+  font-family:'Courier New', Courier, monospace;
 }
