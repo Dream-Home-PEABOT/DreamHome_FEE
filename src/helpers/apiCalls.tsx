@@ -28,13 +28,13 @@ export const postAnswers = async (answers: Answers) => {
   }
 };
 
-export const getReport = async () => {
+export const getReport = async (id: string) => {
   const response = await fetch(
-    `https://dreamhome-mvp.herokuapp.com/api/v1/report/60132da486c28fcdcbbd1b71`
+    `https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data.attributes;
+    return final.data.attributes.output;
   } else {
     return response;
   }
