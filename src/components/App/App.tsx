@@ -8,12 +8,15 @@ import { AllQuestionFormat } from "../../helpers/types";
 import { getQuestions } from "../../helpers/apiCalls";
 import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 import NavBar from "../NavBar/NavBar";
 import Home from "../Home/Home";
 import Journey from "../Journey/Journey";
 import { Survey } from "../Survey/Survey";
 import { Question } from "../Question/Question";
+import { Login } from "../Login/Login";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
@@ -61,13 +64,15 @@ const App: React.FC = () => {
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
         <ReportContext.Provider value={report}>
-          <NavBar />
+          <NavBar loggedIn={firebase.auth().currentUser} />
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
                 <Redirect exact from="/" to="/home" />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/journey" component={Journey} />
+                <Route exact path="/login" component={Login} />
+                <Redirect from="/logout" to="/home" />
                 <Route exact path="/survey" component={Survey} />
                 <Route
                   exact
