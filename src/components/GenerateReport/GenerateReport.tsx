@@ -24,6 +24,7 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       downpayment_percentage: answers.downpayment_percentage,
       rent: answers.rent,
       goal_principal: answers.goal_home_price,
+      uid: localStorage.userUID || "anonymous"
     };
 
     //will need to add default values in or statements
