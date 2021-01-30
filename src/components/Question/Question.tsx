@@ -100,9 +100,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               <h1 data-testid="description-title" className="question-desc">
                 Your Goal Home Price or Your Rent
               </h1>
-              <h2 data-testid="description-body" className="desc">
-                {currentQuestion['03_attributes']?.E_information}
-              </h2>
+              
               <h4 className="resource-2">If you have a number in mind of how much you'd like your Dream Home to cost, select "Goal Principle." If you don't, that's ok! Select "Rent" and we'll use what you're currently paying in rent to calculate a potential path for you! </h4>
               <div className='choice-buttons-box'>
                 <button id='principle' className={!principleSelected ? 'principle-btn btn2' : 'principle-btn btn-selected'}  onClick={(e) => {displayInput(e)}}>Goal Principle</button>

@@ -193,6 +193,10 @@
   font-size: 1.4em;
 }
 
+.choice-buttons-box {
+  z-index: 4;
+}
+
 .btn2{
   background-color: #1A1A1A;
   border-radius: 2em;
@@ -200,6 +204,7 @@
   font-size: 1.5em;
   height: 5vh;
   width: 12vw;
+  z-index: 5;
 }
 
 .btn2:hover {
@@ -214,6 +219,7 @@
   width: 12vw;
   background-color: #3C153B;
   color:#F0C808;
+  z-index: 5;
 }
 
 .principle-btn {
