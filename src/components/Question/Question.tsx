@@ -16,7 +16,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const questionKeys = Object.keys(questionContext)
   const [answerInput, updateAnswer] = useState<any>({});
   const [index, setIndex] = useState<number>(0);
-  // const [isPrincipleAndRent, setIsPrincipleAndRent] = useState<boolean>(false);
+  const[isSelected, setIsSelected] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -39,6 +39,14 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     inputRef?.current?.focus();
   },[])
 
+  const displayInput = (e: any) => {
+    setIsSelected(true)
+    if(e.target.id === 'principle') {
+      setIndex(7);
+    } else if (e.target.id === 'rent') {
+      setIndex(8)
+    }
+  }
 
   const nextQuestion = () => {
     let userAmount = answerInput[questionKeys[index]];
@@ -48,8 +56,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       return false;
     } else if (index < questionKeys.length - 1) {
       setIndex(index + 1);
-  };
-}
+    };
+  }
 
   const prevQuestion = () => {
     setIndex(index - 1);
@@ -91,6 +99,11 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             </div>
           </div>
 
+          <div className='choice-buttons-box'>
+            <button id='principle' className='principle-btn' onClick={(e) => {displayInput(e)}}>Goal Principle</button>
+            <button id='rent' className='rent-btn' onClick={(e) => {displayInput(e)}}>Rent</button>
+          </div>
+
           <div className="question_img-box_1">
             <img
               data-testid="back-image-1"
@@ -129,40 +142,35 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               </button>
             </div>
             <div className="bx">
-              {index < questionKeys.length - 1  ? (
+              {isSelected === true &&
+              <Link to="/generate_report">
                 <button
+                  data-testid="update-answers-btn"
                   className="next-btn btn"
-                  onClick={() => {
-                    nextQuestion();
+                  onClick={(e) => {
+                    updateAllAnswers(answerInput);
                   }}
                 >
                   next
                 </button>
-              ) : (
-                <Link to="/generate_report">
-                  <button
-                    data-testid="update-answers-btn"
-                    className="next-btn btn"
-                    onClick={(e) => {
-                      updateAllAnswers(answerInput);
-                    }}
-                  >
-                    next
-                  </button>
-                </Link>
-              )}
+              </Link>
+            }
             </div>
           </div>
 
           <div className="question-box" data-testid="the-question">
+            {isSelected === true &&
             <p className="question">{currentQuestion['03_attributes']?.C_question}</p>
+            }
           </div>
 
             <div className="note-box">
               <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
             </div>
 
-            <div className="input-box">
+            {
+              isSelected === true &&
+              <div className="input-box">
               <div className='symbol-box'>
                 {currentQuestion['03_attributes'].H_symbol == '$' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
               </div>
@@ -178,6 +186,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
                 {currentQuestion['03_attributes'].H_symbol == '%' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
               </div>
             </div>
+          }
 
             <div className="note-box">
               <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
