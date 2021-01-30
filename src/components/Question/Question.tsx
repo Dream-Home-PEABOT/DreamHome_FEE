@@ -8,7 +8,7 @@ import location_img from "../../images/questions/Charco - Location Map.png";
 interface Props {
   updateAllAnswers: any;
 }
-const Question: React.FC<Props> = ({ updateAllAnswers }) => {
+export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const questionContext = useContext(QuestionContext);
   const questionSet = Object.keys(questionContext);
 
@@ -153,4 +153,4 @@ const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   );
 };
 
-export default Question;
+// export default Question;
