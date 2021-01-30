@@ -34,24 +34,9 @@ export const getReport = async (id: string) => {
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data.attributes.output;
-  } else {
-    return response;
-  }
-};
 
-export const updateReport = async (answers:any) => {
-  console.log(answers)
-  const response = await fetch(
-    `https://dreamhome-mvp.herokuapp.com/api/v1/report/60132da486c28fcdcbbd1b71`,
-    {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(answers),
-    }
-  );
-  if (response.ok) {
-    return await response.json();
+    return final.data['03_attributes'];
+
   } else {
     return response;
   }

@@ -121,7 +121,7 @@
 .input{
   font-family:'Quicksand', sans-serif;
   font-weight: 100;
-  border: none; 
+  border: none;
   border-width:0px;
   border-bottom: 7px solid #1A1A1A;
   width: 100%;
@@ -146,22 +146,29 @@
   margin: 3%;
   padding: 3%;
   align-items: center;
+  z-index: 1;
 }
 
 .note{
   color: #1A1A1A;
   font-family:'Quicksand', sans-serif;
   text-align: center;
-  grid-area: 11/ 1/ 12 / 2;
+  z-index: 2;
+}
+
+.floor-box {
+  z-index: 0;
 }
 
 
 .plan-box{
-  grid-area: 3/ 10/ 8 / 7;
+  grid-area: 4/ 7/ 6 / 11;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background-color: pink;
+  margin: 3%;
 }
 
 .y-btn{
@@ -204,5 +211,3 @@
 .btn-1:hover{
   background-color: hotpink;
 }
-
-
