@@ -26,6 +26,7 @@ export interface Answers{
   downpayment_percentage: string,
   rent: string,
   goal_principal: string
+  uid: string
 }
 
   //downpayment_savings:QuestionFormat;
