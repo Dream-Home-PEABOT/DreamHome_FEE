@@ -31,7 +31,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
 
   useEffect(() => {
     inputRef?.current?.focus();
-  },[index])
+  },[index, errorMessage])
   
   
   useEffect(() => {
