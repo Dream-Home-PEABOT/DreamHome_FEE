@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import {updateReport} from "../../helpers/apiCalls"
-import "./Profile.css";
+// import {updateReport} from "../../helpers/apiCalls"//iTHink this has to be pass down as a prop from app
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
+import "./Profile.css";
+interface profileProp {
+  updateReport: any;
+}
 
-export const Profile: React.FC = () => {
+export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   const [profileInfo, updateProfileInfo] = useState<any>({})
   const handleChange = (e:any)=>{
     updateProfileInfo({...profileInfo, [e.target.name]: e.target.value})

@@ -31,7 +31,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
 
   useEffect(() => {
     inputRef?.current?.focus();
-  },[index])
+  },[index, errorMessage])
   
   
   useEffect(() => {
@@ -39,7 +39,6 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   },[])
   
   const nextQuestion = () => {
-   
     let userAmount = answerInput[questionKeys[index]];
     console.log(userAmount)
     let isNum = /^\d+$/.test(userAmount);
@@ -154,6 +153,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="input-box">
+          {currentQuestion['03_attributes'].H_symbol === "$" && <h3 className="symbol">
+            {currentQuestion['03_attributes'].H_symbol}
+          </h3>}
           <input
             ref={inputRef}
             placeholder={`your answer ${currentQuestion['03_attributes'].H_symbol}`}
@@ -162,6 +164,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             value={answerInput[questionKeys[index]] || ""}
             onChange={(e) => validateString(e)}
           />
+          {currentQuestion['03_attributes'].H_symbol === "%" && <h3 className="symbol">
+            {currentQuestion['03_attributes'].symbol}
+          </h3>}
         </div>
 
         <div className="note-box">
