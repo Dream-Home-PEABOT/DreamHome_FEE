@@ -63,8 +63,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       setTimeout(() => setErrorMessage(""), 4000);
     } else {
       setErrorMessage("");
-    }
-  };
+    }};
+
 
   return (
     <section className="question-section">
@@ -83,6 +83,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             <h2 data-testid="description-body" className="desc">
               {currentQuestion['03_attributes']?.E_information}
             </h2>
+
           </div>
         </div>
 
@@ -154,6 +155,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="input-box">
+          {currentQuestion.attributes.symbol === "$" && <h3 className="symbol">
+            {currentQuestion?.attributes?.symbol}
+          </h3>}
           <input
             ref={inputRef}
             placeholder={`your answer ${currentQuestion['03_attributes'].H_symbol}`}
@@ -162,17 +166,22 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             value={answerInput[questionKeys[index]] || ""}
             onChange={(e) => validateString(e)}
           />
+          {currentQuestion.attributes.symbol === "%" && <h3 className="symbol">
+            {currentQuestion?.attributes?.symbol}
+          </h3>}
         </div>
 
         <div className="note-box">
           <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
         </div>
 
+
         <div className="floor-box"></div>
         <h4 className="note">{currentQuestion['03_attributes'].G_source}</h4>
       </div>
+
     </section>
   );
 };
 
-export default Question;
+// export default Question;
