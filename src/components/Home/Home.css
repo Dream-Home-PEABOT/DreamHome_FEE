@@ -34,9 +34,9 @@
 .banner-bx{
   background-color: #1a1a1a;
   font-family: var(--banner);
-  font-size: 7em;
+  font-size: 3em;
   color: var(--background-color);
-  grid-area: 3/ 5/ 4/ 7;
+  grid-area: 0/ 1/ 1/ 2;
   -webkit-transform: rotate(-20deg);
   -moz-transform: rotate(-20deg);
   -ms-transform: rotate(-20deg);

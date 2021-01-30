@@ -162,11 +162,13 @@
 
 
 .plan-box{
-  grid-area: 3/ 10/ 8 / 7;
+  grid-area: 4/ 7/ 6 / 11;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background-color: pink;
+  margin: 3%;
 }
 
 .y-btn{

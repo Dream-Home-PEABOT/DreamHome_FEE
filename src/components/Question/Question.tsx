@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+//
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { QuestionContext } from "../../helpers/context";
+import { QuestionContext, AnswerContext } from "../../helpers/context";
 import "./Question.css";
 import bkg_img from "../../images/questions/Big Shoes - Sitting On Floor.png";
 import location_img from "../../images/questions/Charco - Location Map.png";
@@ -8,33 +9,54 @@ import location_img from "../../images/questions/Charco - Location Map.png";
 interface Props {
   updateAllAnswers: any;
 }
-export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
-  const questionContext = useContext(QuestionContext);
-  const questionSet = Object.keys(questionContext);
 
+export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
+
+  const questionContext = useContext(QuestionContext);
+  const questionKeys = Object.keys(questionContext )
   const [answerInput, updateAnswer] = useState<any>({});
   const [index, setIndex] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  
+  const organizeData = () => {
+    questionKeys.sort((a:any, b:any) => questionContext[a]['03_attributes']
+    .A_order > questionContext[b]['03_attributes']
+    .A_order ? 1 : -1)
+  }
 
-  let currentQuestion = questionContext[questionSet[index]];
+  organizeData()
+  
+  let currentQuestion = questionContext[questionKeys[index]];
 
+  useEffect(() => {
+    inputRef?.current?.focus();
+  },[index])
+  
+  
+  useEffect(() => {
+    inputRef?.current?.focus();
+  },[])
+  
   const nextQuestion = () => {
-    let userAmount = answerInput[questionSet[index]];
-    let isnum = /^\d+$/.test(userAmount);
-    if (!userAmount || !isnum) {
+   
+    let userAmount = answerInput[questionKeys[index]];
+    console.log(userAmount)
+    let isNum = /^\d+$/.test(userAmount);
+    if (!userAmount || !isNum) {
       setErrorMessage("Sorry but we need this information");
       return false;
-    } else if (index < questionSet.length && answerInput[questionSet[index]]) {
+    } else if (index < questionKeys.length -1 ) {
       setIndex(index + 1);
-    }
   };
+}
 
   const prevQuestion = () => {
     setIndex(index - 1);
   };
 
   const validateString = (e: any) => {
-    updateAnswer({ ...answerInput, [questionSet[index]]: e.target.value });
+    updateAnswer({ ...answerInput, [questionKeys[index]]: e.target.value });
     let isnum = /^\d+$/.test(e.target.value);
     if (!isnum) {
       setErrorMessage("only numbers");
@@ -43,17 +65,25 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       setErrorMessage("");
     }};
 
-    return (
-      <section className='question-section'>
 
-        <div className="inner-container">
+  return (
+    <section className="question-section">
+      <div className="inner-container">
+        <div className="desc-container">
+          <div className="description-box" data-testid="description-container">
+            <h2
+              style={{ backgroundColor: "black", width: "5px" }}
+              className="desc"
+            >
+              💡
+            </h2>
+            <h1 data-testid="description-title" className="question-desc">
+              {currentQuestion['03_attributes']?.B_classification}
+            </h1>
+            <h2 data-testid="description-body" className="desc">
+              {currentQuestion['03_attributes']?.E_information}
+            </h2>
 
-          <div className='desc-container'>
-            <div className="description-box" data-testid='description-container'>
-              {/*<h2 style={{ backgroundColor: 'black',  width: '5px'}}className='desc'>💡</h2>*/}
-              <h1  data-testid='description-title' className="question-desc">{currentQuestion?.attributes?.classification}</h1>
-              <h2  data-testid='description-body' className='desc'>{currentQuestion?.attributes?.description}</h2>
-            </div>
           </div>
         </div>
 
@@ -95,8 +125,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             </button>
           </div>
           <div className="bx">
-            {questionSet.indexOf(questionSet[index]) !==
-            questionSet.length - 1 ? (
+            {index < questionKeys.length -1  ? (
               <button
                 className="next-btn btn"
                 onClick={() => {
@@ -122,7 +151,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="question-box" data-testid="the-question">
-          <p className="question">{currentQuestion?.attributes?.question}</p>
+          <p className="question">{currentQuestion['03_attributes']?.C_question}</p>
         </div>
 
         <div className="input-box">
@@ -130,10 +159,11 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             {currentQuestion?.attributes?.symbol}
           </h3>}
           <input
-            placeholder="your answer"
+            ref={inputRef}
+            placeholder={`your answer ${currentQuestion['03_attributes'].H_symbol}`}
             type="text"
             className="input"
-            value={answerInput[questionSet[index]] || ""}
+            value={answerInput[questionKeys[index]] || ""}
             onChange={(e) => validateString(e)}
           />
           {currentQuestion.attributes.symbol === "%" && <h3 className="symbol">
@@ -142,12 +172,13 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="note-box">
-          <h4 className="note">{currentQuestion?.attributes?.note}</h4>
+          <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
         </div>
 
-        <div className="floor-box">
-          <h4 className="note">{currentQuestion?.attributes?.source}</h4>
-        </div>
+
+        <div className="floor-box"></div>
+        <h4 className="note">{currentQuestion['03_attributes'].G_source}</h4>
+      </div>
 
     </section>
   );

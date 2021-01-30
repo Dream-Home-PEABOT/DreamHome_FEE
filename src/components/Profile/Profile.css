@@ -1,0 +1,48 @@
+.profile-body {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 5vw 30vw 5vw;
+  grid-gap: 1em;
+}
+.user-image{
+  width: 20em;
+  height: 25em;
+}
+
+.user-details{
+  font-family: 'Quicksand', sans-serif;
+  display:grid;
+  grid-gap: 2em;
+}
+
+.user-details-fields{
+  display:grid;
+  grid-template-columns:65% 35%;
+  grid-gap: 1em;
+}
+
+.profile-header,
+.profile-footer {
+  grid-column: 1 / span 2;
+}
+
+/* Demo Specific Styles */
+.profile-body {
+  margin: 0 auto;
+  max-width: 56em;
+  padding: 1em 0;
+}
+
+.profile-header,
+.profile-aside,
+.profile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-img-container{
+  justify-self:start;
+}
+
+

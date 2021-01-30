@@ -17,9 +17,11 @@ import Journey from "../Journey/Journey";
 import { Survey } from "../Survey/Survey";
 import { Question } from "../Question/Question";
 import { Login } from "../Login/Login";
+import { Profile } from "../Profile/Profile";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
+import { createImportSpecifier } from "typescript";
 
 const App: React.FC = () => {
   const [questions, updateQuestions] = useState<any>({});
@@ -36,9 +38,9 @@ const App: React.FC = () => {
     leave: { opacity: 0, transform: "translate(-50%, 0)" },
   });
 
-  const buildAnswers = (questions: AllQuestionFormat | {}): void => {
-    const answerKey = Object.keys(questions).reduce((acc: any, cur) => {
-      acc[cur] = "";
+  const buildAnswers = (questions: any): void => {
+    const answerKey = Object.keys(questions).reduce((acc: any, curr: any) => {
+      acc[curr] = "";
       return acc;
     }, {});
     updateAllAnswers(answerKey);
@@ -69,6 +71,7 @@ const App: React.FC = () => {
             <animated.div key={key} style={props}>
               <Switch location={item}>
                 <Redirect exact from="/" to="/home" />
+                <Route exact path="/profile" component={Profile} />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/journey" component={Journey} />
                 <Route exact path="/login" component={Login} />
