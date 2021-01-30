@@ -57,7 +57,7 @@ const App: React.FC = () => {
 
   const checkForReport = async()=>{
     if(localStorage.userUID){
-      const data = await getReport("6015a73110553a1ba2c6e0ae")
+      const data = await getUniqueReport(localStorage.userUID)
       updateReport(data)
     }
   }
