@@ -41,3 +41,38 @@ export const getReport = async (id: string) => {
     return response;
   }
 };
+
+export const getUniqueReport = async (uid: string) => {
+  const response = await fetch(
+    `https://dreamhome-mvp.herokuapp.com/api/v1/report/unique`,
+      {
+      method: "GET",
+      body: JSON.stringify(uid),
+    }
+  );
+  if (response.ok) {
+    let final = await response.json();
+
+    return final.data['03_attributes'];
+
+  } else {
+    return response;
+  }
+};
+
+export const updateReport = async (answers: Answers) => {
+  console.log(answers)
+  const response = await fetch(
+  `https://dreamhome-mvp.herokuapp.com/api/v1/report/60131d3c4d22decfb8bc3e04`,
+  {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(answers),
+    }
+  );
+  if (response.ok) {
+    console.log( await response.json())
+  } else {
+    return response;
+  }
+};
