@@ -25,7 +25,7 @@ const Home: React.FC = () => {
           )}
         </Spring>
         <div className="banner-bx">
-          <h2 data-testid="journey edition">Journey Edition</h2>
+          <h2 data-testid="journey edition" className='edition'>Journey Edition</h2>
         </div>
         <Spring
           from={{ opacity: 0 }}
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
             Start your journey with us
           </h1>
           <h1 className="plan-title" data-testid="Dream Home-3">
-            to start building your path to your dream home...
+            building a path to your dream home!
           </h1>
         </div>
       </div>
