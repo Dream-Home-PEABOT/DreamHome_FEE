@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { ReportContext } from "../../helpers/context";
 import { Spring } from "react-spring/renderprops";
 import { Link } from "react-router-dom";
@@ -12,8 +12,11 @@ import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
 import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
-export const ReportSecOne = () => {
+export const ReportSecOne = ( props:any ) => {
+  const pdfRef = useRef(null)
   const reportContext: any = useContext(ReportContext);
   const keys = Object.keys(reportContext.output);
   const categories = keys.map((category) => category.split("_")[1]);
@@ -22,6 +25,14 @@ export const ReportSecOne = () => {
   );
   const planStyles = reportContext.output.D_downpayment.plan_style;
   const planKeys = Object.keys(planStyles);
+
+  const savePDF = async (input: any) => {
+    const canvas = await html2canvas(input);
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF();
+    pdf.addImage(imgData, "PNG", 0, 0, 0, 0);
+    pdf.save("MyDreamHome.pdf");
+  };
 
   const injectNumbers = () => {
     const numbersToDisplay = [
@@ -60,7 +71,7 @@ export const ReportSecOne = () => {
   };
   return (
     <>
-      <section className="report-section">
+      <section  className="report-section">
         <div className="inner-container">
           <div className="app-title">
             <div className="title-container">
@@ -83,6 +94,7 @@ export const ReportSecOne = () => {
 
       {/* Location */}
       <ReportCategory
+        pdfRef={pdfRef}
         title={categories[0]}
         insight={insight[0]}
         position={keys.indexOf(keys[0]) + 1}
@@ -168,9 +180,7 @@ export const ReportSecOne = () => {
             <h1 className="fina-mess">
               Download as PDF
               <br />
-              <Link to="/login">
-                <span className="link">Download</span>
-              </Link>
+              <span onClick={()=>console.log(pdfRef.current)} className="link">Download</span>
             </h1>
           </div>
         )}
