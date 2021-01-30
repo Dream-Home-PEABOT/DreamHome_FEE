@@ -43,8 +43,10 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     setIsSelected(true)
     if(e.target.id === 'principle') {
       setIndex(7);
+      updateAnswer({ ...answerInput, [questionKeys[8]]: '0'});
     } else if (e.target.id === 'rent') {
-      setIndex(8)
+      setIndex(8);
+      updateAnswer({ ...answerInput, [questionKeys[7]]: '0'});
     }
   }
 
