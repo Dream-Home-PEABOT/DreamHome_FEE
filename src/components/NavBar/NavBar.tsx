@@ -9,6 +9,7 @@ import { NavItem } from "../NavItem/NavItem";
 import { ReportContext } from "../../helpers/context";
 import { logOut } from "../../helpers/firebase";
 
+
 const NavBar: React.FC<any> = (props) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -67,8 +68,8 @@ const DropdownMenu = (props: any) => {
       >
         <DropdownItem onClick={props.setOpen}>Journey</DropdownItem>
       </Link>
-
-      {firebase.auth().currentUser && 
+      
+      {firebase.auth().currentUser &&  userReport &&
       <Link
         to="/profile"
         data-testid="to-profile"

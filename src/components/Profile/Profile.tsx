@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import {updateReport} from "../../helpers/apiCalls"//iTHink this has to be pass down as a prop from app
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import "./Profile.css";
@@ -9,9 +9,20 @@ interface profileProp {
 
 export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   const [profileInfo, updateProfileInfo] = useState<any>({})
-  const [error, setError] = useState<string>('')
-  const handleChange = (e:any)=>{
+  const [error, setError] = useState<string>('');
+  const [person, setPerson] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
 
+  useEffect(() => {
+    const userError = 'no name found'
+    const emailError = 'no email found'
+    const user = localStorage.getItem('displayName') || userError;
+    const email = localStorage.getItem('email') || emailError;
+    setPerson(user)
+    setEmail(email)
+  }, [])
+
+  const handleChange = (e:any)=>{
     updateProfileInfo({...profileInfo, [e.target.name]: e.target.value})
   }
   return (
@@ -20,7 +31,10 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
         <div className="salut">
 
           <h3 className="header" data-testid="Dream Home">
-              Welcome: Orlando Murcio
+              Welcome: {person}
+          </h3>
+          <h3 className="header" data-testid="Dream Home">
+               {email}
           </h3>
 
         </div>
