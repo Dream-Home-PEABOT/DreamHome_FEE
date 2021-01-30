@@ -27,8 +27,8 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
     };
 
     //will need to add default values in or statements
-    //const id = await postAnswers(formattedAnswers);
-    const data = await getReport();
+    const id = await postAnswers(formattedAnswers);
+    const data = await getReport(id.data.confirmation.id);
     updateReport(data);
     //getReport().then((data) => setTimeout(() => updateReport(data), 3000))
   };
