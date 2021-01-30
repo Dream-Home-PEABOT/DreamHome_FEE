@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import {updateReport} from "../../helpers/apiCalls"
+// import {updateReport} from "../App/App"
 import "./Profile.css";
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 
-export const Profile: React.FC = () => {
+interface Props {
+  updateReport: any;
+}
+
+export const Profile: React.FC<Props> = ({ updateReport }) => {
   const [profileInfo, updateProfileInfo] = useState<any>({})
   const handleChange = (e:any)=>{
     updateProfileInfo({...profileInfo, [e.target.name]: e.target.value})
