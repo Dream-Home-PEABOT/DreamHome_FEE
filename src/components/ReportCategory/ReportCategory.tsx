@@ -1,32 +1,47 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import downpayment from "../../images/report/Charco - Work at Home.png";
 import hurry from "../../images/report/Big Shoes - Dynamic Pose.png";
+import { ReportContext } from "../../helpers/context";
 
 export const ReportCategory = (props: any) => {
-  const [currentPlan, setCurrentPlan] = useState(null)
+
+  let userReport = useContext(ReportContext);
+
+  const [currentStyle, setCurrentStyle] = useState<string>('med_savings_plan');
+  const [currentPlan, setCurrentPlan] = useState<string>('plan_2');
+  let plan = userReport.output.D_downpayment.plan_style;
+  let final = plan[currentStyle][currentPlan]
+
+  const injectYear = () => {
+    const yearButtons = Object.keys(plan[currentStyle]).map(year => {
+      return 
+    })
+  }
+
+
+  const updatePlan =(e: any) => {
+    const id = e.target.id
+    setCurrentStyle(id)
+  }
 
   const injectPlan = ()=> {
-    if (props.plan && props.keysPlan){
-      console.log(props.keysPlan)
-      console.log(props.plan)
-      const result = props.keysPlan.map((planName: string, i: number) => {
+    if (plan && props.planKeys){
+      const result = props.planKeys.map((planName: string, i: number) => {
+        // console.log(planName)
         return (
-          <div key={i} 
-            className="repo-title" 
+          <div 
+            onClick={(e) => updatePlan(e)}
+            key={i} 
+            className='repo-title'
             id={planName}>
-                <div className="down-ci"></div>
-                <h1 className="down-title">{planName.split('_')[0]+ ' ' + planName.split('_')[2] }</h1>
-              </div>
+              <div id={planName} className="down-ci ">{plan[planName].savings_style_percentage}%</div>
+              <h1 id={planName} className="down-title ">{planName.split('_')[0]+ ' ' + planName.split('_')[2] }</h1>
+          </div>
         )
-      })
+      });
       return result
     }
   }
-
-  const displayCurrentPlan =() => {
-
-  }
-  
 
   return (
     <>
@@ -56,15 +71,20 @@ export const ReportCategory = (props: any) => {
           <h1 className="repo-title">{props.valueOne}</h1>
         </div>
 
-        {!props.plan ? (
+
+
+        {!props.plan? (
           <>
             <div className="report-info-2">
               <h1 className="repo-title">{props.valueRight}</h1>
             </div>
 
+    
             <div className="report-info-3">
               <h1 className="repo-title">{props.valueRightTitle}</h1>
             </div>
+
+            
           </>
         ) : (
           <>
@@ -72,16 +92,14 @@ export const ReportCategory = (props: any) => {
             {injectPlan()}
           </div>
 
-            {/* <div className="report-info-3">
-              <h1 className="repo-title">fsdfsdfsdf</h1>
-            </div> */}
-
             <div className="plan-box">
               <h1 className="inst-title">Now you can select and see the different plan we got for you</h1>
             </div>
             <div className="btns-inst">
               <h1 className="inst-title">Select a year to see your plan</h1>
             </div>
+
+            
           </>
         )}
 
@@ -98,19 +116,19 @@ export const ReportCategory = (props: any) => {
         {props.title === 'monthly' && 
           <div className="monthly-cat">
             
-            <div className="month-one">
+            {/* <div className="month-one">
               <h1 className=" title">${props.pmi}</h1>
               <h1 className="title buttom">pmi</h1>
+            </div> */}
+
+            <div className="month-one">
+              <h1 className="num-month">${props.taxes}</h1>
+              <h1 className="num-month buttom">taxes</h1>
             </div>
 
             <div className="month-one">
-              <h1 className=" title">${props.taxes}</h1>
-              <h1 className="title buttom">taxes</h1>
-            </div>
-
-            <div className="month-one">
-              <h1 className=" title">${props.insurance}</h1>
-              <h1 className="title buttom">insurance</h1>
+              <h1 className="num-month">${props.insurance}</h1>
+              <h1 className="num-month buttom">insurance</h1>
 
             </div>
 
@@ -147,18 +165,25 @@ export const ReportCategory = (props: any) => {
           </div>
 
           <div className="result-info-1">
-            <h1 className="repo-title">Save</h1>
-            <h1 className="saving">information</h1>
-            <h1 className="saving">$numeber.00</h1>i
+            <h1 className="repo-title">This is the amount you have to save each month</h1>
+            {/* <h1 className="saving">information</h1> */}
+            <h1 className="saving"></h1>
             <h1 className="repo-title">monthly for</h1>
-            <h1 className="saving"> yrs </h1>
+             <h1 className="saving">{final.monthly_savings}</h1>
           </div>
+
+          <div className="year-buttons">
+              <div className="year-ci">year 1</div>
+              <div className="year-ci">year 2</div>
+              <div className="year-ci">year 3</div>
+          </div>
+
 
           <div className="result-info-2">
             <h1 className="repo-title">Your DreamHome</h1>
             <h1 className="repo-title">ready to buy</h1>
-            <h1 className="repo-title">date is</h1>
-            <h1 className="saving">date</h1>
+            <h1 className="repo-title">{currentStyle}</h1>
+            <h1 className="saving">{final.goal_end_date}</h1>
             {/* <h1 className="saving">{moment().to(currentPlan.goal_end_date)} </h1> */}
           </div>
         </section>

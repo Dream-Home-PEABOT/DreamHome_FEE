@@ -20,16 +20,15 @@ export const ReportSecOne = () => {
   const categories = keys.map(category => category.split('_')[1]);
   const insight = keys.map(category => reportContext.output[category]?.information);
   const planStyles =  reportContext.output.D_downpayment.plan_style
-  const planList = Object.entries(planStyles).map(plan => ({ [plan[0]] :[plan[1]]}))
-
+  const planKeys = Object.keys(planStyles)
 
   const injectNumbers = () => {
     const numbersToDisplay = [
       'B_credit_score', 
       'C_salary', 
       'D_monthly_debt', 
-      'F_mortgage_term', 
-      'I_rent'
+      'F_mortgage_term',
+      // 'G_downpayment_percentage'
     ]
     let numbers = numbersToDisplay.reduce((acc: any, curr) => {
       acc[curr] = reportContext.input[curr]
@@ -83,6 +82,7 @@ export const ReportSecOne = () => {
             </div>
 
       </section>    
+
     {/* Location */}
       <ReportCategory 
         title={categories[0]}
@@ -137,22 +137,22 @@ export const ReportSecOne = () => {
         taxes={reportContext.output.C_monthly.property_tax_by_location}
         insurance={reportContext.output.C_monthly.home_insurance_by_location}
         />
-{/* downpayment */}
+      {/* downpayment */}
       <ReportCategory 
         title={categories[3]}
         insight={insight[3]}
         position={keys.indexOf(keys[3])+1}
         centerImg={downpayment}
-        plan={planList}
         plant={plant_2}
         valueOne={'Downpayment saved'}
         valueLeft={reportContext.output.D_downpayment.downpayment_saved}
         valueRightTitle={'Average Home Price in this Area'}
         valueRight={reportContext.output.A_location.average_home_price}
-        keysPlan={Object.keys(planStyles)}
+        planKeys={planKeys}
+        plan={planStyles}
         
         />
-       
+
       <div className="sigup">
         <h1 className="fina-mess">
           Want to save your report?<br/>

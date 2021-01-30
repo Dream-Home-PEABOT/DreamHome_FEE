@@ -26,7 +26,6 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       goal_principal: answers.goal_home_price,
     };
 
-    console.log(formattedAnswers)
     //will need to add default values in or statements
     //const id = await postAnswers(formattedAnswers);
     const data = await getReport();

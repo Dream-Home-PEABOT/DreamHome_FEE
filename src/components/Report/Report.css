@@ -210,7 +210,7 @@
 
 .report-insight{
   background-color: transparent;
-  grid-area: 3/ 2/ 5 / 5;
+  grid-area: 2/ 2/ 5 / 5;
   margin: 3%;
   width: 100%;
   color: grey;
@@ -313,8 +313,10 @@
 }
 
 .result-info-2{
-  grid-area: 3/ 7/ 8 / 10;
+  grid-area: 6/ 7/ 9 / 11;
+  background: pink;
   width: 100%;
+  padding:-2%;
 }
 
 .loading-box{
@@ -363,7 +365,7 @@
   align-items: center;
 }
 
-.title{
+.num-month{
   color: #fff;
   text-decoration: underline;
   font-size: 3em;
@@ -395,9 +397,50 @@
   width: 150px;
   background-color: #1A1A1A;
   margin: 10%;
+  color: #fff;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .down-title{
   font-size: 2em;
   font-family:'Courier New', Courier, monospace;
+}
+
+.year-buttons{
+  grid-area: 3/ 7/ 5 / 11;
+  /* background: white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.year-ci{
+  border-radius: 25em;
+    height: 120px;
+    width: 120px;
+    background-color: #fff;
+    margin: 1%;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: inset 25px 25px 25px rgb(0,0,0,0.05),
+              inset -25px -25px 25px rgb(255,255,255,0.07),
+              25px 25px 25px rgb(0,0,0,0.05),
+              -25px -25px 25px rgb(255,255,255,0.07);
+}
+
+.year-ci:hover{
+  background: var(--dark-purple);
+  color: #fff;
+  
 }

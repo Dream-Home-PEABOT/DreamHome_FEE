@@ -1,3 +1,4 @@
+// imports 
 import React, { useContext } from "react";
 import { ReportContext } from "../../helpers/context";
 import { Cube } from "../Cube/Cube";
@@ -8,7 +9,7 @@ import "./Report.css";
 
 const Report = () => {
   let userReport = useContext(ReportContext);
-
+  
       const savePDF = async (input: any) => {
         const canvas = await html2canvas(input)
         const imgData = canvas.toDataURL('image/png')
