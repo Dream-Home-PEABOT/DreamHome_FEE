@@ -114,8 +114,15 @@
 .input-box{
   grid-area: 8/ 4/ 9 / 8;
   justify-self: end;
-  width: 100%;
+  width: 60%;
   margin: 1% 7% 0% 0%;
+  display: flex;
+}
+
+.symbol-box {
+  padding: 20px;
+  font-size: 2em;
+  font-family:'Quicksand', sans-serif;
 }
 
 .input{
@@ -124,7 +131,7 @@
   border: none;
   border-width:0px;
   border-bottom: 7px solid #1A1A1A;
-  width: 100%;
+  width: 80%;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   font-size: 2em ;
   text-align: right;
@@ -145,6 +152,7 @@
   display: inline-flex;
   margin: 3%;
   padding: 3%;
+  margin-top: 40px;
   align-items: center;
   z-index: 1;
 }
@@ -154,6 +162,14 @@
   font-family:'Quicksand', sans-serif;
   text-align: center;
   z-index: 2;
+  font-size: 1.4em;
+}
+
+.resource {
+  color: #1A1A1A;
+  font-family:'Quicksand', sans-serif;
+  padding-top: 30px;
+  font-size: 1em;
 }
 
 .floor-box {
