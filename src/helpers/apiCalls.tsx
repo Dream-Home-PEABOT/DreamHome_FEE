@@ -34,10 +34,11 @@ export const getReport = async (id: string) => {
   );
   if (response.ok) {
     let final = await response.json();
-
+    console.log(final.data)
     return final.data['03_attributes'];
 
   } else {
+    console.log('bad response', response)
     return response;
   }
 };
