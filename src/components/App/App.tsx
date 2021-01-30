@@ -5,7 +5,7 @@ import {
   ReportContext,
 } from "../../helpers/context";
 import { AllQuestionFormat } from "../../helpers/types";
-import { getQuestions } from "../../helpers/apiCalls";
+import { getQuestions, getUniqueReport, getReport } from "../../helpers/apiCalls";
 import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
 import firebase from "firebase/app";
@@ -55,7 +55,15 @@ const App: React.FC = () => {
     }
   };
 
+  const checkForReport = async()=>{
+    if(localStorage.userUID){
+      const data = await getReport("6015a73110553a1ba2c6e0ae")
+      updateReport(data)
+    }
+  }
+
   useEffect(() => {
+    checkForReport()
     populateQuestions();
     return () => {
       unmounted.current = true;
