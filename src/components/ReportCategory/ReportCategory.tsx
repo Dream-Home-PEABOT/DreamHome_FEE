@@ -18,7 +18,6 @@ export const ReportCategory = (props: any) => {
     })
   }
 
-
   const updatePlan =(e: any) => {
     const id = e.target.id
     setCurrentStyle(id)
@@ -49,13 +48,14 @@ export const ReportCategory = (props: any) => {
         style={props.position % 2 === 0 ? { backgroundColor: "#ffffff" } : {}}
         className="analysis-section"
       >
-        <div style={props.position % 2 === 0? { backgroundColor: "#89BD9E" }: { backgroundColor: "#ffffff" }}className="pipe-up"></div>
+        <div 
+        style={props.position % 2 === 0? { backgroundColor: "#89BD9E" }: { backgroundColor: "#ffffff" }}className="pipe-up"></div>
         <div
           style={ props.position % 2 === 0? { backgroundColor: "#89BD9E" }: { backgroundColor: "#ffffff" }}className="pipe-down"></div>
         <div className="main-circ-box">
           <div style={props.position % 2 === 0? { border: "15px solid #89BD9E" }: { border: "15px solid #ffffff" }}className="inner-circle"></div>
         </div>
-        <div className="report-img-box">
+        <div ref={props.pdfRef} className="report-img-box">
           <img
             src={props.centerImg}
             alt="location-illustration-1"
