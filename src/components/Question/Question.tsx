@@ -39,7 +39,6 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   },[])
   
   const nextQuestion = () => {
-   
     let userAmount = answerInput[questionKeys[index]];
     console.log(userAmount)
     let isNum = /^\d+$/.test(userAmount);
@@ -155,8 +154,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
         </div>
 
         <div className="input-box">
-          {currentQuestion.attributes.symbol === "$" && <h3 className="symbol">
-            {currentQuestion?.attributes?.symbol}
+          {currentQuestion['03_attributes'].H_symbol === "$" && <h3 className="symbol">
+            {currentQuestion['03_attributes'].H_symbol}
           </h3>}
           <input
             ref={inputRef}
@@ -166,7 +165,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             value={answerInput[questionKeys[index]] || ""}
             onChange={(e) => validateString(e)}
           />
-          {currentQuestion.attributes.symbol === "%" && <h3 className="symbol">
+          {currentQuestion['03_attributes'].H_symbol === "%" && <h3 className="symbol">
             {currentQuestion?.attributes?.symbol}
           </h3>}
         </div>
