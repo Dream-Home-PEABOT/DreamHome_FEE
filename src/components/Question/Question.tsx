@@ -13,9 +13,10 @@ interface Props {
 export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
 
   const questionContext = useContext(QuestionContext);
-  const questionKeys = Object.keys(questionContext )
+  const questionKeys = Object.keys(questionContext)
   const [answerInput, updateAnswer] = useState<any>({});
   const [index, setIndex] = useState<number>(0);
+  const [isPrincipleAndRent, setIsPrincipleAndRent] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -38,10 +39,9 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     inputRef?.current?.focus();
   },[])
 
-  const nextQuestion = () => {
 
+  const nextQuestion = () => {
     let userAmount = answerInput[questionKeys[index]];
-    console.log(userAmount)
     let isNum = /^\d+$/.test(userAmount);
     if (!userAmount || !isNum) {
       setErrorMessage("Sorry but we need this information");
@@ -66,6 +66,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     }
   };
 
+  // currentQuestion['03_attributes']?.B_classification == "Goal Home Price" || currentQuestion['03_attributes']?.B_classification == "Rent"
+
   return (
     <section className="question-section">
       <div className="inner-container">
@@ -75,7 +77,6 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               style={{ backgroundColor: "white", width: "5px" }}
               className="desc"
             >
-
             </h2>
             <h1 data-testid="description-title" className="question-desc">
               {currentQuestion['03_attributes']?.B_classification}
@@ -125,7 +126,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             </button>
           </div>
           <div className="bx">
-            {index < questionKeys.length -1  ? (
+            {index < questionKeys.length - 1  ? (
               <button
                 className="next-btn btn"
                 onClick={() => {
@@ -154,26 +155,73 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
           <p className="question">{currentQuestion['03_attributes']?.C_question}</p>
         </div>
 
-        <div className="input-box">
-          <div className='symbol-box'>
-            {currentQuestion['03_attributes'].H_symbol == '$' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
+        {
+        currentQuestion['03_attributes']?.B_classification == "Goal Home Price" || currentQuestion['03_attributes']?.B_classification == "Rent" ?
+        <>
+          <div className="input-box">
+            <div className='symbol-box'>
+              <h2 className='symbol'>$</h2>
+            </div>
+            <input
+              ref={inputRef}
+              placeholder={`your answer`}
+              type="text"
+              className="input"
+              value={answerInput[questionKeys[index]] || ""}
+              onChange={(e) => validateString(e)}
+            />
+            <div className='symbol-box'>
+              <h2 className='symbol'> </h2>
+            </div>
           </div>
-          <input
-            ref={inputRef}
-            placeholder={`your answer`}
-            type="text"
-            className="input"
-            value={answerInput[questionKeys[index]] || ""}
-            onChange={(e) => validateString(e)}
-          />
-          <div className='symbol-box'>
-            {currentQuestion['03_attributes'].H_symbol == '%' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
-          </div>
-        </div>
 
-        <div className="note-box">
-          <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
-        </div>
+          <div className="input-box">
+            <div className='symbol-box'>
+              <h2 className='symbol'>$</h2>
+            </div>
+            <input
+              ref={inputRef}
+              placeholder={`your answer`}
+              type="text"
+              className="input"
+              value={answerInput[questionKeys[index + 1]] || ""}
+              onChange={(e) => validateString(e)}
+            />
+            <div className='symbol-box'>
+              <h2 className='symbol'> </h2>
+            </div>
+          </div>
+
+          <div className="note-box">
+            <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
+          </div>
+        </>
+        :
+        <>
+          <div className="input-box">
+            <div className='symbol-box'>
+              {currentQuestion['03_attributes'].H_symbol == '$' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
+            </div>
+            <input
+              ref={inputRef}
+              placeholder={`your answer`}
+              type="text"
+              className="input"
+              value={answerInput[questionKeys[index]] || ""}
+              onChange={(e) => validateString(e)}
+            />
+            <div className='symbol-box'>
+              {currentQuestion['03_attributes'].H_symbol == '%' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
+            </div>
+          </div>
+
+          <div className="note-box">
+            <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
+          </div>
+        </>
+
+
+        }
 
         <div className="floor-box"></div>
 
