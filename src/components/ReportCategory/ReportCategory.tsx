@@ -175,28 +175,28 @@ export const ReportCategory = (props: any) => {
               alt="tall-man" 
               className="hurry-img" />
           </div> */}
-
-          <div className="result-info-1">
-            <h1 className="saving">This is the amount</h1>
-            <h1 className="saving"> have to save each</h1>
-            <h1 className="saving">month</h1>
-            <h1 className="saving"><span className='light'>{plan[currentStyle][currentPlan].monthly_savings}</span></h1>
+           <div className="result-info-2">
+            <h1 className="saving">With a <span className='light'>{currentStyle.split('_').join(' ')}</span></h1>
+            <h1 className="saving">of <span className='light'>{final[currentPlan].number_of_years} years</span></h1>
+            <h1 className="saving">Your Dream Home</h1>
+            <h1 className="saving">ready to buy date would be</h1>
+            <h1 className="saving"><span className='light'>{final[currentPlan].goal_end_date}</span></h1>
           </div>
 
+         
           <div className="year-buttons">
               {injectYears()}
           </div>
           <div className="btns-inst">
-              <h1 className="inst-title">Now, here you can djust your savings by year and choose the plan that is right for you</h1>
+              <h1 className="inst-title">Now, here you can adjust your savings by year and choose the plan that is right for you</h1>
             </div> 
 
-          <div className="result-info-2">
-            <h1 className="saving">With a <span className='light'>{currentStyle.split('_').join(' ')}</span></h1>
-            <h1 className="saving">and a <span className='light'>{`year ${currentPlan .split('_').reverse().join(' ')}`}</span></h1>
-            <h1 className="saving">Your Dream Home</h1>
-            <h1 className="saving">ready to buy date would be</h1>
-            <h1 className="saving"><span className='light'>{final.goal_end_date}</span></h1>
+            <div className="result-info-1">
+            <h1 className="saving">And you will only</h1>
+            <h1 className="saving"> have to save </h1>
+            <h1 className="saving"><span className='light'>${plan[currentStyle][currentPlan].monthly_savings}.00</span> monthly</h1>
           </div>
+
         </section>
       ) : (
         ""

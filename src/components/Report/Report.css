@@ -175,7 +175,7 @@
 
 .report-info-1{
   background-color: #1A1A1A;
-  grid-area: 5/ 2/ 6 /5;
+  grid-area: 4/ 2/ 6 /5;
   margin: 1%;
   font-size: 3em;
   color: #fff;
@@ -286,8 +286,8 @@
 }
 .result-info-1{
   /* background-color: var(--numbers-color); */
-  grid-area: 2/ 2/ 4 / 5;
-  width: 100%%;
+  grid-area: 6/ 2/ 9 / 5;
+  width: 100%;
   justify-self: center;
   width: 100%;
 }
@@ -320,7 +320,7 @@
 }
 
 .result-info-2{
-  grid-area: 5/ 1/ 9 / 6;
+  grid-area: 2/ 1/ 9 / 6;
   /* background: pink; */
   width: 100%;
   padding: -2%;
@@ -411,6 +411,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .down-ci{
@@ -445,16 +446,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    cursor: pointer;
     box-shadow: inset 25px 25px 25px rgb(0,0,0,0.05),
               inset -25px -25px 25px rgb(255,255,255,0.07),
               25px 25px 25px rgb(0,0,0,0.05),
               -25px -25px 25px rgb(255,255,255,0.07);
 }
 
-.year-ci:hover{
+.year-ci:active{
   background: var(--dark-purple);
   color: #fff;
-  
+}
+
+.down-ci:active{
+  background: var(--claret);
 }
 
 .year-title{
