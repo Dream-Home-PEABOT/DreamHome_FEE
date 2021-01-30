@@ -111,6 +111,11 @@
   margin: 5%;
 }
 
+.double-box{
+  display: flex;
+  flex-direction: column;
+}
+
 .input-box{
   grid-area: 8/ 4/ 9 / 8;
   justify-self: end;
