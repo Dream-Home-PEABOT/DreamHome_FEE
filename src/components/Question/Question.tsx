@@ -59,7 +59,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     updateAnswer({ ...answerInput, [questionKeys[index]]: e.target.value });
     let isnum = /^\d+$/.test(e.target.value);
     if (!isnum) {
-      setErrorMessage("only numbers");
+      setErrorMessage("Only Enter numbers");
       setTimeout(() => setErrorMessage(""), 4000);
     } else {
       setErrorMessage("");
