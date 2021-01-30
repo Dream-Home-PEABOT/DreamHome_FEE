@@ -46,8 +46,9 @@ export const getUniqueReport = async (uid: string) => {
   const response = await fetch(
     `https://dreamhome-mvp.herokuapp.com/api/v1/report/unique`,
       {
-      method: "GET",
-      body: JSON.stringify(uid),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({uid}),
     }
   );
   if (response.ok) {
