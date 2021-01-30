@@ -21,6 +21,7 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       credit_score: answers.credit_score,
       monthly_debt: answers.monthly_debt,
       downpayment_savings: answers.downpayment_savings,
+      mortgage_term: '30',
       downpayment_percentage: answers.downpayment_percentage,
       rent: answers.rent,
       goal_principal: answers.goal_home_price,
@@ -34,8 +35,8 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
     //   "downpayment_savings": 50000,
     //   "mortgage_term": 30,
     //   "downpayment_percentage": 20,
-    //   "goal_principal": 500000,
     //   "rent": 0
+    //   "goal_principal": 500000,
     //   }
 
     //actual object console.log(answers)
@@ -51,7 +52,9 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
 
     //will need to add default values in or statements
     const id = await postAnswers(formattedAnswers);
-    const data = await getReport(id.data.confirmation.id);
+    console.log(id)
+    console.log(id.data.id)
+    const data = await getReport(id.data.id);
     updateReport(data);
     //getReport().then((data) => setTimeout(() => updateReport(data), 3000))
   };
