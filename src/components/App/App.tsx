@@ -71,12 +71,11 @@ const App: React.FC = () => {
             <animated.div key={key} style={props}>
               <Switch location={item}>
                 <Redirect exact from="/" to="/home" />
-                <Route 
-                  exact
-                  path="/profile" 
+                <Route
+                  exact path="/profile"
                   component={() => (
-                    <Profile  updateReport={updateReport} />
-                  )} 
+                    <Profile updateReport={updateReport} />
+                  )}
                 />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/journey" component={Journey} />
