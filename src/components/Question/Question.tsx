@@ -62,8 +62,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
       setTimeout(() => setErrorMessage(""), 4000);
     } else {
       setErrorMessage("");
-    }};
-
+    }
+  };
 
   return (
     <section className="question-section">
@@ -82,7 +82,6 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             <h2 data-testid="description-body" className="desc">
               {currentQuestion['03_attributes']?.E_information}
             </h2>
-
           </div>
         </div>
 
@@ -166,7 +165,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             onChange={(e) => validateString(e)}
           />
           {currentQuestion['03_attributes'].H_symbol === "%" && <h3 className="symbol">
-            {currentQuestion?.attributes?.symbol}
+            {currentQuestion['03_attributes'].symbol}
           </h3>}
         </div>
 
@@ -174,13 +173,11 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
           <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
         </div>
 
-
         <div className="floor-box"></div>
         <h4 className="note">{currentQuestion['03_attributes'].G_source}</h4>
       </div>
-
     </section>
   );
 };
 
-// export default Question;
+export default Question;
