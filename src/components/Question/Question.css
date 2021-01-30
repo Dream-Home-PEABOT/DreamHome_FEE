@@ -193,6 +193,29 @@
   font-size: 1.4em;
 }
 
+.btn2{
+  background-color: #1A1A1A;
+  border-radius: 2em;
+  color: #ffffff;
+  font-size: 1.5em;
+  height: 5vh;
+  width: 12vw;
+}
+
+.btn2:hover {
+  background-color: #3C153B;
+  color:#F0C808;
+}
+
+.btn-selected {
+  border-radius: 2em;
+  font-size: 1.5em;
+  height: 5vh;
+  width: 12vw;
+  background-color: #3C153B;
+  color:#F0C808;
+}
+
 .principle-btn {
   margin: 30px;
 }

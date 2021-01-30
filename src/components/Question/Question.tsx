@@ -18,6 +18,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const [index, setIndex] = useState<number>(0);
   const[isSelected, setIsSelected] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const[rentSelected, setRentSelected] = useState<boolean>(false);
+  const[principleSelected, setPrincipleSelected] = useState<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null);
 
   const organizeData = () => {
@@ -42,9 +44,13 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   const displayInput = (e: any) => {
     setIsSelected(true)
     if(e.target.id === 'principle') {
+      setPrincipleSelected(true);
+      setRentSelected(false);
       setIndex(7);
       updateAnswer({ ...answerInput, [questionKeys[8]]: '0'});
     } else if (e.target.id === 'rent') {
+      setPrincipleSelected(false);
+      setRentSelected(true);
       setIndex(8);
       updateAnswer({ ...answerInput, [questionKeys[7]]: '0'});
     }
@@ -99,8 +105,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               </h2>
               <h4 className="resource-2">If you have a number in mind of how much you'd like your Dream Home to cost, select "Goal Principle." If you don't, that's ok! Select "Rent" and we'll use what you're currently paying in rent to calculate a potential path for you! </h4>
               <div className='choice-buttons-box'>
-                <button id='principle' className='principle-btn btn'  onClick={(e) => {displayInput(e)}}>Goal Principle</button>
-                <button id='rent' className='rent-btn btn' onClick={(e) => {displayInput(e)}}>Rent</button>
+                <button id='principle' className={!principleSelected ? 'principle-btn btn2' : 'principle-btn btn-selected'}  onClick={(e) => {displayInput(e)}}>Goal Principle</button>
+                <button id='rent' className={!rentSelected ? 'rent-btn btn2' : 'rent-btn btn-selected'} onClick={(e) => {displayInput(e)}}>Rent</button>
               </div>
             </div>
           </div>
