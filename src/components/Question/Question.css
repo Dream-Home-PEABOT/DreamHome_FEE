@@ -32,6 +32,15 @@
   text-decoration-line: underline;
 }
 
+.msg-desc {
+  font-family: 'Xanh Mono', monospace;
+  font-size: 2.5em;
+  text-align: center;
+  margin: 1%;
+  padding: 3%;
+  color: #1A1A1A;
+}
+
 .desc{
   font-family: 'Xanh Mono', monospace;
   font-size: 1.6em;
@@ -175,6 +184,21 @@
   font-family:'Quicksand', sans-serif;
   padding-top: 30px;
   font-size: 1em;
+}
+
+.resource-2 {
+  color: #1A1A1A;
+  font-family:'Quicksand', sans-serif;
+  padding: 30px;
+  font-size: 1.4em;
+}
+
+.principle-btn {
+  margin: 30px;
+}
+
+.rent-btn {
+  margin: 30px;
 }
 
 .floor-box {

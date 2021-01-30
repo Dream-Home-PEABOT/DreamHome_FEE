@@ -97,14 +97,15 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               <h2 data-testid="description-body" className="desc">
                 {currentQuestion['03_attributes']?.E_information}
               </h2>
-              <h4 className="resource">{currentQuestion['03_attributes'].G_source}</h4>
+              <h4 className="resource-2">If you have a number in mind of how much you'd like your Dream Home to cost, select "Goal Principle." If you don't, that's ok! Select "Rent" and we'll use what you're currently paying in rent to calculate a potential path for you! </h4>
+              <div className='choice-buttons-box'>
+                <button id='principle' className='principle-btn btn'  onClick={(e) => {displayInput(e)}}>Goal Principle</button>
+                <button id='rent' className='rent-btn btn' onClick={(e) => {displayInput(e)}}>Rent</button>
+              </div>
             </div>
           </div>
 
-          <div className='choice-buttons-box'>
-            <button id='principle' className='principle-btn' onClick={(e) => {displayInput(e)}}>Goal Principle</button>
-            <button id='rent' className='rent-btn' onClick={(e) => {displayInput(e)}}>Rent</button>
-          </div>
+
 
           <div className="question_img-box_1">
             <img
@@ -171,7 +172,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             </div>
 
             {
-              isSelected === true &&
+              isSelected === true ?
               <div className="input-box">
               <div className='symbol-box'>
                 {currentQuestion['03_attributes'].H_symbol == '$' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
@@ -188,10 +189,16 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
                 {currentQuestion['03_attributes'].H_symbol == '%' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
               </div>
             </div>
+            :
+            <div className="input-box">
+            <h1 className="msg-desc">
+              Select either<br/>"Goal Principle"<br/>or "Rent" above
+            </h1>
+            </div>
           }
 
             <div className="note-box">
-              <h4 className="note">{currentQuestion['03_attributes'].F_note}</h4>
+              <h4 className="note">We will use either your goal home price or your current rent to help you find your Dream Home!</h4>
             </div>
 
           <div className="floor-box"></div>
