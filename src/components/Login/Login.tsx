@@ -3,6 +3,7 @@ import "firebase/auth";
 import * as firebaseui from "firebaseui";
 import "./Login.css";
 import React, { useEffect } from "react";
+import {updateUserReport} from "../../helpers/apiCalls";
 import bkg_img from "../../images/report/Charco - Mobile Life.png";
 
 export const Login: React.FC = () => {
@@ -12,6 +13,9 @@ export const Login: React.FC = () => {
         authResult: any,
         redirectUrl: any
       ) {
+        if (localStorage.reportID){
+          updateUserReport(localStorage.reportID, authResult.user.uid)
+        }
         localStorage.userUID = authResult.user.uid;
         localStorage.displayName = authResult.user.displayName;
         localStorage.email = authResult.user.email;
