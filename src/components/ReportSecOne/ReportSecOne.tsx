@@ -22,7 +22,7 @@ export const ReportSecOne = () => {
   const insight = keys.map(category => reportContext.output[category]?.information);
   const planStyles =  reportContext.output.D_downpayment.plan_style
   const planKeys = Object.keys(planStyles);
-  
+
   const savePDF = () => {
     const input:any = document.getElementById('root');
     html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
@@ -106,9 +106,9 @@ export const ReportSecOne = () => {
         valueRightTitle={"Average Home Price in this Area"}
         valueRight={`$${reportContext.output.A_location.average_home_price}`}
       />
-      {/* Principle */}
+      {/* Principal */}
       {!reportContext.input.I_rent
-      ? 
+      ?
       (<ReportCategory
         title={categories[1]}
         insight={insight[1]}
@@ -117,7 +117,7 @@ export const ReportSecOne = () => {
         plant={plant_2}
         valueOne={"Mortgage Rate"}
         valueLeft={`${reportContext.output.B_principal.mortgage_rate}%`}
-        valueRightTitle={"Your Selected Goal Principle"}
+        valueRightTitle={"Your Selected Goal Principal"}
         valueRight={`$${reportContext.output.B_principal.goal_principal}`}
       />)
       :
@@ -127,10 +127,10 @@ export const ReportSecOne = () => {
         position={keys.indexOf(keys[1]) + 1}
         centerImg={goodJob}
         plant={plant_2}
-        valueOne={"Potential Goal Principle"}
+        valueOne={"Potential Goal Principal"}
         valueLeft={`$${reportContext.input.I_rent}`}
         valueRightTitle={
-          "This number is calculated as a possible goal principle based off of what you are currently paying in rent."
+          "This number is calculated as a possible goal principal based off of what you are currently paying in rent."
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
       />)
@@ -187,7 +187,7 @@ export const ReportSecOne = () => {
         )}
       </div>
 
-     
+
     </>
   );
 };
