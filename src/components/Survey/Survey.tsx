@@ -65,11 +65,6 @@ export const Survey: React.FC = () => {
                 - You should have three months of housing payments and expenses
                 saved up.
               </li>
-              <li className="item">
-                {" "}
-                - Don't add any dollar signs in front of any questions asking
-                for dollar amounts, just numbers!
-              </li>
             </ul>
           </div>
         </div>

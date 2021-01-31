@@ -46,7 +46,9 @@ export const Login: React.FC = () => {
         <h3 className="title-3" data-testid="Dream Home">
           Save Your Dream!
         </h3>
-        <div id="firebaseui-auth-container"></div>
+        <div id="firebaseui-auth-container">
+          <div className="title">Authentication</div>
+        </div>
         <h3 className="desc" data-testid="Dream Home">
           No Account? No worries! Click on the preferred method above to get
           one!

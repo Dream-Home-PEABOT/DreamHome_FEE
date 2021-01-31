@@ -47,10 +47,6 @@ const GenerateReport: React.FC<Props> = ({  updateReport }) => {
               like on your current path. Click the button and let's do some
               calculations!
             </h2>
-            <h2 className="desc">
-              Click the link at the bottom of your report to register and track
-              your progress over time.
-            </h2>
           </div>
         </div>
 
