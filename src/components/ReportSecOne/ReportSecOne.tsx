@@ -25,7 +25,7 @@ export const ReportSecOne = ( props:any ) => {
   const planKeys = Object.keys(planStyles);
 
   const savePDF = () => {
-    const input = document.getElementById('root');
+    const input:any = document.getElementById('root');
     html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
             var img = canvas.toDataURL();
             const pdf = new jsPDF({unit:"px", format:[180,300]});

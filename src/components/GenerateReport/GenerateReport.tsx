@@ -13,7 +13,8 @@ interface Props {
 
 const GenerateReport: React.FC<Props> = ({  updateReport }) => {
   const answers = useContext(AnswerContext);
-
+  console.log(answers)
+  
   const requestReport = async () => {
     const formattedAnswers: Answers = {
       salary: answers.monthly_salary,
@@ -21,6 +22,7 @@ const GenerateReport: React.FC<Props> = ({  updateReport }) => {
       credit_score: answers.credit_score,
       monthly_debt: answers.monthly_debt,
       downpayment_savings: answers.downpayment_savings,
+      mortgage_term: '30',
       downpayment_percentage: answers.downpayment_percentage,
       rent: answers.rent,
       goal_principal: answers.goal_home_price,
@@ -29,9 +31,11 @@ const GenerateReport: React.FC<Props> = ({  updateReport }) => {
 
     //will need to add default values in or statements
     const id = await postAnswers(formattedAnswers);
-    const data = await getReport(id.data.confirmation.id);
+    console.log(id)
+    console.log(id.data.id)
+    const data = await getReport(id.data.id);
     updateReport(data);
-    //getReport().then((data) => setTimeout(() => updateReport(data), 3000))
+
   };
 
   return (

@@ -18,15 +18,16 @@ export interface AllQuestionFormat{
 }
 
 export interface Answers{
-  salary: string,
-  zipcode: string,
-  credit_score: string,
-  monthly_debt: string,
-  downpayment_savings: string,
-  downpayment_percentage: string,
-  rent: string,
-  goal_principal: string
-  uid: string
+  salary: string;
+  zipcode: string;
+  credit_score: string;
+  monthly_debt: string;
+  downpayment_savings: string;
+  downpayment_percentage: string;
+  rent: string;
+  goal_principal: string;
+  mortgage_term:string;
+  uid: string;
 }
 
   //downpayment_savings:QuestionFormat;
