@@ -71,7 +71,7 @@ export const getUniqueReport = async (uid: string) => {
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data['03_attributes'];
+    return final.data;
   } else {
     return response;
   }
