@@ -11,6 +11,7 @@ import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
 import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png"
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import { Link } from 'react-router-dom'
 import "firebase/auth";
 
 
@@ -49,10 +50,12 @@ export const ReportSecOne = () => {
       return acc;
     }, {});
 
-    return Object.entries(numbers).map((entries: any) => {
+    return Object.entries(numbers).map((entries: any, i) => {
       const numTitle = entries[0].split("_").splice(1).join(" ");
       return (
-        <div className="num ">
+        <div 
+          key={i}
+          className="num ">
           <div className="num-ci-box-up">
             <h1 className="num-ci-title">Your {numTitle}</h1>
           </div>
@@ -166,12 +169,12 @@ export const ReportSecOne = () => {
       />
 
         <div className="sigup">
-        {localStorage.userUID && (
+        {localStorage.userUID ? (
           <div className="social-box">
             <h1 className="fina-mess">
               Tweet your report! <br />
               <a
-                className="twitter-hashtag-button"
+                className="tweet"
                 href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
                 data-size="large"
               >
@@ -181,10 +184,30 @@ export const ReportSecOne = () => {
             <h1 className="fina-mess">
               Download as PDF
               <br />
-              <span onClick={()=> savePDF()} className="link">Download</span>
+              <span onClick={()=> savePDF()} className="tweet">Download</span>
+            </h1>
+          </div>)
+
+          : (
+            <div className="social-box">
+            <h1 className="fina-mess">
+              Save your report by logging in<br />
+              <Link to='/login'>
+              <a
+                className="tweet"
+              >
+                log-in
+              </a>
+              </Link>
+            </h1>
+            <h1 className="fina-mess">
+              Download as PDF
+              <br />
+              <s onClick={()=> savePDF()} className="tweet">Download</s>
             </h1>
           </div>
-        )}
+          )
+        }
       </div>
 
      
