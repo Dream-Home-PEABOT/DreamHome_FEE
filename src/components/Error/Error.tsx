@@ -5,7 +5,7 @@ import error_img from "../../images/errors/Big Shoes - Torso.png";
 import bkg_img from "../../images/errors/Charco - Broken.png";
 interface props {
   errorMessage: string;
-  errorNum: number;
+  errorNum: string;
 }
 
 const Error: React.FC<props> = ({ errorNum, errorMessage }) => {

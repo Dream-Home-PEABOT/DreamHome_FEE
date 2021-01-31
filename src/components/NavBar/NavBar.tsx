@@ -9,6 +9,7 @@ import { NavItem } from "../NavItem/NavItem";
 import { ReportContext } from "../../helpers/context";
 import { logOut } from "../../helpers/firebase";
 
+
 const NavBar: React.FC<any> = (props) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -60,7 +61,8 @@ const DropdownMenu = (props: any) => {
         <DropdownItem>Home</DropdownItem>
       </Link>
 
-      {!userReport &&<Link
+      {!userReport &&
+      <Link
         to="/journey"
         data-testid="to-journey"
         onClick={() => props.setOpen(false)}
@@ -68,8 +70,8 @@ const DropdownMenu = (props: any) => {
         <DropdownItem onClick={props.setOpen}>Journey</DropdownItem>
       </Link>
       }
-
-      {firebase.auth().currentUser && 
+      {firebase.auth().currentUser &&  
+      userReport &&
       <Link
         to="/profile"
         data-testid="to-profile"
@@ -78,6 +80,7 @@ const DropdownMenu = (props: any) => {
         <DropdownItem onClick={props.setOpen}>Profile</DropdownItem>
       </Link>
       }
+
       {userReport && (
         <Link
           to="/report"

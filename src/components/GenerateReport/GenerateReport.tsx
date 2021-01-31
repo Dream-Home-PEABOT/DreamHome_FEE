@@ -31,11 +31,8 @@ const GenerateReport: React.FC<Props> = ({  updateReport }) => {
 
     //will need to add default values in or statements
     const id = await postAnswers(formattedAnswers);
-    console.log(id)
-    console.log(id.data.id)
     const data = await getReport(id.data.id);
     updateReport(data);
-
   };
 
   return (

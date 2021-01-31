@@ -8,22 +8,21 @@ import downpayment from "../../images/report/Charco - Work at Home.png";
 import location from "../../images/report/Charco - Location Map.png";
 import mobile from "../../images/report/Charco - Mobile Life.png";
 import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
-import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
-import "firebase/auth";
+import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png"
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import "firebase/auth";
 
-export const ReportSecOne = ( props:any ) => {
-  const pdfRef = useRef(null)
+
+export const ReportSecOne = () => {
+
   const reportContext: any = useContext(ReportContext);
   const keys = Object.keys(reportContext.output);
-  const categories = keys.map((category) => category.split("_")[1]);
-  const insight = keys.map(
-    (category) => reportContext.output[category]?.information
-  );
-  const planStyles = reportContext.output.D_downpayment.plan_style;
+  const categories = keys.map(category => category.split('_')[1]);
+  const insight = keys.map(category => reportContext.output[category]?.information);
+  const planStyles =  reportContext.output.D_downpayment.plan_style
   const planKeys = Object.keys(planStyles);
-
+  
   const savePDF = () => {
     const input:any = document.getElementById('root');
     html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
@@ -97,7 +96,6 @@ export const ReportSecOne = ( props:any ) => {
 
       {/* Location */}
       <ReportCategory
-        pdfRef={pdfRef}
         title={categories[0]}
         insight={insight[0]}
         position={keys.indexOf(keys[0]) + 1}
@@ -137,7 +135,6 @@ export const ReportSecOne = ( props:any ) => {
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
       />)
       }
-      {/* end of conditional rendering */}
 
       {/* monthly category */}
       <ReportCategory
@@ -168,14 +165,14 @@ export const ReportSecOne = ( props:any ) => {
         plan={planStyles}
       />
 
-      <div className="sigup">
+        <div className="sigup">
         {localStorage.userUID && (
           <div className="social-box">
             <h1 className="fina-mess">
               Tweet your report! <br />
               <a
                 className="twitter-hashtag-button"
-                href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
+                href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
                 data-size="large"
               >
                 Tweet
@@ -184,11 +181,13 @@ export const ReportSecOne = ( props:any ) => {
             <h1 className="fina-mess">
               Download as PDF
               <br />
-              <span onClick={savePDF} className="link">Download</span>
+              <span onClick={()=> savePDF()} className="link">Download</span>
             </h1>
           </div>
         )}
       </div>
+
+     
     </>
   );
 };

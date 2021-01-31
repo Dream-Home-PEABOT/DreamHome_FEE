@@ -1,35 +1,179 @@
-.profile-body {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 5vw 30vw 5vw;
-  grid-gap: 1em;
-}
-.user-image{
-  width: 20em;
-  height: 25em;
+
+.profile-section{
+  background-color: #fff;
+  height: 85vh;
+  
 }
 
+
+.welcome-prof{
+  background-color: rgb(255, 255, 255);
+  height: 20vh;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+
+.prof-container{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+
+}
+
+.twitter{
+  padding:0.3em 1.2em;
+  margin: 5em;
+  border-radius:2em;
+  border: none;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  background-color:#4eb5f1;
+  text-align:center;
+  transition: all 0.2s;
+  height: 4em;
+  width: 8em;
+}
+
+
+.twitter:hover{
+  background-color: #4095c6;
+}
+
+@media all and (max-width:30em){
+  .twitter{
+    display:block;
+    margin:0.2em auto;
+  }
+} 
+
+.profile-header{
+  color:black;
+  font-family: var(	--card);
+  font-size: 2em;
+  margin-left: -22%;
+ 
+}
+
+.header-pro{
+  color:black;
+  font-family: var(	--card);
+  font-size: 3em;
+  z-index: 3;
+  margin-left: 4%;
+}
+.intruc{
+  margin-left: -10%;
+  font-size: 1.5em;
+  font-family: var(--note);
+  margin-top: 9%;
+  line-height: 1.5em;
+}
+
+.salut{
+  width: 70vw;
+  z-index: 1;
+}
+
+.twitter-hashtag-button{
+  font-family: var(  --note);
+  text-decoration: none;
+  font-size: 2em;
+  color: #fff;
+  
+}
+
+.center-container{
+  background: #F0C808;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail{
+  margin: 5%;
+}
+
+.btn-cont{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.right-container{
+  background: #F0C808;
+  height: 100%;
+  width: 90%;
+
+}
+
+.left-container{
+  background: #F0C808;
+  height: 123%;
+  width: 66%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.user-image{
+  height: 80%;
+}
+
+.cat{
+  font-family: var(--mono);
+  font-size: 1.5em;
+}
+
+.inpt{
+  border: none;
+  height: 1.5em;
+  color: var(--dark-purple);
+  font-family: var(--card);
+  text-align: right;
+
+}
+
+.input::placeholder{
+  color: indigo;
+}
+
+.error{
+  color: red;
+  z-index: 10;
+  font-size: 1.5em;
+}
 .user-details{
   font-family: 'Quicksand', sans-serif;
-  display:grid;
-  grid-gap: 2em;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
 }
 
 .user-details-fields{
-  display:grid;
-  grid-template-columns:65% 35%;
-  grid-gap: 1em;
+  display: inline-flex;
+  margin: 1em;
+  justify-content: space-between;
 }
 
 .update-profile {
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 25em;
   background-color: #f4511e;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 28px;
-  padding: 20px;
+  font-size: 20px;
+  padding: 10px;
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
@@ -37,10 +181,6 @@
 }
 
 
-.profile-header,
-.profile-footer {
-  grid-column: 1 / span 2;
-}
 
 /* Demo Specific Styles */
 .profile-body {
@@ -49,16 +189,6 @@
   padding: 1em 0;
 }
 
-.profile-header,
-.profile-aside,
-.profile-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.profile-img-container{
-  justify-self:start;
-}
 
 
