@@ -16,7 +16,8 @@ import "firebase/auth";
 
 export const ReportSecOne = () => {
 
-  const reportContext: any = useContext(ReportContext);
+  let reportContext:any  = useContext(ReportContext);
+  reportContext = reportContext['03_attributes']
   const keys = Object.keys(reportContext.output);
   const categories = keys.map(category => category.split('_')[1]);
   const insight = keys.map(category => reportContext.output[category]?.information);
