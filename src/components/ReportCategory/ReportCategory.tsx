@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState , useContext} from 'react';
 import downpayment from "../../images/report/Charco - Work at Home.png";
 import hurry from "../../images/report/Big Shoes - Dynamic Pose.png";
 import { ReportContext } from "../../helpers/context";
