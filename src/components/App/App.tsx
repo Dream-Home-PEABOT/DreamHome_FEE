@@ -10,8 +10,6 @@ import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
 import firebase from "firebase/app";
 import "firebase/auth";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 
 import NavBar from "../NavBar/NavBar";
 import Home from "../Home/Home";
@@ -62,42 +60,13 @@ const App: React.FC = () => {
 
   const checkForReport = async()=>{
     if(localStorage.userUID){
-      //const data = await getReport("6016175254f296d905543d09")
-      const data = dataset.data['03_attributes']
+      const data = await getReport("6016175254f296d905543d09")
+      //const data = dataset.data['03_attributes']
       updateReport(data)
     }
   }
-  const savePDF = () => {
-    const input = document.getElementById('root');
-    html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
-            var img = canvas.toDataURL();
-            const pdf = new jsPDF({unit:"px", format:[180,300]});
-            pdf.setFillColor(240, 200,8);
-            pdf.rect(0, 0, 150, 300, "F");
-            pdf.rect(150, 0, 150, 300, "F");
-            pdf.addImage(img, 'PNG', 15, 0, 150, 300);
-            pdf.save("MyDreamHome.pdf");
-        });
-    //html2canvas(input)
-    //  .then((canvas) => {
-    //    var tempcanvas = document.createElement('canvas');
-    //    tempcanvas.width=465.5;
-    //    tempcanvas.height=524;
-    //    var context:any= tempcanvas.getContext('2d'); 
-    //    context.drawImage(canvas,465.5,40,465.5,524,0,0,465.5,524);
-    //    var link=document.createElement("a");
-    //    const imgData = canvas.toDataURL('image/png');
-    //    link.click()
-    //    console.log(imgData)
-    //    const pdf = new jsPDF();
-    //    pdf.addImage(imgData, 'JPEG', 0, 0, 0, 0);
-    //    pdf.save("download.pdf");
-    //  })
-    //;
-  }
 
   useEffect(() => {
-    if (takeShot) savePDF()
     checkForReport()
     populateQuestions();
     return () => {
@@ -134,7 +103,7 @@ const App: React.FC = () => {
                     <GenerateReport  updateReport={updateReport} />
                   )}
                 />
-                <Route exact path="/report" component={() => <Report setTakeShot={savePDF}/>} />
+                <Route exact path="/report" component={() => <Report />} />
                 <Route
                   path="/*"
                   component={() => (
