@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { ReportContext } from "../../helpers/context";
 import { Spring } from "react-spring/renderprops";
-import { Link } from "react-router-dom";
 import back_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import { ReportCategory } from "../ReportCategory/ReportCategory";
 import goodJob from "../../images/report/Charco - Inbox.png";
@@ -10,7 +9,6 @@ import location from "../../images/report/Charco - Location Map.png";
 import mobile from "../../images/report/Charco - Mobile Life.png";
 import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
 import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
-import firebase from "firebase/app";
 import "firebase/auth";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
@@ -25,6 +23,19 @@ export const ReportSecOne = ( props:any ) => {
   );
   const planStyles = reportContext.output.D_downpayment.plan_style;
   const planKeys = Object.keys(planStyles);
+
+  const savePDF = () => {
+    const input = document.getElementById('root');
+    html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
+            var img = canvas.toDataURL();
+            const pdf = new jsPDF({unit:"px", format:[180,300]});
+            pdf.setFillColor(240, 200,8);
+            pdf.rect(0, 0, 150, 300, "F");
+            pdf.rect(150, 0, 150, 300, "F");
+            pdf.addImage(img, 'PNG', 15, 0, 150, 300);
+            pdf.save("MyDreamHome.pdf");
+        });
+  }
 
   const injectNumbers = () => {
     const numbersToDisplay = [
@@ -173,7 +184,7 @@ export const ReportSecOne = ( props:any ) => {
             <h1 className="fina-mess">
               Download as PDF
               <br />
-              <span onClick={()=>props.setTakeShot(true)} className="link">Download</span>
+              <span onClick={savePDF} className="link">Download</span>
             </h1>
           </div>
         )}
