@@ -175,7 +175,7 @@
 
 .report-info-1{
   background-color: #1A1A1A;
-  grid-area: 4/ 2/ 6 /5;
+  grid-area: 4/ 1/ 6 /5;
   margin: 1%;
   font-size: 3em;
   color: #fff;
@@ -191,7 +191,7 @@
 .report-info-3{
   grid-area: 5/ 11/ 8 / 7;;
   background-color: transparent;
-  font-size: 3em;
+  font-size: 5em;
   color: #1A1A1A;
   font-family: 'Courier New', Courier, monospace;
   text-shadow: 2px 2px #fff;

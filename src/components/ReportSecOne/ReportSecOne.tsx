@@ -66,7 +66,12 @@ export const ReportSecOne = () => {
           >
             {(props) => (
               <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{`${props.number.toFixed()}`}</h1>
+                { entries[0] !=="F_mortgage_term"?
+                  <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
+                  :
+                  <h1 className="num-ci-data">{`${props.number.toFixed()} year`}</h1>
+
+                }
               </div>
             )}
           </Spring>

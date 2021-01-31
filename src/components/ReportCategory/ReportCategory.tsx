@@ -93,12 +93,12 @@ export const ReportCategory = (props: any) => {
         {!props.plan? (
           <>
             <div className="report-info-2">
-              <h1 className="repo-title">{props.valueRight}</h1>
+            <h1 className="repo-title">{props.valueRightTitle}</h1>
             </div>
 
     
             <div className="report-info-3">
-              <h1 className="repo-title">{props.valueRightTitle}</h1>
+              <h1 className="repo-title">{props.valueRight}</h1>
             </div>
 
             
