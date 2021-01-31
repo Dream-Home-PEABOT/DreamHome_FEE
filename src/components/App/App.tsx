@@ -4,7 +4,6 @@ import {
   QuestionContext,
   ReportContext,
 } from "../../helpers/context";
-import { AllQuestionFormat } from "../../helpers/types";
 import { getQuestions, getUniqueReport, getReport } from "../../helpers/apiCalls";
 import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
@@ -22,8 +21,6 @@ import { Profile } from "../Profile/Profile";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
-import { createImportSpecifier } from "typescript";
-import {dataset} from "./data";
 
 
 const App: React.FC = () => {
@@ -62,8 +59,7 @@ const App: React.FC = () => {
 
   const checkForReport = async()=>{
     if(localStorage.userUID){
-      const data = await getReport("6016175254f296d905543d09")
-      //const data = dataset.data['03_attributes']
+      const data = await getUniqueReport("finaluid")
       updateReport(data)
     }
   }
