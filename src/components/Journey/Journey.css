@@ -1,7 +1,7 @@
 .journey-section{
   background-color: #F0C808;
   height: 85vh;
-  
+
 }
 
 .container{
@@ -16,6 +16,16 @@
   top: 0%;
   left: 5%;
   font-size: 4em;
+  font-family: var(--mono);
+  color: black;
+  text-shadow: 2px 2px white;
+}
+
+.instructions-2{
+  position: absolute;
+  top: 2.5%;
+  left: 35%;
+  font-size: 2em;
   font-family: var(--mono);
   color: black;
   text-shadow: 2px 2px white;
