@@ -69,7 +69,8 @@ const DropdownMenu = (props: any) => {
         <DropdownItem onClick={props.setOpen}>Journey</DropdownItem>
       </Link>
       
-      {firebase.auth().currentUser &&  userReport &&
+      {firebase.auth().currentUser &&  
+      // userReport &&
       <Link
         to="/profile"
         data-testid="to-profile"

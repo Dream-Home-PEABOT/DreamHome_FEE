@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext, useRef} from "react";
 // import {updateReport} from "../../helpers/apiCalls"//iTHink this has to be pass down as a prop from app
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import "./Profile.css";
@@ -8,12 +8,12 @@ interface profileProp {
 }
 
 export const Profile: React.FC<profileProp> = ({ updateReport }) => {
-  const [profileInfo, updateProfileInfo] = useState<any>({})
+  
+  const answers = useContext(AnswerContext);
   const [error, setError] = useState<string>('');
   const [person, setPerson] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-
-  const answersKeys = useContext(AnswerContext);
+  const [st, setAllAnswers] = useState<any>(answers)
 
   useEffect(() => {
     const userError = 'no name found'
@@ -23,36 +23,59 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
     setPerson(user)
     setEmail(email)
   }, [])
-  console.log(answersKeys)
+
+  const clearForm = () => {
+    setAllAnswers(answers)
+  }
+  
 
   const injectInputFields = () => {
-    return Object.keys(answersKeys).map( (entry: any) => {
+    return Object.keys(st).map( (entry: any, i) => {
+      // console.log(entry)
       return (
-        <div className="user-details-fields">
-          <h1 className='cat'>{ entry}</h1>
-          <input className='inpt' onChange={handleChange} name={"salary"}type="text" placeholder="your answer"/>
+        <div 
+          key={i}
+        className="user-details-fields">
+          <h1 className='cat'>{entry}</h1>
+          <input 
+            className='inpt' 
+            onChange={(e) => handleChange(e)} 
+            name={entry}
+            type="text" 
+            value={st[entry]}
+            placeholder="your answer"
+            />
         </div>
       )
     })
   }
 
   const handleChange = (e:any)=>{
-    
-    updateProfileInfo({...answersKeys, [e.target.name]: e.target.value})
 
+    if (!e.target.value){
+      setError('just numbers')
+        setTimeout(()=>{
+          setError('')
+        },2000)
+    }
+  
+    setAllAnswers({...st, [e.target.name]: e.target.value})
   }
 
-  const modifyReport = (profileInfo: any) =>{
-    Object.values(profileInfo).forEach(entry => {
+  const modifyReport = () =>{
+    Object.values(st).forEach((entry: any) => {
+      console.log(entry) 
+      // let areNums = /^\d+$/.test(entry);
       if(!entry){
         setError('oops, there are some fields missing')
         setTimeout(()=>{
           setError('')
         },2000)
+      } else if (entry){
+        console.log(st)
       }
     })
-    console.log(profileInfo)
-    // updateReport(profileInfo)
+ 
   }
   return (
     <section className="profile-section">
@@ -100,12 +123,14 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
 
 
           <div className="user-details detail">
-          {injectInputFields()}
-            
+            {injectInputFields()}
             <div className="btn-cont">
-
               <h1 className="inpt error">{error}</h1>
-              <button onClick={()=>modifyReport(profileInfo)}className="update-profile">Update Info</button>
+              <div>
+
+              <button onClick={()=>modifyReport()} className="update-profile">Update Info</button>
+              <button onClick={()=>clearForm()} className="update-profile">clear</button>
+              </div>
             </div>
           </div>
         </div>

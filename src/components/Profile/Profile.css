@@ -149,6 +149,7 @@
 .error{
   color: red;
   z-index: 10;
+  font-size: 1.5em;
 }
 .user-details{
   font-family: 'Quicksand', sans-serif;
@@ -170,12 +171,12 @@
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 28px;
+  font-size: 20px;
   padding: 10px;
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 5px;
 }
 
 
