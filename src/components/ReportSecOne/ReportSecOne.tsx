@@ -94,7 +94,7 @@ export const ReportSecOne = () => {
               <h1 className="title header">My</h1>
               <h1 className="title-2 header">Dream Home</h1>
               <div className="number-title-box">
-                <h2 className="number-title">My Numbers</h2>
+                {/* <h2 className="number-title">My Numbers</h2> */}
               </div>
             </div>
           </div>
@@ -137,6 +137,7 @@ export const ReportSecOne = () => {
         valueRight={`$${reportContext.output.B_principal.goal_principal}`}
       />)
       :
+
         (<ReportCategory
         title={"Principal Based on Rent"}
         insight={insight[1]}
@@ -145,7 +146,7 @@ export const ReportSecOne = () => {
         plant={plant_2}
 
         valueOne={"Your current rent"}
-        valueLeft={`$${reportContext.I_rent}`}
+        valueLeft={`$${reportContext.input.I_rent}`}
         valueRightTitle={
           "Possible principle"
 
@@ -189,42 +190,39 @@ export const ReportSecOne = () => {
 
         <div className="sigup">
         {localStorage.userUID ? (
+
+          
           <div className="social-box">
-            <h1 className="fina-mess">
-              Tweet your report! <br />
-              <a
-                className="tweet"
-                href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
-                data-size="large"
-              >
-                Tweet
-              </a>
-            </h1>
-            <h1 className="fina-mess">
-              Download as PDF
-              <br />
-              <span onClick={()=> savePDF()} className="tweet">Download</span>
-            </h1>
+
+            <div className="social-wrap">
+              <h1 className="">Tweet your report! </h1>
+                <a
+                  className="tweet"
+                  href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
+                  data-size="large">Tweet</a>
+            </div>
+
+            <div className="social-wrap">
+                <h1 className="">Download as PDF</h1>
+                <button onClick={()=> savePDF()} className="tweet">Download</button>
+            </div>
           </div>)
 
           : (
             <div className="social-box">
-            <h1 className="">
-              Save your report by logging in<br />
-              <Link to='/login'>
-              <a
-                className="tweet"
-              >
-                log-in
-              </a>
-              </Link>
-            </h1>
-            <h1 className="">
-              Download as PDF
-              <br />
-              <s onClick={()=> savePDF()} className="tweet">Download</s>
-            </h1>
-          </div>
+              <div className="social-wrap">
+                <h1 className=""> Download as PDF</h1>
+                <button onClick={()=> savePDF()} className="tweet">Download</button>
+              </div>
+
+              <div className="social-wrap">
+                <h1 className="">Save your report by logging in</h1>
+                <Link to='/login'>
+                  <button className="tweet">log-in</button>
+                </Link>
+              </div>
+
+            </div>
           )
         }
       </div>
