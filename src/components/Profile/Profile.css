@@ -140,6 +140,7 @@
   color: var(--dark-purple);
   font-family: var(--card);
   text-align: right;
+
 }
 
 .input::placeholder{

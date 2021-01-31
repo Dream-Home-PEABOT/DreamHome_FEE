@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useContext, useRef} from "react";
-// import {updateReport} from "../../helpers/apiCalls"//iTHink this has to be pass down as a prop from app
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import "./Profile.css";
-import { QuestionContext, AnswerContext } from "../../helpers/context";
+import { updateUserReport } from "../../helpers/apiCalls";
+import { ReportContext, AnswerContext } from "../../helpers/context";
+import { Answers } from "../../helpers/types";
 interface profileProp {
   updateReport: any;
 }
 
 export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   
+  const report = useContext(ReportContext)
   const answers = useContext(AnswerContext);
   const [error, setError] = useState<string>('');
   const [person, setPerson] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [st, setAllAnswers] = useState<any>(answers)
+  const [st, setAllAnswers] = useState<any>(answers);
 
   useEffect(() => {
     const userError = 'no name found'
@@ -24,18 +26,31 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
     setEmail(email)
   }, [])
 
+  const cleanUp =(newReport: any) => {
+    const formattedAnswers: Answers = {
+      salary: newReport.monthly_salary,
+      zipcode: newReport.zip_code,
+      credit_score: newReport.credit_score,
+      monthly_debt: newReport.monthly_debt,
+      downpayment_savings: newReport.downpayment_savings,
+      mortgage_term: '30',
+      downpayment_percentage: newReport.downpayment_percentage,
+      rent: newReport.rent,
+      goal_principal: newReport.goal_home_price,
+    }
+    return formattedAnswers
+  }
+
   const clearForm = () => {
     setAllAnswers(answers)
   }
-  
 
   const injectInputFields = () => {
     return Object.keys(st).map( (entry: any, i) => {
-      // console.log(entry)
       return (
         <div 
           key={i}
-        className="user-details-fields">
+          className="user-details-fields">
           <h1 className='cat'>{entry}</h1>
           <input 
             className='inpt' 
@@ -51,28 +66,33 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   }
 
   const handleChange = (e:any)=>{
-
-    if (!e.target.value){
+    const stringValidation = /\d/g.test(e.target.value)
+    if (!e.target.value || !stringValidation){
       setError('just numbers')
         setTimeout(()=>{
           setError('')
         },2000)
-    }
+      }
+      // if(/\d/g.test(e.target.value)){
+
+        setAllAnswers({...st, [e.target.name]: e.target.value})
+      // }
+
+
   
-    setAllAnswers({...st, [e.target.name]: e.target.value})
   }
 
-  const modifyReport = () =>{
+  const modifyReport = async () =>{
     Object.values(st).forEach((entry: any) => {
-      console.log(entry) 
-      // let areNums = /^\d+$/.test(entry);
-      if(!entry){
-        setError('oops, there are some fields missing')
+      if(/\d/g.test(entry)){
+        setError('you have missing information')
         setTimeout(()=>{
           setError('')
         },2000)
       } else if (entry){
-        console.log(st)
+        const data = cleanUp(st)
+        console.log(data)
+        // const result = await updateUserReport (data, id)
       }
     })
  
@@ -86,7 +106,7 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
               Welcome: {person}
           </h3>
           <h3 className="header-pro" data-testid="Dream Home">
-               {email}
+            {email}
           </h3>
 
         </div>
@@ -114,8 +134,8 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
         <div className="center-container">
           <div className="detail">
             <h3 className="profile-header" data-testid="Dream Home">Here in your profile </h3>
-            <p className="intruc"> can make easy changes to your personal information.</p>
-            <p className="intruc"> Once have generated your report you can share it via Twitter.</p>
+            <p className="intruc"> you can make easy changes to your personal information.</p>
+            <p className="intruc"> Once generated your report can be shared via Twitter.</p>
           </div>
         </div>
 

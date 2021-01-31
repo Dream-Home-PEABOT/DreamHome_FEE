@@ -10,8 +10,10 @@ import downpayment from "../../images/report/Charco - Work at Home.png";
 import location from "../../images/report/Charco - Location Map.png";
 import mobile from "../../images/report/Charco - Mobile Life.png"
 import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
-import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png";
-
+import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png"
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import "firebase/auth";
 
 
 export const ReportSecOne = () => {
@@ -21,7 +23,20 @@ export const ReportSecOne = () => {
   const categories = keys.map(category => category.split('_')[1]);
   const insight = keys.map(category => reportContext.output[category]?.information);
   const planStyles =  reportContext.output.D_downpayment.plan_style
-  const planKeys = Object.keys(planStyles)
+  const planKeys = Object.keys(planStyles);
+  
+  const savePDF = () => {
+    const input:any = document.getElementById('root');
+    html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
+            var img = canvas.toDataURL();
+            const pdf = new jsPDF({unit:"px", format:[180,300]});
+            pdf.setFillColor(240, 200,8);
+            pdf.rect(0, 0, 150, 300, "F");
+            pdf.rect(150, 0, 150, 300, "F");
+            pdf.addImage(img, 'PNG', 15, 0, 150, 300);
+            pdf.save("MyDreamHome.pdf");
+        });
+  }
 
   const injectNumbers = () => {
     const numbersToDisplay = [
@@ -153,6 +168,28 @@ export const ReportSecOne = () => {
         plan={planStyles}
         
         />
+
+        <div className="sigup">
+        {localStorage.userUID && (
+          <div className="social-box">
+            <h1 className="fina-mess">
+              Tweet your report! <br />
+              <a
+                className="twitter-hashtag-button"
+                href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
+                data-size="large"
+              >
+                Tweet
+              </a>
+            </h1>
+            <h1 className="fina-mess">
+              Download as PDF
+              <br />
+              {/* <span onClick={()=>console.log(pdfRef.current)} className="link">Download</span> */}
+            </h1>
+          </div>
+        )}
+      </div>
 
       <div className="sigup">
         <h1 className="fina-mess">

@@ -5,11 +5,12 @@ import {
   ReportContext,
 } from "../../helpers/context";
 import { AllQuestionFormat } from "../../helpers/types";
-import { getQuestions } from "../../helpers/apiCalls";
+import { getQuestions, getUniqueReport } from "../../helpers/apiCalls";
 import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
 import firebase from "firebase/app";
 import "firebase/auth";
+// import { withRouter } from 'react-router-dom'
 
 import NavBar from "../NavBar/NavBar";
 import Home from "../Home/Home";
@@ -21,14 +22,14 @@ import { Profile } from "../Profile/Profile";
 import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
-import { createImportSpecifier } from "typescript";
+// import { createImportSpecifier } from "typescript";
 
 const App: React.FC = () => {
   const [questions, updateQuestions] = useState<any>({});
   const [answers, updateAllAnswers] = useState<any>({});
   const [report, updateReport] = useState<any>(null);
-  const [errorMessage, setError] = useState<any>("Oops an error has occurred");
-  const [errorNum, setErrorNum] = useState<any>(404);
+  // const [errorMessage, setError] = useState<string>('');
+  // const [errorNum, setErrorNum] = useState<string>('');
   const { location } = useContext<any>(__RouterContext);
   const unmounted = useRef(false);
 
@@ -38,6 +39,7 @@ const App: React.FC = () => {
     leave: { opacity: 0, transform: "translate(-50%, 0)" },
   });
 
+ 
   const buildAnswers = (questions: any): void => {
     const answerKey = Object.keys(questions).reduce((acc: any, curr: any) => {
       acc[curr] = "";
@@ -55,12 +57,24 @@ const App: React.FC = () => {
     }
   };
 
+  
+
   useEffect(() => {
+    checkForReport()
     populateQuestions();
     return () => {
       unmounted.current = true;
     };
   }, []);
+
+  const checkForReport = async()=>{
+    if(localStorage.userUID){
+      const data = await getUniqueReport(localStorage.userUID)
+      
+      updateReport(data)
+    }
+  }
+
 
   return (
     <QuestionContext.Provider value={questions}>
@@ -96,12 +110,12 @@ const App: React.FC = () => {
                   component={() => (
                     <GenerateReport updateReport={updateReport} />
                   )}
-                />
-                <Route exact path="/report" component={() => <Report />} />
+                /> 
+                  <Route exact path="/report" component={() => <Report />} />
                 <Route
                   path="/*"
                   component={() => (
-                    <Error errorMessage={errorMessage} errorNum={errorNum} />
+                    <Error errorMessage={"Oops an error has occurred"} errorNum={'404'} />
                   )}
                 />
               </Switch>

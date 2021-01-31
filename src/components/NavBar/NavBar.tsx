@@ -70,7 +70,7 @@ const DropdownMenu = (props: any) => {
       </Link>
       
       {firebase.auth().currentUser &&  
-      // userReport &&
+      userReport &&
       <Link
         to="/profile"
         data-testid="to-profile"
