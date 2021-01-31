@@ -46,7 +46,7 @@ const Journey:React.FC = () => {
                 <div className="back-data-container">
                   <h1 className="back-title">Why the questions?</h1>
                   <h2 className='back-info'>
-                    We will focus on either building a plan for you that will help you reach your goals, or see what your possible plans for you based on your current situation. </h2>
+                    I will focus on either building a plan for you that will help you reach your goals, or find possible plans based on your current situation. </h2>
                   <h2 className='back-info'>
                     With the information you give me, I can set you on a path to your Dream Home!
                   </h2>
@@ -73,9 +73,9 @@ const Journey:React.FC = () => {
               className="in-two back"
               style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
                 <div className="back-data-container">
-                  <h1 className="back-title">Don't worry</h1>
-                  <h2 className='back-info'>We will guide you through each question and give you our advice.</h2>
-                  <h2 className='back-info'>Every question is designed to understand where you are in your journey and my job is to present you with the most accurate information you need.</h2>
+                  <h1 className="back-title">I'll be your guide!</h1>
+                  <h2 className='back-info'>I will help through each question and give you some advice.</h2>
+                  <h2 className='back-info'>Every question is designed to understand where you are in your journey and I will present you with information about how much you will have to save each month and how long it would take you to get your Dream Home.</h2>
                 </div>
             </animated.div>
           </div>
@@ -101,14 +101,14 @@ const Journey:React.FC = () => {
                 <div className="back-data-container">
                   <h1 className="back-title">Enjoy your report!</h1>
                   <h2 className="back-info">Once you have answered all the questions</h2>
-                  <h2 className='back-info'>We will generate a report that will give you the information you need to make an informed decision and take an action. </h2>
+                  <h2 className='back-info'>I will generate your report that will provide you with some useful knowledge and potential plans to set you on your path! </h2>
                 </div>
             </animated.div>
           </div>
         </div>
         <div className="btn-container">
           <Link to="/survey">
-            <button className="btn">Start</button>
+            <button className="btn">Next</button>
           </Link>
         </div>
       </div>

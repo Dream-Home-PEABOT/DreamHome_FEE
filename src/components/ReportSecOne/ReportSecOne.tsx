@@ -11,6 +11,7 @@ import plant_1 from "../../images/extras/Fancy Plants - Solo Plant.png";
 import plant_2 from "../../images/extras/Fancy Plants - Solo Plant copy.png"
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import { Link } from 'react-router-dom'
 import "firebase/auth";
 
 
@@ -49,10 +50,12 @@ export const ReportSecOne = () => {
       return acc;
     }, {});
 
-    return Object.entries(numbers).map((entries: any) => {
+    return Object.entries(numbers).map((entries: any, i) => {
       const numTitle = entries[0].split("_").splice(1).join(" ");
       return (
-        <div className="num ">
+        <div 
+          key={i}
+          className="num ">
           <div className="num-ci-box-up">
             <h1 className="num-ci-title">Your {numTitle}</h1>
           </div>
@@ -63,7 +66,12 @@ export const ReportSecOne = () => {
           >
             {(props) => (
               <div className="num-ci-box-down">
-                <h1 className="num-ci-data">{`${props.number.toFixed()}`}</h1>
+                { entries[0] !=="F_mortgage_term"?
+                  <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
+                  :
+                  <h1 className="num-ci-data">{`${props.number.toFixed()} year`}</h1>
+
+                }
               </div>
             )}
           </Spring>
@@ -116,8 +124,10 @@ export const ReportSecOne = () => {
         centerImg={goodJob}
         plant={plant_2}
         valueOne={"Mortgage Rate"}
-        valueLeft={`${reportContext.output.B_principal.mortgage_rate}%`}
-        valueRightTitle={"Your Selected Goal Principal"}
+
+        valueLeft={`${reportContext.output.B_principal.mortgage_rate * 100}%`}
+        valueRightTitle={"Your Selected Goal Principle"}
+
         valueRight={`$${reportContext.output.B_principal.goal_principal}`}
       />)
       :
@@ -127,10 +137,12 @@ export const ReportSecOne = () => {
         position={keys.indexOf(keys[1]) + 1}
         centerImg={goodJob}
         plant={plant_2}
-        valueOne={"Potential Goal Principal"}
-        valueLeft={`$${reportContext.input.I_rent}`}
+
+        valueOne={"Your current rent"}
+        valueLeft={`$${reportContext.I_rent}`}
         valueRightTitle={
-          "This number is calculated as a possible goal principal based off of what you are currently paying in rent."
+          "Possible principle"
+
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
       />)
@@ -152,26 +164,29 @@ export const ReportSecOne = () => {
       />
       {/* downpayment */}
       <ReportCategory
-        title={categories[3]}
+        plan={planStyles}
+        title={'Plans'}
         insight={insight[3]}
         position={keys.indexOf(keys[3]) + 1}
         centerImg={downpayment}
         plant={plant_2}
         valueOne={"Downpayment saved"}
-        valueLeft={reportContext.output.D_downpayment.downpayment_saved}
-        valueRightTitle={"Average Home Price in this Area"}
-        valueRight={reportContext.output.A_location.average_home_price}
+        valueLeft={`$${reportContext.output.D_downpayment.downpayment_saved}`}
+        valuePLanTitleOne={"Downpayment cash value"}
+        valuePlanValueOne={`$${reportContext.output.D_downpayment.downpayment_cash_value}`}
+        valuePLanTitleTwo={"Downpayment Cash Value"}
+        valuePlanValueTwo={`${reportContext.output.D_downpayment.downpayment_percentage_selected}%`}
         planKeys={planKeys}
-        plan={planStyles}
+
       />
 
         <div className="sigup">
-        {localStorage.userUID && (
+        {localStorage.userUID ? (
           <div className="social-box">
             <h1 className="fina-mess">
               Tweet your report! <br />
               <a
-                className="twitter-hashtag-button"
+                className="tweet"
                 href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
                 data-size="large"
               >
@@ -181,10 +196,30 @@ export const ReportSecOne = () => {
             <h1 className="fina-mess">
               Download as PDF
               <br />
-              <span onClick={()=> savePDF()} className="link">Download</span>
+              <span onClick={()=> savePDF()} className="tweet">Download</span>
+            </h1>
+          </div>)
+
+          : (
+            <div className="social-box">
+            <h1 className="">
+              Save your report by logging in<br />
+              <Link to='/login'>
+              <a
+                className="tweet"
+              >
+                log-in
+              </a>
+              </Link>
+            </h1>
+            <h1 className="">
+              Download as PDF
+              <br />
+              <s onClick={()=> savePDF()} className="tweet">Download</s>
             </h1>
           </div>
-        )}
+          )
+        }
       </div>
 
 

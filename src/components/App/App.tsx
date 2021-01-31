@@ -80,41 +80,43 @@ const App: React.FC = () => {
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
         <ReportContext.Provider value={report}>
-          <NavBar  loggedIn={firebase.auth().currentUser} />
+          <NavBar  
+            loggedIn={firebase.auth().currentUser}
+            />
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
-                <Redirect exact from="/" to="/home" />
+                <Redirect exact from="/" to="/home"/>
                 <Route
                   exact path="/profile"
                   component={() => (
-                    <Profile updateReport={updateReport} />
+                    <Profile updateReport={updateReport}/>
                   )}
                 />
-                <Route exact path="/home" component={Home} />
-                <Route exact path="/journey" component={Journey} />
-                <Route exact path="/login" component={Login} />
-                <Redirect from="/logout" to="/home" />
-                <Route exact path="/survey" component={Survey} />
+                <Route exact path="/home" component={Home}/>
+                <Route exact path="/journey" component={Journey}/>
+                <Route exact path="/login" component={Login}/>
+                <Redirect from="/logout" to="/home"/>
+                <Route exact path="/survey" component={Survey}/>
                 <Route
                   exact
                   path="/question"
                   component={() => (
-                    <Question updateAllAnswers={updateAllAnswers} />
+                    <Question updateAllAnswers={updateAllAnswers}/>
                   )}
                 />
                 <Route
                   exact
                   path="/generate_report"
                   component={() => (
-                    <GenerateReport  updateReport={updateReport} />
+                    <GenerateReport  updateReport={updateReport}/>
                   )}
                 /> 
-                  <Route exact path="/report" component={() => <Report />} />
+                  <Route exact path="/report" component={() => <Report />}/>
                 <Route
                   path="/*"
                   component={() => (
-                    <Error errorMessage={"Oops an error has occurred"} errorNum={'404'} />
+                    <Error errorMessage={"Oops an error has occurred"} errorNum={'404'}/>
                   )}
                 />
               </Switch>
