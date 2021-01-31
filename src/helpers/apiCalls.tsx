@@ -35,7 +35,7 @@ export const getReport = async (id: string) => {
   if (response.ok) {
     let final = await response.json();
     console.log(final.data)
-    return final.data['03_attributes'];
+    return final.data;
 
   } else {
     console.log('bad response', response)
@@ -71,7 +71,7 @@ export const getUniqueReport = async (uid: string) => {
   );
   if (response.ok) {
     let final = await response.json();
-    return final.data['03_attributes'];
+    return final.data;
   } else {
     return response;
   }
