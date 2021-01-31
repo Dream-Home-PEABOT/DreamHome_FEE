@@ -16,7 +16,7 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   const [error, setError] = useState<string>('');
   const [person, setPerson] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [st, setAllAnswers] = useState<any>(answers);
+  const [st, setAllAnswers] = useState<any>({});
 
   useEffect(() => {
     const userError = 'no name found'
@@ -27,28 +27,13 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
     setEmail(email)
   }, [])
 
-  const cleanUp =(newReport: any) => {
-    const formattedAnswers: Answers = {
-      salary: newReport.monthly_salary,
-      zipcode: newReport.zip_code,
-      credit_score: newReport.credit_score,
-      monthly_debt: newReport.monthly_debt,
-      downpayment_savings: newReport.downpayment_savings,
-      mortgage_term: '30',
-      downpayment_percentage: newReport.downpayment_percentage,
-      rent: newReport.rent,
-      goal_principal: newReport.goal_home_price,
-      uid: localStorage.userUID || "anonymous"
-    }
-    return formattedAnswers
-  }
 
   const clearForm = () => {
     setAllAnswers(answers)
   }
 
   const injectInputFields = () => {
-    return Object.keys(st).map( (entry: any, i) => {
+    return Object.keys(answers).map( (entry: any, i) => {
       return (
         <div 
           key={i}
@@ -81,20 +66,10 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   }
 
   const modifyReport = async () =>{
-    Object.values(st).forEach((entry: any) => {
-      if(/\d/g.test(entry)){
-        setError('you have missing information')
-        setTimeout(()=>{
-          setError('')
-        },2000)
-      } else if (entry){
-        const data = cleanUp(st)
-        console.log(data)
-        // const result = await updateUserReport (data, id)
-      }
-    })
- 
-  }
+    updateUserReport(report["02_id"], st)
+
+    }
+  
 
   return (
     <section className="profile-section">
