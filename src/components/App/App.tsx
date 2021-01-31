@@ -29,7 +29,6 @@ const App: React.FC = () => {
   const [report, updateReport] = useState<any>(null);
   // const [errorMessage, setError] = useState<any>("Oops an error has occurred");
   // const [errorNum, setErrorNum] = useState<any>(404);
-  const [takeShot, setTakeShot] = useState<any>(false)
   const { location } = useContext<any>(__RouterContext);
   const unmounted = useRef(false);
 
@@ -59,7 +58,7 @@ const App: React.FC = () => {
 
   const checkForReport = async()=>{
     if(localStorage.userUID){
-      const data = await getUniqueReport("finaluid")
+      const data = await getUniqueReport(localStorage.userUID)
       updateReport(data)
     }
   }
