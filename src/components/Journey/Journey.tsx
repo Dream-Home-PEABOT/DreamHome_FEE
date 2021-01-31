@@ -9,7 +9,7 @@ import report_img from '../../images/report/Big Shoes - Jumping On One leg Pose.
 
 const Journey:React.FC = () => {
   const [flip, setFlip] = useState(false);
-  
+
   const { transform, opacity } = useSpring({
     opacity: flip  ? 1 : 0,
     transform: `perspective(600px) rotateY(${flip ? 180 : 0}deg)`,
@@ -18,9 +18,10 @@ const Journey:React.FC = () => {
 
   return (
     <section data-testid='journey-section' className='journey-section'>
-      
+
       <div className="instructions-box">
         <div className="instructions">Instructions</div>
+        <div className='instructions-2'>(flip cards over...)</div>
       </div>
       <div className="container">
 
@@ -28,8 +29,8 @@ const Journey:React.FC = () => {
         <div className="box">
           <div className="in-one"  onClick={() => setFlip(flip => !flip)}>
 
-            <animated.div 
-              className="in-two front" 
+            <animated.div
+              className="in-two front"
               style={{ opacity: opacity.interpolate((o: any)=> 1 - o), transform }}>
                 <h1 className="card-number">01</h1>
                 <h1 className="card-action">Read</h1>
@@ -39,8 +40,8 @@ const Journey:React.FC = () => {
                 <div className='deco-three'></div>
                 {/* <button className="card-button">find out more</button> */}
             </animated.div>
-            <animated.div 
-              className="in-two back" 
+            <animated.div
+              className="in-two back"
               style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
                 <div className="back-data-container">
                   <h1 className="back-title">Why the questions?</h1>
@@ -57,8 +58,8 @@ const Journey:React.FC = () => {
         {/* card two */}
         <div className="box">
           <div className="in-one" onClick={() => setFlip(flip=> !flip)}>
-            <animated.div 
-              className="in-two front" 
+            <animated.div
+              className="in-two front"
               style={{ opacity: opacity.interpolate((o: any)=> 1 - o), transform }}>
                 <h1 className="card-number">02</h1>
                 <h1 className="card-action">Answer</h1>
@@ -68,8 +69,8 @@ const Journey:React.FC = () => {
                 <div className='deco-three'></div>
                 {/* <button className="card-button">find out more</button> */}
             </animated.div>
-            <animated.div 
-              className="in-two back" 
+            <animated.div
+              className="in-two back"
               style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
                 <div className="back-data-container">
                   <h1 className="back-title">I'll be your guide!</h1>
@@ -83,8 +84,8 @@ const Journey:React.FC = () => {
         {/* card three */}
         <div className="box">
           <div className="in-one" onClick={() => setFlip(flip=> !flip)}>
-            <animated.div 
-              className="in-two front" 
+            <animated.div
+              className="in-two front"
               style={{ opacity: opacity.interpolate((o: any)=> 1 - o), transform }}>
                 <h1 className="card-number">03</h1>
                 <h1 className="card-action">Create</h1>
@@ -94,8 +95,8 @@ const Journey:React.FC = () => {
                 <div className='deco-three'></div>
                 {/* <button className="card-button">find out more</button> */}
             </animated.div>
-            <animated.div 
-              className="in-two back" 
+            <animated.div
+              className="in-two back"
               style={{ opacity, transform: transform.interpolate(t => `${t} rotateY(180deg)`) }}>
                 <div className="back-data-container">
                   <h1 className="back-title">Enjoy your report!</h1>

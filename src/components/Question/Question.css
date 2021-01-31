@@ -183,14 +183,17 @@
 .resource {
   color: #1A1A1A;
   font-family:'Quicksand', sans-serif;
-  padding-top: 30px;
+  padding-top: 0px;
   font-size: 1em;
 }
 
 .resource-2 {
   color: #1A1A1A;
   font-family:'Quicksand', sans-serif;
-  padding: 30px;
+  padding-bottom: 0px;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   font-size: 1.4em;
 }
 
@@ -202,10 +205,11 @@
   background-color: #1A1A1A;
   border-radius: 2em;
   color: #ffffff;
-  font-size: 1.5em;
+  font-size: 1.3em;
   height: 5vh;
   width: 12vw;
   z-index: 5;
+  margin-top: 0px;
 }
 
 .btn2:hover {
