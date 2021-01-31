@@ -260,19 +260,26 @@
 }
 
 .sigup{
-  height: 20;
+  height: 20vh;
   background-color: #89BD9E ;
   width: 100%;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 5em;
+  font-size: 2em;
   color: #ffffff;
+  display: flex;
+  justify-content: space-around;
 }
 
 .social-box{
-  display:grid; 
-  grid-template-columns:50% 50%;
-  justify-content: space-around;
-  text-align:center;
+  display: inline-flex;
+
+}
+
+.fina-mess{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .link{
@@ -462,7 +469,7 @@
 
 .year-ci:active{
   background: var(--dark-purple);
-  color: #fff;
+
 }
 
 .down-ci:active{
@@ -472,4 +479,31 @@
 .year-title{
   font-family: var(--mono);
   font-size: 1.2em;
+}
+
+
+.tweet{
+  padding: 0.3em 1.2em;
+  margin: 1.5em;
+  border-radius: 2em;
+  border: none;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #4eb5f1;
+  text-align: center;
+  transition: all 0.2s;
+  height: 4em;
+  width: 8em;
+}
+
+.tweet:hover{
+  background-color:#f0c808;
+  cursor: pointer;
+}
+
+.tweet:active{ 
+  color:#000000;
+    background-color:#FFFFFF;
 }
