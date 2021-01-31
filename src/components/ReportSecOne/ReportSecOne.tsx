@@ -185,7 +185,7 @@ export const ReportSecOne = () => {
       />
 
         <div className="sigup">
-        {!localStorage.userUID ? (
+        {localStorage.userUID ? (
           <div className="social-box">
             <h1 className="fina-mess">
               Tweet your report! <br />
