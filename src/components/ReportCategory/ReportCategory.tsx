@@ -14,12 +14,13 @@ export const ReportCategory = (props: any) => {
 
   const injectYears = () => {
     const yearKeys = Object.keys(plan[currentStyle]).splice(0, 3)
-    return yearKeys.map(plan => {
+    return yearKeys.map((plan, i: number) => {
       console.log(plan)
       const split = plan.split('_')
       return (
         <div 
           id={plan}
+          key={i}
           onClick={(e) => updateYear(e)}
           className="year-ci">
             <h1 id={plan} className="year-title">{`${final[plan].number_of_years}`} </h1>
