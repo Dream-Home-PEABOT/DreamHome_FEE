@@ -11,9 +11,10 @@ interface Props {
   updateReport: any;
 }
 
-const GenerateReport: React.FC<Props> = ({ updateReport }) => {
+const GenerateReport: React.FC<Props> = ({  updateReport }) => {
   const answers = useContext(AnswerContext);
   console.log(answers)
+  
   const requestReport = async () => {
     const formattedAnswers: Answers = {
       salary: answers.monthly_salary,
@@ -25,30 +26,8 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       downpayment_percentage: answers.downpayment_percentage,
       rent: answers.rent,
       goal_principal: answers.goal_home_price,
+      uid: localStorage.userUID || "anonymous"
     };
-
-    // {required to make API Call
-      // "salary": 5000,
-    //   "zipcode": 80209,
-    //   "credit_score": 710,
-    //   "monthly_debt": 1500,
-    //   "downpayment_savings": 50000,
-    //   "mortgage_term": 30,
-    //   "downpayment_percentage": 20,
-    //   "rent": 0
-    //   "goal_principal": 500000,
-    //   }
-
-    //actual object console.log(answers)
-    // credit_score: "324"
-    // downpayment_percentage: "34"
-    // downpayment_savings: "324"
-    // goal_home_price: "2342"
-    // monthly_debt: "234"
-    // monthly_salary: "324"
-    // mortgage_term: "234"
-    // rent: "234"
-    // zip_code: "3213"
 
     //will need to add default values in or statements
     const id = await postAnswers(formattedAnswers);
@@ -56,7 +35,7 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
     console.log(id.data.id)
     const data = await getReport(id.data.id);
     updateReport(data);
-    //getReport().then((data) => setTimeout(() => updateReport(data), 3000))
+
   };
 
   return (

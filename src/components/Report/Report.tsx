@@ -1,23 +1,13 @@
-// imports 
+// imports
 import React, { useContext } from "react";
 import { ReportContext } from "../../helpers/context";
 import { Cube } from "../Cube/Cube";
 import { ReportSecOne } from "../ReportSecOne/ReportSecOne";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import "./Report.css";
 
-const Report = () => {
+
+const Report: React.FC = () => {
   let userReport = useContext(ReportContext);
-  
-      const savePDF = async (input: any) => {
-        const canvas = await html2canvas(input)
-        const imgData = canvas.toDataURL('image/png')
-        const pdf = new jsPDF
-        console.log(imgData)
-        pdf.addImage(imgData, 'PNG', 0, 0, 0, 0)
-        pdf.save("download.pdf")
-      };
 
   return (
     <>

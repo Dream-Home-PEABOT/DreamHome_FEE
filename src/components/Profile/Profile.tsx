@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+// import {updateReport} from "../../helpers/apiCalls"
 import "./Profile.css";
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 interface profileProp {
   updateReport: any;
 }
 
 
 export const Profile: React.FC<profileProp> = ({ updateReport }) => {
+
   const [profileInfo, updateProfileInfo] = useState<any>({})
   const handleChange = (e:any)=>{
     updateProfileInfo({...profileInfo, [e.target.name]: e.target.value})
   }
+
   return (
     <div className="profile-body">
       <h3 className="profile-header title-3" data-testid="Dream Home">
@@ -53,16 +58,13 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
             <div>Goal Principal</div>
             <input onChange={handleChange} name={"goal_principal"}type="text" placeholder="your answer"/>
           </div>
-            <button onClick={()=>updateReport(profileInfo)}className="update-profile">Update Info</button>
+          <div className="user-details-fields">
+            <div>UID</div>
+            <input onChange={handleChange} name={"uid"}type="text" placeholder="your answer"/>
+        </div>
+
         </div>
       </div>
-        <a
-          className="twitter-hashtag-button"
-          href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
-          data-size="large"
-        >
-          Tweet
-        </a>
       <div className="profile-footer"></div>
     </div>
   );

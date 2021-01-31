@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState , useContext} from 'react';
 import downpayment from "../../images/report/Charco - Work at Home.png";
 import hurry from "../../images/report/Big Shoes - Dynamic Pose.png";
 import { ReportContext } from "../../helpers/context";
@@ -27,6 +27,7 @@ export const ReportCategory = (props: any) => {
         </div>)
     })
   }
+
 
   const updateYear = (e: any) => {
     const id = e.target.id
@@ -60,17 +61,17 @@ export const ReportCategory = (props: any) => {
 
   return (
     <>
-      <section
-        style={props.position % 2 === 0 ? { backgroundColor: "#ffffff" } : {}}
+      <section         style={props.position % 2 === 0 ? { backgroundColor: "#ffffff" } : {}}
         className="analysis-section"
       >
-        <div style={props.position % 2 === 0? { backgroundColor: "#89BD9E" }: { backgroundColor: "#ffffff" }}className="pipe-up"></div>
+        <div 
+        style={props.position % 2 === 0? { backgroundColor: "#89BD9E" }: { backgroundColor: "#ffffff" }}className="pipe-up"></div>
         <div
           style={ props.position % 2 === 0? { backgroundColor: "#89BD9E" }: { backgroundColor: "#ffffff" }}className="pipe-down"></div>
         <div className="main-circ-box">
           <div style={props.position % 2 === 0? { border: "15px solid #89BD9E" }: { border: "15px solid #ffffff" }}className="inner-circle"></div>
         </div>
-        <div className="report-img-box">
+        <div  className="report-img-box">
           <img
             src={props.centerImg}
             alt="location-illustration-1"
@@ -156,7 +157,9 @@ export const ReportCategory = (props: any) => {
       </section>
 
       {props.plan ? (
-        <section className="analysis-section">
+        <section
+          ref={props.pdfRef} 
+          className="analysis-section">
           <div style={{ backgroundColor: "white" }} className="pipe-up"></div>
           <div style={{ backgroundColor: "white" }} className="pipe-down"></div>
           <div className="main-circ-box">
