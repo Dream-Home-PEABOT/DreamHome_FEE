@@ -10,6 +10,8 @@ import { Switch, Route, __RouterContext, Redirect } from "react-router";
 import { useTransition, animated } from "react-spring";
 import firebase from "firebase/app";
 import "firebase/auth";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 import NavBar from "../NavBar/NavBar";
 import Home from "../Home/Home";
@@ -22,6 +24,8 @@ import GenerateReport from "../GenerateReport/GenerateReport";
 import Report from "../Report/Report";
 import Error from "../Error/Error";
 import { createImportSpecifier } from "typescript";
+import {dataset} from "./data";
+
 
 const App: React.FC = () => {
   const [questions, updateQuestions] = useState<any>({});
@@ -29,6 +33,7 @@ const App: React.FC = () => {
   const [report, updateReport] = useState<any>(null);
   const [errorMessage, setError] = useState<any>("Oops an error has occurred");
   const [errorNum, setErrorNum] = useState<any>(404);
+  const [takeShot, setTakeShot] = useState<any>(false)
   const { location } = useContext<any>(__RouterContext);
   const unmounted = useRef(false);
 
@@ -57,12 +62,42 @@ const App: React.FC = () => {
 
   const checkForReport = async()=>{
     if(localStorage.userUID){
-      const data = await getUniqueReport(localStorage.userUID)
+      //const data = await getReport("6016175254f296d905543d09")
+      const data = dataset.data['03_attributes']
       updateReport(data)
     }
   }
+  const savePDF = () => {
+    const input = document.getElementById('root');
+    html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
+            var img = canvas.toDataURL();
+            const pdf = new jsPDF({unit:"px", format:[180,300]});
+            pdf.setFillColor(240, 200,8);
+            pdf.rect(0, 0, 150, 300, "F");
+            pdf.rect(150, 0, 150, 300, "F");
+            pdf.addImage(img, 'PNG', 15, 0, 150, 300);
+            pdf.save("MyDreamHome.pdf");
+        });
+    //html2canvas(input)
+    //  .then((canvas) => {
+    //    var tempcanvas = document.createElement('canvas');
+    //    tempcanvas.width=465.5;
+    //    tempcanvas.height=524;
+    //    var context:any= tempcanvas.getContext('2d'); 
+    //    context.drawImage(canvas,465.5,40,465.5,524,0,0,465.5,524);
+    //    var link=document.createElement("a");
+    //    const imgData = canvas.toDataURL('image/png');
+    //    link.click()
+    //    console.log(imgData)
+    //    const pdf = new jsPDF();
+    //    pdf.addImage(imgData, 'JPEG', 0, 0, 0, 0);
+    //    pdf.save("download.pdf");
+    //  })
+    //;
+  }
 
   useEffect(() => {
+    if (takeShot) savePDF()
     checkForReport()
     populateQuestions();
     return () => {
@@ -74,7 +109,7 @@ const App: React.FC = () => {
     <QuestionContext.Provider value={questions}>
       <AnswerContext.Provider value={answers}>
         <ReportContext.Provider value={report}>
-          <NavBar loggedIn={firebase.auth().currentUser} />
+          <NavBar  loggedIn={firebase.auth().currentUser} />
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
@@ -96,10 +131,10 @@ const App: React.FC = () => {
                   exact
                   path="/generate_report"
                   component={() => (
-                    <GenerateReport updateReport={updateReport} />
+                    <GenerateReport  updateReport={updateReport} />
                   )}
                 />
-                <Route exact path="/report" component={() => <Report />} />
+                <Route exact path="/report" component={() => <Report setTakeShot={savePDF}/>} />
                 <Route
                   path="/*"
                   component={() => (

@@ -11,7 +11,7 @@ interface Props {
   updateReport: any;
 }
 
-const GenerateReport: React.FC<Props> = ({ updateReport }) => {
+const GenerateReport: React.FC<Props> = ({  updateReport }) => {
   const answers = useContext(AnswerContext);
 
   const requestReport = async () => {

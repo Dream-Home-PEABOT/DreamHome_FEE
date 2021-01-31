@@ -1,4 +1,5 @@
 import React from "react";
+
 import bkg_img from "../../images/home/Big Shoes - Standing Pose.png";
 import "./Home.css";
 import { Spring } from "react-spring/renderprops";

@@ -26,14 +26,6 @@ export const ReportSecOne = ( props:any ) => {
   const planStyles = reportContext.output.D_downpayment.plan_style;
   const planKeys = Object.keys(planStyles);
 
-  const savePDF = async (input: any) => {
-    const canvas = await html2canvas(input);
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF();
-    pdf.addImage(imgData, "PNG", 0, 0, 0, 0);
-    pdf.save("MyDreamHome.pdf");
-  };
-
   const injectNumbers = () => {
     const numbersToDisplay = [
       "B_credit_score",
@@ -71,7 +63,7 @@ export const ReportSecOne = ( props:any ) => {
   };
   return (
     <>
-      <section  className="report-section">
+      <section  id="report-id" className="report-section">
         <div className="inner-container">
           <div className="app-title">
             <div className="title-container">
@@ -106,7 +98,9 @@ export const ReportSecOne = ( props:any ) => {
         valueRight={`$${reportContext.output.A_location.average_home_price}`}
       />
       {/* Principle */}
-      <ReportCategory
+      {!reportContext.input.I_rent
+      ? 
+      (<ReportCategory
         title={categories[1]}
         insight={insight[1]}
         position={keys.indexOf(keys[1]) + 1}
@@ -116,11 +110,9 @@ export const ReportSecOne = ( props:any ) => {
         valueLeft={`${reportContext.output.B_principal.mortgage_rate}%`}
         valueRightTitle={"Your Selected Goal Principle"}
         valueRight={`$${reportContext.output.B_principal.goal_principal}`}
-      />
-      {/* Principle based on rent */}
-      {/* here we will need to add the conditional rendering  */}
-      {/* reportContext.output.B_principal.goal_principal > 0 && */}
-      <ReportCategory
+      />)
+      :
+        (<ReportCategory
         title={"Principal Based on Rent"}
         insight={insight[1]}
         position={keys.indexOf(keys[1]) + 1}
@@ -132,7 +124,8 @@ export const ReportSecOne = ( props:any ) => {
           "This number is calculated as a possible goal principle based off of what you are currently paying in rent."
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
-      />
+      />)
+      }
       {/* end of conditional rendering */}
 
       {/* monthly category */}
@@ -180,7 +173,7 @@ export const ReportSecOne = ( props:any ) => {
             <h1 className="fina-mess">
               Download as PDF
               <br />
-              <span onClick={()=>console.log(pdfRef.current)} className="link">Download</span>
+              <span onClick={()=>props.setTakeShot(true)} className="link">Download</span>
             </h1>
           </div>
         )}

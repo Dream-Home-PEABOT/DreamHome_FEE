@@ -44,8 +44,7 @@ export const ReportCategory = (props: any) => {
 
   return (
     <>
-      <section
-        style={props.position % 2 === 0 ? { backgroundColor: "#ffffff" } : {}}
+      <section         style={props.position % 2 === 0 ? { backgroundColor: "#ffffff" } : {}}
         className="analysis-section"
       >
         <div 
@@ -55,7 +54,7 @@ export const ReportCategory = (props: any) => {
         <div className="main-circ-box">
           <div style={props.position % 2 === 0? { border: "15px solid #89BD9E" }: { border: "15px solid #ffffff" }}className="inner-circle"></div>
         </div>
-        <div ref={props.pdfRef} className="report-img-box">
+        <div  className="report-img-box">
           <img
             src={props.centerImg}
             alt="location-illustration-1"
@@ -144,7 +143,9 @@ export const ReportCategory = (props: any) => {
       </section>
 
       {props.plan ? (
-        <section className="analysis-section">
+        <section
+          ref={props.pdfRef} 
+          className="analysis-section">
           <div style={{ backgroundColor: "white" }} className="pipe-up"></div>
           <div style={{ backgroundColor: "white" }} className="pipe-down"></div>
           <div className="main-circ-box">
@@ -179,7 +180,7 @@ export const ReportCategory = (props: any) => {
           </div>
 
 
-          <div className="result-info-2">
+          <div  className="result-info-2">
             <h1 className="repo-title">Your DreamHome</h1>
             <h1 className="repo-title">ready to buy</h1>
             <h1 className="repo-title">{currentStyle}</h1>

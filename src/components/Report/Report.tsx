@@ -5,9 +5,12 @@ import { Cube } from "../Cube/Cube";
 import { ReportSecOne } from "../ReportSecOne/ReportSecOne";
 import "./Report.css";
 
-const Report = () => {
-  let userReport = useContext(ReportContext);
+interface Props {
+  setTakeShot: any
+}
 
+const Report: React.FC<Props> = ({ setTakeShot }) => {
+  let userReport = useContext(ReportContext);
 
   return (
     <>
@@ -25,7 +28,7 @@ const Report = () => {
         </>
       ) : (
         <>
-          <ReportSecOne />
+          <ReportSecOne setTakeShot={setTakeShot}/>
         </>
       )}
     </>
