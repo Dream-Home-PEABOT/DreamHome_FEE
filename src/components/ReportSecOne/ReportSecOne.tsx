@@ -125,7 +125,7 @@ export const ReportSecOne = () => {
         title={"Principle Based on Rent"}
         insight={insight[1]}
         position={keys.indexOf(keys[1]) + 1}
-        centerImg={goodJoPrinciplb}
+        centerImg={goodJob}
         plant={plant_2}
         valueOne={"Potential Goal Principle"}
         valueLeft={`$${reportContext.input.I_rent}`}
