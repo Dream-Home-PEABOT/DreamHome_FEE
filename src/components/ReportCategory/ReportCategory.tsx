@@ -6,6 +6,7 @@ import { ReportContext } from "../../helpers/context";
 export const ReportCategory = (props: any) => {
 
   let userReport = useContext(ReportContext);
+  userReport = userReport["03_attributes"]
 
   const [currentStyle, setCurrentStyle] = useState<string>('med_savings_plan');
   const [currentPlan, setCurrentPlan] = useState<string>('plan_2');

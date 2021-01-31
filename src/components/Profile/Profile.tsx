@@ -12,11 +12,11 @@ interface profileProp {
 export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   
   const report = useContext(ReportContext)
-  const answers = useContext(AnswerContext);
+  const answers = report['03_attributes'].input
   const [error, setError] = useState<string>('');
   const [person, setPerson] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [st, setAllAnswers] = useState<any>(answers);
+  const [st, setAllAnswers] = useState<any>({});
 
   useEffect(() => {
     const userError = 'no name found'
@@ -27,28 +27,25 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
     setEmail(email)
   }, [])
 
-  const cleanUp =(newReport: any) => {
-    const formattedAnswers: Answers = {
-      salary: newReport.monthly_salary,
-      zipcode: newReport.zip_code,
-      credit_score: newReport.credit_score,
-      monthly_debt: newReport.monthly_debt,
-      downpayment_savings: newReport.downpayment_savings,
-      mortgage_term: '30',
-      downpayment_percentage: newReport.downpayment_percentage,
-      rent: newReport.rent,
-      goal_principal: newReport.goal_home_price,
-      uid: localStorage.userUID || "anonymous"
-    }
-    return formattedAnswers
-  }
 
   const clearForm = () => {
     setAllAnswers(answers)
   }
 
+  const determineValue = (entry:any)=>{
+    console.log(entry)
+    return report["03_attributes"].input[entry]
+  }
+
+  const removePlaceholder = (event:any) => {
+    event.target.placeholder = ""
+  }
+
   const injectInputFields = () => {
-    return Object.keys(st).map( (entry: any, i) => {
+    return Object.keys(answers).map( (entry: any, i) => {
+      let currentValue = determineValue(entry)
+      if(currentValue === 0) return 
+      entry = entry.slice(2)
       return (
         <div 
           key={i}
@@ -57,10 +54,11 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
           <input 
             className='inpt' 
             onChange={(e) => handleChange(e)} 
+            onClick={removePlaceholder}
             name={entry}
             type="text" 
             value={st[entry]}
-            placeholder="your answer"
+            placeholder={currentValue}
             />
         </div>
       )
@@ -75,26 +73,14 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
           setError('')
         },2000)
       }
-      // if(/\d/g.test(e.target.value)){
         setAllAnswers({...st, [e.target.name]: e.target.value})
-      // }
   }
 
   const modifyReport = async () =>{
-    Object.values(st).forEach((entry: any) => {
-      if(/\d/g.test(entry)){
-        setError('you have missing information')
-        setTimeout(()=>{
-          setError('')
-        },2000)
-      } else if (entry){
-        const data = cleanUp(st)
-        console.log(data)
-        // const result = await updateUserReport (data, id)
-      }
-    })
- 
-  }
+    updateUserReport(report["02_id"], st)
+
+    }
+  
 
   return (
     <section className="profile-section">
@@ -131,9 +117,9 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
 
         <div className="center-container">
           <div className="detail">
-            <h3 className="profile-header" data-testid="Dream Home">Here in your profile </h3>
-            <p className="intruc"> you can make easy changes to your personal information.</p>
-            <p className="intruc"> Once generated your report can be shared via Twitter.</p>
+            <h3 className="profile-header" data-testid="Dream Home">Your profile: </h3>
+            <p className="intruc"> New dream location? New salary? Update your info here and your report will update in real-time.</p>
+            <p className="intruc"> Don't forget to share your Dream Home via Twitter!</p>
           </div>
         </div>
 

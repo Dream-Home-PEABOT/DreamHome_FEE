@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import { ReportContext } from "../../helpers/context";
 import { Spring } from "react-spring/renderprops";
 import back_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
@@ -17,12 +17,16 @@ import "firebase/auth";
 
 export const ReportSecOne = () => {
 
-  const reportContext: any = useContext(ReportContext);
+  let reportContext:any  = useContext(ReportContext);
+  let reportID:any;
+  reportID = reportContext['02_id']
+  reportContext = reportContext['03_attributes']
   const keys = Object.keys(reportContext.output);
   const categories = keys.map(category => category.split('_')[1]);
   const insight = keys.map(category => reportContext.output[category]?.information);
   const planStyles =  reportContext.output.D_downpayment.plan_style
   const planKeys = Object.keys(planStyles);
+
 
   const savePDF = () => {
     const input:any = document.getElementById('root');
@@ -181,7 +185,7 @@ export const ReportSecOne = () => {
       />
 
         <div className="sigup">
-        {localStorage.userUID ? (
+        {!localStorage.userUID ? (
           <div className="social-box">
             <h1 className="fina-mess">
               Tweet your report! <br />
@@ -204,7 +208,7 @@ export const ReportSecOne = () => {
             <div className="social-box">
             <h1 className="">
               Save your report by logging in<br />
-              <Link to='/login'>
+              <Link onClick={()=>localStorage.reportID = (reportID)}to='/login'>
               <a
                 className="tweet"
               >

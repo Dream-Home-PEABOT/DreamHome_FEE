@@ -13,7 +13,6 @@ interface Props {
 
 const GenerateReport: React.FC<Props> = ({  updateReport }) => {
   const answers = useContext(AnswerContext);
-  console.log(answers)
   
   const requestReport = async () => {
     const formattedAnswers: Answers = {
