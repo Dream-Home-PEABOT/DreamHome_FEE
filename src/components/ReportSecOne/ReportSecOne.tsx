@@ -106,7 +106,7 @@ export const ReportSecOne = () => {
         valueRightTitle={"Average Home Price in this Area"}
         valueRight={`$${reportContext.output.A_location.average_home_price}`}
       />
-      {/* Principle */}
+      {/* Principal */}
       {!reportContext.input.I_rent
       ?
       (<ReportCategory
@@ -117,20 +117,20 @@ export const ReportSecOne = () => {
         plant={plant_2}
         valueOne={"Mortgage Rate"}
         valueLeft={`${reportContext.output.B_principal.mortgage_rate}%`}
-        valueRightTitle={"Your Selected Goal Principle"}
+        valueRightTitle={"Your Selected Goal Principal"}
         valueRight={`$${reportContext.output.B_principal.goal_principal}`}
       />)
       :
         (<ReportCategory
-        title={"Principle Based on Rent"}
+        title={"Principal Based on Rent"}
         insight={insight[1]}
         position={keys.indexOf(keys[1]) + 1}
         centerImg={goodJob}
         plant={plant_2}
-        valueOne={"Potential Goal Principle"}
+        valueOne={"Potential Goal Principal"}
         valueLeft={`$${reportContext.input.I_rent}`}
         valueRightTitle={
-          "This number is calculated as a possible goal principle based off of what you are currently paying in rent."
+          "This number is calculated as a possible goal principal based off of what you are currently paying in rent."
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
       />)
@@ -144,7 +144,7 @@ export const ReportSecOne = () => {
         centerImg={mobile}
         valueOne={"Estimated True Monthly"}
         valueLeft={`$${reportContext.output.C_monthly.estimated_true_monthly}`}
-        valueRightTitle={"Monthly Principle"}
+        valueRightTitle={"Monthly Principal"}
         valueRight={`$${reportContext.output.C_monthly.monthly_principal}`}
         pmi={reportContext.output.C_monthly.pmi_by_location}
         taxes={reportContext.output.C_monthly.property_tax_by_location}

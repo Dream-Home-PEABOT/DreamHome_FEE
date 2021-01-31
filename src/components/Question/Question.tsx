@@ -36,8 +36,8 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     inputRef?.current?.focus();
 
   },[index, errorMessage])
-  
-  
+
+
   useEffect(() => {
     inputRef?.current?.focus();
   },[])
@@ -101,10 +101,10 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
               <h1 data-testid="description-title" className="question-desc">
                 Your Goal Home Price or Your Rent
               </h1>
-              
-              <h4 className="resource-2">If you have a number in mind of how much you'd like your Dream Home to cost, select "Goal Principle." If you don't, that's ok! Select "Rent" and we'll use what you're currently paying in rent to calculate a potential path for you! </h4>
+
+              <h4 className="resource-2">If you have a number in mind of how much you'd like your Dream Home to cost, select "Goal Principal." If you don't, that's ok! Select "Rent" and we'll use what you're currently paying in rent to calculate a potential path for you! </h4>
               <div className='choice-buttons-box'>
-                <button id='principle' className={!principleSelected ? 'principle-btn btn2' : 'principle-btn btn-selected'}  onClick={(e) => {displayInput(e)}}>Goal Principle</button>
+                <button id='principle' className={!principleSelected ? 'principle-btn btn2' : 'principle-btn btn-selected'}  onClick={(e) => {displayInput(e)}}>Goal Principal</button>
                 <button id='rent' className={!rentSelected ? 'rent-btn btn2' : 'rent-btn btn-selected'} onClick={(e) => {displayInput(e)}}>Rent</button>
               </div>
             </div>
@@ -197,7 +197,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
             :
             <div className="input-box">
             <h1 className="msg-desc">
-              Select either<br/>"Goal Principle"<br/>or "Rent" above
+              Select either<br/>"Goal Principal"<br/>or "Rent" above
             </h1>
             </div>
           }
