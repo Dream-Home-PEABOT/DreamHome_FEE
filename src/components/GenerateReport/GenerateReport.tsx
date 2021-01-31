@@ -13,7 +13,6 @@ interface Props {
 
 const GenerateReport: React.FC<Props> = ({  updateReport }) => {
   const answers = useContext(AnswerContext);
-  console.log(answers)
   
   const requestReport = async () => {
     const formattedAnswers: Answers = {
@@ -30,8 +29,9 @@ const GenerateReport: React.FC<Props> = ({  updateReport }) => {
     };
 
     //will need to add default values in or statements
-    const id = await postAnswers(formattedAnswers);
-    const data = await getReport(id.data.id);
+    //const id = await postAnswers(formattedAnswers);
+    const data = await getReport("601715d3a4d3cb3929b5cf58");
+    console.log(data)
     updateReport(data);
   };
 
