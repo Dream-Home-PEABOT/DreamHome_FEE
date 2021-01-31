@@ -22,7 +22,7 @@ export const ReportSecOne = () => {
   const insight = keys.map(category => reportContext.output[category]?.information);
   const planStyles =  reportContext.output.D_downpayment.plan_style
   const planKeys = Object.keys(planStyles);
-  
+
   const savePDF = () => {
     const input:any = document.getElementById('root');
     html2canvas(input, {scrollY: -window.scrollY}).then(function(canvas) {
@@ -108,7 +108,7 @@ export const ReportSecOne = () => {
       />
       {/* Principle */}
       {!reportContext.input.I_rent
-      ? 
+      ?
       (<ReportCategory
         title={categories[1]}
         insight={insight[1]}
@@ -122,10 +122,10 @@ export const ReportSecOne = () => {
       />)
       :
         (<ReportCategory
-        title={"Principal Based on Rent"}
+        title={"Principle Based on Rent"}
         insight={insight[1]}
         position={keys.indexOf(keys[1]) + 1}
-        centerImg={goodJob}
+        centerImg={goodJoPrinciplb}
         plant={plant_2}
         valueOne={"Potential Goal Principle"}
         valueLeft={`$${reportContext.input.I_rent}`}
@@ -144,7 +144,7 @@ export const ReportSecOne = () => {
         centerImg={mobile}
         valueOne={"Estimated True Monthly"}
         valueLeft={`$${reportContext.output.C_monthly.estimated_true_monthly}`}
-        valueRightTitle={"Monthly Principal"}
+        valueRightTitle={"Monthly Principle"}
         valueRight={`$${reportContext.output.C_monthly.monthly_principal}`}
         pmi={reportContext.output.C_monthly.pmi_by_location}
         taxes={reportContext.output.C_monthly.property_tax_by_location}
@@ -187,7 +187,7 @@ export const ReportSecOne = () => {
         )}
       </div>
 
-     
+
     </>
   );
 };
