@@ -158,7 +158,7 @@
 }
 
 .category-box{
-  grid-area: 1/ 9/ 4 /11;
+  grid-area: 1/ 8/ 4 /11;
   display: inline-flex;
   align-items: center;
 }
@@ -174,6 +174,47 @@
 }
 
 .report-info-1{
+  background-color: #1A1A1A;
+  grid-area: 4/ 1/ 6 /5;
+  margin: 1%;
+  font-size: 3em;
+  color: #fff;
+}
+
+.plan-cont-1{
+  text-align: center;
+  background-color: #1A1A1A;
+  grid-area: 4/ 1/ 6 /5;
+  margin: 1%;
+  font-size: 3em;
+  color: #fff;
+}
+
+.plan-cont-2{
+  text-align: center;
+  background-color: #1A1A1A;
+  grid-area: 6/ 1/ 8 /5;
+  margin: 1%;
+  font-size: 3em;
+  color: #fff;
+ 
+}
+
+.main-plan-title{
+  margin: 2%;
+  font-family: var(--note);
+}
+
+.main-plan-value{
+  background-color: #fff;
+    text-align: center;
+    color: #3C153B;
+    font-size: 1.2em;
+    font-family: 'Xanh Mono', monospace;
+    font-style: italic;
+    
+}
+.plan-info-1{
   background-color: #1A1A1A;
   grid-area: 4/ 1/ 6 /5;
   margin: 1%;
@@ -307,7 +348,7 @@
 }
 
 .btns-inst{
-  grid-area: 2/ 7/ 4/ 11;
+  grid-area: 4/ 7/ 6/ 11;
   margin: 2%;
 }
 
@@ -317,6 +358,8 @@
   font-family: var(--description);
   font-size: 2em;
   height: 100%;
+  display: flex;
+    align-items: center;
 }
 
 .saving{
@@ -331,6 +374,8 @@
 
 .light{
   background: #fff;
+  font-family: var(--mono);
+  font-size: 1.5em;
 }
 
 .result-info-2{
@@ -372,7 +417,15 @@
 }
 
 .monthly-cat{
-  grid-area: 5/ 7/ 9 / 11;
+  grid-area: 7/ 7/ 9 / 11;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 7%;
+}
+
+.plan-cat{
+  grid-area: 3/ 8/ 6 / 11;
   display: inline-flex;
   align-items: center;
   justify-content: space-evenly;
@@ -387,7 +440,7 @@
 }
 
 .num-month{
-  color: #fff;
+  color: black;
   text-decoration: underline;
   font-size: 3em;
 }
@@ -396,7 +449,7 @@
 }
 
 .down-num{
-  grid-area: 7/ 7/ 9 / 11;
+  grid-area: 1/ 7/ 4 / 11;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -426,6 +479,10 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  box-shadow: 10px 10px 10px rgb(0,0,0,0.05),
+              -10px -10px 10px rgba(0, 0, 0, 0.137),
+              10px 10px 10px rgb(0,0,0,0.05),
+              -10px -10px 10px rgba(0, 0, 0, 0.137);
 }
 
 .down-ci{
@@ -439,8 +496,7 @@
 }
 
 .year-buttons{
-  grid-area: 5/ 7/ 7 / 11;
-  /* background: white; */
+  grid-area: 7/ 7/ 9 / 11;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -461,19 +517,28 @@
     align-items: center;
     text-align: center;
     cursor: pointer;
-    box-shadow: inset 25px 25px 25px rgb(0,0,0,0.05),
-              inset -25px -25px 25px rgb(255,255,255,0.07),
-              25px 25px 25px rgb(0,0,0,0.05),
-              -25px -25px 25px rgb(255,255,255,0.07);
+    box-shadow: inset 10px 10px 10px rgb(0,0,0,0.05),
+              inset -10px -10px 10px rgba(0, 0, 0, 0.137),
+              10px 10px 10px rgb(0,0,0,0.05),
+              -10px -10px 10px rgba(0, 0, 0, 0.137);
 }
 
 .year-ci:active{
   background: var(--dark-purple);
+  
 
+}
+.year-ci:hover{
+  background: var(--dark-purple);
+  color: #F0C808;
 }
 
 .down-ci:active{
   background: var(--claret);
+}
+
+.down-ci:hover{
+  background: var(--claret)
 }
 
 .year-title{

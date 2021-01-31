@@ -124,7 +124,7 @@ export const ReportSecOne = () => {
         centerImg={goodJob}
         plant={plant_2}
         valueOne={"Mortgage Rate"}
-        valueLeft={`${reportContext.output.B_principal.mortgage_rate}%`}
+        valueLeft={`${reportContext.output.B_principal.mortgage_rate * 100}%`}
         valueRightTitle={"Your Selected Goal Principle"}
         valueRight={`$${reportContext.output.B_principal.goal_principal}`}
       />)
@@ -135,10 +135,10 @@ export const ReportSecOne = () => {
         position={keys.indexOf(keys[1]) + 1}
         centerImg={goodJob}
         plant={plant_2}
-        valueOne={"Potential Goal Principle"}
-        valueLeft={`$${reportContext.input.I_rent}`}
+        valueOne={"Your current rent"}
+        valueLeft={`$${reportContext.I_rent}`}
         valueRightTitle={
-          "This number is calculated as a possible goal principle based off of what you are currently paying in rent."
+          "Possible principle"
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
       />)
@@ -160,17 +160,20 @@ export const ReportSecOne = () => {
       />
       {/* downpayment */}
       <ReportCategory
-        title={categories[3]}
+        plan={planStyles}
+        title={'Plans'}
         insight={insight[3]}
         position={keys.indexOf(keys[3]) + 1}
         centerImg={downpayment}
         plant={plant_2}
         valueOne={"Downpayment saved"}
-        valueLeft={reportContext.output.D_downpayment.downpayment_saved}
-        valueRightTitle={"Average Home Price in this Area"}
-        valueRight={reportContext.output.A_location.average_home_price}
+        valueLeft={`$${reportContext.output.D_downpayment.downpayment_saved}`}
+        valuePLanTitleOne={"Downpayment cash value"}
+        valuePlanValueOne={`$${reportContext.output.D_downpayment.downpayment_cash_value}`}
+        valuePLanTitleTwo={"Downpayment Cash Value"}
+        valuePlanValueTwo={`${reportContext.output.D_downpayment.downpayment_percentage_selected}%`}
         planKeys={planKeys}
-        plan={planStyles}
+
       />
 
         <div className="sigup">
@@ -195,7 +198,7 @@ export const ReportSecOne = () => {
 
           : (
             <div className="social-box">
-            <h1 className="fina-mess">
+            <h1 className="">
               Save your report by logging in<br />
               <Link to='/login'>
               <a
@@ -205,7 +208,7 @@ export const ReportSecOne = () => {
               </a>
               </Link>
             </h1>
-            <h1 className="fina-mess">
+            <h1 className="">
               Download as PDF
               <br />
               <s onClick={()=> savePDF()} className="tweet">Download</s>
