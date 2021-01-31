@@ -8,6 +8,7 @@ interface profileProp {
   updateReport: any;
 }
 
+
 export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   
   const report = useContext(ReportContext)
@@ -37,6 +38,7 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
       downpayment_percentage: newReport.downpayment_percentage,
       rent: newReport.rent,
       goal_principal: newReport.goal_home_price,
+      uid: localStorage.userUID || "anonymous"
     }
     return formattedAnswers
   }
@@ -74,12 +76,8 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
         },2000)
       }
       // if(/\d/g.test(e.target.value)){
-
         setAllAnswers({...st, [e.target.name]: e.target.value})
       // }
-
-
-  
   }
 
   const modifyReport = async () =>{
@@ -97,6 +95,7 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
     })
  
   }
+
   return (
     <section className="profile-section">
       <div className="welcome-prof">
@@ -113,15 +112,14 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
         <div className="div">
 
           <button className="twitter">
-          <a
-          className="twitter-hashtag-button"
-          href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
-          data-size="large"
-          >
-          Tweet
+            <a
+            className="twitter-hashtag-button"
+            href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
+            data-size="large"
+            >Tweet
             </a>
           </button>
-          
+    
         </div>
 
       </div>
@@ -156,14 +154,6 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
         </div>
 
       </div>
-        {/* <a
-          className="twitter-hashtag-button"
-          href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/22ej5357uO "
-          data-size="large"
-        >
-          Tweet
-        </a>
-      <div className="profile-footer"></div> */}
     </section>
   );
 };

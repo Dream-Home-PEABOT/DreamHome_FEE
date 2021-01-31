@@ -61,6 +61,7 @@ const DropdownMenu = (props: any) => {
         <DropdownItem>Home</DropdownItem>
       </Link>
 
+      {!userReport &&
       <Link
         to="/journey"
         data-testid="to-journey"
@@ -68,7 +69,7 @@ const DropdownMenu = (props: any) => {
       >
         <DropdownItem onClick={props.setOpen}>Journey</DropdownItem>
       </Link>
-      
+      }
       {firebase.auth().currentUser &&  
       userReport &&
       <Link
@@ -80,16 +81,6 @@ const DropdownMenu = (props: any) => {
       </Link>
       }
 
-      <Link
-        to={firebase.auth().currentUser ? "/logout" : "/login"}
-        data-testid="to-login"
-        onClick={() => {props.setOpen(false); firebase.auth().currentUser && logOut();}}
-      >
-        <DropdownItem onClick={props.setOpen}>{firebase.auth().currentUser ? "Logout": "Login"}</DropdownItem>
-
-      </Link>
-
-
       {userReport && (
         <Link
           to="/report"
@@ -99,6 +90,16 @@ const DropdownMenu = (props: any) => {
           <DropdownItem>Report</DropdownItem>
         </Link>
       )}
+
+      <Link
+        to={firebase.auth().currentUser ? "/logout" : "/login"}
+        data-testid="to-login"
+        onClick={() => {props.setOpen(false); firebase.auth().currentUser && logOut();}}
+      >
+        <DropdownItem onClick={props.setOpen}>{firebase.auth().currentUser ? "Logout": "Login"}</DropdownItem>
+
+      </Link>
+
     </div>
   );
 };

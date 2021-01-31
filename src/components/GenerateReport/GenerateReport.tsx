@@ -11,7 +11,7 @@ interface Props {
   updateReport: any;
 }
 
-const GenerateReport: React.FC<Props> = ({ updateReport }) => {
+const GenerateReport: React.FC<Props> = ({  updateReport }) => {
   const answers = useContext(AnswerContext);
   console.log(answers)
   
@@ -26,8 +26,10 @@ const GenerateReport: React.FC<Props> = ({ updateReport }) => {
       downpayment_percentage: answers.downpayment_percentage,
       rent: answers.rent,
       goal_principal: answers.goal_home_price,
+      uid: localStorage.userUID || "anonymous"
     };
 
+    //will need to add default values in or statements
     const id = await postAnswers(formattedAnswers);
     const data = await getReport(id.data.id);
     updateReport(data);
