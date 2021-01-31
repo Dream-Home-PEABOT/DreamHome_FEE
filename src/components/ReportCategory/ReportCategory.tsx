@@ -105,19 +105,19 @@ export const ReportCategory = (props: any) => {
           <>
             <div className="plan-cat">
               <div className="month-one">
-                <h1 className="saving">{`For the ${props.valuePlanValueTwo} downpayment percentage you selected, your goal savings needs to be ${props.valuePlanValueOne}`}</h1>
+                <h1 className="saving">{`For the ${props.downpaymentPercentageSelected} downpayment you selected, your goal savings needs to be $${props.cashValue}`}</h1>
               </div>
             </div> 
             <div className="year-buttons">
               <h1 className="inst-title">Choose how agrresively you would like to save below.</h1>
             </div>
             <div className="plan-cont-1">
-            <h1 className="main-plan-title">Downpayment saved</h1>
-            <h1 className="main-plan-value">{props.valuePlanValueOne}</h1>
+            <h1 className="main-plan-title">{props.valuePLanTitleOne}</h1>
+            <h1 className="main-plan-value">{props.downPaymentSaved}</h1>
           </div>
           <div className="plan-cont-2">
-            <h1 className="main-plan-title">Your Saving Goal</h1>
-            <h1 className="main-plan-value">{props.valuePlanValueTwo}</h1>
+            <h1 className="main-plan-title">{props.chashValueTitle}</h1>
+            <h1 className="main-plan-value">{props.finalValue}</h1>
           </div>
           </>
         )}

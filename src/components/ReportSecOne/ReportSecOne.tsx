@@ -66,11 +66,17 @@ export const ReportSecOne = () => {
           >
             {(props) => (
               <div className="num-ci-box-down">
-                { entries[0] !=="F_mortgage_term"?
-                  <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1>
+                { 
+
+                entries[0] === "D_monthly_debt" ||  entries[0] === "C_salary"
+                  ?
+                  <h1 className="num-ci-data">{`$${props.number.toFixed()}`}</h1> 
+                  :
+                  entries[0] !== "F_mortgage_term" 
+                  ? 
+                  <h1 className="num-ci-data">{`${props.number.toFixed()}`}</h1>
                   :
                   <h1 className="num-ci-data">{`${props.number.toFixed()} year`}</h1>
-
                 }
               </div>
             )}
@@ -171,11 +177,12 @@ export const ReportSecOne = () => {
         centerImg={downpayment}
         plant={plant_2}
         valueOne={"Downpayment saved"}
-        valueLeft={`$${reportContext.output.D_downpayment.downpayment_saved}`}
-        valuePLanTitleOne={"Downpayment cash value"}
-        valuePlanValueOne={`$${reportContext.output.D_downpayment.downpayment_cash_value}`}
-        valuePLanTitleTwo={"Downpayment Cash Value"}
-        valuePlanValueTwo={`${reportContext.output.D_downpayment.downpayment_percentage_selected}%`}
+        downpaymentPercentageSelected={`${reportContext.output.D_downpayment.downpayment_percentage_selected}%`}
+        valuePLanTitleOne={"Your Current Savings"}
+        downPaymentSaved={`$${reportContext.output.D_downpayment.downpayment_saved}`}
+        chashValueTitle={"Your Savings Goal"}
+        finalValue={`$${reportContext.output.D_downpayment.downpayment_cash_value - reportContext.output.D_downpayment.downpayment_saved}`}
+        cashValue={reportContext.output.D_downpayment.downpayment_cash_value}
         planKeys={planKeys}
 
       />
