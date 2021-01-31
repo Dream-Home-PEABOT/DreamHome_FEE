@@ -16,7 +16,6 @@ export const ReportCategory = (props: any) => {
   const injectYears = () => {
     const yearKeys = Object.keys(plan[currentStyle]).splice(0, 3)
     return yearKeys.map((plan, i: number) => {
-      console.log(plan)
       const split = plan.split('_')
       return (
         <div 
@@ -34,7 +33,6 @@ export const ReportCategory = (props: any) => {
   const updateYear = (e: any) => {
     const id = e.target.id
     setCurrentPlan(id)
-    console.log(id)
   }
 
   const updatePlan =(e: any) => {

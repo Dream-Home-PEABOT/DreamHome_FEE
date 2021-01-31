@@ -33,7 +33,6 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   }
 
   const determineValue = (entry:any)=>{
-    console.log(entry)
     return report["03_attributes"].input[entry]
   }
 
