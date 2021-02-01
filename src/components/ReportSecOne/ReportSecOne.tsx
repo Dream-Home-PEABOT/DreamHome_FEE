@@ -152,7 +152,7 @@ export const ReportSecOne = () => {
         valueOne={"Your current rent"}
         valueLeft={`$${reportContext.input.I_rent}`}
         valueRightTitle={
-          "Possible principle"
+          "Possible principal"
 
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
