@@ -100,7 +100,7 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
           <button className="twitter">
             <a
             className="twitter-hashtag-button"
-            href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text=My%2010%20year%20plan%20for%20my%20dream%20home: find out yours! pic.twitter.com/geW2LkzIZr "
+            href="https://twitter.com/intent/tweet?original_referer=https://dream-home-cap.herokuapp.com&source=twitter-share-button&url=https://dream-home-cap.herokuapp.com/&text= Looks%20like%20its%20time%20to%20start%20saving%20for%20my%20Dream%20Home%21%20%0A%0APlan%20for%20your%20Dream%20Home%20here%3A%20%0A%0Apic.twitter.com%2FgeW2LkzIZr"
             data-size="large"
             >Tweet
             </a>
