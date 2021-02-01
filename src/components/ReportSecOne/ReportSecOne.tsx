@@ -219,7 +219,7 @@ export const ReportSecOne = () => {
 
               <div className="social-wrap">
                 <h1 className="">Save your report by logging in</h1>
-                <Link to='/login' onClick={() => localStorage.reportID = reportID}>
+                <Link onClick={() => localStorage.reportID = reportID} to='/login' >
                   <button className="tweet">log-in</button>
                 </Link>
               </div>

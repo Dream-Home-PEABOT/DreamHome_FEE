@@ -34,7 +34,6 @@ export const getReport = async (id: string) => {
   );
   if (response.ok) {
     let final = await response.json();
-    console.log(final.data)
     return final.data;
 
   } else {
@@ -43,8 +42,7 @@ export const getReport = async (id: string) => {
   }
 };
 
-export const updateUserReport = async (id:string, answers: Answers) => {
-
+export const updateUserReport = async (id:string, answers: any) => {
   const response = await fetch(
   `https://dreamhome-mvp.herokuapp.com/api/v1/report/${id}`,{
       method: "PUT",
@@ -53,7 +51,6 @@ export const updateUserReport = async (id:string, answers: Answers) => {
     }
   );
   if (response.ok) {
-    console.log( await response.json())
   } else {
     return response;
   }
