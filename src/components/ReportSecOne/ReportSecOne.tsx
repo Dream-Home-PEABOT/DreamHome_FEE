@@ -152,7 +152,7 @@ export const ReportSecOne = () => {
         valueOne={"Your current rent"}
         valueLeft={`$${reportContext.input.I_rent}`}
         valueRightTitle={
-          "Possible principle"
+          "Possible principal"
 
         }
         valueRight={`$${reportContext.output.B_principal.principal_based_on_rent}`}
@@ -219,7 +219,7 @@ export const ReportSecOne = () => {
 
               <div className="social-wrap">
                 <h1 className="">Save your report by logging in</h1>
-                <Link to='/login'>
+                <Link to='/login' onClick={() => localStorage.reportID = reportID}>
                   <button className="tweet">log-in</button>
                 </Link>
               </div>
