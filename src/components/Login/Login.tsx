@@ -6,20 +6,21 @@ import React, { useEffect } from "react";
 import {updateUserReport} from "../../helpers/apiCalls";
 import bkg_img from "../../images/report/Charco - Mobile Life.png";
 
-export const Login: React.FC = () => {
+export const Login: React.FC = (props:any) => {
   const uiSettings = {
     callbacks: {
       signInSuccessWithAuthResult: function (
         authResult: any,
         redirectUrl: any
       ) {
-        if (localStorage.reportID){
-          updateUserReport(localStorage.reportID, authResult.user.uid)
+        if (localStorage.reportID && authResult.additionalUserInfo.isNewUser){
+          updateUserReport(localStorage.reportID, {"uid":authResult.user.uid})
         }
         localStorage.userUID = authResult.user.uid;
         localStorage.displayName = authResult.user.displayName;
         localStorage.email = authResult.user.email;
-        return true;
+        props.history.push("/")
+        return false;
       },
     },
     signInSuccessUrl: "/",

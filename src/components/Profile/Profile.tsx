@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef} from "react";
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import "./Profile.css";
-import { updateUserReport } from "../../helpers/apiCalls";
+import { updateUserReport, getReport } from "../../helpers/apiCalls";
 import { ReportContext, AnswerContext } from "../../helpers/context";
 import { Answers } from "../../helpers/types";
 interface profileProp {
@@ -43,8 +43,32 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   const injectInputFields = () => {
     return Object.keys(answers).map( (entry: any, i) => {
       let currentValue = determineValue(entry)
-      if(currentValue === 0) return 
+      //if(currentValue === 0) return 
       entry = entry.slice(2)
+      if(i === 8){
+        return (
+          <>
+          <div key={"or"}
+          className="user-details-fields">
+          <h1 className='cat'>OR</h1>
+        </div>
+        <div 
+          key={i}
+          className="user-details-fields">
+          <h1 className='cat'>{entry}</h1>
+          <input 
+            className='inpt' 
+            onChange={(e) => handleChange(e)} 
+            onClick={removePlaceholder}
+            name={entry}
+            type="text" 
+            value={st[entry]}
+            placeholder={currentValue}
+            />
+        </div>
+            </>
+        )
+      }
       return (
         <div 
           key={i}
@@ -65,6 +89,7 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   }
 
   const handleChange = (e:any)=>{
+    console.log(e.target.name)
     const stringValidation = /\d/g.test(e.target.value)
     if (!e.target.value || !stringValidation){
       setError('just numbers')
@@ -72,12 +97,19 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
           setError('')
         },2000)
       }
+      //if (e.target.name == "rent"){
+      //  setAllAnswers({...st, ["goal_principal"]: 0 })
+      //}
+      //if (e.target.name == "goal_principal"){
+      //  setAllAnswers({...st, ["rent"]: 0})
+      //}
         setAllAnswers({...st, [e.target.name]: e.target.value})
   }
 
   const modifyReport = async () =>{
-    updateUserReport(report["02_id"], st)
-
+    const response = await updateUserReport(report["02_id"], st)
+    const data = await getReport(response.data.id);
+    updateReport(data)
     }
   
 
