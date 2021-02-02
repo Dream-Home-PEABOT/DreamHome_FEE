@@ -71,7 +71,7 @@ const App: React.FC = () => {
     return () => {
       unmounted.current = true;
     };
-  }, []);
+  }, [firebase.auth().currentUser]);
 
   return (
     <QuestionContext.Provider value={questions}>
