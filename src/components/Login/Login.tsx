@@ -13,14 +13,14 @@ export const Login: React.FC = (props:any) => {
         authResult: any,
         redirectUrl: any
       ) {
-        if (localStorage.reportID){
+        if (localStorage.reportID && authResult.additionalUserInfo.isNewUser){
           updateUserReport(localStorage.reportID, {"uid":authResult.user.uid})
         }
         localStorage.userUID = authResult.user.uid;
         localStorage.displayName = authResult.user.displayName;
         localStorage.email = authResult.user.email;
         props.history.push("/")
-        return true;
+        return false;
       },
     },
     signInSuccessUrl: "/",
