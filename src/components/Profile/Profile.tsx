@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef} from "react";
 import bkg_img from "../../images/report/Big Shoes - Jumping On One leg Pose.png";
 import "./Profile.css";
-import { updateUserReport } from "../../helpers/apiCalls";
+import { updateUserReport, getReport } from "../../helpers/apiCalls";
 import { ReportContext, AnswerContext } from "../../helpers/context";
 import { Answers } from "../../helpers/types";
 interface profileProp {
@@ -76,8 +76,9 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   }
 
   const modifyReport = async () =>{
-    updateUserReport(report["02_id"], st)
-
+    const response = await updateUserReport(report["02_id"], st)
+    const data = await getReport(response.data.id);
+    updateReport(data)
     }
   
 
