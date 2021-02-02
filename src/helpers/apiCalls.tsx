@@ -51,6 +51,7 @@ export const updateUserReport = async (id:string, answers: any) => {
     }
   );
   if (response.ok) {
+    return response.json()
   } else {
     return response;
   }
