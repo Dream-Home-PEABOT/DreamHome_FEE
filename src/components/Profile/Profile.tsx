@@ -43,7 +43,10 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   }
 
   const removePlaceholder = (event:any) => {
-    event.target.placeholder = ""
+    event.target.placeholder = "";
+    if (error !== '') {
+      setError('');
+    }
   }
 
   const injectInputFields = () => {
@@ -99,9 +102,9 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
     const stringValidation = /\d/g.test(e.target.value)
     if (!e.target.value || !stringValidation){
       setError('just numbers')
-        setTimeout(()=>{
-          setError('')
-        },2000)
+        // setTimeout(()=>{
+        //   setError('')
+        // },2000)
       }
       //if (e.target.name == "rent"){
       //  setAllAnswers({...st, ["goal_principal"]: 0 })

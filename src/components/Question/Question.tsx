@@ -88,7 +88,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
     let isnum = /^\d+$/.test(e.target.value);
     if (!isnum) {
       setErrorMessage("Only Enter numbers");
-      setTimeout(() => setErrorMessage(""), 4000);
+      // setTimeout(() => setErrorMessage(""), 4000);
     } else {
       setErrorMessage("");
     }
@@ -200,6 +200,7 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
                 className="input"
                 value={answerInput[questionKeys[index]] || ""}
                 onChange={(e) => validateString(e)}
+                onClick={e => setErrorMessage('')}
               />
               <div className='symbol-box'>
                 {currentQuestion['03_attributes'].H_symbol == '%' ? <h2 className='symbol'>{currentQuestion['03_attributes'].H_symbol}</h2> : ' '}
