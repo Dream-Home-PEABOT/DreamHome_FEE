@@ -39,7 +39,12 @@ export const Login: React.FC = (props:any) => {
   };
 
   useEffect(() => {
-    configureUI();
+    let unmounted = false;
+
+    if(!unmounted) {
+      configureUI();
+    }
+    return () => { unmounted = true }
   }, []);
 
   return (

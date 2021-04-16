@@ -19,12 +19,18 @@ export const Profile: React.FC<profileProp> = ({ updateReport }) => {
   const [st, setAllAnswers] = useState<any>({});
 
   useEffect(() => {
-    const userError = 'no name found'
-    const emailError = 'no email found'
-    const user = localStorage.getItem('displayName') || userError;
-    const email = localStorage.getItem('email') || emailError;
-    setPerson(user)
-    setEmail(email)
+    let unmounted = false;
+
+    if (!unmounted) {
+      const userError = 'no name found'
+      const emailError = 'no email found'
+      const user = localStorage.getItem('displayName') || userError;
+      const email = localStorage.getItem('email') || emailError;
+      setPerson(user)
+      setEmail(email)
+    }
+
+    return () => { unmounted = true }
   }, [])
 
 

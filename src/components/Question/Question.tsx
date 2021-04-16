@@ -33,13 +33,24 @@ export const Question: React.FC<Props> = ({ updateAllAnswers }) => {
   let currentQuestion = questionContext[questionKeys[index]];
 
   useEffect(() => {
-    inputRef?.current?.focus();
+    let unmounted = false;
 
+    if (!unmounted) {
+    inputRef?.current?.focus();
+    }
+
+    return () => { unmounted = true };
   },[index, errorMessage])
 
 
   useEffect(() => {
-    inputRef?.current?.focus();
+    let unmounted = false;
+
+    if(!unmounted) {
+      inputRef?.current?.focus();
+    }
+
+    return () => { unmounted = true };
   },[])
 
   const displayInput = (e: any) => {
