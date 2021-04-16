@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "fee-dreamhome"
+    "default": "fee-dreamhome",
+    "deploy": "dream-home-970ac"
   }
 }
